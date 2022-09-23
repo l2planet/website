@@ -1,5 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * ## useLocalStorage
+ * A hook that provides an easy to use interface to work with `localStorage` API.
+ * 
+ * ### Usage
+ * ```jsx
+ *                                     //   KEY      DEFAULT
+ * const [name, setName] = useLocalStorage('name', 'John Doe')
+ * 
+ * name // "John Doe"
+ * 
+ * setName('Berzan') // Now, it's saved as "Berzan"!
+ * 
+ * name // "Berzan"
+ * ```
+ */
 export function useLocalStorage<T>(key: string, defaultValue: T) {
     const [value, setValue] = useState<T>(() => {
         try {
