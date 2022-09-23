@@ -1,20 +1,33 @@
-import { createContext, useCallback, useContext, useEffect } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { FCWithChildren } from "../types/globals";
+import { ChildrenProp } from "../types/globals";
 
 interface ThemeContextState {
+    /** Toggles the theme between `"dark"` & `"light"`. */
     toggleTheme(): void
+    theme: 'dark' | 'light'
 }
 
 const ThemeContext = createContext({} as ThemeContextState)
 
+
+/** Allows you to use `ThemeContext`. */
 export const useTheme = () => useContext(ThemeContext)
 
 
+/** All available themes. */
 type Theme = 'dark' | 'light' | 'auto'
 
-export const ThemeProvider = ({ children }: FCWithChildren) => {
+/** The provider component for `ThemeContext`. */
+export const ThemeProvider = ({ children }: ChildrenProp) => {
     const [theme, setTheme] = useLocalStorage<Theme>('theme', 'auto')
+
+    const _theme = useMemo(() => {
+        return theme === 'auto' ? (() => {
+            if(typeof window !== 'undefined') return window.matchMedia('(prefers-color-scheme: dark)').matches
+            else return false
+        })() ? 'dark': 'light' : theme
+    }, [theme])
 
     useEffect(() => {
         switch(theme) {
@@ -58,7 +71,8 @@ export const ThemeProvider = ({ children }: FCWithChildren) => {
 
     return (
         <ThemeContext.Provider value={{
-            toggleTheme
+            toggleTheme,
+            theme: _theme,
         }}>
             {children}
         </ThemeContext.Provider>
