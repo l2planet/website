@@ -67,7 +67,7 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
                 }
             }
         })
-    }, [])
+    }, [setTheme])
 
     return (
         <ThemeContext.Provider value={{
