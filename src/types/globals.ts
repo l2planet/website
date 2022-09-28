@@ -1,12 +1,12 @@
 import { FormEventHandler, ReactNode } from "react";
-import { RawFormChain, RawFormLayer2, RawFormLogin, RawFormProject } from "./Api";
+import { RawFormChain, RawFormLayer2, RawFormAuth, RawFormProject } from "./Api";
 
 export interface ChildrenProp {
     children: ReactNode
 }
 
 
-export type RawFormData = RawFormChain | RawFormLayer2 | RawFormProject | RawFormLogin
+export type RawFormData = RawFormChain | RawFormLayer2 | RawFormProject | RawFormAuth
 
 export interface FormProps<T extends RawFormData> {
     onSubmit: (formData: T) => void

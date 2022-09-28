@@ -1,7 +1,10 @@
 import type { NextPage } from 'next'
+import { ChainFormatter } from '../../../classes/Formatters'
 import { ChainForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
 import { SEO } from '../../../components/SEO'
+import { sendChain } from '../../../functions/auth'
+import { getCookie } from '../../../functions/cookie'
 
 const NewChain: NextPage = () => {
     return(
@@ -14,9 +17,19 @@ const NewChain: NextPage = () => {
 
             <H1>New Chain</H1>
             
-            <ChainForm onSubmit={(e) => {
-                // Uploading chain to the backend server!!!!
-                // TODO
+            <ChainForm onSubmit={async (e) => {
+                const jwt = getCookie('jwt');
+                if (jwt === null) {
+                    alert('Please login!');
+                    return
+                }
+                const chainData = new ChainFormatter(e).format()
+                if (chainData !== null) {
+                    const res = await sendChain(chainData, jwt)
+                    if(res !==null) {
+                        alert('Published')
+                    }
+                }
             }}/>
         </>
     )

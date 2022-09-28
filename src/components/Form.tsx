@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { wrapn } from "wrapn";
 import { getFormData } from "../functions/getFormData";
-import { RawFormChain, RawFormLayer2, RawFormLogin, RawFormProject } from "../types/Api";
+import { RawFormChain, RawFormLayer2, RawFormAuth, RawFormProject } from "../types/Api";
 import { FormProps, LabeledInputProps } from "../types/globals";
 import { ButtonForm } from "./Button";
 
@@ -116,17 +116,36 @@ const LabeledTextArea = (props: LabeledInputProps) => {
 
 
 /** Login Form */
-export const LoginForm = ({ onSubmit }: FormProps<RawFormLogin>) => {
+export const LoginForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
     return (
         <Form onSubmit={(e) => {
             e.preventDefault()
             onSubmit(getFormData(e))
-        }} className='self-center max-w-2xl w-full'>
+        }} className='self-center w-full max-w-2xl'>
             <DivForm>
                 <LabeledInput name='username' label='User Name' tip='Your user name.'/>
                 <LabeledInput name='password' label='Password' tip='Your password.' isPassword/>
             </DivForm>
             <ButtonForm type='submit'>Login</ButtonForm>
+        </Form>
+    )
+}
+
+
+
+
+/** Register Form */
+export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
+    return (
+        <Form onSubmit={(e) => {
+            e.preventDefault()
+            onSubmit(getFormData(e))
+        }} className='self-center w-full max-w-2xl'>
+            <DivForm>
+                <LabeledInput name='username' label='User Name' tip='Your user name.'/>
+                <LabeledInput name='password' label='Password' tip='Your password.' isPassword/>
+            </DivForm>
+            <ButtonForm type='submit'>Register</ButtonForm>
         </Form>
     )
 }
@@ -143,7 +162,7 @@ export const ChainForm = ({ onSubmit }: FormProps<RawFormChain>) => {
         <Form onSubmit={(e) => {
             e.preventDefault()
             onSubmit(getFormData(e))
-        }} className='self-center max-w-3xl w-full'>
+        }} className='self-center w-full max-w-3xl'>
             <DivForm>
                 <LabeledInput name='name' label='Chain Name' tip='The name of the chain.'/>
                 <LabeledInput name='icon' label='Icon URL' tip='URL of the chain icon as SVG.'/>

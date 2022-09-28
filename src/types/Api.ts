@@ -22,13 +22,20 @@ export interface APIPrimaryData {
 
 
 
-export interface RawFormLogin {
+export interface RawFormAuth {
     username: string
     password: string
 }
 
 export interface APIPostLogin {
+    username: string
+    password: string
+}
 
+export interface APIGetLogin {
+    code: 200,
+    expire: string,
+    token: string,
 }
 
 

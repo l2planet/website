@@ -4,7 +4,7 @@ import { getCoinGeckoId } from "../functions/getCoinGeckoId";
 import { getTwitterId } from "../functions/getTwitterId";
 import { getYoutubeId } from "../functions/getYoutubeId";
 import { ImageURL } from "./Parsers";
-import { RawFormChain, RawFormLayer2, RawFormProject, RawFormLogin, APIPostChain, APIPostLayer2, APIPostProject } from "../types/Api";
+import { RawFormChain, RawFormLayer2, RawFormProject, RawFormAuth, APIPostChain, APIPostLayer2, APIPostProject } from "../types/Api";
 
 export class ChainFormatter {
     constructor(chainFormData: RawFormChain) {

@@ -23,7 +23,7 @@ export const Footer = () => {
                         <SecondarySubBox>
                             <Link a={A} href='/about'>About</Link>
                             <Link a={A} href='/donate'>Donate</Link>
-                            <Link a={A} href='/members'>Members</Link>
+                            <Link a={A} href='/members/login'>Members</Link>
                         </SecondarySubBox>
                     </QuarterBox>
                 </SecondaryBox>
