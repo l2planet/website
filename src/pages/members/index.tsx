@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { LoginForm } from '../../components/Form'
 import { SEO } from '../../components/SEO'
 import { getFormData } from '../../functions/getFormData'
+import { makePostRequest } from '../../functions/makeRequest'
 
 const Members: NextPage = () => {
     return(
@@ -14,10 +15,18 @@ const Members: NextPage = () => {
                 favicon='/favicon.ico'
             />
             
-            <LoginForm onSubmit={(e) => {
+            <LoginForm onSubmit={async (e) => {
                 // Authentication comes here!!!!
-                e.password
-                e.username
+                let res = await makePostRequest('http://34.159.140.212/register', {
+                    Username: e.username,
+                    Password: e.password,
+
+                })
+                console.log(`
+                    status: ${res?.status}\n
+                    json: ${res?.json}
+                    text: ${res?.text}
+                `)
             }}/>
         </>
     )
