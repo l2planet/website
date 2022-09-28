@@ -26,6 +26,7 @@ const NewChain: NextPage = () => {
                 const chainData = new ChainFormatter(e).format()
                 if (chainData !== null) {
                     const res = await sendChain(chainData, jwt)
+                    
                     if(res !==null) {
                         alert('Published')
                     }
