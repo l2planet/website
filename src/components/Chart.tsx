@@ -29,8 +29,8 @@ ChartJS.defaults.borderColor = '#83889360'
 
 
 export const Chart = ({ data, l2 }: { data: InternalLayer2['tvls'], l2: string }) => {
-    const [time, setTime] = useLocalStorage<keyof typeof data>(`tvl${l2}`,'monthly');
-    const [aspectRatio, setRatio] = useState<number>(0)
+    const [time, setTime] = useLocalStorage<keyof typeof data>(`tvl${l2}`,'daily');
+    const [aspectRatio, setRatio] = useState<number>(2)
 
     useEffect(() => {
         const handler = () => {
