@@ -2,7 +2,7 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { wrapn } from 'wrapn'
-import { LoginForm } from '../../components/Form'
+import { LoginForm, RegisterForm } from '../../components/Form'
 import { H1 } from '../../components/H'
 import { Link } from '../../components/Link'
 import { SEO } from '../../components/SEO'
@@ -22,7 +22,7 @@ const Members: NextPage = () => {
             <H1>Register</H1>
 
             <Div>
-                <LoginForm onSubmit={async (formData) => {
+                <RegisterForm onSubmit={async (formData) => {
                     try {
                         await authRegister(formData)
                         alert('Succesfully registered!')
