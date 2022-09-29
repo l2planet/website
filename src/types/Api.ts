@@ -100,7 +100,7 @@ export interface RawFormLayer2 {
     description: string
     categories: string
     website: string
-    evmId: string
+    evm_id: string
     bridges: string
     tokens: string
     gecko: string
@@ -119,7 +119,7 @@ export interface APIPostLayer2 {
     description: string
     categories: string[]
     website: string
-    evmId: string
+    evm_id: string
     bridges: string[]
     tokens: string[]
     gecko?: string
