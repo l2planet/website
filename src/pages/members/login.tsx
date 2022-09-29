@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import { wrapn } from 'wrapn'
 import { LoginForm } from '../../components/Form'
 import { H1 } from '../../components/H'
@@ -8,7 +9,7 @@ import { SEO } from '../../components/SEO'
 import { authLogin } from '../../functions/api'
 
 const Members: NextPage = () => {
-
+    const router = useRouter()
     return(
         <>
             <SEO
@@ -24,6 +25,7 @@ const Members: NextPage = () => {
                     try {
                         await authLogin(formData)
                         alert('Succesfully logged in!')
+                        router.push('/members/panel')
                     } catch (e: any) {
                         alert(e.message)
                     }
