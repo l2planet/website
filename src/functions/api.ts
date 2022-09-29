@@ -6,7 +6,7 @@ import { Block } from "../components/Editor/types";
 /** Makes a login request to the backend with given form data. */
 export async function authLogin(formData: RawFormAuth): Promise<void> {
     try {
-        const res = await fetch('http://34.159.140.212/login', {
+        const res = await fetch('https://api.l2planet.xyz/login', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
@@ -30,7 +30,7 @@ export async function authLogin(formData: RawFormAuth): Promise<void> {
 /** Makes a register request to the backend with given form data. */
 export async function authRegister(formData: RawFormAuth): Promise<void> {
     try {
-        const res = await fetch('http://34.159.140.212/register', {
+        const res = await fetch('https://api.l2planet.xyz/register', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
@@ -54,7 +54,7 @@ export async function sendChain(formData: RawFormChain): Promise<void> {
         const jwt = getJwtCookie()
         const chainData: APIPostChain = formatChain(formData)
 
-        const res = await fetch('http://34.159.140.212/auth/chain', {
+        const res = await fetch('https://api.l2planet.xyz/auth/chain', {
             method: 'POST',
             body: JSON.stringify(chainData),
             headers: {
@@ -81,7 +81,7 @@ export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
         const jwt = getJwtCookie()
         const layer2Data: APIPostLayer2 = formatLayer2(formData)
 
-        const res = await fetch('http://34.159.140.212/auth/solution', {
+        const res = await fetch('https://api.l2planet.xyz/auth/solution', {
             method: 'POST',
             body: JSON.stringify(layer2Data),
             headers: {
@@ -110,7 +110,7 @@ export async function sendProject(formData: RawFormProject): Promise<void> {
         const jwt = getJwtCookie()
         const projectData: APIPostProject = formatProject(formData)
 
-        const res = await fetch('http://34.159.140.212/auth/project', {
+        const res = await fetch('https://api.l2planet.xyz/auth/project', {
             method: 'POST',
             body: JSON.stringify(projectData),
             headers: {
@@ -139,7 +139,7 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
     try {
         const jwt = getJwtCookie()
 
-        const res = await fetch('http://34.159.140.212/auth/newsletter', {
+        const res = await fetch('https://api.l2planet.xyz/auth/newsletter', {
             method: 'POST',
             body: `"${JSON.stringify(newsletterBlocks)}"`,
             headers: {
