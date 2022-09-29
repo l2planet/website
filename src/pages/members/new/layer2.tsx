@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { Layer2Form, LoginForm } from '../../../components/Form'
+import { Layer2Form } from '../../../components/Form'
 import { H1 } from '../../../components/H'
 import { SEO } from '../../../components/SEO'
-import { getFormData } from '../../../functions/getFormData'
+import { sendLayer2 } from '../../../functions/api'
 
 const NewLayer2: NextPage = () => {
-    return(
+    return (
         <>
             <SEO
                 title='L2 Planet | New Layer 2'
@@ -16,14 +14,17 @@ const NewLayer2: NextPage = () => {
             />
 
             <H1>New Layer 2</H1>
-            
-            <Layer2Form onSubmit={(e) => {
-                // Uploading layer2 to the backend server!!!!
-                // TODO
-            }}/>
+
+            <Layer2Form onSubmit={async (l2FormData) => {
+                try {
+                    await sendLayer2(l2FormData)
+                    alert('Succesfully added!')
+                } catch (err: any) {
+                    alert(err.message)
+                }
+            }} />
         </>
     )
 }
-            
+
 export default NewLayer2
-            

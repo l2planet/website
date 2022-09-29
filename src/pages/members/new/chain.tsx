@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
-import { ChainFormatter } from '../../../classes/Formatters'
 import { ChainForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
 import { SEO } from '../../../components/SEO'
-import { sendChain } from '../../../functions/auth'
-import { getCookie } from '../../../functions/cookie'
+import { sendChain } from '../../../functions/api'
 
 const NewChain: NextPage = () => {
-    return(
+    return (
         <>
             <SEO
                 title='L2 Planet | New Chain'
@@ -16,25 +14,17 @@ const NewChain: NextPage = () => {
             />
 
             <H1>New Chain</H1>
-            
-            <ChainForm onSubmit={async (e) => {
-                const jwt = getCookie('jwt');
-                if (jwt === null) {
-                    alert('Please login!');
-                    return
+
+            <ChainForm onSubmit={async (formData) => {
+                try {
+                    await sendChain(formData)
+                    alert('Succesfully added!')
+                } catch (err: any) {
+                    alert(err.message)
                 }
-                const chainData = new ChainFormatter(e).format()
-                if (chainData !== null) {
-                    const res = await sendChain(chainData, jwt)
-                    
-                    if(res !==null) {
-                        alert('Published')
-                    }
-                }
-            }}/>
+            }} />
         </>
     )
 }
-            
+
 export default NewChain
-            
