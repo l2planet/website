@@ -27,7 +27,7 @@ export interface RawFormAuth {
     password: string
 }
 
-export interface APIPostLogin {
+export interface APIPostAuth {
     username: string
     password: string
 }
@@ -36,6 +36,10 @@ export interface APIGetLogin {
     code: 200,
     expire: string,
     token: string,
+}
+
+export interface ApiGetRegister {
+    
 }
 
 
