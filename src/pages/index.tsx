@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             </SectionIndexIntro>
 
             <SectionIndexCards>
-                {chains.map(chain => <><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/><CardIndex key={chain.name} {...chain}/></>)}
+                {chains.map(chain => <CardIndex key={chain.name} {...chain}/>)}
             </SectionIndexCards>
         </>
     )
