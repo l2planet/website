@@ -63,7 +63,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     const description = formData.description.split('\n').join(' ')
     const categories = formData.categories.split(',').map(cat => cat.trim())
     const website = formData.website
-    const evmId = formData.evmId
+    const evm_id = formData.evm_id
     const bridges = formData.bridges.split(',').map(bri => bri.trim())
     const tokens = formData.tokens.split(',').map(tok => tok.trim())
     const gecko = getCoinGeckoId(formData.gecko) || undefined
@@ -94,7 +94,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         description,
         categories,
         bridges,
-        evmId,
+        evm_id,
         investors,
         tokens,
         videos,
