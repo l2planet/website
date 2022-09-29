@@ -20,7 +20,8 @@ export async function authLogin(formData: RawFormAuth): Promise<void> {
         } else {
             throw new Error('Wrong password or username.')
         }
-    } catch (e) {
+    } catch (e: any) {
+        if (e?.message) throw e
         throw new Error('An unknown error is occured.')
     }
 }
@@ -40,7 +41,8 @@ export async function authRegister(formData: RawFormAuth): Promise<void> {
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
         }
-    } catch (e) {
+    } catch (e: any) {
+        if (e?.message) throw e
         throw new Error('Cannot make a request.')
     }
 }
@@ -52,7 +54,7 @@ export async function sendChain(formData: RawFormChain): Promise<void> {
         const jwt = getJwtCookie()
         const chainData: APIPostChain = formatChain(formData)
 
-        const res = await fetch('http://34.159.140.212/chain', {
+        const res = await fetch('http://34.159.140.212/auth/chain', {
             method: 'POST',
             body: JSON.stringify(chainData),
             headers: {
@@ -79,7 +81,7 @@ export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
         const jwt = getJwtCookie()
         const layer2Data: APIPostLayer2 = formatLayer2(formData)
 
-        const res = await fetch('http://34.159.140.212/solution', {
+        const res = await fetch('http://34.159.140.212/auth/solution', {
             method: 'POST',
             body: JSON.stringify(layer2Data),
             headers: {
@@ -108,7 +110,7 @@ export async function sendProject(formData: RawFormProject): Promise<void> {
         const jwt = getJwtCookie()
         const projectData: APIPostProject = formatProject(formData)
 
-        const res = await fetch('http://34.159.140.212/project', {
+        const res = await fetch('http://34.159.140.212/auth/project', {
             method: 'POST',
             body: JSON.stringify(projectData),
             headers: {
@@ -137,9 +139,9 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
     try {
         const jwt = getJwtCookie()
 
-        const res = await fetch('http://34.159.140.212/newsletter', {
+        const res = await fetch('http://34.159.140.212/auth/newsletter', {
             method: 'POST',
-            body: JSON.stringify(newsletterBlocks),
+            body: `"${JSON.stringify(newsletterBlocks)}"`,
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${jwt}`
