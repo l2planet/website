@@ -93,7 +93,7 @@ export interface APIPostLayer2 {
     website: string
     evm_id: string
     bridges: {
-        address: string
+        contract_address: string
         tokens: string[]
     }[]
     gecko?: string

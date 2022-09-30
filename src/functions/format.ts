@@ -83,7 +83,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
                 }
             })
 
-        bridges.push({ address, tokens })
+        bridges.push({ contract_address: address, tokens })
     })
 
     formData.videos
