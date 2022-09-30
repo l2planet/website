@@ -18,19 +18,19 @@ export const Menu = (props: { onClick: () => void }) => {
     return (
         <WMenu onClick={props.onClick}>
             <Nav>
-                <Link a={AMenu} href="/">
+                <Link a={AMenu} href='/'>
                     <Icon icon={IconHome} />
                     Home
                 </Link>
-                <Link a={AMenu} href="/newsletter">
+                <Link a={AMenu} href='/newsletter'>
                     <Icon icon={IconNewsletter} />
                     Newsletter
                 </Link>
-                <Link a={AMenu} href="/stats">
+                <Link a={AMenu} href='/stats'>
                     <Icon icon={IconStats} />
                     Stats
                 </Link>
-                <Link a={AMenu} href="/about">
+                <Link a={AMenu} href='/about'>
                     <Icon icon={IconAbout} />
                     About
                 </Link>
@@ -89,7 +89,7 @@ const Nav = wrapn('nav')`
 
 const Icon = ({ icon: I }: { icon: () => JSX.Element }) => {
     return (
-        <div className="aspect-square h-full">
+        <div className='aspect-square h-full'>
             <I />
         </div>
     )

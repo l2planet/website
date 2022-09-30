@@ -62,8 +62,8 @@ const Layer2: NextPage = () => {
         <>
             <SEO
                 title={`L2 Planet | Projects on ${l2?.name || 'Layer 2'}`}
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <SectionProjectsIntro>

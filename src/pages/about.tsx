@@ -21,9 +21,9 @@ const About: NextPage = () => {
     return (
         <>
             <SEO
-                title="L2 Planet | About"
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                title='L2 Planet | About'
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <SectionAboutIntro>
@@ -39,23 +39,23 @@ const About: NextPage = () => {
             <SectionAboutCards>
                 <CardAbout
                     icon={IconHub}
-                    title="L2 Hub"
-                    text="It is your new home for L2s. Learn and track your favorite L2s on all networks."
+                    title='L2 Hub'
+                    text='It is your new home for L2s. Learn and track your favorite L2s on all networks.'
                 />
                 <CardAbout
                     icon={IconNewsletter}
-                    title="Newsletter"
-                    text="Join +1000 people and get biweekly L2 updates by subscribing."
+                    title='Newsletter'
+                    text='Join +1000 people and get biweekly L2 updates by subscribing.'
                 />
                 <CardAbout
                     icon={IconCommunity}
-                    title="Local Communities"
-                    text="L2 Planet supports local communities such as OptimismTR, StarkNetTR, etc."
+                    title='Local Communities'
+                    text='L2 Planet supports local communities such as OptimismTR, StarkNetTR, etc.'
                 />
                 <CardAbout
                     icon={IconEvent}
-                    title="Events"
-                    text="Get ready for local and global L2 community events."
+                    title='Events'
+                    text='Get ready for local and global L2 community events.'
                 />
             </SectionAboutCards>
         </>

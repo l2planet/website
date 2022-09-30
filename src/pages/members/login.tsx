@@ -13,9 +13,9 @@ const Members: NextPage = () => {
     return (
         <>
             <SEO
-                title="L2 Planet | Members"
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                title='L2 Planet | Members'
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <H1>Login</H1>
@@ -33,7 +33,7 @@ const Members: NextPage = () => {
                     }}
                 />
 
-                <Link a={A} href="/members/register">
+                <Link a={A} href='/members/register'>
                     Don't have an account? Register
                 </Link>
             </Div>

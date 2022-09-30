@@ -11,7 +11,7 @@ interface SEOProps {
 export const SEO: SEOComponent = (props: SEOProps) => (
     <Head>
         <title>{props.title}</title>
-        <meta name="description" content={props.description} />
-        <link rel="icon" href={props.favicon} />
+        <meta name='description' content={props.description} />
+        <link rel='icon' href={props.favicon} />
     </Head>
 )

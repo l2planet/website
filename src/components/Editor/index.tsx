@@ -153,7 +153,7 @@ export const Editor = ({
                     >
                         Show Editor
                     </PreviewButton>
-                    <div className="flex flex-col w-full cursor-not-allowed select-none">
+                    <div className='flex flex-col w-full cursor-not-allowed select-none'>
                         <Blocker blocks={previewBlocks} />
                     </div>
                 </>
@@ -480,13 +480,13 @@ const Tool = ({
 }) => (
     <>
         <WTool
-            id="tool"
+            id='tool'
             onClick={() => {
                 tool.hide()
                 isDivision.current = false
             }}
         >
-            <Button onClick={() => changeType('H1')} className="rounded-t-xl">
+            <Button onClick={() => changeType('H1')} className='rounded-t-xl'>
                 Heading 1
             </Button>
             <Button onClick={() => changeType('H2')}>Heading 2</Button>
@@ -494,12 +494,12 @@ const Tool = ({
             <Button onClick={() => changeType('L')}>List</Button>
             <Button onClick={() => changeType('C')}>Code</Button>
             <Button onClick={() => changeType('BR')}>Seperator</Button>
-            <Button onClick={() => changeType('P')} className="rounded-b-xl">
+            <Button onClick={() => changeType('P')} className='rounded-b-xl'>
                 Paragraph
             </Button>
         </WTool>
         <OutsideCover
-            id="toolcover"
+            id='toolcover'
             onClick={() => {
                 tool.hide()
                 isDivision.current = false
@@ -516,15 +516,15 @@ const Directions = ({
     onDown: MouseEventHandler<HTMLButtonElement>
 }) => (
     <>
-        <WTool id="directions" onClick={directions.hide}>
-            <Button onClick={onUp} className="rounded-t-xl">
+        <WTool id='directions' onClick={directions.hide}>
+            <Button onClick={onUp} className='rounded-t-xl'>
                 Move Up
             </Button>
-            <Button onClick={onDown} className="rounded-b-xl">
+            <Button onClick={onDown} className='rounded-b-xl'>
                 Move Down
             </Button>
         </WTool>
-        <OutsideCover id="directionscover" onClick={directions.hide} />
+        <OutsideCover id='directionscover' onClick={directions.hide} />
     </>
 )
 

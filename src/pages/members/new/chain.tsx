@@ -8,9 +8,9 @@ const NewChain: NextPage = () => {
     return (
         <>
             <SEO
-                title="L2 Planet | New Chain"
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                title='L2 Planet | New Chain'
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <H1>New Chain</H1>

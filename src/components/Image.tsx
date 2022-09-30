@@ -21,9 +21,9 @@ export const Image = ({ size, src, alt }: ImageProps) => {
             <NextImage
                 alt={alt}
                 src={src}
-                layout="responsive"
-                className="select-none"
-                draggable="false"
+                layout='responsive'
+                className='select-none'
+                draggable='false'
             />
         </div>
     )
@@ -48,7 +48,7 @@ interface ImageProps {
  */
 export const Img = ({ img: Img, src, alt }: ImgProps) => {
     return (
-        <Img alt={alt} src={src} className={'select-none'} draggable="false" />
+        <Img alt={alt} src={src} className={'select-none'} draggable='false' />
     )
 }
 

@@ -21,9 +21,9 @@ const Home: NextPage = () => {
     return (
         <>
             <SEO
-                title="L2 Planet | Home"
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                title='L2 Planet | Home'
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <SectionIndexIntro>

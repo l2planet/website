@@ -24,24 +24,24 @@ export const TopBar = () => {
     return (
         <>
             <Header>
-                <Link a={ALogo} href="/">
-                    <Image alt="L2 Planet Logo" size="h-8 w-8" src={logo} />
+                <Link a={ALogo} href='/'>
+                    <Image alt='L2 Planet Logo' size='h-8 w-8' src={logo} />
                     L2 Planet
                 </Link>
                 <Nav>
-                    <Link a={ANav} href="/">
+                    <Link a={ANav} href='/'>
                         <IconHome />
                         Home
                     </Link>
-                    <Link a={ANav} href="/newsletter">
+                    <Link a={ANav} href='/newsletter'>
                         <IconNewsletter />
                         Newsletter
                     </Link>
-                    <Link a={ANav} href="/stats">
+                    <Link a={ANav} href='/stats'>
                         <IconStats />
                         Stats
                     </Link>
-                    <Link a={ANav} href="/about">
+                    <Link a={ANav} href='/about'>
                         <IconAbout />
                         About
                     </Link>

@@ -15,21 +15,21 @@ export const Footer = () => {
                         <SecondarySubBox>
                             <Link
                                 a={A}
-                                href="https://twitter.com/layer2planet"
+                                href='https://twitter.com/layer2planet'
                                 newTab
                             >
                                 Twitter
                             </Link>
                             <Link
                                 a={A}
-                                href="https://www.youtube.com/c/L2Planet"
+                                href='https://www.youtube.com/c/L2Planet'
                                 newTab
                             >
                                 YouTube
                             </Link>
                             <Link
                                 a={A}
-                                href="https://discord.com/layer2planet"
+                                href='https://discord.com/layer2planet'
                                 newTab
                             >
                                 Discord
@@ -39,13 +39,13 @@ export const Footer = () => {
                     <QuarterBox>
                         <SecondaryTitle>DAO</SecondaryTitle>
                         <SecondarySubBox>
-                            <Link a={A} href="/about">
+                            <Link a={A} href='/about'>
                                 About
                             </Link>
-                            <Link a={A} href="/donate">
+                            <Link a={A} href='/donate'>
                                 Donate
                             </Link>
-                            <Link a={A} href="/members/login">
+                            <Link a={A} href='/members/login'>
                                 Members
                             </Link>
                         </SecondarySubBox>

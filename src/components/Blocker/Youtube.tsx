@@ -4,10 +4,10 @@ import { Tweet as T } from 'react-twitter-widgets'
 
 export const Youtube = ({ block }: { block: Block }) => (
     <I
-        title="YouTube video player"
+        title='YouTube video player'
         src={`https://www.youtube-nocookie.com/embed/${block.content}`}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        frameBorder='0'
+        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
         allowFullScreen
     />
 )

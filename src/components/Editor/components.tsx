@@ -66,20 +66,20 @@ export const EditableBlock = ({
                     <TextArea {...p} />
                     {img && (
                         <ImgDiv>
-                            <Img alt="image" src={img} />
+                            <Img alt='image' src={img} />
                         </ImgDiv>
                     )}
                     {tw && (
-                        <div className="self-center px-3 -m-3 pb-3 w-full max-w-[646px]">
+                        <div className='self-center px-3 -m-3 pb-3 w-full max-w-[646px]'>
                             <Tweet tweetId={tw} options={{ theme: 'dark' }} />
                         </div>
                     )}
                     {yt && (
                         <iframe
                             src={yt}
-                            className="bg-sky-300 aspect-video rounded-2xl mx-3 mb-3"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            className='bg-sky-300 aspect-video rounded-2xl mx-3 mb-3'
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                             allowFullScreen
                         />
                     )}
@@ -154,16 +154,16 @@ const Img = wrapn('img')`
 
 const ListBullet = () => (
     <svg
-        className="absolute left-7 top-[21px]"
-        viewBox="0 0 100 100"
-        height="8"
-        width="8"
-        xmlns="http://www.w3.org/2000/svg"
+        className='absolute left-7 top-[21px]'
+        viewBox='0 0 100 100'
+        height='8'
+        width='8'
+        xmlns='http://www.w3.org/2000/svg'
     >
-        <circle cx="50" cy="50" r="50" />
+        <circle cx='50' cy='50' r='50' />
     </svg>
 )
 
 const SeperatorLine = () => (
-    <span className="absolute h-[1px] w-[calc(100%-24px)] top-[21px] self-center select-none bg-gris-3 dark:bg-gris-6"></span>
+    <span className='absolute h-[1px] w-[calc(100%-24px)] top-[21px] self-center select-none bg-gris-3 dark:bg-gris-6'></span>
 )

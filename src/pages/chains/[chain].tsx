@@ -24,8 +24,8 @@ const Chain: NextPage = () => {
         <>
             <SEO
                 title={`L2 Planet | ${chain?.name || 'Chain'}`}
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <SectionChainIntro>

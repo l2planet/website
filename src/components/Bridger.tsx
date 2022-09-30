@@ -122,7 +122,7 @@ const Bridge = (props: {
         <BDiv>
             <BLabel>{props.label}</BLabel>
             <Input
-                placeholder="Bridge contract address: 0x123456789..."
+                placeholder='Bridge contract address: 0x123456789...'
                 value={props.contract}
                 onChange={(e) => props.setContract(e.target.value)}
             />

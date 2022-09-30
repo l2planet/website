@@ -22,7 +22,7 @@ export const Links = ({ block }: { block: Block }) => (
 
 const Span = ({ children, href }: { children: string; href: string }) => (
     <Link href={href} passHref>
-        <A target="_blank">{children}</A>
+        <A target='_blank'>{children}</A>
     </Link>
 )
 

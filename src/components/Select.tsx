@@ -16,7 +16,7 @@ export const Select = (props: SelectProps) => (
 
 export const SelectionMobile = (props: SelectProps) => (
     <MobileSelection onChange={(e) => props.onSelect(e.target.value)}>
-        <MobileOption value="">All</MobileOption>
+        <MobileOption value=''>All</MobileOption>
         {props.options.map((option) => (
             <MobileOption key={option}>{option}</MobileOption>
         ))}

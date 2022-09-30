@@ -8,10 +8,10 @@ export const Videos = ({ videoIds }: { videoIds: string[] }) => {
                 <>
                     {videoIds.map((id) => (
                         <IFrame
-                            title="YouTube video player"
+                            title='YouTube video player'
                             src={`https://www.youtube-nocookie.com/embed/${id}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                             allowFullScreen
                             key={id}
                         />

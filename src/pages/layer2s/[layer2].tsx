@@ -32,8 +32,8 @@ const Layer2: NextPage = () => {
         <>
             <SEO
                 title={`L2 Planet | ${l2?.name || 'Layer 2'}`}
-                description="L2 Planet"
-                favicon="/favicon.ico"
+                description='L2 Planet'
+                favicon='/favicon.ico'
             />
 
             <SectionLayer2Intro>
@@ -62,7 +62,7 @@ const Layer2: NextPage = () => {
                                     Twitter
                                 </Link>
                             ) : (
-                                <Link a={ALayer2} href="#">
+                                <Link a={ALayer2} href='#'>
                                     Twitter
                                 </Link>
                             )}
@@ -75,7 +75,7 @@ const Layer2: NextPage = () => {
                                     ${parsePrice(l2.price)}
                                 </Link>
                             ) : (
-                                <Link a={ALayer2} href="#">
+                                <Link a={ALayer2} href='#'>
                                     No Token
                                 </Link>
                             )}
@@ -116,7 +116,7 @@ const Layer2: NextPage = () => {
                 <Grid4Layer2Investors>
                     {l2?.investors.map((investor) => (
                         <Img
-                            alt="Investor Logo"
+                            alt='Investor Logo'
                             img={ImgInvestor}
                             src={investor}
                             key={investor}
