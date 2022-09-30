@@ -67,6 +67,7 @@ export interface InternalChain {
 
 // Comes from the layer 2 form on admin panel
 export interface RawFormLayer2 {
+    chain_id: string
     name: string
     icon: string
     description: string
@@ -84,6 +85,7 @@ export interface RawFormLayer2 {
 // Used while sending data to the backend
 export interface APIPostLayer2 {
     string_id: string
+    chain_id: string
     name: string
     icon: string
     description: string
