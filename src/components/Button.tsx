@@ -1,6 +1,5 @@
 import { wrapn } from 'wrapn'
 
-
 const ButtonPrimary = wrapn('button')`
     border
     border-pri-2
@@ -38,7 +37,6 @@ const ButtonSecondary = wrapn('button')`
     duration-200
 `
 
-
 const ButtonIcon = wrapn(ButtonPrimary)`
     h-12
     p-1.5
@@ -53,7 +51,6 @@ export const ButtonTheme = wrapn(ButtonIcon)`
 export const ButtonMenu = wrapn(ButtonIcon)`
     lg:hidden
 `
-
 
 export const ButtonMenuTheme = wrapn(ButtonPrimary)`
     flex
@@ -72,8 +69,6 @@ export const ButtonMenuTheme = wrapn(ButtonPrimary)`
 
     rounded-lg2
 `
-
-
 
 export const ButtonForm = wrapn(ButtonSecondary)`
     flex

@@ -1,4 +1,4 @@
-import { wrapn } from "wrapn"
+import { wrapn } from 'wrapn'
 import { Line } from 'react-chartjs-2'
 import {
     Chart as ChartJS,
@@ -10,10 +10,10 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js'
-import { ChartDataItem } from "../types/globals"
-import { useEffect, useState } from "react"
-import { InternalLayer2 } from "../types/Api"
-import { useLocalStorage } from "../hooks/useLocalStorage"
+import { ChartDataItem } from '../types/globals'
+import { useEffect, useState } from 'react'
+import { InternalLayer2 } from '../types/Api'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 ChartJS.register(
     CategoryScale,
@@ -27,21 +27,29 @@ ChartJS.register(
 ChartJS.defaults.color = '#838893'
 ChartJS.defaults.borderColor = '#83889360'
 
-
-export const Chart = ({ data, l2 }: { data: InternalLayer2['tvls'], l2: string }) => {
-    const [time, setTime] = useLocalStorage<keyof typeof data>(`tvl${l2}`,'daily');
+export const Chart = ({
+    data,
+    l2,
+}: {
+    data: InternalLayer2['tvls']
+    l2: string
+}) => {
+    const [time, setTime] = useLocalStorage<keyof typeof data>(
+        `tvl${l2}`,
+        'daily'
+    )
     const [aspectRatio, setRatio] = useState<number>(2)
 
     useEffect(() => {
         const handler = () => {
             const w = window.outerWidth
-            if(w < 512) {
+            if (w < 512) {
                 setRatio(1.5)
-            } else if(w < 660) {
+            } else if (w < 660) {
                 setRatio(1.75)
-            } else if(w < 850) {
+            } else if (w < 850) {
                 setRatio(2)
-            } else if(w < 1000) {
+            } else if (w < 1000) {
                 setRatio(2.5)
             } else {
                 setRatio(3)
@@ -52,7 +60,6 @@ export const Chart = ({ data, l2 }: { data: InternalLayer2['tvls'], l2: string }
         addEventListener('resize', handler)
         return () => removeEventListener('resize', handler)
     }, [])
-
 
     return (
         <Div>
@@ -69,21 +76,20 @@ export const Chart = ({ data, l2 }: { data: InternalLayer2['tvls'], l2: string }
                     color: '#838893',
                     aspectRatio: aspectRatio,
                 }}
-
                 data={{
-                    labels: data[time].map(o => o.t),
+                    labels: data[time].map((o) => o.t),
                     datasets: [
                         {
                             label: 'TVL',
-                            data: data[time].map(o => o.v),
+                            data: data[time].map((o) => o.v),
                             borderColor: 'rgb(129 140 248)',
                             backgroundColor: 'rgb(129 140 248)',
                             hoverBorderColor: 'rgb(129 140 248)',
                             borderWidth: 3,
                             hoverBorderWidth: 9,
                             pointBorderWidth: 6,
-                        }
-                    ]
+                        },
+                    ],
                 }}
             />
         </Div>

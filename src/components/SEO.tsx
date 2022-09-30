@@ -1,4 +1,4 @@
-import Head from "next/head"
+import Head from 'next/head'
 
 type SEOComponent = (props: SEOProps) => JSX.Element
 
@@ -8,12 +8,10 @@ interface SEOProps {
     favicon: string
 }
 
-
-
 export const SEO: SEOComponent = (props: SEOProps) => (
     <Head>
         <title>{props.title}</title>
-        <meta name="description" content={props.description}/>
-        <link rel='icon' href={props.favicon}/>
+        <meta name="description" content={props.description} />
+        <link rel="icon" href={props.favicon} />
     </Head>
 )

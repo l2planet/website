@@ -1,7 +1,16 @@
-import { formatChain, formatLayer2, formatProject } from "./format";
-import { APIGetLogin, APIPostChain, RawFormChain, RawFormAuth, RawFormLayer2, RawFormProject, APIPostLayer2, APIPostProject } from "../types/Api";
-import { getJwtCookie, setJwtCookie } from "./cookie";
-import { Block } from "../components/Editor/types";
+import { formatChain, formatLayer2, formatProject } from './format'
+import {
+    APIGetLogin,
+    APIPostChain,
+    RawFormChain,
+    RawFormAuth,
+    RawFormLayer2,
+    RawFormProject,
+    APIPostLayer2,
+    APIPostProject,
+} from '../types/Api'
+import { getJwtCookie, setJwtCookie } from './cookie'
+import { Block } from '../components/Editor/types'
 
 /** Makes a login request to the backend with given form data. */
 export async function authLogin(formData: RawFormAuth): Promise<void> {
@@ -15,7 +24,7 @@ export async function authLogin(formData: RawFormAuth): Promise<void> {
         })
 
         if (res.ok) {
-            const json = await res.json() as APIGetLogin
+            const json = (await res.json()) as APIGetLogin
             setJwtCookie(json.token, json.expire)
         } else {
             throw new Error('Wrong password or username.')
@@ -25,7 +34,6 @@ export async function authLogin(formData: RawFormAuth): Promise<void> {
         throw new Error('An unknown error is occured.')
     }
 }
-
 
 /** Makes a register request to the backend with given form data. */
 export async function authRegister(formData: RawFormAuth): Promise<void> {
@@ -47,7 +55,6 @@ export async function authRegister(formData: RawFormAuth): Promise<void> {
     }
 }
 
-
 /** Makes a post request to the backend to send a new Chain. */
 export async function sendChain(formData: RawFormChain): Promise<void> {
     try {
@@ -59,7 +66,7 @@ export async function sendChain(formData: RawFormChain): Promise<void> {
             body: JSON.stringify(chainData),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${jwt}`
+                Authorization: `Bearer ${jwt}`,
             },
         })
 
@@ -73,7 +80,6 @@ export async function sendChain(formData: RawFormChain): Promise<void> {
         throw new Error('An unknown error is occured.')
     }
 }
-
 
 /** Makes a post request to the backend to send a new Layer 2. */
 export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
@@ -86,7 +92,7 @@ export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
             body: JSON.stringify(layer2Data),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${jwt}`
+                Authorization: `Bearer ${jwt}`,
             },
         })
 
@@ -100,9 +106,6 @@ export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
         throw new Error('An unknown error is occured.')
     }
 }
-
-
-
 
 /** Makes a post request to the backend to send a new Project. */
 export async function sendProject(formData: RawFormProject): Promise<void> {
@@ -115,7 +118,7 @@ export async function sendProject(formData: RawFormProject): Promise<void> {
             body: JSON.stringify(projectData),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${jwt}`
+                Authorization: `Bearer ${jwt}`,
             },
         })
 
@@ -130,10 +133,6 @@ export async function sendProject(formData: RawFormProject): Promise<void> {
     }
 }
 
-
-
-
-
 /** Makes a post request to the backend to send a new Newsletter. */
 export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
     try {
@@ -144,7 +143,7 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
             body: `"${JSON.stringify(newsletterBlocks)}"`,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${jwt}`
+                Authorization: `Bearer ${jwt}`,
             },
         })
 

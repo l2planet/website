@@ -6,8 +6,7 @@ class ParseURL {
     protected innerURL: string
 }
 
-
-/** 
+/**
  * A class that represents Youtube videos.
  * ## Usage
  * ```js
@@ -18,12 +17,12 @@ export class YoutubeVideo extends ParseURL {
     getId(): string | null {
         try {
             const url = new URL(this.innerURL)
-            if(url.host == 'www.youtube.com') {
+            if (url.host == 'www.youtube.com') {
                 const id = url.searchParams.get('v')
-                return (id !== null && id.length === 11) ? id : null
-            } else if(url.host == 'youtu.be') {
+                return id !== null && id.length === 11 ? id : null
+            } else if (url.host == 'youtu.be') {
                 const id = url.pathname.slice(1)
-                return (id.length === 11) ? id : null
+                return id.length === 11 ? id : null
             } else {
                 return null
             }
@@ -33,9 +32,7 @@ export class YoutubeVideo extends ParseURL {
     }
 }
 
-
-
-/** 
+/**
  * A class that represents Twitter accounts.
  * ## Usage
  * ```js
@@ -46,9 +43,9 @@ export class TwitterAccount extends ParseURL {
     getId(): string | null {
         try {
             const url = new URL(this.innerURL)
-            if(url.host == 'twitter.com') {
+            if (url.host == 'twitter.com') {
                 const id = url.pathname.split('/').at(1)
-                return (id !== undefined && id.length > 0) ? id : null
+                return id !== undefined && id.length > 0 ? id : null
             } else {
                 return null
             }
@@ -58,9 +55,7 @@ export class TwitterAccount extends ParseURL {
     }
 }
 
-
-
-/** 
+/**
  * A class that represents Twitter tweets.
  * ## Usage
  * ```js
@@ -71,9 +66,9 @@ export class TwitterTweet extends ParseURL {
     getId(): string | null {
         try {
             const url = new URL(this.innerURL)
-            if(url.host == 'twitter.com') {
+            if (url.host == 'twitter.com') {
                 const id = url.pathname.split('/').at(3)
-                return (id !== undefined && id.length == 19) ? id : null
+                return id !== undefined && id.length == 19 ? id : null
             } else {
                 return null
             }
@@ -83,9 +78,7 @@ export class TwitterTweet extends ParseURL {
     }
 }
 
-
-
-/** 
+/**
  * A class that represents Image URLs.
  * ## Usage
  * ```js
@@ -96,7 +89,9 @@ export class ImageURL extends ParseURL {
     getURL(): string | null {
         try {
             const url = new URL(this.innerURL).href
-            return (/^http[^\?]*.(jpg|jpeg|gif|png|webp)(\?(.*))?$/gmi) ? url : null
+            return /^http[^\?]*.(jpg|jpeg|gif|png|webp)(\?(.*))?$/gim
+                ? url
+                : null
         } catch {
             return null
         }

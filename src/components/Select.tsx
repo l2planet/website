@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
-import { wrapn } from "wrapn"
-import { useBoolean } from "../hooks/useBoolean"
+import { useEffect, useState } from 'react'
+import { wrapn } from 'wrapn'
+import { useBoolean } from '../hooks/useBoolean'
 
 interface SelectProps {
     options: string[]
@@ -9,18 +9,17 @@ interface SelectProps {
 
 export const Select = (props: SelectProps) => (
     <>
-        <SelectionMobile {...props}/>
-        <SelectionDesktop {...props}/>
+        <SelectionMobile {...props} />
+        <SelectionDesktop {...props} />
     </>
 )
 
-
-
-
 export const SelectionMobile = (props: SelectProps) => (
     <MobileSelection onChange={(e) => props.onSelect(e.target.value)}>
-        <MobileOption value=''>All</MobileOption>
-        {props.options.map(option => <MobileOption key={option}>{option}</MobileOption>)}
+        <MobileOption value="">All</MobileOption>
+        {props.options.map((option) => (
+            <MobileOption key={option}>{option}</MobileOption>
+        ))}
     </MobileSelection>
 )
 
@@ -53,9 +52,6 @@ const MobileOption = wrapn('option')`
 
 `
 
-
-
-
 export const SelectionDesktop = (props: SelectProps) => {
     const [isOptionsOpen, toggleOptionsOpen] = useBoolean(false)
     const [selectedOption, setSelectedOption] = useState('')
@@ -63,10 +59,29 @@ export const SelectionDesktop = (props: SelectProps) => {
     return (
         <DesktopSelection onClick={toggleOptionsOpen}>
             {selectedOption || 'Filter by category'}
-            {isOptionsOpen && <DivDesktopOption>
-                <DesktopOption onClick={() => {props.onSelect(''); setSelectedOption('All')}}>All</DesktopOption>
-                {props.options.map(option => <DesktopOption onClick={() => {props.onSelect(option); setSelectedOption(option)}} key={option}>{option}</DesktopOption>)}
-            </DivDesktopOption>}
+            {isOptionsOpen && (
+                <DivDesktopOption>
+                    <DesktopOption
+                        onClick={() => {
+                            props.onSelect('')
+                            setSelectedOption('All')
+                        }}
+                    >
+                        All
+                    </DesktopOption>
+                    {props.options.map((option) => (
+                        <DesktopOption
+                            onClick={() => {
+                                props.onSelect(option)
+                                setSelectedOption(option)
+                            }}
+                            key={option}
+                        >
+                            {option}
+                        </DesktopOption>
+                    ))}
+                </DivDesktopOption>
+            )}
         </DesktopSelection>
     )
 }

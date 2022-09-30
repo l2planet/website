@@ -1,4 +1,4 @@
-import { wrapn } from "wrapn";
+import { wrapn } from 'wrapn'
 
 export const Seperator = wrapn('div')`
     h-[1px] w-full

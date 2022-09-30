@@ -8,21 +8,23 @@ const NewLayer2: NextPage = () => {
     return (
         <>
             <SEO
-                title='L2 Planet | New Layer 2'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | New Layer 2"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <H1>New Layer 2</H1>
 
-            <Layer2Form onSubmit={async (l2FormData) => {
-                try {
-                    await sendLayer2(l2FormData)
-                    alert('Succesfully added!')
-                } catch (err: any) {
-                    alert(err.message)
-                }
-            }} />
+            <Layer2Form
+                onSubmit={async (l2FormData) => {
+                    try {
+                        await sendLayer2(l2FormData)
+                        alert('Succesfully added!')
+                    } catch (err: any) {
+                        alert(err.message)
+                    }
+                }}
+            />
         </>
     )
 }

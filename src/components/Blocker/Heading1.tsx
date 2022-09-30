@@ -1,10 +1,8 @@
-import { wrapn } from "wrapn"
-import { Block } from "../Editor/types";
+import { wrapn } from 'wrapn'
+import { Block } from '../Editor/types'
 
 export const Heading1 = ({ block }: { block: Block }) => (
-    <H1>
-        {block.content}
-    </H1>
+    <H1>{block.content}</H1>
 )
 
 const H1 = wrapn('h2')`

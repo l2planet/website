@@ -1,28 +1,26 @@
-import { useState } from "react"
-import { wrapn } from "wrapn"
+import { useState } from 'react'
+import { wrapn } from 'wrapn'
 
 export const Videos = ({ videoIds }: { videoIds: string[] }) => {
     return (
-            <Div>
-                {
-                    videoIds[0] ? 
-                        <>
-                            {videoIds.map(id => 
-                                <IFrame
-                                    title="YouTube video player"
-                                    src={`https://www.youtube-nocookie.com/embed/${id}`}
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                    key={id}
-                                />
-                            ) }
-                        </>
-
-                    :
-                        <Text>There is no video</Text>
-                }   
-            </Div>
+        <Div>
+            {videoIds[0] ? (
+                <>
+                    {videoIds.map((id) => (
+                        <IFrame
+                            title="YouTube video player"
+                            src={`https://www.youtube-nocookie.com/embed/${id}`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            key={id}
+                        />
+                    ))}
+                </>
+            ) : (
+                <Text>There is no video</Text>
+            )}
+        </Div>
     )
 }
 

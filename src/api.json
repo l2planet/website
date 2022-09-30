@@ -8,7 +8,6 @@
         }
     },
 
-
     "layer2s": {
         "starknet": {
             "name": "StarkNet",
@@ -23,26 +22,18 @@
             "tvl": 450000,
             "tvls": {
                 "daily": [
-                    {"t":"Sep 14", "v": 380000},
-                    {"t":"Sep 15", "v": 385000},
-                    {"t":"Sep 16", "v": 370000},
-                    {"t":"Sep 17", "v": 412000},
-                    {"t":"Sep 18", "v": 435000},
-                    {"t":"Sep 19", "v": 420000},
-                    {"t":"Sep 20", "v": 450000}
+                    { "t": "Sep 14", "v": 380000 },
+                    { "t": "Sep 15", "v": 385000 },
+                    { "t": "Sep 16", "v": 370000 },
+                    { "t": "Sep 17", "v": 412000 },
+                    { "t": "Sep 18", "v": 435000 },
+                    { "t": "Sep 19", "v": 420000 },
+                    { "t": "Sep 20", "v": 450000 }
                 ],
-                "weekly": [
-
-                ],
-                "monthly": [
-
-                ],
-                "quarterly": [
-
-                ],
-                "yearly": [
-                    
-                ]
+                "weekly": [],
+                "monthly": [],
+                "quarterly": [],
+                "yearly": []
             }
         },
         "zksync": {
@@ -57,20 +48,11 @@
             "investors": ["https://labs.binance.com/labs/labs-h.png"],
             "tvl": 450000,
             "tvls": {
-                "daily": [
-                ],
-                "weekly": [
-
-                ],
-                "monthly": [
-
-                ],
-                "quarterly": [
-
-                ],
-                "yearly": [
-                    
-                ]
+                "daily": [],
+                "weekly": [],
+                "monthly": [],
+                "quarterly": [],
+                "yearly": []
             }
         }
     },

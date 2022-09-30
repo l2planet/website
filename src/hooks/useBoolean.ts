@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react'
 
 /**
  * ## useBoolean
@@ -7,7 +7,7 @@ import { useCallback, useState } from "react";
  * ```jsx
  * function TopBar() {
  *     const [isMenuOpen, toggleMenuOpen] = useBoolean(false)
- *      
+ *
  *     return (
  *         <div>
  *             <button onClick={toggleMenuOpen}>
@@ -23,8 +23,8 @@ export function useBoolean(defaultValue: boolean) {
     const [value, setValue] = useState<boolean>(defaultValue)
 
     const toggleValue = useCallback(() => {
-        setValue(value => !value)
+        setValue((value) => !value)
     }, [])
-    
+
     return [value, toggleValue] as const
 }

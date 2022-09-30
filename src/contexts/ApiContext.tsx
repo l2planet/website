@@ -1,9 +1,21 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { APIGetChain, APIPrimaryData, InternalChain, InternalLayer2 } from "../types/Api";
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react'
+import {
+    APIGetChain,
+    APIPrimaryData,
+    InternalChain,
+    InternalLayer2,
+} from '../types/Api'
 import { ChildrenProp } from '../types/globals'
 import API from '../api.json'
-import { ApiManager } from "../classes/ApiManager";
-import { useRouter } from "next/router";
+import { ApiManager } from '../classes/ApiManager'
+import { useRouter } from 'next/router'
 
 /** The Interface for `ApiContext`. */
 interface ApiContextState {
@@ -14,15 +26,11 @@ interface ApiContextState {
     useLayer2s: () => InternalLayer2[]
 }
 
-
 /** The context that stores `ApiContextState`. */
 const ApiContext = createContext({} as ApiContextState)
 
-
 /** The hook to use `ApiContext`. */
 export const useApi = () => useContext(ApiContext)
-
-
 
 /** The provider component for `ApiContext`. */
 export const ApiProvider = ({ children }: ChildrenProp) => {
@@ -31,12 +39,10 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     const router = useRouter()
     const go404 = useCallback(() => router.push('/404'), [router])
 
-
     const useChains = useCallback(() => {
         if (manager === null) return []
         return manager.getAllChains()
     }, [manager])
-
 
     const useChain = useCallback(() => {
         if (manager === null) return
@@ -73,23 +79,22 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
         }
     }, [manager, go404])
 
-
-
     useEffect(() => {
         try {
             setManager(new ApiManager(API))
-        } catch { }
+        } catch {}
     }, [])
 
-
     return (
-        <ApiContext.Provider value={{
-            useChains,
-            useLayer2s,
-            useChain,
-            useLayer2,
-            useLayer2WithProjects,
-        }}>
+        <ApiContext.Provider
+            value={{
+                useChains,
+                useLayer2s,
+                useChain,
+                useLayer2,
+                useLayer2WithProjects,
+            }}
+        >
             {children}
         </ApiContext.Provider>
     )

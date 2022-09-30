@@ -10,37 +10,38 @@ import { authLogin } from '../../functions/api'
 
 const Members: NextPage = () => {
     const router = useRouter()
-    return(
+    return (
         <>
             <SEO
-                title='L2 Planet | Members'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | Members"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <H1>Login</H1>
-            
+
             <Div>
-                <LoginForm onSubmit={async (formData) => {
-                    try {
-                        await authLogin(formData)
-                        alert('Succesfully logged in!')
-                        router.push('/members/panel')
-                    } catch (e: any) {
-                        alert(e.message)
-                    }
-                }}/>
+                <LoginForm
+                    onSubmit={async (formData) => {
+                        try {
+                            await authLogin(formData)
+                            alert('Succesfully logged in!')
+                            router.push('/members/panel')
+                        } catch (e: any) {
+                            alert(e.message)
+                        }
+                    }}
+                />
 
-                <Link a={A} href='/members/register'>Don't have an account? Register</Link>
+                <Link a={A} href="/members/register">
+                    Don't have an account? Register
+                </Link>
             </Div>
-
-            
         </>
     )
 }
-            
+
 export default Members
-            
 
 const Div = wrapn('div')`
     flex

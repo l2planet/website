@@ -1,6 +1,5 @@
 import { wrapn } from 'wrapn'
 
-
 const APrimary = wrapn('a')`
     border
     border-pri-2
@@ -61,7 +60,6 @@ export const ALogo = wrapn('a')`
     font-extrabold
     text-2xl
 `
-
 
 export const ALayer2 = wrapn('a')`
     flex
@@ -127,7 +125,6 @@ export const AL2Projects = wrapn('a')`
     duration-200
 `
 
-
 export const AProjects = wrapn('a')`
     flex
     items-center
@@ -157,11 +154,6 @@ export const AProjects = wrapn('a')`
 
     duration-200
 `
-
-
-
-
-
 
 export const APanel = wrapn('a')`
     flex
@@ -196,4 +188,3 @@ export const APanel = wrapn('a')`
 
     duration-200
 `
-

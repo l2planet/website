@@ -8,21 +8,23 @@ const NewChain: NextPage = () => {
     return (
         <>
             <SEO
-                title='L2 Planet | New Chain'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | New Chain"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <H1>New Chain</H1>
 
-            <ChainForm onSubmit={async (formData) => {
-                try {
-                    await sendChain(formData)
-                    alert('Succesfully added!')
-                } catch (err: any) {
-                    alert(err.message)
-                }
-            }} />
+            <ChainForm
+                onSubmit={async (formData) => {
+                    try {
+                        await sendChain(formData)
+                        alert('Succesfully added!')
+                    } catch (err: any) {
+                        alert(err.message)
+                    }
+                }}
+            />
         </>
     )
 }

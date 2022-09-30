@@ -1,49 +1,71 @@
-import { ChangeEventHandler, Dispatch, SetStateAction, useCallback, useState } from "react"
-import { wrapn } from "wrapn"
-import { RawBridge } from "../types/Api"
-import { ButtonBridge, ButtonForm } from "./Button"
-import { IconPlus } from "./icons/IconPlus"
+import {
+    ChangeEventHandler,
+    Dispatch,
+    SetStateAction,
+    useCallback,
+    useState,
+} from 'react'
+import { wrapn } from 'wrapn'
+import { RawBridge } from '../types/Api'
+import { ButtonBridge, ButtonForm } from './Button'
+import { IconPlus } from './icons/IconPlus'
 
-export const Bridger = ( { bridges, setBridges }: { bridges: RawBridge[], setBridges: Dispatch<SetStateAction<RawBridge[]>>  } ) => {
+export const Bridger = ({
+    bridges,
+    setBridges,
+}: {
+    bridges: RawBridge[]
+    setBridges: Dispatch<SetStateAction<RawBridge[]>>
+}) => {
+    const setContractOf = useCallback(
+        (index: number, val: string) => {
+            setBridges((bridges) => [
+                ...bridges.slice(0, index),
+                { address: val, tokens: bridges[index].tokens },
+                ...bridges.slice(index + 1),
+            ])
+        },
+        [setBridges]
+    )
 
-    const setContractOf = useCallback((index: number, val: string) => {
-        setBridges(bridges => [
-            ...bridges.slice(0, index),
-            { address: val, tokens: bridges[index].tokens},
-            ...bridges.slice(index + 1),
-        ])
-    }, [setBridges])
-
-    const setTokensOf = useCallback((index: number, val: string) => {
-        setBridges(bridges => [
-            ...bridges.slice(0, index),
-            { address: bridges[index].address, tokens: val},
-            ...bridges.slice(index + 1),
-        ])
-    }, [setBridges])
+    const setTokensOf = useCallback(
+        (index: number, val: string) => {
+            setBridges((bridges) => [
+                ...bridges.slice(0, index),
+                { address: bridges[index].address, tokens: val },
+                ...bridges.slice(index + 1),
+            ])
+        },
+        [setBridges]
+    )
 
     const addBridges = useCallback(() => {
-        setBridges(bridges => [...bridges, { address: '', tokens: '' }])
+        setBridges((bridges) => [...bridges, { address: '', tokens: '' }])
     }, [setBridges])
 
     return (
         <Div>
-            <Label>
-                Bridges and Supported Tokens
-            </Label>
+            <Label>Bridges and Supported Tokens</Label>
             <DivBridgeArea>
-                {bridges.map((bridge, i) => <Bridge
-                    key={`bridge${i}`}
-                    label={`Bridge ${i+1}`}
-                    contract={bridge.address}
-                    tokens={bridge.tokens}
-                    setContract={(val) => setContractOf(i, val)}
-                    setTokens={(val) => setTokensOf(i, val)}
-                />)}
+                {bridges.map((bridge, i) => (
+                    <Bridge
+                        key={`bridge${i}`}
+                        label={`Bridge ${i + 1}`}
+                        contract={bridge.address}
+                        tokens={bridge.tokens}
+                        setContract={(val) => setContractOf(i, val)}
+                        setTokens={(val) => setTokensOf(i, val)}
+                    />
+                ))}
 
-                <ButtonBridge onClick={(e) => {e.preventDefault(); addBridges()}}>
+                <ButtonBridge
+                    onClick={(e) => {
+                        e.preventDefault()
+                        addBridges()
+                    }}
+                >
                     Add New Bridge
-                    <IconPlus/>
+                    <IconPlus />
                 </ButtonBridge>
             </DivBridgeArea>
         </Div>
@@ -89,16 +111,27 @@ const Button = wrapn('button')`
     bg-pri-3
 `
 
-
-
-
-const Bridge = (props: { label: string, contract: string, tokens: string, setContract(val: string): void, setTokens(val: string): void }) => {
-    
+const Bridge = (props: {
+    label: string
+    contract: string
+    tokens: string
+    setContract(val: string): void
+    setTokens(val: string): void
+}) => {
     return (
         <BDiv>
             <BLabel>{props.label}</BLabel>
-            <Input placeholder='Bridge contract address: 0x123456789...' value={props.contract} onChange={(e) => props.setContract(e.target.value)}/>
-            <TextArea rows={3} placeholder={`LEAVE EMPTY, if the bridge supports any asset. Else, type supported assets' tickers. For example: ETH, USDC, UNI...`} value={props.tokens} onChange={(e) => props.setTokens(e.target.value)}/>
+            <Input
+                placeholder="Bridge contract address: 0x123456789..."
+                value={props.contract}
+                onChange={(e) => props.setContract(e.target.value)}
+            />
+            <TextArea
+                rows={3}
+                placeholder={`LEAVE EMPTY, if the bridge supports any asset. Else, type supported assets' tickers. For example: ETH, USDC, UNI...`}
+                value={props.tokens}
+                onChange={(e) => props.setTokens(e.target.value)}
+            />
         </BDiv>
     )
 }

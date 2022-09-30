@@ -1,13 +1,13 @@
-import { Head, Html, Main, NextScript } from "next/document";
-import { Body } from "../components/Body";
+import { Head, Html, Main, NextScript } from 'next/document'
+import { Body } from '../components/Body'
 
 export default function Document() {
     return (
         <Html>
-            <Head/>
+            <Head />
             <Body>
-                <Main/>
-                <NextScript/>
+                <Main />
+                <NextScript />
             </Body>
         </Html>
     )

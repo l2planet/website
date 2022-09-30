@@ -9,27 +9,24 @@ export const Timeline = ({ account }: { account?: string }) => {
 
     return (
         <Div>
-            {
-                account ?
+            {account ? (
                 <>
-                    <TimelineWidget 
+                    <TimelineWidget
                         dataSource={{
                             sourceType: 'profile',
-                            screenName: account
+                            screenName: account,
                         }}
                         options={{
                             theme,
-                            height: 500
+                            height: 500,
                         }}
-
                         onLoad={() => setLoading(false)}
                     />
                     {isLoading && <Text>Tweets are loading...</Text>}
                 </>
-                :
+            ) : (
                 <Text>No Twitter Account</Text>
-            }
-
+            )}
         </Div>
     )
 }

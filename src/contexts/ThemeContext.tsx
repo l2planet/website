@@ -1,6 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-import { ChildrenProp } from "../types/globals";
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useMemo,
+} from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage'
+import { ChildrenProp } from '../types/globals'
 
 interface ThemeContextState {
     /** Toggles the theme between `"dark"` & `"light"`. */
@@ -10,10 +16,8 @@ interface ThemeContextState {
 
 const ThemeContext = createContext({} as ThemeContextState)
 
-
 /** Allows you to use `ThemeContext`. */
 export const useTheme = () => useContext(ThemeContext)
-
 
 /** All available themes. */
 type Theme = 'dark' | 'light' | 'auto'
@@ -23,23 +27,31 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
     const [theme, setTheme] = useLocalStorage<Theme>('theme', 'auto')
 
     const _theme = useMemo(() => {
-        return theme === 'auto' ? (() => {
-            if(typeof window !== 'undefined') return window.matchMedia('(prefers-color-scheme: dark)').matches
-            else return false
-        })() ? 'dark': 'light' : theme
+        return theme === 'auto'
+            ? (() => {
+                  if (typeof window !== 'undefined')
+                      return window.matchMedia('(prefers-color-scheme: dark)')
+                          .matches
+                  else return false
+              })()
+                ? 'dark'
+                : 'light'
+            : theme
     }, [theme])
 
     useEffect(() => {
-        switch(theme) {
+        switch (theme) {
             case 'auto': {
                 const listener = (ev: MediaQueryListEvent) => {
-                    if(ev.matches) {
+                    if (ev.matches) {
                         document.documentElement.classList.add('dark')
                     } else {
                         document.documentElement.classList.add('dark')
                     }
                 }
-                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', listener)
+                window
+                    .matchMedia('(prefers-color-scheme: dark)')
+                    .addEventListener('change', listener)
                 break
             }
             case 'dark': {
@@ -54,10 +66,13 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
     }, [theme])
 
     const toggleTheme = useCallback(() => {
-        setTheme(theme => {
-            switch(theme) {
+        setTheme((theme) => {
+            switch (theme) {
                 case 'auto': {
-                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'
+                    return window.matchMedia('(prefers-color-scheme: dark)')
+                        .matches
+                        ? 'light'
+                        : 'dark'
                 }
                 case 'dark': {
                     return 'light'
@@ -70,10 +85,12 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
     }, [setTheme])
 
     return (
-        <ThemeContext.Provider value={{
-            toggleTheme,
-            theme: _theme,
-        }}>
+        <ThemeContext.Provider
+            value={{
+                toggleTheme,
+                theme: _theme,
+            }}
+        >
             {children}
         </ThemeContext.Provider>
     )

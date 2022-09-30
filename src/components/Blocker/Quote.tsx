@@ -1,11 +1,9 @@
-import { wrapn } from "wrapn"
-import { Block } from "../Editor/types";
-import { Links } from "./Links"
+import { wrapn } from 'wrapn'
+import { Block } from '../Editor/types'
+import { Links } from './Links'
 
 export const Quote = ({ block }: { block: Block }) => (
-    <Q>
-        {block.links ? <Links block={block}/> : block.content}
-    </Q>
+    <Q>{block.links ? <Links block={block} /> : block.content}</Q>
 )
 
 const Q = wrapn('p')`

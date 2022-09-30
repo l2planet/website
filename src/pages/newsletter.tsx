@@ -5,17 +5,15 @@ import Image from 'next/image'
 import { SEO } from '../components/SEO'
 
 const Newsletter: NextPage = () => {
-    return(
+    return (
         <>
             <SEO
-                title='L2 Planet | Newsletter'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | Newsletter"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
-            
         </>
     )
 }
-            
+
 export default Newsletter
-            

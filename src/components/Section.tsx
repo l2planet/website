@@ -1,10 +1,9 @@
-import { wrapn } from "wrapn";
+import { wrapn } from 'wrapn'
 
 export const Section = wrapn('section')`
     flex
     flex-col
 `
-
 
 // Index Page
 
@@ -25,8 +24,6 @@ export const SectionIndexCards = wrapn(Section)`
     sm:gap-5
 `
 
-
-
 // About page
 
 export const SectionAboutIntro = wrapn(Section)`
@@ -44,9 +41,6 @@ export const SectionAboutCards = wrapn('section')`
     gap-5
 `
 
-
-
-
 // [chains] pages
 
 export const SectionChainIntro = wrapn(Section)`
@@ -61,9 +55,6 @@ export const SectionChainL2s = wrapn('section')`
 
     space-y-9
 `
-
-
-
 
 // [layer2] pages
 
@@ -104,8 +95,6 @@ export const SectionLayer2Investors = wrapn('section')`
     lg:space-y-6
 `
 
-
-
 // projects pages
 export const SectionProjectsIntro = wrapn('section')`
     flex
@@ -127,15 +116,6 @@ export const SectionProjectsProjects = wrapn('section')`
 
     space-y-6
 `
-
-
-
-
-
-
-
-
-
 
 // Members/panel page
 

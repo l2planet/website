@@ -1,4 +1,16 @@
-export type EditorBlockType = 'T' | 'S' | 'H1' | 'H2' | 'P' | 'L' | 'Q' | 'C' | 'BR' | 'I' | 'V' | 'W'
+export type EditorBlockType =
+    | 'T'
+    | 'S'
+    | 'H1'
+    | 'H2'
+    | 'P'
+    | 'L'
+    | 'Q'
+    | 'C'
+    | 'BR'
+    | 'I'
+    | 'V'
+    | 'W'
 
 export interface Block {
     type: EditorBlockType
@@ -11,8 +23,6 @@ export interface BlockLink {
     end: number
     url: string
 }
-
-
 
 export interface EditorBlockInterface {
     text: string
@@ -37,6 +47,3 @@ export interface OnKeyDownHandler {
     onShift: Function
     onMeta: Function
 }
-
-
-

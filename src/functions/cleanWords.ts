@@ -12,9 +12,9 @@ export function cleanWords(word: string) {
 
     const words = word.trim().split(' ')
 
-    for(let word of words) {
+    for (let word of words) {
         word = word.trim()
-        if(word.length > 0) {
+        if (word.length > 0) {
             cleanedWords.push(word)
         }
     }

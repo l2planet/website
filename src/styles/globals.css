@@ -2,19 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
     font-family: 'Manrope', sans-serif;
 }
 
 #__next {
-    @apply
-    flex flex-col
+    @apply flex flex-col
     min-h-screen;
 }
 
 ::selection {
-    @apply
-    bg-pri-4/30
+    @apply bg-pri-4/30
     dark:bg-pri-5/30;
 }
 
@@ -22,17 +21,14 @@ html, body {
     -webkit-tap-highlight-color: transparent;
 }
 
-
 ::-webkit-scrollbar {
-    @apply
-    bg-gris-1
+    @apply bg-gris-1
     dark:bg-gris-9
     w-3;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply
-    bg-gris-3/50
+    @apply bg-gris-3/50
     dark:bg-gris-7/50
 
     hover:bg-gris-4/50
@@ -44,8 +40,6 @@ html, body {
     rounded-xl;
 }
 
-
 .videos-container::-webkit-scrollbar {
-    @apply
-    w-0;
+    @apply w-0;
 }

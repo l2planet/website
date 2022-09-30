@@ -14,35 +14,36 @@ const Members: NextPage = () => {
     return (
         <>
             <SEO
-                title='L2 Planet | Members'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | Members"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <H1>Register</H1>
 
             <Div>
-                <RegisterForm onSubmit={async (formData) => {
-                    try {
-                        await authRegister(formData)
-                        alert('Succesfully registered!')
-                        alert(`Let's log in!`)
-                        router.push('/members/login')
-                    } catch (e: any) {
-                        alert(e.message)
-                    }
-                }} />
+                <RegisterForm
+                    onSubmit={async (formData) => {
+                        try {
+                            await authRegister(formData)
+                            alert('Succesfully registered!')
+                            alert(`Let's log in!`)
+                            router.push('/members/login')
+                        } catch (e: any) {
+                            alert(e.message)
+                        }
+                    }}
+                />
 
-                <Link a={A} href='/members/login'>Already have an account? Login.</Link>
+                <Link a={A} href="/members/login">
+                    Already have an account? Login.
+                </Link>
             </Div>
-
-
         </>
     )
 }
 
 export default Members
-
 
 const Div = wrapn('div')`
     flex

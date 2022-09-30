@@ -8,48 +8,88 @@ import { HLayer2, HLayer2Common } from '../../components/H'
 import { Img } from '../../components/Image'
 import { Link } from '../../components/Link'
 import { PLayer2Description } from '../../components/P'
-import { SectionLayer2Charts, SectionLayer2Intro, SectionLayer2Investors, SectionLayer2Social } from '../../components/Section'
+import {
+    SectionLayer2Charts,
+    SectionLayer2Intro,
+    SectionLayer2Investors,
+    SectionLayer2Social,
+} from '../../components/Section'
 import { SEO } from '../../components/SEO'
 import { Timeline } from '../../components/Timeline'
 import { Videos } from '../../components/Videos'
 import { useApi } from '../../contexts/ApiContext'
 import { parsePrice } from '../../functions/parsePrice'
 
-
-const SPARE_ICON = 'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
-
+const SPARE_ICON =
+    'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
 
 const Layer2: NextPage = () => {
     const { useLayer2 } = useApi()
 
     const l2 = useLayer2()
 
-    return(
+    return (
         <>
             <SEO
                 title={`L2 Planet | ${l2?.name || 'Layer 2'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <SectionLayer2Intro>
                 <DivMeta>
                     <DivName>
-                        <Img alt={`${l2?.name || 'Layer 2'} Logo`} img={ImgLayer2} src={l2?.icon || SPARE_ICON}/>
+                        <Img
+                            alt={`${l2?.name || 'Layer 2'} Logo`}
+                            img={ImgLayer2}
+                            src={l2?.icon || SPARE_ICON}
+                        />
                         <HLayer2>{l2?.name || 'Layer 2'}</HLayer2>
                     </DivName>
                     <DivLinks>
                         <Row4Layer2Links>
-                            {l2?.website && <Link a={ALayer2} href={l2.website} newTab>Website</Link>}
-                            {l2?.twitter ? <Link a={ALayer2} href={`https://twitter.com/${l2.twitter}`} newTab>Twitter</Link> : <Link a={ALayer2} href='#'>Twitter</Link>}
-                            {l2?.gecko && l2?.price ? <Link a={ALayer2} href={`https://coingecko.com/en/coins/${l2.gecko}`} newTab>${parsePrice(l2.price)}</Link> : <Link a={ALayer2} href='#'>No Token</Link>}
+                            {l2?.website && (
+                                <Link a={ALayer2} href={l2.website} newTab>
+                                    Website
+                                </Link>
+                            )}
+                            {l2?.twitter ? (
+                                <Link
+                                    a={ALayer2}
+                                    href={`https://twitter.com/${l2.twitter}`}
+                                    newTab
+                                >
+                                    Twitter
+                                </Link>
+                            ) : (
+                                <Link a={ALayer2} href="#">
+                                    Twitter
+                                </Link>
+                            )}
+                            {l2?.gecko && l2?.price ? (
+                                <Link
+                                    a={ALayer2}
+                                    href={`https://coingecko.com/en/coins/${l2.gecko}`}
+                                    newTab
+                                >
+                                    ${parsePrice(l2.price)}
+                                </Link>
+                            ) : (
+                                <Link a={ALayer2} href="#">
+                                    No Token
+                                </Link>
+                            )}
                         </Row4Layer2Links>
-                        <Link a={AL2Projects} href={`/projects/${l2?.id}`}>Projects on {l2?.name || 'Layer 2'}</Link>
+                        <Link a={AL2Projects} href={`/projects/${l2?.id}`}>
+                            Projects on {l2?.name || 'Layer 2'}
+                        </Link>
                     </DivLinks>
                 </DivMeta>
                 <DivDescription>
                     <DivCategory>
-                        {l2?.categories.map(category => <Category key={category}>{category}</Category>)}
+                        {l2?.categories.map((category) => (
+                            <Category key={category}>{category}</Category>
+                        ))}
                     </DivCategory>
                     <HLayer2Common>Description:</HLayer2Common>
                     <PLayer2Description>{l2?.description}</PLayer2Description>
@@ -59,30 +99,36 @@ const Layer2: NextPage = () => {
             <SectionLayer2Charts>
                 <DivTVL>
                     <HLayer2Common>TVL - Total Value Locked</HLayer2Common>
-                    {l2?.tvls && <Chart data={l2.tvls} l2={l2.id}/>}
+                    {l2?.tvls && <Chart data={l2.tvls} l2={l2.id} />}
                 </DivTVL>
             </SectionLayer2Charts>
 
             <SectionLayer2Social>
                 <HLayer2Common>Social:</HLayer2Common>
                 <DivSocial>
-                    <Timeline account={l2?.twitter}/>
-                    <Videos videoIds={l2?.videos || []}/>
+                    <Timeline account={l2?.twitter} />
+                    <Videos videoIds={l2?.videos || []} />
                 </DivSocial>
             </SectionLayer2Social>
 
             <SectionLayer2Investors>
                 <HLayer2Common>Investors:</HLayer2Common>
                 <Grid4Layer2Investors>
-                    {l2?.investors.map(investor => <Img alt='Investor Logo' img={ImgInvestor} src={investor} key={investor}/>)}
+                    {l2?.investors.map((investor) => (
+                        <Img
+                            alt="Investor Logo"
+                            img={ImgInvestor}
+                            src={investor}
+                            key={investor}
+                        />
+                    ))}
                 </Grid4Layer2Investors>
             </SectionLayer2Investors>
         </>
     )
 }
-            
+
 export default Layer2
- 
 
 const DivMeta = wrapn('div')`
     space-y-6
@@ -107,7 +153,6 @@ const ImgLayer2 = wrapn('img')`
     lg:h-24
 `
 
-
 const DivLinks = wrapn('div')`
     flex
     flex-col
@@ -116,7 +161,6 @@ const DivLinks = wrapn('div')`
     space-y-6
 `
 
-
 const DivDescription = wrapn('div')`
     flex flex-col
 
@@ -124,7 +168,6 @@ const DivDescription = wrapn('div')`
 
     space-y-4
 `
-
 
 const DivCategory = wrapn('p')`
     flex

@@ -1,5 +1,5 @@
-import { wrapn } from "wrapn"
-import { Link } from "./Link"
+import { wrapn } from 'wrapn'
+import { Link } from './Link'
 /** The component on the bottom of every page. */
 export const Footer = () => {
     return (
@@ -13,17 +13,41 @@ export const Footer = () => {
                     <QuarterBox>
                         <SecondaryTitle>Social Media</SecondaryTitle>
                         <SecondarySubBox>
-                            <Link a={A} href='https://twitter.com/layer2planet' newTab>Twitter</Link>
-                            <Link a={A} href='https://www.youtube.com/c/L2Planet' newTab>YouTube</Link>
-                            <Link a={A} href='https://discord.com/layer2planet' newTab>Discord</Link>
+                            <Link
+                                a={A}
+                                href="https://twitter.com/layer2planet"
+                                newTab
+                            >
+                                Twitter
+                            </Link>
+                            <Link
+                                a={A}
+                                href="https://www.youtube.com/c/L2Planet"
+                                newTab
+                            >
+                                YouTube
+                            </Link>
+                            <Link
+                                a={A}
+                                href="https://discord.com/layer2planet"
+                                newTab
+                            >
+                                Discord
+                            </Link>
                         </SecondarySubBox>
                     </QuarterBox>
                     <QuarterBox>
                         <SecondaryTitle>DAO</SecondaryTitle>
                         <SecondarySubBox>
-                            <Link a={A} href='/about'>About</Link>
-                            <Link a={A} href='/donate'>Donate</Link>
-                            <Link a={A} href='/members/login'>Members</Link>
+                            <Link a={A} href="/about">
+                                About
+                            </Link>
+                            <Link a={A} href="/donate">
+                                Donate
+                            </Link>
+                            <Link a={A} href="/members/login">
+                                Members
+                            </Link>
                         </SecondarySubBox>
                     </QuarterBox>
                 </SecondaryBox>

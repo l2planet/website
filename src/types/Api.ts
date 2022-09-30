@@ -1,4 +1,4 @@
-import { ChartDataItem } from "./globals"
+import { ChartDataItem } from './globals'
 
 export interface APIPrimaryData {
     chains: {
@@ -12,16 +12,6 @@ export interface APIPrimaryData {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
 export interface RawFormAuth {
     username: string
     password: string
@@ -33,20 +23,12 @@ export interface APIPostAuth {
 }
 
 export interface APIGetLogin {
-    code: 200,
-    expire: string,
-    token: string,
+    code: 200
+    expire: string
+    token: string
 }
 
-export interface ApiGetRegister {
-    
-}
-
-
-
-
-
-
+export interface ApiGetRegister {}
 
 /** Comes from the chain form on admin panel */
 export interface RawFormChain {
@@ -64,8 +46,7 @@ export interface APIPostChain {
     description: string
 }
 
-
-// Backend calculates this value 
+// Backend calculates this value
 // Server will add new layer2 solutions' IDs to "layer2s" prop
 export interface APIGetChain {
     name: string
@@ -73,7 +54,6 @@ export interface APIGetChain {
     description: string
     layer2s: string[]
 }
-
 
 // Gets calculated client side
 export interface InternalChain {
@@ -84,14 +64,6 @@ export interface InternalChain {
     layer2s: InternalLayer2[]
     l2Categories: string[]
 }
-
-
-
-
-
-
-
-
 
 // Comes from the layer 2 form on admin panel
 export interface RawFormLayer2 {
@@ -107,7 +79,6 @@ export interface RawFormLayer2 {
     videos: string
     investors: string
 }
-
 
 // Gets calculated by parsing `raw data` from the form
 // Used while sending data to the backend
@@ -134,7 +105,7 @@ export interface RawBridge {
     tokens: string
 }
 
-// Backend calculates this value 
+// Backend calculates this value
 // Server will add new projects' IDs to "projects" prop
 export interface APIGetLayer2 {
     name: string
@@ -158,7 +129,6 @@ export interface APIGetLayer2 {
     }
 }
 
-
 // Gets calculated client side
 export interface InternalLayer2 {
     id: string
@@ -176,25 +146,13 @@ export interface InternalLayer2 {
     price?: number
     tvl: number
     tvls: {
-        daily: ChartDataItem[],
-        weekly: ChartDataItem[],
-        monthly: ChartDataItem[],
-        quarterly: ChartDataItem[],
-        yearly: ChartDataItem[],
+        daily: ChartDataItem[]
+        weekly: ChartDataItem[]
+        monthly: ChartDataItem[]
+        quarterly: ChartDataItem[]
+        yearly: ChartDataItem[]
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 export interface RawFormProject {
     name: string
@@ -205,7 +163,6 @@ export interface RawFormProject {
     twitter: string
 }
 
-
 export interface APIPostProject {
     name: string
     icon: string
@@ -215,8 +172,6 @@ export interface APIPostProject {
     twitter?: string
 }
 
-
-
 export interface APIGetProject {
     name: string
     icon: string
@@ -225,7 +180,6 @@ export interface APIGetProject {
     website?: string
     twitter?: string
 }
-
 
 export interface InternalProject {
     name: string

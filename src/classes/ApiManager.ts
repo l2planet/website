@@ -1,5 +1,14 @@
-import { getLayer2Categories, getProjectCategories } from "../functions/getAvailableCategories";
-import { APIGetChain, APIPrimaryData, InternalChain, InternalLayer2, InternalProject } from "../types/Api";
+import {
+    getLayer2Categories,
+    getProjectCategories,
+} from '../functions/getAvailableCategories'
+import {
+    APIGetChain,
+    APIPrimaryData,
+    InternalChain,
+    InternalLayer2,
+    InternalProject,
+} from '../types/Api'
 
 function getPaths() {
     return location.pathname.split('/').slice(1)
@@ -8,18 +17,12 @@ function getPaths() {
 const getChainPath = () => getPaths()[1]
 const getLayer2Path = () => getPaths()[1]
 
-
 export class ApiManager {
     constructor(initData: APIPrimaryData) {
         this.data = initData
     }
 
-
     private data: APIPrimaryData
-
-
-
-
 
     private getProjects(l2Id: string): InternalProject[] | null {
         const l2 = this.data.layer2s[l2Id]
@@ -37,14 +40,18 @@ export class ApiManager {
         }
     }
 
-
-
-    private getLayer2(id: string, opt: 'parseProjects' | 'doNotParseProjects'): InternalLayer2 | null {
+    private getLayer2(
+        id: string,
+        opt: 'parseProjects' | 'doNotParseProjects'
+    ): InternalLayer2 | null {
         const layer2 = this.data.layer2s[id]
         if (layer2 !== undefined) {
             const projects = opt === 'parseProjects' ? this.getProjects(id) : []
             if (projects !== null) {
-                const projectCategories = opt === 'parseProjects' ? getProjectCategories(projects) : []
+                const projectCategories =
+                    opt === 'parseProjects'
+                        ? getProjectCategories(projects)
+                        : []
                 return {
                     id: id,
                     name: layer2.name,
@@ -66,8 +73,6 @@ export class ApiManager {
         }
         return null
     }
-
-
 
     private getChain(id: string): InternalChain | null {
         const chain = this.data.chains[id]
@@ -91,21 +96,19 @@ export class ApiManager {
         return null
     }
 
-
-
     getAllChains(): InternalChain[] {
-        return Object.entries(this.data.chains).map(
-            ([id, chain]: any) => ({ ...chain, id })
-        )
+        return Object.entries(this.data.chains).map(([id, chain]: any) => ({
+            ...chain,
+            id,
+        }))
     }
-
 
     getAllLayer2s(): InternalLayer2[] {
-        return Object.entries(this.data.layer2s).map(
-            ([id, layer2]: any) => ({ ...layer2, id })
-        )
+        return Object.entries(this.data.layer2s).map(([id, layer2]: any) => ({
+            ...layer2,
+            id,
+        }))
     }
-
 
     getChainOfPage(): InternalChain | null {
         const id = getChainPath()
@@ -123,5 +126,4 @@ export class ApiManager {
         const layer2 = this.getLayer2(id, 'parseProjects')
         return layer2 ? layer2 : null
     }
-
 }

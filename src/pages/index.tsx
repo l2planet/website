@@ -6,21 +6,24 @@ import { useEffect, useMemo } from 'react'
 import { CardIndex } from '../components/Card'
 import { H1 } from '../components/H'
 import { P1 } from '../components/P'
-import { Section, SectionIndexCards, SectionIndexIntro } from '../components/Section'
+import {
+    Section,
+    SectionIndexCards,
+    SectionIndexIntro,
+} from '../components/Section'
 import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
 
 const Home: NextPage = () => {
     const { useChains } = useApi()
     const chains = useChains()
-    
 
-    return(
+    return (
         <>
             <SEO
-                title='L2 Planet | Home'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | Home"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <SectionIndexIntro>
@@ -29,11 +32,12 @@ const Home: NextPage = () => {
             </SectionIndexIntro>
 
             <SectionIndexCards>
-                {chains.map(chain => <CardIndex key={chain.name} {...chain}/>)}
+                {chains.map((chain) => (
+                    <CardIndex key={chain.name} {...chain} />
+                ))}
             </SectionIndexCards>
         </>
     )
 }
-            
+
 export default Home
-            

@@ -1,7 +1,6 @@
-import { wrapn } from "wrapn"
-import { Block } from "../Editor/types";
+import { wrapn } from 'wrapn'
+import { Block } from '../Editor/types'
 import { Tweet as T } from 'react-twitter-widgets'
-
 
 export const Youtube = ({ block }: { block: Block }) => (
     <I

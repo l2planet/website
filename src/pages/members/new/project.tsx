@@ -8,19 +8,21 @@ const NewProject: NextPage = () => {
     return (
         <>
             <SEO
-                title='L2 Planet | New Projext'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | New Projext"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
             <H1>New Project</H1>
-            <ProjectForm onSubmit={async (projectFormData) => {
-                try {
-                    await sendProject(projectFormData)
-                    alert('Succesfully added!')
-                } catch (err: any) {
-                    alert(err.message)
-                }
-            }} />
+            <ProjectForm
+                onSubmit={async (projectFormData) => {
+                    try {
+                        await sendProject(projectFormData)
+                        alert('Succesfully added!')
+                    } catch (err: any) {
+                        alert(err.message)
+                    }
+                }}
+            />
         </>
     )
 }

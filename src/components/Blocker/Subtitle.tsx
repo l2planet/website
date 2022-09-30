@@ -1,11 +1,7 @@
-import { wrapn } from "wrapn"
-import { Block } from "../Editor/types";
+import { wrapn } from 'wrapn'
+import { Block } from '../Editor/types'
 
-export const Subtitle = ({ block }: { block: Block }) => (
-    <S>
-        {block.content}
-    </S>
-)
+export const Subtitle = ({ block }: { block: Block }) => <S>{block.content}</S>
 
 const S = wrapn('h1')`
     font-semibold

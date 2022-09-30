@@ -1,15 +1,12 @@
-import { wrapn } from "wrapn";
-import { Block } from "../Editor/types";
-import { PolymorphicBlock } from "./PolymorphicBlock";
+import { wrapn } from 'wrapn'
+import { Block } from '../Editor/types'
+import { PolymorphicBlock } from './PolymorphicBlock'
 
 export const Blocker = ({ blocks }: { blocks: Block[] }) => (
     <B>
-        {blocks.map((block, i) =>
-            <PolymorphicBlock
-                key={`poly_${i}`}
-                block={block}
-            />    
-        )}
+        {blocks.map((block, i) => (
+            <PolymorphicBlock key={`poly_${i}`} block={block} />
+        ))}
     </B>
 )
 

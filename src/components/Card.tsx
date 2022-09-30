@@ -1,15 +1,17 @@
-import { wrapn } from "wrapn";
-import { APIGetChain, InternalChain, InternalLayer2, InternalProject } from "../types/Api";
-import { AProjects } from "./A";
-import { Img } from "./Image";
-import { Link } from "./Link";
+import { wrapn } from 'wrapn'
+import {
+    APIGetChain,
+    InternalChain,
+    InternalLayer2,
+    InternalProject,
+} from '../types/Api'
+import { AProjects } from './A'
+import { Img } from './Image'
+import { Link } from './Link'
 
 const Card = wrapn('div')`
 
 `
-
-
-
 
 // Card for `about` page
 interface CardAboutProps {
@@ -20,13 +22,13 @@ interface CardAboutProps {
 
 export const CardAbout = (props: CardAboutProps) => (
     <WCardAbout>
-        <AboutIcon><props.icon/></AboutIcon>
+        <AboutIcon>
+            <props.icon />
+        </AboutIcon>
         <AboutTitle>{props.title}</AboutTitle>
         <AboutText>{props.text}</AboutText>
     </WCardAbout>
 )
-
-
 
 const WCardAbout = wrapn('div')`
     flex
@@ -50,7 +52,6 @@ const WCardAbout = wrapn('div')`
     dark:bg-gris-8
 `
 
-
 const AboutIcon = wrapn('div')`
     w-14
     lg:w-16
@@ -64,13 +65,11 @@ const AboutIcon = wrapn('div')`
     dark:bg-gris-7
 `
 
-
 const AboutTitle = wrapn('h2')`
     font-bold
     text-2xl
     sm:text-3xl
 `
-
 
 const AboutText = wrapn('p')`
     font-semibold
@@ -80,21 +79,13 @@ const AboutText = wrapn('p')`
     dark:text-gris-3
 `
 
-
-
-
-
-
 // Card for `index` page
 export const CardIndex = (props: InternalChain) => (
     <Link a={AIndex} href={`/chains/${props.id}`}>
-        <Img img={ImgIndex} alt={`${props.name} logo`} src={props.icon}/>
-        <IndexName>
-            {props.name}
-        </IndexName>
+        <Img img={ImgIndex} alt={`${props.name} logo`} src={props.icon} />
+        <IndexName>{props.name}</IndexName>
     </Link>
 )
-
 
 const AIndex = wrapn('a')`
     aspect-square
@@ -135,13 +126,10 @@ const IndexName = wrapn('h2')`
     lg:text-[min(2vw,1.38rem)]
 `
 
-
-
-
 // Card for [chain] pages
 export const CardLayer2 = (props: InternalLayer2) => (
     <Link a={ALayer2} href={`/layer2s/${props.id}`}>
-        <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`}/>
+        <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`} />
         <NameLayer2>{props.name}</NameLayer2>
     </Link>
 )
@@ -185,22 +173,36 @@ const ImgLayer2 = wrapn('img')`
     h-full
 `
 
-
-
 // Card for projects pages
 export const CardProject = (props: InternalProject) => (
     <WCardProject tabIndex={-1}>
         <DivProjectMeta>
-            <Img alt={`${props.name} logo`} img={ImgProject} src={props.icon}/>
+            <Img alt={`${props.name} logo`} img={ImgProject} src={props.icon} />
             <NameProject>{props.name}</NameProject>
         </DivProjectMeta>
         <DivProjectsFocusable>
             <Flex4ProjectCategories>
-                {props.categories.map(cat => <CategoryProject key={`${props.name}${cat}`}>{cat}</CategoryProject>)}
+                {props.categories.map((cat) => (
+                    <CategoryProject key={`${props.name}${cat}`}>
+                        {cat}
+                    </CategoryProject>
+                ))}
             </Flex4ProjectCategories>
             <Flex4ProjectLinks>
-                {props.website && <Link a={AProjects} href={props.website} newTab>Website</Link>}
-                {props.twitter && <Link a={AProjects} href={`https://twitter.com/${props.twitter}`} newTab>Twitter</Link>}
+                {props.website && (
+                    <Link a={AProjects} href={props.website} newTab>
+                        Website
+                    </Link>
+                )}
+                {props.twitter && (
+                    <Link
+                        a={AProjects}
+                        href={`https://twitter.com/${props.twitter}`}
+                        newTab
+                    >
+                        Twitter
+                    </Link>
+                )}
             </Flex4ProjectLinks>
             <DescriptionProject>{props.description}</DescriptionProject>
         </DivProjectsFocusable>

@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent } from 'react'
 
 /**
  * Generic function that extracts form data from a `FormEvent`.

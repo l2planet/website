@@ -1,4 +1,4 @@
-import { wrapn } from "wrapn";
+import { wrapn } from 'wrapn'
 
 // Divs for [chain] pages
 export const Col4Select = wrapn('div')`
@@ -18,8 +18,6 @@ export const Grid4ChainPage = wrapn('div')`
     gap-4
     sm:gap-5
 `
-
-
 
 // Divs for [layer2] pages
 export const Row4Layer2Links = wrapn('div')`
@@ -44,9 +42,6 @@ export const Grid4Layer2Investors = wrapn('div')`
     gap-6
     md:gap-8
 `
-
-
-
 
 // Divs for projects
 export const Flex4ProjectsGrid4Projects = wrapn('div')`

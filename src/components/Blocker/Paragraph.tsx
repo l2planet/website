@@ -1,11 +1,9 @@
-import { wrapn } from "wrapn"
+import { wrapn } from 'wrapn'
 import { Block } from '../Editor/types'
-import { Links } from "./Links"
+import { Links } from './Links'
 
 export const Paragraph = ({ block }: { block: Block }) => (
-    <P>
-        {block.links ? <Links block={block}/> : block.content}
-    </P>
+    <P>{block.links ? <Links block={block} /> : block.content}</P>
 )
 
 const P = wrapn('p')`
@@ -15,4 +13,3 @@ const P = wrapn('p')`
     text-slate-800
     dark:text-slate-100
 `
-

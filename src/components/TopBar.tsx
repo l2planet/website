@@ -24,29 +24,43 @@ export const TopBar = () => {
     return (
         <>
             <Header>
-                <Link a={ALogo} href='/'>
-                    <Image alt='L2 Planet Logo' size='h-8 w-8' src={logo}/>
+                <Link a={ALogo} href="/">
+                    <Image alt="L2 Planet Logo" size="h-8 w-8" src={logo} />
                     L2 Planet
                 </Link>
                 <Nav>
-                    <Link a={ANav} href='/'><IconHome/>Home</Link>
-                    <Link a={ANav} href='/newsletter'><IconNewsletter/>Newsletter</Link>
-                    <Link a={ANav} href='/stats'><IconStats/>Stats</Link>
-                    <Link a={ANav} href='/about'><IconAbout/>About</Link>
+                    <Link a={ANav} href="/">
+                        <IconHome />
+                        Home
+                    </Link>
+                    <Link a={ANav} href="/newsletter">
+                        <IconNewsletter />
+                        Newsletter
+                    </Link>
+                    <Link a={ANav} href="/stats">
+                        <IconStats />
+                        Stats
+                    </Link>
+                    <Link a={ANav} href="/about">
+                        <IconAbout />
+                        About
+                    </Link>
                 </Nav>
                 <BoxButtons>
-                    <ButtonTheme onClick={toggleTheme}><IconSun/><IconMoon/></ButtonTheme>
-                    <ButtonMenu onClick={toggleMenuOpen}><IconMenu/></ButtonMenu>
+                    <ButtonTheme onClick={toggleTheme}>
+                        <IconSun />
+                        <IconMoon />
+                    </ButtonTheme>
+                    <ButtonMenu onClick={toggleMenuOpen}>
+                        <IconMenu />
+                    </ButtonMenu>
                 </BoxButtons>
             </Header>
 
-            {isMenuOpen && <Menu onClick={toggleMenuOpen}/>}
+            {isMenuOpen && <Menu onClick={toggleMenuOpen} />}
         </>
     )
 }
-
-
-
 
 const Header = wrapn('header')`
     sticky
@@ -66,13 +80,11 @@ const Header = wrapn('header')`
     backdrop-blur-lg
 `
 
-
 const Nav = wrapn('nav')`
     hidden
     lg:flex
     space-x-12
 `
-
 
 const BoxButtons = wrapn('div')`
     flex

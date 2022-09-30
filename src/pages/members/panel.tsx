@@ -8,25 +8,32 @@ import { SectionPanel } from '../../components/Section'
 import { SEO } from '../../components/SEO'
 
 const Panel: NextPage = () => {
-    return(
+    return (
         <>
             <SEO
-                title='L2 Planet | Panel'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | Panel"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
 
             <H1>Admin Panel</H1>
-            
+
             <SectionPanel>
-                <Link a={APanel} href='/members/new/chain'>Chain</Link>
-                <Link a={APanel} href='/members/new/layer2'>Layer2</Link>
-                <Link a={APanel} href='/members/new/project'>Project</Link>
-                <Link a={APanel} href='/members/new/newsletter'>Newsletter</Link>
+                <Link a={APanel} href="/members/new/chain">
+                    Chain
+                </Link>
+                <Link a={APanel} href="/members/new/layer2">
+                    Layer2
+                </Link>
+                <Link a={APanel} href="/members/new/project">
+                    Project
+                </Link>
+                <Link a={APanel} href="/members/new/newsletter">
+                    Newsletter
+                </Link>
             </SectionPanel>
         </>
     )
 }
-            
+
 export default Panel
-            

@@ -11,7 +11,6 @@ import { IconStats } from './icons/IconStats'
 import { IconSun } from './icons/IconSun'
 import { Link } from './Link'
 
-
 /** Menu component which is only available on mobile devices. */
 export const Menu = (props: { onClick: () => void }) => {
     const { toggleTheme } = useTheme()
@@ -19,16 +18,37 @@ export const Menu = (props: { onClick: () => void }) => {
     return (
         <WMenu onClick={props.onClick}>
             <Nav>
-                <Link a={AMenu} href='/'><Icon icon={IconHome}/>Home</Link>
-                <Link a={AMenu} href='/newsletter'><Icon icon={IconNewsletter}/>Newsletter</Link>
-                <Link a={AMenu} href='/stats'><Icon icon={IconStats}/>Stats</Link>
-                <Link a={AMenu} href='/about'><Icon icon={IconAbout}/>About</Link>
+                <Link a={AMenu} href="/">
+                    <Icon icon={IconHome} />
+                    Home
+                </Link>
+                <Link a={AMenu} href="/newsletter">
+                    <Icon icon={IconNewsletter} />
+                    Newsletter
+                </Link>
+                <Link a={AMenu} href="/stats">
+                    <Icon icon={IconStats} />
+                    Stats
+                </Link>
+                <Link a={AMenu} href="/about">
+                    <Icon icon={IconAbout} />
+                    About
+                </Link>
             </Nav>
-            <ButtonMenuTheme onClick={toggleTheme}><Icon icon={() => <><IconSun/><IconMoon/></>}/>Theme</ButtonMenuTheme>
+            <ButtonMenuTheme onClick={toggleTheme}>
+                <Icon
+                    icon={() => (
+                        <>
+                            <IconSun />
+                            <IconMoon />
+                        </>
+                    )}
+                />
+                Theme
+            </ButtonMenuTheme>
         </WMenu>
     )
 }
-
 
 const WMenu = wrapn('div')`
     lg:hidden
@@ -57,7 +77,6 @@ const WMenu = wrapn('div')`
     overflow-y-auto
 `
 
-
 const Nav = wrapn('nav')`
     flex
     flex-col
@@ -69,7 +88,9 @@ const Nav = wrapn('nav')`
 `
 
 const Icon = ({ icon: I }: { icon: () => JSX.Element }) => {
-    return <div className='aspect-square h-full'>
-        <I/>
-    </div>
+    return (
+        <div className="aspect-square h-full">
+            <I />
+        </div>
+    )
 }

@@ -5,17 +5,15 @@ import Image from 'next/image'
 import { SEO } from '../components/SEO'
 
 const Stats: NextPage = () => {
-    return(
+    return (
         <>
             <SEO
-                title='L2 Planet | Stats'
-                description='L2 Planet'
-                favicon='/favicon.ico'
+                title="L2 Planet | Stats"
+                description="L2 Planet"
+                favicon="/favicon.ico"
             />
-            
         </>
     )
 }
-            
+
 export default Stats
-            

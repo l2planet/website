@@ -1,4 +1,4 @@
-import { wrapn } from "wrapn";
+import { wrapn } from 'wrapn'
 
 export const H1 = wrapn('h1')`
     text-center
@@ -11,10 +11,6 @@ export const H1 = wrapn('h1')`
     lg:text-7xl
 `
 
-
-
-
-
 // [chain] pages
 
 export const HChain = wrapn('h1')`
@@ -24,7 +20,6 @@ export const HChain = wrapn('h1')`
     sm:text-6xl
     lg:text-7xl
 `
-
 
 export const HSelect = wrapn('h2')`
     font-semibold
@@ -37,10 +32,6 @@ export const HSelect = wrapn('h2')`
     dark:text-gris-3
 `
 
-
-
-
-
 // [layer2] pages
 
 export const HLayer2 = wrapn('h1')`
@@ -51,14 +42,12 @@ export const HLayer2 = wrapn('h1')`
     lg:text-5xl
 `
 
-
 export const HLayer2Common = wrapn('h1')`
     font-bold
     
     text-xl
     sm:text-2xl
 `
-
 
 // projects pages
 
