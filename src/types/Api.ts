@@ -157,6 +157,7 @@ export interface InternalLayer2 {
 }
 
 export interface RawFormProject {
+    l2_ids: string
     name: string
     icon: string
     description: string
@@ -166,6 +167,7 @@ export interface RawFormProject {
 }
 
 export interface APIPostProject {
+    l2_ids: string[]
     name: string
     icon: string
     description: string

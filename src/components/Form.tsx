@@ -328,6 +328,12 @@ export const ProjectForm = ({ onSubmit }: FormProps<RawFormProject>) => {
         >
             <DivForm>
                 <LabeledInput
+                    name='l2_ids'
+                    label='Layer 2 IDs'
+                    tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
+                    placeHolder='starket, arbitrum_one'
+                />
+                <LabeledInput
                     name='name'
                     label='Project Name'
                     tip='The name of the project.'

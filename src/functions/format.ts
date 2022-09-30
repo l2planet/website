@@ -141,6 +141,13 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
         formData[key] = cleanWords(formData[key])
     })
 
+    const l2_ids: string[] = []
+    formData.l2_ids.split(',').forEach(l2_id => {
+        const id = l2_id.trim()
+        if (id.length > 0) {
+            l2_ids.push(id)
+        }
+    })
     const name = formData.name
     const icon = formData.icon
     const description = formData.description.split('\n').join(' ')
@@ -159,6 +166,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     }
 
     const data = {
+        l2_ids,
         name,
         icon,
         description,
