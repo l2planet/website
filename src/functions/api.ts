@@ -141,7 +141,7 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
 
         const res = await fetch('https://api.l2planet.xyz/auth/newsletter', {
             method: 'POST',
-            body: `"${JSON.stringify(newsletterBlocks)}"`,
+            body: `"{ "newsletter": "${JSON.stringify(newsletterBlocks)}" }"`,
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${jwt}`,
