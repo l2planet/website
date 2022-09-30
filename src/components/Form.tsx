@@ -281,7 +281,7 @@ export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
                     placeHolder='https://arbitrum.io'
                 />
                 <LabeledInput
-                    name='evmId'
+                    name='evm_id'
                     label='EVM ID'
                     tip='EVM ID of the layer 2.'
                     placeHolder='35'
