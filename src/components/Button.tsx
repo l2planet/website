@@ -91,6 +91,23 @@ export const ButtonForm = wrapn(ButtonSecondary)`
     rounded-xl
 `
 
+export const ButtonBridge = wrapn(ButtonSecondary)`
+    flex
+    items-center
+    justify-center
+
+    font-semibold
+    text-lg
+
+    h-12
+
+    px-7
+
+    gap-x-1.5
+
+    rounded-xl
+`
+
 export const ButtonPanel = wrapn(ButtonSecondary)`
     flex
     items-center
