@@ -168,6 +168,7 @@ export interface RawFormProject {
 
 export interface APIPostProject {
     l2_ids: string[]
+    string_id: string
     name: string
     icon: string
     description: string

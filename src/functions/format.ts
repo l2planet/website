@@ -148,6 +148,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
             l2_ids.push(id)
         }
     })
+    const string_id = cleanWords(formData.name).split(' ').join('_').toLowerCase()
     const name = formData.name
     const icon = formData.icon
     const description = formData.description.split('\n').join(' ')
@@ -166,6 +167,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     }
 
     const data = {
+        string_id,
         l2_ids,
         name,
         icon,
