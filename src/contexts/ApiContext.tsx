@@ -35,7 +35,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     const [manager, setManager] = useState<ApiManager | null>(null)
 
     const router = useRouter()
-    const go404 = useCallback(() => router.push('/404'), [router])
+    const go404 = useCallback(() => {}, [])
 
     const useChains = useCallback(() => {
         if (manager === null) return []
