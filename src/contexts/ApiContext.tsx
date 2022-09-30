@@ -80,7 +80,10 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     useEffect(() => {
         (async () => {
             try {
-                setManager(new ApiManager(await getApiData()))
+                const apiData = await getApiData()
+                if (apiData?.chains !== undefined) {
+                    setManager(new ApiManager(apiData))
+                }
             } catch (e: any) {
                 alert(e.message)
             }
