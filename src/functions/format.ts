@@ -34,7 +34,7 @@ export const formatChain = (formData: RawFormChain): APIPostChain => {
 
 
     return {
-        id,
+        string_id: id,
         name,
         icon,
         description,
@@ -52,24 +52,32 @@ export const formatChain = (formData: RawFormChain): APIPostChain => {
  If an error occurs, it throws it. So don't forget to catch.
  */
 export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
-    Object.entries(formData).forEach(([_key, _]) => {
-        const key = _key as keyof RawFormLayer2
-        formData[key] = cleanWords(formData[key])
-    })
 
-    const id = formData.name.split(' ').join('_').toLowerCase()
-    const name = formData.name
-    const icon = formData.icon
-    const description = formData.description.split('\n').join(' ')
-    const categories = formData.categories.split(',').map(cat => cat.trim())
-    const website = formData.website
-    const evm_id = formData.evm_id
-    const bridges = formData.bridges.split(',').map(bri => bri.trim())
-    const tokens = formData.tokens.split(',').map(tok => tok.trim())
-    const gecko = getCoinGeckoId(formData.gecko) || undefined
-    const twitter = getTwitterId(formData.twitter) || undefined
+    const id = cleanWords(formData.name).split(' ').join('_').toLowerCase()
+    const name = cleanWords(formData.name)
+    const icon = cleanWords(formData.icon)
+    const description = cleanWords(formData.description).split('\n').join(' ')
+    const categories = cleanWords(formData.categories).split(',').map(cat => cat.trim())
+    const website = cleanWords(formData.website)
+    const evm_id = cleanWords(formData.evm_id)
+    const bridges: APIPostLayer2['bridges'] = []
+    const gecko = getCoinGeckoId(cleanWords(formData.gecko)) || undefined
+    const twitter = getTwitterId(cleanWords(formData.twitter)) || undefined
     const videos: string[] = []
     const investors: string[] = []
+
+    formData.bridges.forEach(bridge => {
+        const address = cleanWords(bridge.address)
+        const tokens: string[] = []
+        cleanWords(bridge.tokens).split(',').forEach(token => {
+            const _token = cleanWords(token)
+            if (token.length > 0) {
+                tokens.push(_token)
+            }
+        })
+      
+        bridges.push({address, tokens})
+    })
 
     formData.videos.split(',').map(vid => getYoutubeId(vid.trim())).forEach(id => id !== null ? videos.push(id) : {})
     formData.investors.split(',').map(inv => inv.trim()).forEach(url => new ImageURL(url).getURL() ? investors.push(url) : {})
@@ -88,7 +96,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
 
 
     return {
-        id,
+        string_id: id,
         name,
         icon,
         description,
@@ -96,7 +104,6 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         bridges,
         evm_id,
         investors,
-        tokens,
         videos,
         website,
         gecko,
