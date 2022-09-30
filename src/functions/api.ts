@@ -8,6 +8,7 @@ import {
     RawFormProject,
     APIPostLayer2,
     APIPostProject,
+    APIPrimaryData,
 } from '../types/Api'
 import { getJwtCookie, setJwtCookie } from './cookie'
 import { Block } from '../components/Editor/types'
@@ -152,6 +153,24 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
         }
+    } catch (e: any) {
+        if (e?.message) throw e
+        throw new Error('An unknown error is occured.')
+    }
+}
+
+
+
+/** Returns primary API data. */
+export async function getApiData(): Promise<APIPrimaryData> {
+    try {
+        const res = await fetch('https://api.l2planet.xyz/info')
+        if (!res.ok) {
+            throw new Error(`Cannot get data from API`)
+        }
+
+        const json = await res.json()
+        return json as APIPrimaryData
     } catch (e: any) {
         if (e?.message) throw e
         throw new Error('An unknown error is occured.')
