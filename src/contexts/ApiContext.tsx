@@ -13,6 +13,7 @@ import { ChildrenProp } from '../types/globals'
 import API from '../api.json'
 import { ApiManager } from '../classes/ApiManager'
 import { useRouter } from 'next/router'
+import { getApiData } from '../functions/api'
 
 /** The Interface for `ApiContext`. */
 interface ApiContextState {
@@ -77,9 +78,13 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     }, [manager, go404])
 
     useEffect(() => {
-        try {
-            setManager(new ApiManager(API))
-        } catch {}
+        (async () => {
+            try {
+                setManager(new ApiManager(await getApiData()))
+            } catch (e: any) {
+                alert(e.message)
+            }
+        })()
     }, [])
 
     return (
