@@ -138,15 +138,17 @@ export async function sendProject(formData: RawFormProject): Promise<void> {
 export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
     try {
         const jwt = getJwtCookie()
+        const data = JSON.stringify({ newsletter: JSON.stringify(newsletterBlocks) })
 
         const res = await fetch('https://api.l2planet.xyz/auth/newsletter', {
             method: 'POST',
-            body: `"{ "newsletter": "${JSON.stringify(newsletterBlocks)}" }"`,
+            body: data,
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${jwt}`,
             },
         })
+        console.log(data)
 
         console.log(res)
 
