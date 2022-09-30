@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import { SEO } from '../components/SEO'
 
 const Donate: NextPage = () => {

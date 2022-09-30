@@ -1,4 +1,3 @@
-import { text } from 'stream/consumers'
 import { EditorBlockLinks, EditorBlockType } from './types'
 
 export class BlockClass {

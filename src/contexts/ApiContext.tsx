@@ -3,12 +3,9 @@ import {
     useCallback,
     useContext,
     useEffect,
-    useMemo,
     useState,
 } from 'react'
 import {
-    APIGetChain,
-    APIPrimaryData,
     InternalChain,
     InternalLayer2,
 } from '../types/Api'

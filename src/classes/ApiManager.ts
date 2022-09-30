@@ -3,7 +3,6 @@ import {
     getProjectCategories,
 } from '../functions/getAvailableCategories'
 import {
-    APIGetChain,
     APIPrimaryData,
     InternalChain,
     InternalLayer2,

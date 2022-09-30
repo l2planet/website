@@ -1,4 +1,3 @@
-import { format } from 'path'
 import { cleanWords } from './cleanWords'
 import { getCoinGeckoId } from './getCoinGeckoId'
 import { getTwitterId } from './getTwitterId'

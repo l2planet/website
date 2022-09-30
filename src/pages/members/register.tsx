@@ -2,7 +2,7 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { wrapn } from 'wrapn'
-import { LoginForm, RegisterForm } from '../../components/Form'
+import { RegisterForm } from '../../components/Form'
 import { H1 } from '../../components/H'
 import { Link } from '../../components/Link'
 import { SEO } from '../../components/SEO'
