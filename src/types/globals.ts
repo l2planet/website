@@ -16,6 +16,7 @@ export interface LabeledInputProps {
     label: string
     name: string
     tip: string
+    placeHolder: string
     isPassword?: boolean 
 }
 
