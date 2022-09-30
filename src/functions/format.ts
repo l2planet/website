@@ -37,12 +37,16 @@ export const formatChain = (formData: RawFormChain): APIPostChain => {
         throw new Error('Icon is not an SVG file')
     }
 
-    return {
+    const data = {
         string_id: id,
         name,
         icon,
         description,
     }
+
+    console.log(data)
+
+    return data
 }
 
 /**
@@ -105,7 +109,8 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         throw new Error('Website URL is not valid.')
     }
 
-    return {
+    const data =
+     {
         string_id,
         chain_id, 
         name,
@@ -120,6 +125,9 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         gecko,
         twitter,
     }
+    console.log(data)
+
+    return data
 }
 
 /**
@@ -150,7 +158,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
         throw new Error('Icon is not an SVG file.')
     }
 
-    return {
+    const data = {
         name,
         icon,
         description,
@@ -158,4 +166,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
         twitter,
         website,
     }
+    console.log(data)
+
+    return data
 }
