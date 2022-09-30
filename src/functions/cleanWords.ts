@@ -7,9 +7,11 @@
  * cleanWords(words) // "hey this is strange"
  * ```
  */
-export function cleanWords(word: string) {
+export function cleanWords(word?: string) {
     const cleanedWords: string[] = []
 
+    if (word === undefined) return ''
+    
     const words = word.trim().split(' ')
 
     for (let word of words) {
