@@ -51,7 +51,8 @@ export const formatChain = (formData: RawFormChain): APIPostChain => {
  If an error occurs, it throws it. So don't forget to catch.
  */
 export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
-    const id = cleanWords(formData.name).split(' ').join('_').toLowerCase()
+    const string_id = cleanWords(formData.name).split(' ').join('_').toLowerCase()
+    const chain_id = cleanWords(formData.chain_id)
     const name = cleanWords(formData.name)
     const icon = cleanWords(formData.icon)
     const description = cleanWords(formData.description).split('\n').join(' ')
@@ -105,7 +106,8 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     }
 
     return {
-        string_id: id,
+        string_id,
+        chain_id, 
         name,
         icon,
         description,
