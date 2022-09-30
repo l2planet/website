@@ -245,6 +245,12 @@ export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
         >
             <DivForm>
                 <LabeledInput
+                    name='chain_id'
+                    label='Chain of the Layer 2'
+                    tip='The ID of the chain this L2 is for.'
+                    placeHolder='ethereum'
+                />
+                <LabeledInput
                     name='name'
                     label='Layer 2 Name'
                     tip='The name of the layer 2.'
