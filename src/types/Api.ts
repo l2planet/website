@@ -58,7 +58,7 @@ export interface RawFormChain {
 // Gets calculated by parsing `raw data` from the form
 // Used while sending data to the backend
 export interface APIPostChain {
-    id: string
+    string_id: string
     name: string
     icon: string
     description: string
@@ -101,8 +101,7 @@ export interface RawFormLayer2 {
     categories: string
     website: string
     evm_id: string
-    bridges: string
-    tokens: string
+    bridges: RawBridge[]
     gecko: string
     twitter: string
     videos: string
@@ -113,22 +112,27 @@ export interface RawFormLayer2 {
 // Gets calculated by parsing `raw data` from the form
 // Used while sending data to the backend
 export interface APIPostLayer2 {
-    id: string
+    string_id: string
     name: string
     icon: string
     description: string
     categories: string[]
     website: string
     evm_id: string
-    bridges: string[]
-    tokens: string[]
+    bridges: {
+        address: string
+        tokens: string[]
+    }[]
     gecko?: string
     twitter?: string
     videos: string[]
     investors: string[]
 }
 
-
+export interface RawBridge {
+    address: string
+    tokens: string
+}
 
 // Backend calculates this value 
 // Server will add new projects' IDs to "projects" prop
