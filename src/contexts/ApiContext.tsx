@@ -35,7 +35,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     const [manager, setManager] = useState<ApiManager | null>(null)
 
     const router = useRouter()
-    const go404 = useCallback(() => router.push('/404'), [router])
+    const go404 = useCallback(() => {}, [])
 
     const useChains = useCallback(() => {
         if (manager === null) return []
@@ -44,13 +44,18 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
 
     const useChain = useCallback(() => {
         if (manager === null) return
-        const currentChain = manager.getChainOfPage()
+        const chain = router.query.chain
+        if (chain === undefined) {
+            go404()
+            return
+        }
+        const currentChain = manager.getChain(chain.toString())
         if (currentChain === null) {
             go404()
         } else {
             return currentChain
         }
-    }, [manager, go404])
+    }, [manager, go404, router])
 
     const useLayer2s = useCallback(() => {
         if (manager === null) return []
@@ -59,23 +64,33 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
 
     const useLayer2 = useCallback(() => {
         if (manager == null) return
-        const currentLayer2 = manager.getLayer2OfPage()
+        const layer2 = router.query.layer2
+        if (layer2 === undefined) {
+            go404()
+            return
+        }
+        const currentLayer2 = manager.getLayer2(layer2.toString(), 'doNotParseProjects')
         if (currentLayer2 === null) {
             go404()
         } else {
             return currentLayer2
         }
-    }, [manager, go404])
+    }, [manager, go404, router])
 
     const useLayer2WithProjects = useCallback(() => {
         if (manager == null) return
-        const currentLayer2 = manager.getLayer2OfPageWithProjects()
+        const layer2 = router.query.layer2
+        if (layer2 === undefined) {
+            go404()
+            return
+        }
+        const currentLayer2 = manager.getLayer2(layer2.toString(), 'parseProjects')
         if (currentLayer2 === null) {
             go404()
         } else {
             return currentLayer2
         }
-    }, [manager, go404])
+    }, [manager, go404,router])
 
     useEffect(() => {
         (async () => {

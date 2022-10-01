@@ -2,25 +2,25 @@
 import type { NextPage } from 'next'
 import { useMemo, useState } from 'react'
 import { wrapn } from 'wrapn'
-import { CardProject } from '../../components/Card'
+import { CardProject } from '../components/Card'
 import {
     Col4Select,
     Flex4ProjectsGrid4Projects,
     Grid4ProjectsProjects,
-} from '../../components/Div'
+} from '../components/Div'
 import {
     HProjects,
     HProjectsL2,
     HSelect,
-} from '../../components/H'
-import { Img } from '../../components/Image'
+} from '../components/H'
+import { Img } from '../components/Image'
 import {
     SectionProjectsIntro,
     SectionProjectsProjects,
-} from '../../components/Section'
-import { Select } from '../../components/Select'
-import { SEO } from '../../components/SEO'
-import { useApi } from '../../contexts/ApiContext'
+} from '../components/Section'
+import { Select } from '../components/Select'
+import { SEO } from '../components/SEO'
+import { useApi } from '../contexts/ApiContext'
 
 const SPARE_ICON =
     'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'

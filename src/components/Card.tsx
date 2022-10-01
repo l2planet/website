@@ -81,7 +81,7 @@ const AboutText = wrapn('p')`
 
 // Card for `index` page
 export const CardIndex = (props: InternalChain) => (
-    <Link a={AIndex} href={`/chains/${props.id}`}>
+    <Link a={AIndex} href={`/chains?chain=${props.id}`}>
         <Img img={ImgIndex} alt={`${props.name} logo`} src={props.icon} />
         <IndexName>{props.name}</IndexName>
     </Link>
@@ -128,7 +128,7 @@ const IndexName = wrapn('h2')`
 
 // Card for [chain] pages
 export const CardLayer2 = (props: InternalLayer2) => (
-    <Link a={ALayer2} href={`/layer2s/${props.id}`}>
+    <Link a={ALayer2} href={`/layer2s?layer2=${props.id}`}>
         <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`} />
         <NameLayer2>{props.name}</NameLayer2>
     </Link>

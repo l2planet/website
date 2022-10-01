@@ -23,7 +23,7 @@ export class ApiManager {
 
     private data: APIPrimaryData
 
-    private getProjects(l2Id: string): InternalProject[] | null {
+    getProjects(l2Id: string): InternalProject[] | null {
         const l2 = this.data.layer2s[l2Id]
         if (l2 !== undefined) {
             const projects: InternalProject[] = []
@@ -39,7 +39,7 @@ export class ApiManager {
         }
     }
 
-    private getLayer2(
+    getLayer2(
         id: string,
         opt: 'parseProjects' | 'doNotParseProjects'
     ): InternalLayer2 | null {
@@ -73,7 +73,7 @@ export class ApiManager {
         return null
     }
 
-    private getChain(id: string): InternalChain | null {
+    getChain(id: string): InternalChain | null {
         const chain = this.data.chains[id]
         const layer2s: InternalLayer2[] = []
         if (chain !== undefined) {

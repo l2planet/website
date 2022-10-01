@@ -1,24 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
 import { wrapn } from 'wrapn'
-import { ALayer2, AL2Projects } from '../../components/A'
-import { Chart } from '../../components/Chart'
-import { Grid4Layer2Investors, Row4Layer2Links } from '../../components/Div'
-import { HLayer2, HLayer2Common } from '../../components/H'
-import { Img } from '../../components/Image'
-import { Link } from '../../components/Link'
-import { PLayer2Description } from '../../components/P'
+import { ALayer2, AL2Projects } from '../components/A'
+import { Chart } from '../components/Chart'
+import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
+import { HLayer2, HLayer2Common } from '../components/H'
+import { Img } from '../components/Image'
+import { Link } from '../components/Link'
+import { PLayer2Description } from '../components/P'
 import {
     SectionLayer2Charts,
     SectionLayer2Intro,
     SectionLayer2Investors,
     SectionLayer2Social,
-} from '../../components/Section'
-import { SEO } from '../../components/SEO'
-import { Timeline } from '../../components/Timeline'
-import { Videos } from '../../components/Videos'
-import { useApi } from '../../contexts/ApiContext'
-import { parsePrice } from '../../functions/parsePrice'
+} from '../components/Section'
+import { SEO } from '../components/SEO'
+import { Timeline } from '../components/Timeline'
+import { Videos } from '../components/Videos'
+import { useApi } from '../contexts/ApiContext'
+import { parsePrice } from '../functions/parsePrice'
 
 const SPARE_ICON =
     'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
@@ -80,7 +80,7 @@ const Layer2: NextPage = () => {
                                 </Link>
                             )}
                         </Row4Layer2Links>
-                        <Link a={AL2Projects} href={`/projects/${l2?.id}`}>
+                        <Link a={AL2Projects} href={`/projects?layer2=${l2?.id}`}>
                             Projects on {l2?.name || 'Layer 2'}
                         </Link>
                     </DivLinks>
