@@ -137,7 +137,8 @@ export const CardLayer2 = (props: InternalLayer2) => (
 const ALayer2 = wrapn('a')`
     flex
     items-center
-    justify-between
+
+    space-x-3.5
 
     h-18
     md:h-20
