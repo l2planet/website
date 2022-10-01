@@ -26,6 +26,7 @@ export async function authLogin(formData: RawFormAuth): Promise<void> {
 
         if (res.ok) {
             const json = (await res.json()) as APIGetLogin
+            localStorage.setItem('username', formData.username)
             setJwtCookie(json.token, json.expire)
         } else {
             throw new Error('Wrong password or username.')
@@ -138,7 +139,11 @@ export async function sendProject(formData: RawFormProject): Promise<void> {
 export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
     try {
         const jwt = getJwtCookie()
-        const data = JSON.stringify({ newsletter: JSON.stringify(newsletterBlocks) })
+        const data = JSON.stringify({
+            username: localStorage.getItem('username') ?? '',
+            newsletter: JSON.stringify(newsletterBlocks)
+        })
+        
 
         const res = await fetch('https://api.l2planet.xyz/auth/newsletter', {
             method: 'POST',
