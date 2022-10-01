@@ -44,12 +44,12 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
 
     const useChain = useCallback(() => {
         if (manager === null) return
-        const chain = router.query.chain
-        if (chain === undefined) {
+        const id = router.query.id
+        if (id === undefined) {
             go404()
             return
         }
-        const currentChain = manager.getChain(chain.toString())
+        const currentChain = manager.getChain(id.toString())
         if (currentChain === null) {
             go404()
         } else {
@@ -64,12 +64,12 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
 
     const useLayer2 = useCallback(() => {
         if (manager == null) return
-        const layer2 = router.query.layer2
-        if (layer2 === undefined) {
+        const id = router.query.id
+        if (id === undefined) {
             go404()
             return
         }
-        const currentLayer2 = manager.getLayer2(layer2.toString(), 'doNotParseProjects')
+        const currentLayer2 = manager.getLayer2(id.toString(), 'doNotParseProjects')
         if (currentLayer2 === null) {
             go404()
         } else {
@@ -79,12 +79,12 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
 
     const useLayer2WithProjects = useCallback(() => {
         if (manager == null) return
-        const layer2 = router.query.layer2
-        if (layer2 === undefined) {
+        const id = router.query.id
+        if (id === undefined) {
             go404()
             return
         }
-        const currentLayer2 = manager.getLayer2(layer2.toString(), 'parseProjects')
+        const currentLayer2 = manager.getLayer2(id.toString(), 'parseProjects')
         if (currentLayer2 === null) {
             go404()
         } else {

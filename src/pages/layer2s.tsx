@@ -80,7 +80,7 @@ const Layer2: NextPage = () => {
                                 </Link>
                             )}
                         </Row4Layer2Links>
-                        <Link a={AL2Projects} href={`/projects?layer2=${l2?.id}`}>
+                        <Link a={AL2Projects} href={`/projects?id=${l2?.id}`}>
                             Projects on {l2?.name || 'Layer 2'}
                         </Link>
                     </DivLinks>
