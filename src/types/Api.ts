@@ -69,6 +69,7 @@ export interface InternalChain {
 export interface RawFormLayer2 {
     chain_id: string
     name: string
+    status: string
     icon: string
     description: string
     categories: string
@@ -87,6 +88,7 @@ export interface APIPostLayer2 {
     string_id: string
     chain_id: string
     name: string
+    status: string
     icon: string
     description: string
     categories: string[]
@@ -111,6 +113,7 @@ export interface RawBridge {
 // Server will add new projects' IDs to "projects" prop
 export interface APIGetLayer2 {
     name: string
+    status: string
     icon: string
     description: string
     categories: string[]
@@ -135,6 +138,7 @@ export interface APIGetLayer2 {
 export interface InternalLayer2 {
     id: string
     name: string
+    status: 'testnet' | 'live' | 'close'
     icon: string
     description: string
     categories: string[]

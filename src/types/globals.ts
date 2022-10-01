@@ -27,3 +27,8 @@ export interface ChartDataItem {
     t: string
     v?: number
 }
+
+
+export interface StatusProps {
+    status: 'live' | 'testnet' | 'close'
+}

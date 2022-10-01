@@ -8,6 +8,7 @@ import {
     InternalLayer2,
     InternalProject,
 } from '../types/Api'
+import { StatusProps } from '../types/globals'
 
 function getPaths() {
     return location.pathname.split('/').slice(1)
@@ -54,6 +55,7 @@ export class ApiManager {
                 return {
                     id: id,
                     name: layer2.name,
+                    status: layer2.status as StatusProps['status'],
                     icon: layer2.icon,
                     description: layer2.description,
                     categories: layer2.categories,

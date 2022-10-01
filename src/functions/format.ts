@@ -59,6 +59,8 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     const chain_id = cleanWords(formData.chain_id)
     const name = cleanWords(formData.name)
     const icon = cleanWords(formData.icon)
+    let status = cleanWords(formData.status)
+    status = status == 'live' ? 'live' : status == 'testnet' ? 'testnet' : 'close'
     const description = cleanWords(formData.description).split('\n').join(' ')
     const categories = cleanWords(formData.categories)
         .split(',')
@@ -109,11 +111,12 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         throw new Error('Website URL is not valid.')
     }
 
-    const data =
+    const data: APIPostLayer2 =
      {
         string_id,
         chain_id, 
         name,
+        status,
         icon,
         description,
         categories,

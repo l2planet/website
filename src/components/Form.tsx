@@ -257,6 +257,12 @@ export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
                     placeHolder='Arbitrum'
                 />
                 <LabeledInput
+                    name='status'
+                    label='Layer 2 Status'
+                    tip='The status of the layer 2. (live or testnet or close)'
+                    placeHolder='testnet'
+                />
+                <LabeledInput
                     name='icon'
                     label='Icon URL'
                     tip='URL of the layer 2 icon as SVG.'

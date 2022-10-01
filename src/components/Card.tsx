@@ -1,3 +1,4 @@
+import { wrap } from 'module'
 import { wrapn } from 'wrapn'
 import {
     APIGetChain,
@@ -5,6 +6,7 @@ import {
     InternalLayer2,
     InternalProject,
 } from '../types/Api'
+import { StatusProps } from '../types/globals'
 import { AProjects } from './A'
 import { Img } from './Image'
 import { Link } from './Link'
@@ -131,10 +133,12 @@ export const CardLayer2 = (props: InternalLayer2) => (
     <Link a={ALayer2} href={`/layer2s?id=${props.id}`}>
         <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`} />
         <NameLayer2>{props.name}</NameLayer2>
+        <Liveness status={props.status}/>
     </Link>
 )
 
 const ALayer2 = wrapn('a')`
+    relative
     flex
     items-center
 
@@ -163,6 +167,69 @@ const ALayer2 = wrapn('a')`
     active:scale-105
 
     duration-200
+`
+
+const Liveness = ({ status }: StatusProps) => {
+    return <DivLiveness>
+        {status  == 'live' ? <>
+            <DotGreen/>
+            <TextGreen>live</TextGreen>
+        </> :
+        status == 'close' ? <>
+            <DotRed/>
+            <TextRed>close</TextRed>
+        </> :
+        <>
+            <DotYellow/>
+            <TextYellow>testnet</TextYellow>
+        </>
+        }
+    </DivLiveness>
+    
+}
+
+const DivLiveness = wrapn('div')`
+    flex
+    items-center
+    space-x-2
+    absolute
+    top-3 right-3
+`
+
+const Dot = wrapn('div')`
+    h-3
+    w-3
+    rounded-full
+    border
+    border-pri-3
+    dark:border-pri-7
+`
+
+const Text = wrapn('span')`
+    font-semibold
+    text-xs
+`
+
+const TextGreen = wrapn(Text)`
+    text-emerald-500
+`
+const TextYellow = wrapn(Text)`
+    text-yellow-500
+`
+const TextRed = wrapn(Text)`
+    text-red-500
+`
+
+const DotGreen = wrapn(Dot)`
+    bg-emerald-500
+`
+
+const DotYellow = wrapn(Dot)`
+    bg-yellow-500
+`
+
+const DotRed = wrapn(Dot)`
+    bg-red-500/70
 `
 
 const NameLayer2 = wrapn('h2')`
