@@ -68,8 +68,8 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     const website = cleanWords(formData.website)
     const evm_id = cleanWords(formData.evm_id)
     const bridges: APIPostLayer2['bridges'] = []
-    const gecko = getCoinGeckoId(cleanWords(formData.gecko)) || undefined
-    const twitter = getTwitterId(cleanWords(formData.twitter)) || undefined
+    const gecko = getCoinGeckoId(cleanWords(formData.gecko)) ?? ''
+    const twitter = getTwitterId(cleanWords(formData.twitter)) ?? ''
     const videos: string[] = []
     const investors: string[] = []
 
@@ -156,10 +156,10 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     const icon = formData.icon
     const description = formData.description.split('\n').join(' ')
     const categories = formData.categories.split(',').map((cat) => cat.trim())
-    const twitter = getTwitterId(formData.twitter) || undefined
+    const twitter = getTwitterId(formData.twitter) ?? ''
     const website = formData.website.includes('https://')
         ? formData.website
-        : undefined
+        : ''
 
     if (!formData.icon.startsWith('https://')) {
         throw new Error('Icon URL is not valid.')
