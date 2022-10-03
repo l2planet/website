@@ -77,7 +77,7 @@ export const EditableBlock = ({
                     {yt && (
                         <iframe
                             src={yt}
-                            className='bg-sky-300 aspect-video rounded-2xl mx-3 mb-3'
+                            className='mx-3 mb-3 bg-sky-300 rounded-2xl aspect-video'
                             frameBorder='0'
                             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                             allowFullScreen
@@ -154,7 +154,7 @@ const Img = wrapn('img')`
 
 const ListBullet = () => (
     <svg
-        className='absolute left-7 top-[21px]'
+        className='absolute left-7 top-[21px] fill-gris-9 dark:fill-gris-0'
         viewBox='0 0 100 100'
         height='8'
         width='8'
