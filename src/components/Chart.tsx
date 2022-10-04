@@ -5,6 +5,7 @@ import { InternalLayer2 } from '../types/Api'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { createChart, CrosshairMode } from 'lightweight-charts';
 import { useTheme } from '../contexts/ThemeContext'
+import dynamic from 'next/dynamic'
 
 
 
@@ -40,7 +41,7 @@ const datda: { name: string, m$: number }[] = [
 ];
 
 
-export const Chart = ({
+const Chart = ({
     data
 }: {
     data: InternalLayer2['tvls']
@@ -114,3 +115,6 @@ const Div = wrapn('div')`
     w-full
     rounded-xl
 `
+
+
+export default Chart

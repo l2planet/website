@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import { wrapn } from 'wrapn'
 import { ALayer2, AL2Projects } from '../components/A'
-import { Chart } from '../components/Chart'
+const Chart = dynamic(() => import('../components/Chart'), {ssr: false})
 import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
 import { HLayer2, HLayer2Common } from '../components/H'
 import { Img } from '../components/Image'
@@ -99,7 +100,7 @@ const Layer2: NextPage = () => {
             <SectionLayer2Charts>
                 <DivTVL>
                     <HLayer2Common>TVL - Total Value Locked</HLayer2Common>
-                    {l2?.tvls && <Chart data={l2.tvls} l2={l2.id} />}
+                    {l2?.tvls && <Chart data={l2.tvls} />}
                 </DivTVL>
             </SectionLayer2Charts>
 
