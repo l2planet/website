@@ -154,7 +154,7 @@ export const Editor = ({
                         Show Editor
                     </PreviewButton>
                     <div className='flex flex-col w-full cursor-not-allowed select-none'>
-                        <Blocker blocks={previewBlocks} />
+                        <Blocker blocks={previewBlocks} author={localStorage.getItem('username') ?? ''}/>
                     </div>
                 </>
             ) : (
