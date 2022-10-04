@@ -8,6 +8,7 @@ import {
 import {
     InternalChain,
     InternalLayer2,
+    InternalNewsletter,
 } from '../types/Api'
 import { ChildrenProp } from '../types/globals'
 import API from '../api.json'
@@ -22,6 +23,7 @@ interface ApiContextState {
     useLayer2WithProjects: () => InternalLayer2 | undefined
     useChains: () => InternalChain[]
     useLayer2s: () => InternalLayer2[]
+    useNewsletter: () => InternalNewsletter | undefined 
 }
 
 /** The context that stores `ApiContextState`. */
@@ -92,6 +94,11 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
         }
     }, [manager, go404,router])
 
+    const useNewsletter = useCallback(() => {
+        return manager?.getNewsletter()
+    }, [manager])
+
+
     useEffect(() => {
         (async () => {
             try {
@@ -113,6 +120,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
                 useChain,
                 useLayer2,
                 useLayer2WithProjects,
+                useNewsletter
             }}
         >
             {children}

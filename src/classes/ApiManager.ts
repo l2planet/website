@@ -1,3 +1,4 @@
+import { Block } from '../components/Editor/types'
 import {
     getLayer2Categories,
     getProjectCategories,
@@ -6,6 +7,7 @@ import {
     APIPrimaryData,
     InternalChain,
     InternalLayer2,
+    InternalNewsletter,
     InternalProject,
 } from '../types/Api'
 import { StatusProps } from '../types/globals'
@@ -126,5 +128,12 @@ export class ApiManager {
         const id = getLayer2Path()
         const layer2 = this.getLayer2(id, 'parseProjects')
         return layer2 ? layer2 : null
+    }
+
+    getNewsletter(): InternalNewsletter {
+        return {
+            author: this.data.latest_newsletter.username,
+            blocks: JSON.parse(this.data.latest_newsletter.newsletter) as Block[]
+        }
     }
 }

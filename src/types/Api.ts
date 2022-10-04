@@ -1,14 +1,22 @@
+import { Block } from '../components/Editor/types'
 import { ChartDataItem } from './globals'
 
 export interface APIPrimaryData {
     chains: {
         [chainId in string]?: APIGetChain
     }
+
     layer2s: {
         [layer2Id in string]?: APIGetLayer2
     }
+
     projects: {
         [projectId in string]?: APIGetProject
+    }
+
+    latest_newsletter: {
+        newsletter: string
+        username: string
     }
 }
 
@@ -197,4 +205,10 @@ export interface InternalProject {
     categories: string[]
     website?: string
     twitter?: string
+}
+
+
+export interface InternalNewsletter {
+    author: string
+    blocks: Block[]
 }
