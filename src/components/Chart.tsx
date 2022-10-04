@@ -1,98 +1,98 @@
 import { wrapn } from 'wrapn'
-import { Line } from 'react-chartjs-2'
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js'
 import { ChartDataItem } from '../types/globals'
 import { useEffect, useState } from 'react'
 import { InternalLayer2 } from '../types/Api'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { createChart, CrosshairMode } from 'lightweight-charts';
+import { useTheme } from '../contexts/ThemeContext'
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-)
-ChartJS.defaults.color = '#838893'
-ChartJS.defaults.borderColor = '#83889360'
+
+
+const datda: { name: string, m$: number }[] = [
+    {
+        name: 'Page A',
+        m$: 35.4,
+    },
+    {
+        name: 'Page B',
+        m$: 45.3,
+    },
+    {
+        name: 'Page C',
+        m$: 57.2,
+    },
+    {
+        name: 'Page D',
+        m$: 53.7,
+    },
+    {
+        name: 'Page E',
+        m$: 48.2,
+    },
+    {
+        name: 'Page F',
+        m$: 63.8,
+    },
+    {
+        name: 'Page G',
+        m$: 43.7,
+    },
+];
+
 
 export const Chart = ({
-    data,
-    l2,
+    data
 }: {
     data: InternalLayer2['tvls']
-    l2: string
 }) => {
-    const [time, setTime] = useLocalStorage<keyof typeof data>(
-        `tvl${l2}`,
-        'daily'
-    )
-    const [aspectRatio, setRatio] = useState<number>(2)
+    const { isDark } = useTheme()
 
     useEffect(() => {
-        const handler = () => {
-            const w = window.outerWidth
-            if (w < 512) {
-                setRatio(1.5)
-            } else if (w < 660) {
-                setRatio(1.75)
-            } else if (w < 850) {
-                setRatio(2)
-            } else if (w < 1000) {
-                setRatio(2.5)
-            } else {
-                setRatio(3)
+        (document.getElementById('chart') as HTMLDivElement).innerHTML = ''
+        const chart = createChart('chart', {
+            layout: {
+                background: {
+                    color: 'transparent',
+                },
+                textColor: isDark ? 'white': 'rgb(15,23,42)'
+            },
+            grid: {
+                horzLines: {
+                    color: isDark ? 'rgba(51,65,85,.5)' : 'rgba(203,213,225,.5)'
+                },
+                vertLines: {
+                    color: isDark ? 'rgba(51,65,85,.5)' : 'rgba(203,213,225,.5)'
+                },
+            },
+            crosshair: {
+                horzLine: {
+                    color: 'rgb(100,116,139)'
+                },
+                vertLine: {
+                    color: 'rgb(100,116,139)'
+                }
             }
-        }
-        handler()
-
-        addEventListener('resize', handler)
-        return () => removeEventListener('resize', handler)
-    }, [])
+        });
+        chart.addAreaSeries({
+            priceLineColor: isDark ? 'rgb(59,130,246)' :  'rgb(129,140,248)',
+            lineColor: isDark ? 'rgba(59,130,246,.7)' : 'rgba(129,140,248, .5)',
+            topColor: isDark ? 'rgba(59,130,246,.4)' : 'rgba(129,140,248, .3)',
+            bottomColor: isDark ? 'rgba(59,130,246,.15)' : 'rgba(129,140,248,.1)',
+        }).setData([
+            {time: '2023-10-22', value: 210000},
+            {time: '2023-10-23', value: 182000},
+            {time: '2023-10-24', value: 137000},
+            {time: '2023-10-25', value: 160000},
+            {time: '2023-10-26', value: 153000},
+            {time: '2023-10-27', value: 145000},
+            {time: '2023-10-28', value: 150000},
+        ])
+        chart.timeScale().fitContent()
+        
+    }, [data, isDark])
 
     return (
-        <Div>
-            <RowButton>
-                <Button onClick={() => setTime('daily')}>1D</Button>
-                <Button onClick={() => setTime('weekly')}>1W</Button>
-                <Button onClick={() => setTime('monthly')}>1M</Button>
-                <Button onClick={() => setTime('quarterly')}>3M</Button>
-                <Button onClick={() => setTime('yearly')}>1Y</Button>
-            </RowButton>
-            <Line
-                options={{
-                    responsive: true,
-                    color: '#838893',
-                    aspectRatio: aspectRatio,
-                }}
-                data={{
-                    labels: data[time].map((o) => o.t),
-                    datasets: [
-                        {
-                            label: 'TVL',
-                            data: data[time].map((o) => o.v),
-                            borderColor: 'rgb(129 140 248)',
-                            backgroundColor: 'rgb(129 140 248)',
-                            hoverBorderColor: 'rgb(129 140 248)',
-                            borderWidth: 3,
-                            hoverBorderWidth: 9,
-                            pointBorderWidth: 6,
-                        },
-                    ],
-                }}
-            />
-        </Div>
+        <Div id='chart' />
     )
 }
 
@@ -100,43 +100,6 @@ const Div = wrapn('div')`
     flex
     flex-col
 
+    h-80
     rounded-xl
-`
-const RowButton = wrapn('div')`
-    flex
-    space-x-4
-`
-const Button = wrapn('button')`
-    font-semibold
-
-    sm:text-lg
-
-    flex
-    items-center
-
-    h-9
-    sm:h-10
-    px-4
-    sm:px-5
-
-    rounded-lg
-
-    border
-    border-pri-2
-    dark:border-pri-7
-
-    hover:border-pri-3
-    hover:dark:border-pri-6
-
-
-    bg-pri-2/50
-    dark:bg-pri-7/50
-
-    hover:bg-pri-3/50
-    hover:dark:bg-pri-6/50
-
-    hover:scale-95
-    active:scale-105
-
-    duration-200
 `

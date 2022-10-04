@@ -11,7 +11,7 @@ import { ChildrenProp } from '../types/globals'
 interface ThemeContextState {
     /** Toggles the theme between `"dark"` & `"light"`. */
     toggleTheme(): void
-    theme: 'dark' | 'light'
+    isDark: boolean
 }
 
 const ThemeContext = createContext({} as ThemeContextState)
@@ -26,7 +26,7 @@ type Theme = 'dark' | 'light' | 'auto'
 export const ThemeProvider = ({ children }: ChildrenProp) => {
     const [theme, setTheme] = useLocalStorage<Theme>('theme', 'auto')
 
-    const _theme = useMemo(() => {
+    const isDark = useMemo(() => {
         return theme === 'auto'
             ? (() => {
                   if (typeof window !== 'undefined')
@@ -34,9 +34,9 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
                           .matches
                   else return false
               })()
-                ? 'dark'
-                : 'light'
-            : theme
+                ? true
+                : false
+            : theme === 'dark'
     }, [theme])
 
     useEffect(() => {
@@ -88,7 +88,7 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
         <ThemeContext.Provider
             value={{
                 toggleTheme,
-                theme: _theme,
+                isDark,
             }}
         >
             {children}

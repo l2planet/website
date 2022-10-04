@@ -89,7 +89,7 @@ const Nav = wrapn('nav')`
 
 const Icon = ({ icon: I }: { icon: () => JSX.Element }) => {
     return (
-        <div className='aspect-square h-full'>
+        <div className='h-full aspect-square'>
             <I />
         </div>
     )

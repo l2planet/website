@@ -4,7 +4,7 @@ import { wrapn } from 'wrapn'
 import { useTheme } from '../contexts/ThemeContext'
 
 export const Timeline = ({ account }: { account?: string }) => {
-    const { theme } = useTheme()
+    const { isDark } = useTheme()
     const [isLoading, setLoading] = useState(true)
 
     return (
@@ -17,7 +17,7 @@ export const Timeline = ({ account }: { account?: string }) => {
                             screenName: account,
                         }}
                         options={{
-                            theme,
+                            theme: isDark ? 'dark' : 'light',
                             height: 500,
                         }}
                         onLoad={() => setLoading(false)}
