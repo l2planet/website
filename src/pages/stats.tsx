@@ -22,7 +22,7 @@ const Stats: NextPage = () => {
             {tvls && (
                 <Flex4StatsTables>
                     <TableTVL data={tvls} />
-                    <TableTPS data={[]} />
+                    <TableTPS data={tvls.map(tvl => ({name: tvl.name, icon: tvl.icon, tps: '0 tx/s'}))} />
                 </Flex4StatsTables>
             )}
         </>
