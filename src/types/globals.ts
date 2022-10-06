@@ -32,3 +32,16 @@ export interface ChartDataItem {
 export interface StatusProps {
     status: 'live' | 'testnet' | 'close'
 }
+
+
+export type TVLTableData = {
+    icon: string
+    name: string
+    tvl: string
+}[]
+
+export type TPSTableData = {
+    icon: string
+    name: string
+    tps: string
+}[]
