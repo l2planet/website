@@ -4,13 +4,14 @@ import {
     getProjectCategories,
 } from '../functions/getAvailableCategories'
 import {
+    APIGetLayer2,
     APIPrimaryData,
     InternalChain,
     InternalLayer2,
     InternalNewsletter,
     InternalProject,
 } from '../types/Api'
-import { StatusProps } from '../types/globals'
+import { StatusProps, TVLTableData } from '../types/globals'
 
 function getPaths() {
     return location.pathname.split('/').slice(1)
@@ -135,5 +136,20 @@ export class ApiManager {
             author: this.data.latest_newsletter.username,
             blocks: JSON.parse(this.data.latest_newsletter.newsletter) as Block[]
         }
+    }
+
+    getTVLs(): TVLTableData {
+        const data: TVLTableData = []
+
+        for (const l2 of Object.values(this.data.layer2s)) {
+            
+            data.push({
+                name: (l2 as APIGetLayer2).name,
+                tvl: parseInt(`${(l2 as APIGetLayer2).tvl}`).toLocaleString(),
+                icon: (l2 as APIGetLayer2).icon,
+            })
+        }
+
+        return data
     }
 }
