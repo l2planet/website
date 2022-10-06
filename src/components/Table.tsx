@@ -12,7 +12,7 @@ export const TableTVL = ({ data }: { data: TVLTableData }) => {
                     <Th>TVL</Th>
                 </TrMain>
                 {data.map((l2) => (
-                    <TrCommon>
+                    <TrCommon key={`${l2.name} row`}>
                         <Td className='w-full'>
                             <DivRow>
                                 <Img
@@ -41,7 +41,7 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                     <Th>TPS</Th>
                 </TrMain>
                 {data.map((l2) => (
-                    <TrCommon>
+                    <TrCommon key={`${l2.name} row`}>
                         <Td className='w-full'>
                             <DivRow>
                                 <Img
