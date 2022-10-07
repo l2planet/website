@@ -52,7 +52,7 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                                 {l2.name}
                             </DivRow>
                         </Td>
-                        <Td className='min-w-fit'>{l2.tps}</Td>
+                        <Td className='min-w-fit'>{l2.tps} tx/s</Td>
                     </TrCommon>
                 ))}
             </Table>
@@ -104,6 +104,8 @@ const TrCommon = wrapn(Tr)`
     h-10
     p-1.5
 
+    font-bold
+
     rounded-lg
 
     border
@@ -121,7 +123,8 @@ const TrCommon = wrapn(Tr)`
 `
 
 const Th = wrapn('th')`
-
+    text-lg
+    font-bold
 `
 
 const Td = wrapn('td')`
