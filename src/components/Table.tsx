@@ -52,7 +52,7 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                                 {l2.name}
                             </DivRow>
                         </Td>
-                        <Td className='min-w-fit'>$ {l2.tps}</Td>
+                        <Td className='min-w-fit'>{l2.tps}</Td>
                     </TrCommon>
                 ))}
             </Table>
