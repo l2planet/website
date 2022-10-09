@@ -5,7 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build && next export",
-        "lint": "next lint"
+        "lint": "next lint",
+        "prettify": "prettier -w ."
     },
     "dependencies": {
         "lightweight-charts": "^3.8.0",
