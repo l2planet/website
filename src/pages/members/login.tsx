@@ -12,11 +12,7 @@ const Members: NextPage = () => {
     const router = useRouter()
     return (
         <>
-            <SEO
-                title='L2 Planet | Members'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | Members' description='L2 Planet' favicon='/favicon.ico' />
 
             <H1>Login</H1>
 

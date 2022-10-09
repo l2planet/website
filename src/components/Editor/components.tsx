@@ -1,13 +1,6 @@
 import Head from 'next/head'
 import { Tweet } from 'react-twitter-widgets'
-import {
-    ComponentProps,
-    MouseEventHandler,
-    Ref,
-    useEffect,
-    useMemo,
-    useRef,
-} from 'react'
+import { ComponentProps, MouseEventHandler, Ref, useEffect, useMemo, useRef } from 'react'
 import { wrapn } from 'wrapn'
 import { BlockClass } from './classes'
 import { getValidImage, resizeTextareaHeight } from './functions'
@@ -36,8 +29,7 @@ export const EditableBlock = ({
         [block, p.value]
     )
     const tw = useMemo(
-        () =>
-            block.is('W') ? new TwitterTweet(p.value as string).getId() : '',
+        () => (block.is('W') ? new TwitterTweet(p.value as string).getId() : ''),
         [block, p.value]
     )
     const yt = useMemo(

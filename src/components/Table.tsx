@@ -15,11 +15,7 @@ export const TableTVL = ({ data }: { data: TVLTableData }) => {
                     <TrCommon key={`${l2.name} row`}>
                         <Td className='w-full'>
                             <DivRow>
-                                <Img
-                                    img={ImgIcon}
-                                    alt={`${l2.name} logo`}
-                                    src={l2.icon}
-                                />
+                                <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
                                 {l2.name}
                             </DivRow>
                         </Td>
@@ -44,11 +40,7 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                     <TrCommon key={`${l2.name} row`}>
                         <Td className='w-full'>
                             <DivRow>
-                                <Img
-                                    img={ImgIcon}
-                                    alt={`${l2.name} logo`}
-                                    src={l2.icon}
-                                />
+                                <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
                                 {l2.name}
                             </DivRow>
                         </Td>

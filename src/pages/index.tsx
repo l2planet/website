@@ -6,11 +6,7 @@ import { useEffect, useMemo } from 'react'
 import { CardIndex } from '../components/Card'
 import { H1 } from '../components/H'
 import { P1 } from '../components/P'
-import {
-    Section,
-    SectionIndexCards,
-    SectionIndexIntro,
-} from '../components/Section'
+import { Section, SectionIndexCards, SectionIndexIntro } from '../components/Section'
 import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
 
@@ -20,11 +16,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <SEO
-                title='L2 Planet | Home'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | Home' description='L2 Planet' favicon='/favicon.ico' />
 
             <SectionIndexIntro>
                 <H1>Welcome to Layer 2 Planet</H1>

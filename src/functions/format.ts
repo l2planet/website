@@ -95,9 +95,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     formData.investors
         .split(',')
         .map((inv) => inv.trim())
-        .forEach((url) =>
-            new ImageURL(url).getURL() ? investors.push(url) : {}
-        )
+        .forEach((url) => (new ImageURL(url).getURL() ? investors.push(url) : {}))
 
     if (!formData.icon.startsWith('https://')) {
         throw new Error('Icon URL is not valid.')
@@ -111,10 +109,9 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         throw new Error('Website URL is not valid.')
     }
 
-    const data: APIPostLayer2 =
-     {
+    const data: APIPostLayer2 = {
         string_id,
-        chain_id, 
+        chain_id,
         name,
         status,
         icon,
@@ -145,7 +142,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     })
 
     const l2_ids: string[] = []
-    formData.l2_ids.split(',').forEach(l2_id => {
+    formData.l2_ids.split(',').forEach((l2_id) => {
         const id = l2_id.trim()
         if (id.length > 0) {
             l2_ids.push(id)
@@ -157,9 +154,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     const description = formData.description.split('\n').join(' ')
     const categories = formData.categories.split(',').map((cat) => cat.trim())
     const twitter = getTwitterId(formData.twitter) ?? ''
-    const website = formData.website.includes('https://')
-        ? formData.website
-        : ''
+    const website = formData.website.includes('https://') ? formData.website : ''
 
     if (!formData.icon.startsWith('https://')) {
         throw new Error('Icon URL is not valid.')

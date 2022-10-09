@@ -15,8 +15,7 @@ export const getCaretPos = (e: HTMLTextAreaElement) => {
     if (!ctx) return
     const style = getComputedStyle(e)
     ctx.font = style.font
-    const lineWidth =
-        parseInt(style.width.slice(0, style.width.length - 2)) - 24
+    const lineWidth = parseInt(style.width.slice(0, style.width.length - 2)) - 24
     ctx.lineWidth = lineWidth
     const msr = ctx.measureText(e.value.slice(0, e.selectionStart)).width
     const localIndex = localStorage.getItem('localIndex')
@@ -31,41 +30,30 @@ export const getCaretPos = (e: HTMLTextAreaElement) => {
 export const tool = {
     setPos(i: number) {
         const e = document.getElementById(`plus${i}`) as HTMLButtonElement
-        ;(
-            document.getElementById('toolcover') as HTMLDivElement
-        ).style.display = 'block'
+        ;(document.getElementById('toolcover') as HTMLDivElement).style.display = 'block'
         const tool = document.getElementById('tool') as HTMLDivElement
         tool.style.display = 'flex'
         tool.style.left = e.offsetLeft + 54 + 'px'
         tool.style.top = e.offsetTop + 6 + 'px'
     },
     hide() {
-        ;(document.getElementById('tool') as HTMLDivElement).style.display =
-            'none'
-        ;(
-            document.getElementById('toolcover') as HTMLDivElement
-        ).style.display = 'none'
+        ;(document.getElementById('tool') as HTMLDivElement).style.display = 'none'
+        ;(document.getElementById('toolcover') as HTMLDivElement).style.display = 'none'
     },
 }
 
 export const directions = {
     setPos(i: number) {
         const e = document.getElementById(`directions${i}`) as HTMLButtonElement
-        ;(
-            document.getElementById('directionscover') as HTMLDivElement
-        ).style.display = 'block'
+        ;(document.getElementById('directionscover') as HTMLDivElement).style.display = 'block'
         const tool = document.getElementById('directions') as HTMLDivElement
         tool.style.display = 'flex'
         tool.style.right = document.body.offsetWidth - e.offsetLeft + 22 + 'px'
         tool.style.top = e.offsetTop + 6 + 'px'
     },
     hide() {
-        ;(
-            document.getElementById('directions') as HTMLDivElement
-        ).style.display = 'none'
-        ;(
-            document.getElementById('directionscover') as HTMLDivElement
-        ).style.display = 'none'
+        ;(document.getElementById('directions') as HTMLDivElement).style.display = 'none'
+        ;(document.getElementById('directionscover') as HTMLDivElement).style.display = 'none'
     },
 }
 
@@ -83,10 +71,7 @@ export const getValidImage = (content: string) => {
     return ''
 }
 
-export const isReadyToBeDeletedAt = (
-    i: number,
-    e: KeyboardEvent<HTMLTextAreaElement>
-) => {
+export const isReadyToBeDeletedAt = (i: number, e: KeyboardEvent<HTMLTextAreaElement>) => {
     return i > 2 && e.currentTarget.value.length == 0
 }
 

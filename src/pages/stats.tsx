@@ -13,16 +13,14 @@ const Stats: NextPage = () => {
 
     return (
         <>
-            <SEO
-                title='L2 Planet | Stats'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | Stats' description='L2 Planet' favicon='/favicon.ico' />
 
             {tvls && (
                 <Flex4StatsTables>
                     <TableTVL data={tvls} />
-                    <TableTPS data={tvls.map(tvl => ({name: tvl.name, icon: tvl.icon, tps: '0'}))} />
+                    <TableTPS
+                        data={tvls.map((tvl) => ({ name: tvl.name, icon: tvl.icon, tps: '0' }))}
+                    />
                 </Flex4StatsTables>
             )}
         </>

@@ -1,8 +1,5 @@
 import { Block } from '../components/Editor/types'
-import {
-    getLayer2Categories,
-    getProjectCategories,
-} from '../functions/getAvailableCategories'
+import { getLayer2Categories, getProjectCategories } from '../functions/getAvailableCategories'
 import {
     APIGetLayer2,
     APIPrimaryData,
@@ -43,18 +40,13 @@ export class ApiManager {
         }
     }
 
-    getLayer2(
-        id: string,
-        opt: 'parseProjects' | 'doNotParseProjects'
-    ): InternalLayer2 | null {
+    getLayer2(id: string, opt: 'parseProjects' | 'doNotParseProjects'): InternalLayer2 | null {
         const layer2 = this.data.layer2s[id]
         if (layer2 !== undefined) {
             const projects = opt === 'parseProjects' ? this.getProjects(id) : []
             if (projects !== null) {
                 const projectCategories =
-                    opt === 'parseProjects'
-                        ? getProjectCategories(projects)
-                        : []
+                    opt === 'parseProjects' ? getProjectCategories(projects) : []
                 return {
                     id: id,
                     name: layer2.name,
@@ -134,7 +126,7 @@ export class ApiManager {
     getNewsletter(): InternalNewsletter {
         return {
             author: this.data.latest_newsletter.username,
-            blocks: JSON.parse(this.data.latest_newsletter.newsletter) as Block[]
+            blocks: JSON.parse(this.data.latest_newsletter.newsletter) as Block[],
         }
     }
 
@@ -142,7 +134,6 @@ export class ApiManager {
         const data: TVLTableData = []
 
         for (const l2 of Object.values(this.data.layer2s)) {
-            
             data.push({
                 name: (l2 as APIGetLayer2).name,
                 tvl: parseInt(`${(l2 as APIGetLayer2).tvl}`).toLocaleString(),

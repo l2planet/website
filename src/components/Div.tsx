@@ -64,9 +64,6 @@ export const Grid4ProjectsProjects = wrapn('div')`
     gap-y-5
 `
 
-
-
-
 // Divs for `stats` page
 export const Flex4StatsTables = wrapn('div')`
     flex

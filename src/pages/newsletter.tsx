@@ -6,7 +6,6 @@ import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
 
 const Newsletter: NextPage = () => {
-
     const { useNewsletter } = useApi()
     const newsletter = useNewsletter()
 
@@ -17,8 +16,7 @@ const Newsletter: NextPage = () => {
                 description='L2 Planet'
                 favicon='/favicon.ico'
             />
-            {newsletter && <Blocker blocks={newsletter.blocks} author={newsletter.author}/>}
-            
+            {newsletter && <Blocker blocks={newsletter.blocks} author={newsletter.author} />}
         </>
     )
 }

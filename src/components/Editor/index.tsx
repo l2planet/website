@@ -24,11 +24,7 @@ import {
 } from './functions'
 import { EditorBlockType, Block } from './types'
 
-export const Editor = ({
-    onSubmit,
-}: {
-    onSubmit: (blocks: Block[]) => void
-}) => {
+export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) => {
     const [blocks, setBlocks] = useState<BlockClass[]>([
         new BlockClass('T'),
         new BlockClass('S'),
@@ -43,9 +39,7 @@ export const Editor = ({
     const isDivisionKey = useRef<boolean>(false)
 
     useEffect(() => {
-        const el = document.getElementById(
-            `block_${focusedBlock}`
-        ) as HTMLTextAreaElement
+        const el = document.getElementById(`block_${focusedBlock}`) as HTMLTextAreaElement
         el?.focus()
     }, [blocks, focusedBlock])
 
@@ -68,16 +62,12 @@ export const Editor = ({
                         case 'W':
                             return {
                                 type: 'W',
-                                content:
-                                    new TwitterTweet(block.content).getId() ||
-                                    '',
+                                content: new TwitterTweet(block.content).getId() || '',
                             }
                         case 'V':
                             return {
                                 type: 'V',
-                                content:
-                                    new YoutubeVideo(block.content).getId() ||
-                                    '',
+                                content: new YoutubeVideo(block.content).getId() || '',
                             }
                         case 'BR':
                             return {
@@ -154,7 +144,10 @@ export const Editor = ({
                         Show Editor
                     </PreviewButton>
                     <div className='flex flex-col w-full cursor-not-allowed select-none'>
-                        <Blocker blocks={previewBlocks} author={localStorage.getItem('username') ?? ''}/>
+                        <Blocker
+                            blocks={previewBlocks}
+                            author={localStorage.getItem('username') ?? ''}
+                        />
                     </div>
                 </>
             ) : (
@@ -193,9 +186,7 @@ export const Editor = ({
                                     setFocusedBlock(i)
                                 }}
                                 onPlaceClick={() => {
-                                    document
-                                        .getElementById(`block_${i}`)
-                                        ?.focus()
+                                    document.getElementById(`block_${i}`)?.focus()
                                     setFocusedBlock(i)
                                 }}
                                 onFocus={(e) => {
@@ -204,10 +195,7 @@ export const Editor = ({
                                 }}
                                 onChange={(e) => {
                                     // Replace all new lines with space character
-                                    blocks[i].content = e.target.value.replace(
-                                        /\n/g,
-                                        ' '
-                                    )
+                                    blocks[i].content = e.target.value.replace(/\n/g, ' ')
                                     renderBlocks()
 
                                     resizeTextareaHeight(e.currentTarget)
@@ -219,19 +207,15 @@ export const Editor = ({
                                         block.is('V')
                                     ) {
                                         switch (true) {
-                                            case new TwitterTweet(
-                                                e.target.value
-                                            ).getId() !== null:
+                                            case new TwitterTweet(e.target.value).getId() !==
+                                                null:
                                                 blocks[i] = block.as('W')
                                                 break
-                                            case new YoutubeVideo(
-                                                e.target.value
-                                            ).getId() !== null:
+                                            case new YoutubeVideo(e.target.value).getId() !==
+                                                null:
                                                 blocks[i] = block.as('V')
                                                 break
-                                            case new ImageURL(
-                                                e.target.value
-                                            ).getURL() !== null:
+                                            case new ImageURL(e.target.value).getURL() !== null:
                                                 blocks[i] = block.as('I')
                                                 break
                                             default:
@@ -244,17 +228,13 @@ export const Editor = ({
                                     onKeyDownHandler(e, {
                                         onAll() {
                                             if (e.key == '/') {
-                                                if (
-                                                    !isDivisionKey.current &&
-                                                    i > 1
-                                                ) {
+                                                if (!isDivisionKey.current && i > 1) {
                                                     tool.setPos(i)
                                                     isDivisionKey.current = true
                                                     e.preventDefault()
                                                 } else {
                                                     tool.hide()
-                                                    isDivisionKey.current =
-                                                        false
+                                                    isDivisionKey.current = false
                                                 }
                                             } else {
                                                 tool.hide()
@@ -267,10 +247,7 @@ export const Editor = ({
                                         },
 
                                         onBackspace() {
-                                            if (
-                                                e.currentTarget.value.length ==
-                                                0
-                                            ) {
+                                            if (e.currentTarget.value.length == 0) {
                                                 if (i > 2) {
                                                     removeAt(i)
                                                     setFocusedBlock(i - 1)
@@ -312,11 +289,7 @@ export const Editor = ({
                                         },
 
                                         onArrowLeft() {
-                                            if (
-                                                i > 0 &&
-                                                e.currentTarget
-                                                    .selectionStart == 0
-                                            ) {
+                                            if (i > 0 && e.currentTarget.selectionStart == 0) {
                                                 setFocusedBlock(i - 1)
                                                 setBlocks(blocks.slice(0))
                                                 e.preventDefault()
@@ -326,8 +299,7 @@ export const Editor = ({
                                         onArrowRight() {
                                             if (
                                                 i < blocks.length - 1 &&
-                                                e.currentTarget
-                                                    .selectionStart ==
+                                                e.currentTarget.selectionStart ==
                                                     e.currentTarget.value.length
                                             ) {
                                                 setFocusedBlock(i + 1)
@@ -345,31 +317,17 @@ export const Editor = ({
                                                 )
                                             )
                                                 return
-                                            const start =
-                                                e.currentTarget.selectionStart
-                                            const end =
-                                                e.currentTarget.selectionEnd
+                                            const start = e.currentTarget.selectionStart
+                                            const end = e.currentTarget.selectionEnd
                                             if (start == end) return
-                                            if (
-                                                block.linkPlaceInvalid(
-                                                    start,
-                                                    end
-                                                )
-                                            ) {
+                                            if (block.linkPlaceInvalid(start, end)) {
                                                 alert(
                                                     'There is already a URL between the range!'
                                                 )
                                                 return
                                             }
-                                            if (
-                                                block.linkWordInvalid(
-                                                    start,
-                                                    end
-                                                )
-                                            ) {
-                                                alert(
-                                                    'You have to select a full word!'
-                                                )
+                                            if (block.linkWordInvalid(start, end)) {
+                                                alert('You have to select a full word!')
                                                 return
                                             }
                                             e.currentTarget.setSelectionRange(
@@ -388,10 +346,7 @@ export const Editor = ({
                                                     `Are you sure to add\nWord: ${block.content.slice(
                                                         start,
                                                         end
-                                                    )}\nURL: ${url.slice(
-                                                        0,
-                                                        40
-                                                    )}...`
+                                                    )}\nURL: ${url.slice(0, 40)}...`
                                                 )
                                                 if (ok) {
                                                     block.links.push({
@@ -399,17 +354,10 @@ export const Editor = ({
                                                         end,
                                                         url,
                                                     })
-                                                    alert(
-                                                        'Succefully embedded!'
-                                                    )
-                                                } else
-                                                    alert(
-                                                        'Cancelled: URL embedding!'
-                                                    )
+                                                    alert('Succefully embedded!')
+                                                } else alert('Cancelled: URL embedding!')
                                             } else {
-                                                alert(
-                                                    'Cancelled: URL embedding!'
-                                                )
+                                                alert('Cancelled: URL embedding!')
                                             }
                                         },
 
@@ -423,9 +371,7 @@ export const Editor = ({
                                             )
                                                 return
                                             if (block.links.length == 0) {
-                                                alert(
-                                                    'There is no URL embedded!'
-                                                )
+                                                alert('There is no URL embedded!')
                                             } else {
                                                 alert(
                                                     `Words and URLs\n${block.links

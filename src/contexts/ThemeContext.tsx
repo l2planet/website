@@ -1,10 +1,4 @@
-import {
-    createContext,
-    useCallback,
-    useContext,
-    useEffect,
-    useMemo,
-} from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { ChildrenProp } from '../types/globals'
 
@@ -30,8 +24,7 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
         return theme === 'auto'
             ? (() => {
                   if (typeof window !== 'undefined')
-                      return window.matchMedia('(prefers-color-scheme: dark)')
-                          .matches
+                      return window.matchMedia('(prefers-color-scheme: dark)').matches
                   else return false
               })()
                 ? true
@@ -69,8 +62,7 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
         setTheme((theme) => {
             switch (theme) {
                 case 'auto': {
-                    return window.matchMedia('(prefers-color-scheme: dark)')
-                        .matches
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches
                         ? 'light'
                         : 'dark'
                 }

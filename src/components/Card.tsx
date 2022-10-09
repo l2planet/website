@@ -1,11 +1,6 @@
 import { wrap } from 'module'
 import { wrapn } from 'wrapn'
-import {
-    APIGetChain,
-    InternalChain,
-    InternalLayer2,
-    InternalProject,
-} from '../types/Api'
+import { APIGetChain, InternalChain, InternalLayer2, InternalProject } from '../types/Api'
 import { StatusProps } from '../types/globals'
 import { AProjects } from './A'
 import { Img } from './Image'
@@ -133,7 +128,7 @@ export const CardLayer2 = (props: InternalLayer2) => (
     <Link a={ALayer2} href={`/layer2s?id=${props.id}`}>
         <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`} />
         <NameLayer2>{props.name}</NameLayer2>
-        <Liveness status={props.status}/>
+        <Liveness status={props.status} />
     </Link>
 )
 
@@ -170,22 +165,26 @@ const ALayer2 = wrapn('a')`
 `
 
 const Liveness = ({ status }: StatusProps) => {
-    return <DivLiveness>
-        {status  == 'live' ? <>
-            <DotGreen/>
-            <TextGreen>live</TextGreen>
-        </> :
-        status == 'close' ? <>
-            <DotRed/>
-            <TextRed>close</TextRed>
-        </> :
-        <>
-            <DotYellow/>
-            <TextYellow>testnet</TextYellow>
-        </>
-        }
-    </DivLiveness>
-    
+    return (
+        <DivLiveness>
+            {status == 'live' ? (
+                <>
+                    <DotGreen />
+                    <TextGreen>live</TextGreen>
+                </>
+            ) : status == 'close' ? (
+                <>
+                    <DotRed />
+                    <TextRed>close</TextRed>
+                </>
+            ) : (
+                <>
+                    <DotYellow />
+                    <TextYellow>testnet</TextYellow>
+                </>
+            )}
+        </DivLiveness>
+    )
 }
 
 const DivLiveness = wrapn('div')`
@@ -251,9 +250,7 @@ export const CardProject = (props: InternalProject) => (
         <DivProjectsFocusable>
             <Flex4ProjectCategories>
                 {props.categories.map((cat) => (
-                    <CategoryProject key={`${props.name}${cat}`}>
-                        {cat}
-                    </CategoryProject>
+                    <CategoryProject key={`${props.name}${cat}`}>{cat}</CategoryProject>
                 ))}
             </Flex4ProjectCategories>
             <Flex4ProjectLinks>
@@ -263,11 +260,7 @@ export const CardProject = (props: InternalProject) => (
                     </Link>
                 )}
                 {props.twitter && (
-                    <Link
-                        a={AProjects}
-                        href={`https://twitter.com/${props.twitter}`}
-                        newTab
-                    >
+                    <Link a={AProjects} href={`https://twitter.com/${props.twitter}`} newTab>
                         Twitter
                     </Link>
                 )}

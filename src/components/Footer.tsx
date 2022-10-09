@@ -13,25 +13,13 @@ export const Footer = () => {
                     <QuarterBox>
                         <SecondaryTitle>Social Media</SecondaryTitle>
                         <SecondarySubBox>
-                            <Link
-                                a={A}
-                                href='https://twitter.com/layer2planet'
-                                newTab
-                            >
+                            <Link a={A} href='https://twitter.com/layer2planet' newTab>
                                 Twitter
                             </Link>
-                            <Link
-                                a={A}
-                                href='https://www.youtube.com/c/L2Planet'
-                                newTab
-                            >
+                            <Link a={A} href='https://www.youtube.com/c/L2Planet' newTab>
                                 YouTube
                             </Link>
-                            <Link
-                                a={A}
-                                href='https://discord.com/layer2planet'
-                                newTab
-                            >
+                            <Link a={A} href='https://discord.com/layer2planet' newTab>
                                 Discord
                             </Link>
                         </SecondarySubBox>

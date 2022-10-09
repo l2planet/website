@@ -5,11 +5,7 @@ import { SEO } from '../components/SEO'
 const Donate: NextPage = () => {
     return (
         <>
-            <SEO
-                title='L2 Planet | Donate'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | Donate' description='L2 Planet' favicon='/favicon.ico' />
         </>
     )
 }

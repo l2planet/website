@@ -8,16 +8,9 @@ import {
     Flex4ProjectsGrid4Projects,
     Grid4ProjectsProjects,
 } from '../components/Div'
-import {
-    HProjects,
-    HProjectsL2,
-    HSelect,
-} from '../components/H'
+import { HProjects, HProjectsL2, HSelect } from '../components/H'
 import { Img } from '../components/Image'
-import {
-    SectionProjectsIntro,
-    SectionProjectsProjects,
-} from '../components/Section'
+import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section'
 import { Select } from '../components/Select'
 import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
@@ -34,9 +27,7 @@ const Layer2: NextPage = () => {
     const projects = useMemo(
         () =>
             filter
-                ? l2?.projects.filter((project) =>
-                      project.categories.includes(filter)
-                  )
+                ? l2?.projects.filter((project) => project.categories.includes(filter))
                 : l2?.projects,
         [l2, filter]
     )
@@ -53,11 +44,7 @@ const Layer2: NextPage = () => {
                 <HProjects>Projects on</HProjects>
                 <DivMeta>
                     <HProjectsL2>{l2?.name || 'Layer 2'}</HProjectsL2>
-                    <Img
-                        alt={`${l2?.name} Logo`}
-                        img={ImgL2}
-                        src={l2?.icon || SPARE_ICON}
-                    />
+                    <Img alt={`${l2?.name} Logo`} img={ImgL2} src={l2?.icon || SPARE_ICON} />
                 </DivMeta>
             </SectionProjectsIntro>
 
@@ -73,24 +60,14 @@ const Layer2: NextPage = () => {
                     {projects?.at(0) ? (
                         <>
                             <Grid4ProjectsProjects>
-                                {projects
-                                    ?.slice(projects.length / 2)
-                                    .map((project) => (
-                                        <CardProject
-                                            key={project.name}
-                                            {...project}
-                                        />
-                                    ))}
+                                {projects?.slice(projects.length / 2).map((project) => (
+                                    <CardProject key={project.name} {...project} />
+                                ))}
                             </Grid4ProjectsProjects>
                             <Grid4ProjectsProjects>
-                                {projects
-                                    ?.slice(0, projects.length / 2)
-                                    .map((project) => (
-                                        <CardProject
-                                            key={project.name}
-                                            {...project}
-                                        />
-                                    ))}
+                                {projects?.slice(0, projects.length / 2).map((project) => (
+                                    <CardProject key={project.name} {...project} />
+                                ))}
                             </Grid4ProjectsProjects>
                         </>
                     ) : (

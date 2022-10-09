@@ -1,15 +1,5 @@
-import {
-    createContext,
-    useCallback,
-    useContext,
-    useEffect,
-    useState,
-} from 'react'
-import {
-    InternalChain,
-    InternalLayer2,
-    InternalNewsletter,
-} from '../types/Api'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
+import { InternalChain, InternalLayer2, InternalNewsletter } from '../types/Api'
 import { ChildrenProp, TVLTableData } from '../types/globals'
 import API from '../api.json'
 import { ApiManager } from '../classes/ApiManager'
@@ -93,7 +83,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
         } else {
             return currentLayer2
         }
-    }, [manager, go404,router])
+    }, [manager, go404, router])
 
     const useNewsletter = useCallback(() => {
         return manager?.getNewsletter()
@@ -103,9 +93,8 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
         return manager?.getTVLs()
     }, [manager])
 
-
     useEffect(() => {
-        (async () => {
+        ;(async () => {
             try {
                 const apiData = await getApiData()
                 if (apiData?.chains !== undefined) {
@@ -127,7 +116,6 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
                 useLayer2WithProjects,
                 useNewsletter,
                 useTVLs,
-                
             }}
         >
             {children}

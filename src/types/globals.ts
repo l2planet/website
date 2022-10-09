@@ -5,11 +5,7 @@ export interface ChildrenProp {
     children: ReactNode
 }
 
-export type RawFormData =
-    | RawFormChain
-    | RawFormLayer2
-    | RawFormProject
-    | RawFormAuth
+export type RawFormData = RawFormChain | RawFormLayer2 | RawFormProject | RawFormAuth
 
 export interface FormProps<T extends RawFormData> {
     onSubmit: (formData: T) => void
@@ -28,11 +24,9 @@ export interface ChartDataItem {
     v?: number
 }
 
-
 export interface StatusProps {
     status: 'live' | 'testnet' | 'close'
 }
-
 
 export type TVLTableData = {
     icon: string

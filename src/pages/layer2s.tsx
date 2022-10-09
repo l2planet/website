@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import { wrapn } from 'wrapn'
 import { ALayer2, AL2Projects } from '../components/A'
-const Chart = dynamic(() => import('../components/Chart'), {ssr: false})
+const Chart = dynamic(() => import('../components/Chart'), { ssr: false })
 import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
 import { HLayer2, HLayer2Common } from '../components/H'
 import { Img } from '../components/Image'

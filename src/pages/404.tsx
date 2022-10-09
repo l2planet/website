@@ -1,12 +1,14 @@
-import { wrapn } from "wrapn"
-import { H1 } from "../components/H"
-import { Link } from "../components/Link"
+import { wrapn } from 'wrapn'
+import { H1 } from '../components/H'
+import { Link } from '../components/Link'
 
 function Page404() {
     return (
         <>
             <H1>404 Not Found</H1>
-            <Link a={A} href='/'>Go back home</Link>
+            <Link a={A} href='/'>
+                Go back home
+            </Link>
         </>
     )
 }

@@ -1,9 +1,7 @@
 import { wrapn } from 'wrapn'
 import { Block } from '../Editor/types'
 
-export const Heading2 = ({ block }: { block: Block }) => (
-    <H2>{block.content}</H2>
-)
+export const Heading2 = ({ block }: { block: Block }) => <H2>{block.content}</H2>
 
 const H2 = wrapn('h3')`
     font-extrabold

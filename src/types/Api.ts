@@ -207,7 +207,6 @@ export interface InternalProject {
     twitter?: string
 }
 
-
 export interface InternalNewsletter {
     author: string
     blocks: Block[]

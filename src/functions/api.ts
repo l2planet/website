@@ -141,9 +141,8 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
         const jwt = getJwtCookie()
         const data = JSON.stringify({
             username: localStorage.getItem('username') ?? '',
-            newsletter: JSON.stringify(newsletterBlocks)
+            newsletter: JSON.stringify(newsletterBlocks),
         })
-        
 
         const res = await fetch('https://api.l2planet.xyz/auth/newsletter', {
             method: 'POST',
@@ -165,8 +164,6 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
         throw new Error('An unknown error is occured.')
     }
 }
-
-
 
 /** Returns primary API data. */
 export async function getApiData(): Promise<APIPrimaryData> {
