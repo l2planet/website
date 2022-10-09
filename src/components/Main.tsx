@@ -7,6 +7,7 @@ export const Main = wrapn('main')`
     self-center
 
     flex-1
+    min-h-screen
     w-full
     max-w-6xl
     
