@@ -8,7 +8,7 @@ import {
     InternalNewsletter,
     InternalProject,
 } from '../types/Api'
-import { StatusProps, TVLTableData } from '../types/globals'
+import { StatusProps, FeesTableData } from '../types/globals'
 
 function getPaths() {
     return location.pathname.split('/').slice(1)
@@ -130,13 +130,14 @@ export class ApiManager {
         }
     }
 
-    getTVLs(): TVLTableData {
-        const data: TVLTableData = []
+    getTVLs(): FeesTableData {
+        const data: FeesTableData = []
 
         for (const l2 of Object.values(this.data.layer2s)) {
             data.push({
                 name: (l2 as APIGetLayer2).name,
-                tvl: parseInt(`${(l2 as APIGetLayer2).tvl}`).toLocaleString(),
+                send: 0,
+                swap: 0,
                 icon: (l2 as APIGetLayer2).icon,
             })
         }

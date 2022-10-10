@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { InternalChain, InternalLayer2, InternalNewsletter } from '../types/Api'
-import { ChildrenProp, TVLTableData } from '../types/globals'
+import { ChildrenProp, FeesTableData } from '../types/globals'
 import API from '../api.json'
 import { ApiManager } from '../classes/ApiManager'
 import { useRouter } from 'next/router'
@@ -14,7 +14,7 @@ interface ApiContextState {
     useChains: () => InternalChain[]
     useLayer2s: () => InternalLayer2[]
     useNewsletter: () => InternalNewsletter | undefined
-    useTVLs: () => TVLTableData | undefined
+    useTVLs: () => FeesTableData | undefined
 }
 
 /** The context that stores `ApiContextState`. */

@@ -28,10 +28,11 @@ export interface StatusProps {
     status: 'live' | 'testnet' | 'close'
 }
 
-export type TVLTableData = {
+export type FeesTableData = {
     icon: string
     name: string
-    tvl: string
+    send: number
+    swap: number
 }[]
 
 export type TPSTableData = {
