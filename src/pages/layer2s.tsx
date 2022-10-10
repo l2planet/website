@@ -21,9 +21,6 @@ import { Videos } from '../components/Videos'
 import { useApi } from '../contexts/ApiContext'
 import { parsePrice } from '../functions/parsePrice'
 
-const SPARE_ICON =
-    'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
-
 const Layer2: NextPage = () => {
     const { useLayer2 } = useApi()
 
@@ -37,94 +34,94 @@ const Layer2: NextPage = () => {
                 favicon='/favicon.ico'
             />
 
-            <SectionLayer2Intro>
-                <DivMeta>
-                    <DivName>
-                        <Img
-                            alt={`${l2?.name || 'Layer 2'} Logo`}
-                            img={ImgLayer2}
-                            src={l2?.icon || SPARE_ICON}
-                        />
-                        <HLayer2>{l2?.name || 'Layer 2'}</HLayer2>
-                    </DivName>
-                    <DivLinks>
-                        <Row4Layer2Links>
-                            {l2?.website && (
-                                <Link a={ALayer2} href={l2.website} newTab>
-                                    Website
+            {l2 && (
+                <>
+                    <SectionLayer2Intro>
+                        <DivMeta>
+                            <DivName>
+                                <Img alt={`${l2.name} Logo`} img={ImgLayer2} src={l2.icon} />
+                                <HLayer2>{l2.name}</HLayer2>
+                            </DivName>
+                            <DivLinks>
+                                <Row4Layer2Links>
+                                    {l2.website && (
+                                        <Link a={ALayer2} href={l2.website} newTab>
+                                            Website
+                                        </Link>
+                                    )}
+                                    {l2.twitter ? (
+                                        <Link
+                                            a={ALayer2}
+                                            href={`https://twitter.com/${l2.twitter}`}
+                                            newTab
+                                        >
+                                            Twitter
+                                        </Link>
+                                    ) : (
+                                        <Link a={ALayer2} href='#'>
+                                            Twitter
+                                        </Link>
+                                    )}
+                                    {l2.gecko && l2.price ? (
+                                        <Link
+                                            a={ALayer2}
+                                            href={`https://coingecko.com/en/coins/${l2.gecko}`}
+                                            newTab
+                                        >
+                                            ${parsePrice(l2.price)}
+                                        </Link>
+                                    ) : (
+                                        <Link a={ALayer2} href='#'>
+                                            No Token
+                                        </Link>
+                                    )}
+                                </Row4Layer2Links>
+                                <Link a={AL2Projects} href={`/projects?id=${l2?.id}`}>
+                                    Projects on {l2?.name || 'Layer 2'}
                                 </Link>
-                            )}
-                            {l2?.twitter ? (
-                                <Link
-                                    a={ALayer2}
-                                    href={`https://twitter.com/${l2.twitter}`}
-                                    newTab
-                                >
-                                    Twitter
-                                </Link>
-                            ) : (
-                                <Link a={ALayer2} href='#'>
-                                    Twitter
-                                </Link>
-                            )}
-                            {l2?.gecko && l2?.price ? (
-                                <Link
-                                    a={ALayer2}
-                                    href={`https://coingecko.com/en/coins/${l2.gecko}`}
-                                    newTab
-                                >
-                                    ${parsePrice(l2.price)}
-                                </Link>
-                            ) : (
-                                <Link a={ALayer2} href='#'>
-                                    No Token
-                                </Link>
-                            )}
-                        </Row4Layer2Links>
-                        <Link a={AL2Projects} href={`/projects?id=${l2?.id}`}>
-                            Projects on {l2?.name || 'Layer 2'}
-                        </Link>
-                    </DivLinks>
-                </DivMeta>
-                <DivDescription>
-                    <DivCategory>
-                        {l2?.categories.map((category) => (
-                            <Category key={category}>{category}</Category>
-                        ))}
-                    </DivCategory>
-                    <HLayer2Common>Description:</HLayer2Common>
-                    <PLayer2Description>{l2?.description}</PLayer2Description>
-                </DivDescription>
-            </SectionLayer2Intro>
+                            </DivLinks>
+                        </DivMeta>
 
-            <SectionLayer2Charts>
-                <DivTVL>
-                    <HLayer2Common>TVL - Total Value Locked</HLayer2Common>
-                    {l2?.tvls && <Chart data={l2.tvls} />}
-                </DivTVL>
-            </SectionLayer2Charts>
+                        <DivDescription>
+                            <DivCategory>
+                                {l2.categories.map((category) => (
+                                    <Category key={category}>{category}</Category>
+                                ))}
+                            </DivCategory>
+                            <PLayer2Description>{l2.description}</PLayer2Description>
+                        </DivDescription>
+                    </SectionLayer2Intro>
 
-            <SectionLayer2Social>
-                <HLayer2Common>Social:</HLayer2Common>
-                <DivSocial>
-                    <Timeline account={l2?.twitter} />
-                    <Videos videoIds={l2?.videos || []} />
-                </DivSocial>
-            </SectionLayer2Social>
+                    <SectionLayer2Charts>
+                        <DivTVL>
+                            <HLayer2Common>TVL - Total Value Locked:</HLayer2Common>
+                            {l2.tvls && <Chart data={l2.tvls} />}
+                        </DivTVL>
+                    </SectionLayer2Charts>
 
-            <SectionLayer2Investors>
-                <HLayer2Common>Investors:</HLayer2Common>
-                <Grid4Layer2Investors>
-                    {l2?.investors.map((investor) => (
-                        <Img
-                            alt='Investor Logo'
-                            img={ImgInvestor}
-                            src={investor}
-                            key={investor}
-                        />
-                    ))}
-                </Grid4Layer2Investors>
-            </SectionLayer2Investors>
+                    <SectionLayer2Social>
+                        <HLayer2Common>Social:</HLayer2Common>
+                        <DivSocial>
+                            <Timeline account={l2.twitter} />
+                            <Videos videoIds={l2.videos || []} />
+                        </DivSocial>
+                    </SectionLayer2Social>
+
+                    <SectionLayer2Investors>
+                        <HLayer2Common>Investors:</HLayer2Common>
+                        <Grid4Layer2Investors>
+                            {l2?.investors.map((investor) => (
+                                <Img
+                                    alt='Investor Logo'
+                                    img={ImgInvestor}
+                                    src={investor}
+                                    key={investor}
+                                />
+                            ))}
+                        </Grid4Layer2Investors>
+                    </SectionLayer2Investors>
+                </>
+            )}
         </>
     )
 }
@@ -132,7 +129,7 @@ const Layer2: NextPage = () => {
 export default Layer2
 
 const DivMeta = wrapn('div')`
-    space-y-6
+    space-y-5
     min-w-fit
 `
 
@@ -159,7 +156,7 @@ const DivLinks = wrapn('div')`
     flex-col
     w-fit
     
-    space-y-6
+    space-y-4
 `
 
 const DivDescription = wrapn('div')`
@@ -167,7 +164,7 @@ const DivDescription = wrapn('div')`
 
     w-full
 
-    space-y-4
+    space-y-2
 `
 
 const DivCategory = wrapn('p')`
@@ -209,10 +206,8 @@ const DivSocial = wrapn('div')`
     flex-col
     md:flex-row
 
-    space-y-16
-    sm:space-y-20
+    space-y-8
+    sm:space-y-10
     md:space-y-0
     md:space-x-8
-    lg:space-x-10
-    xl:space-x-14
 `

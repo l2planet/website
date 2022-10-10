@@ -26,8 +26,8 @@ export const SelectionMobile = (props: SelectProps) => (
 const MobileSelection = wrapn('select')`
     lg:hidden
 
-    h-14
-    w-60
+    h-11
+    w-44
     
     px-6
 
@@ -94,7 +94,7 @@ const DesktopSelection = wrapn('div')`
 
     items-center
 
-    h-12
+    h-11
     w-60
     
     px-5
@@ -158,7 +158,7 @@ const DesktopOption = wrapn('div')`
     flex
     items-center
 
-    h-12
+    h-11
 
 
     px-5

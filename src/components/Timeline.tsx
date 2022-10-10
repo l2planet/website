@@ -18,7 +18,7 @@ export const Timeline = ({ account }: { account?: string }) => {
                         }}
                         options={{
                             theme: isDark ? 'dark' : 'light',
-                            height: 500,
+                            height: 420,
                         }}
                         onLoad={() => setLoading(false)}
                     />
@@ -35,15 +35,14 @@ const Div = wrapn('div')`
     flex
     flex-col
 
+    h-[420px]
     w-full
     md:max-w-xs
     lg:max-w-[406px]
-    h-[500px]
+    bg-gris-1
+	dark:bg-[#0b1221]
 
     rounded-xl
-
-    bg-gris-1
-    dark:bg-gris-8
 `
 
 const Text = wrapn('p')`

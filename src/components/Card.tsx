@@ -137,16 +137,17 @@ const ALayer2 = wrapn('a')`
     flex
     items-center
 
-    space-x-3.5
+    space-x-2.5
+    
 
-    h-18
-    md:h-20
-    xl:h-22
+    h-12
+    sm:h-13
+    md:h-14
 
-    p-3.5
-    md:p-4
+    p-2.5
+    sm:p-3
 
-    rounded-2xl
+    rounded-xl
 
     border
     border-pri-3
@@ -190,18 +191,15 @@ const Liveness = ({ status }: StatusProps) => {
 const DivLiveness = wrapn('div')`
     flex
     items-center
-    space-x-2
+    space-x-1.5
     absolute
-    top-3 right-3
+    top-2.5 right-2.5
 `
 
 const Dot = wrapn('div')`
-    h-3
-    w-3
+    h-2
+    w-2
     rounded-full
-    border
-    border-pri-3
-    dark:border-pri-7
 `
 
 const Text = wrapn('span')`
@@ -210,30 +208,33 @@ const Text = wrapn('span')`
 `
 
 const TextGreen = wrapn(Text)`
-    text-emerald-500
+    text-green-500
 `
 const TextYellow = wrapn(Text)`
-    text-yellow-500
+    text-amber-500
 `
 const TextRed = wrapn(Text)`
     text-red-500
 `
 
 const DotGreen = wrapn(Dot)`
-    bg-emerald-500
+    bg-green-500
 `
 
 const DotYellow = wrapn(Dot)`
-    bg-yellow-500
+    bg-amber-500
 `
 
 const DotRed = wrapn(Dot)`
-    bg-red-500/70
+    bg-red-500
 `
 
 const NameLayer2 = wrapn('h2')`
     font-semibold
-    text-2xl
+    text-lg
+    md:text-xl
+    lg:text-lg
+    xl:text-xl
 `
 
 const ImgLayer2 = wrapn('img')`

@@ -53,7 +53,7 @@ export const SectionChainL2s = wrapn('section')`
     flex
     flex-col
 
-    space-y-9
+    space-y-5
 `
 
 // [layer2] pages
@@ -64,7 +64,7 @@ export const SectionLayer2Intro = wrapn(Section)`
     lg:flex-row
     lg:items-top
 
-    space-y-10
+    space-y-4
     sm:space-y-14
     md:space-y-20
     lg:space-y-6
@@ -83,7 +83,7 @@ export const SectionLayer2Social = wrapn('section')`
     flex
     flex-col
 
-    space-y-4
+    space-y-3
 `
 
 export const SectionLayer2Investors = wrapn('section')`

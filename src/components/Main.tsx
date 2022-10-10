@@ -21,8 +21,7 @@ export const Main = wrapn('main')`
     md:py-4
     lg:py-5
 
-    space-y-10
-    sm:space-y-14
-    md:space-y-18
-    lg:space-y-20
+    space-y-8
+    sm:space-y-10
+    lg:space-y-12
 `

@@ -15,8 +15,8 @@ export const Grid4ChainPage = wrapn('div')`
     sm:grid-cols-2
     lg:grid-cols-3
 
-    gap-4
-    sm:gap-5
+    gap-3
+    sm:gap-3.5
 `
 
 // Divs for [layer2] pages
@@ -27,7 +27,7 @@ export const Row4Layer2Links = wrapn('div')`
 
     min-w-fit
     
-    gap-x-5
+    gap-x-3
     sm:gap-x-6
     gap-y-4
     sm:gap-y-5

@@ -18,7 +18,7 @@ export const Videos = ({ videoIds }: { videoIds: string[] }) => {
                     ))}
                 </>
             ) : (
-                <Text>There is no video</Text>
+                <Text>No video</Text>
             )}
         </Div>
     )
@@ -29,7 +29,9 @@ const Div = wrapn('div')`
     flex-col
 
 
-    h-[500px]
+    h-80
+    
+    sm:h-[420px]
     w-full
 
 
@@ -54,7 +56,7 @@ const Text = wrapn('p')`
     text-lg
 
     bg-gris-1
-    dark:bg-gris-8
+	dark:bg-[#0b1221]
 
     text-gris-6
     dark:text-gris-4

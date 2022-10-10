@@ -36,8 +36,9 @@ export const HSelect = wrapn('h2')`
 
 export const HLayer2 = wrapn('h1')`
     font-bold
+    break-all
 
-    text-5xl
+    text-3xl
     sm:text-6xl
     lg:text-5xl
 `
