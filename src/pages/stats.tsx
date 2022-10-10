@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Flex4StatsTables } from '../components/Div'
 import { SEO } from '../components/SEO'
-import { TableTPS, TableTVL } from '../components/Table'
+import { TableTPS, TableFees } from '../components/Table'
 import { useApi } from '../contexts/ApiContext'
 
 const Stats: NextPage = () => {
@@ -17,7 +17,7 @@ const Stats: NextPage = () => {
 
             {tvls && (
                 <Flex4StatsTables>
-                    <TableTVL data={tvls} />
+                    <TableFees data={tvls} />
                     <TableTPS
                         data={tvls.map((tvl) => ({ name: tvl.name, icon: tvl.icon, tps: '0' }))}
                     />
