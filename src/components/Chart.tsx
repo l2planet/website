@@ -146,7 +146,7 @@ const Chart = (props: { data: InternalLayer2['tvls'] }) => {
 
         addEventListener('resize', updateChart)
         return () => removeEventListener('resize', updateChart)
-    }, [isDark])
+    }, [isDark, updateChart])
 
     return <Div id='chart' />
 }
