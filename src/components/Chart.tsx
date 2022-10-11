@@ -14,7 +14,7 @@ import {
 import { useTheme } from '../contexts/ThemeContext'
 import { AxisOptions, Chart as ReactChart } from 'react-charts'
 
-const Chart = (props: { data: InternalLayer2['tvls'] }) => {
+const Chart = ({ data }: { data: ChartDataItem[] }) => {
     const { isDark } = useTheme()
 
     const updateChart = useCallback(() => {
@@ -94,7 +94,7 @@ const Chart = (props: { data: InternalLayer2['tvls'] }) => {
             lineWidth: 2,
         })
 
-        areaSeries.setData(DATA as any)
+        areaSeries.setData(data.map(d => ({time: parseInt(d.t as any) as any, value: d.v})))
 
         // update tooltip
         chart.subscribeCrosshairMove((param) => {
@@ -120,6 +120,8 @@ const Chart = (props: { data: InternalLayer2['tvls'] }) => {
                 style: 'currency',
                 currency: 'USD',
                 notation: 'compact',
+                minimumFractionDigits: 2,
+
             }).format(price)}`
 
             var y = param.point.y
@@ -179,66 +181,3 @@ function businessDayToString(businessDay: BusinessDay) {
 }
 
 const toolTipMargin = 15
-
-const DATA = [
-    {
-        time: 1665386084,
-        value: 1500
-    },
-    {
-        time: 1666387084,
-        value: 1450
-    },
-    {
-        time: 1667386084,
-        value: 1300
-    },
-    {
-        time: 1668386084,
-        value: 1700
-    },
-    {
-        time: 1669386084,
-        value: 2000
-    },
-    {
-        time: 1671386084,
-        value: 2100
-    },
-    {
-        time: 1672386084,
-        value: 1600
-    },
-    {
-        time: 1673386084,
-        value: 2300
-    },
-    {
-        time: 1674386084,
-        value: 1550
-    },
-    {
-        time: 1675386084,
-        value: 2100
-    },
-    {
-        time: 1676386084,
-        value: 1900
-    },
-    {
-        time: 1677386084,
-        value: 2000
-    },
-    {
-        time: 1678386084,
-        value: 2100
-    },
-    {
-        time: 1679386084,
-        value: 2300
-    },
-    {
-        time: 1680386084,
-        value: 2250
-    },
-]
