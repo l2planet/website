@@ -12,7 +12,6 @@ import {
     UTCTimestamp,
 } from 'lightweight-charts'
 import { useTheme } from '../contexts/ThemeContext'
-import { AxisOptions, Chart as ReactChart } from 'react-charts'
 
 const Chart = ({ data }: { data: ChartDataItem[] }) => {
     const { isDark } = useTheme()
