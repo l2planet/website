@@ -141,7 +141,7 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
         })
 
         htmlChart.appendChild(htmlTooltip)
-    }, [isDark])
+    }, [isDark, data])
 
     useEffect(() => {
         updateChart()
