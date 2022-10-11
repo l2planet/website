@@ -8,7 +8,7 @@ import {
     InternalNewsletter,
     InternalProject,
 } from '../types/Api'
-import { StatusProps, FeesTableData } from '../types/globals'
+import { StatusProps, FeesTableData, TPSTableData } from '../types/globals'
 
 function getPaths() {
     return location.pathname.split('/').slice(1)
@@ -64,6 +64,7 @@ export class ApiManager {
                     price: layer2.price,
                     tvl: layer2.tvl,
                     tvls: layer2.tvls,
+                    tps: layer2.tps,
                 }
             }
         }
@@ -130,11 +131,21 @@ export class ApiManager {
         }
     }
 
-    getTVLs(): FeesTableData {
-        const data: FeesTableData = []
+
+
+    getStats(): [FeesTableData,TPSTableData] {
+        const fees: FeesTableData = []
+        const tpss: TPSTableData = []
 
         for (const l2 of Object.values(this.data.layer2s)) {
-            data.push({
+            const tps = parseFloat((l2 as APIGetLayer2).tps)
+            tpss.push({
+                name: (l2 as APIGetLayer2).name,
+                icon: (l2 as APIGetLayer2).icon,
+                tps: Number.isNaN(tps) ? 0 : tps,
+            })
+
+            fees.push({
                 name: (l2 as APIGetLayer2).name,
                 send: 0,
                 swap: 0,
@@ -142,6 +153,6 @@ export class ApiManager {
             })
         }
 
-        return data
+        return [fees, tpss]
     }
 }

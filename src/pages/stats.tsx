@@ -8,18 +8,18 @@ import { TableTPS, TableFees } from '../components/Table'
 import { useApi } from '../contexts/ApiContext'
 
 const Stats: NextPage = () => {
-    const { useTVLs } = useApi()
-    const tvls = useTVLs()
+    const { useStats } = useApi()
+    const [fees, tpss] = useStats() ?? [];
 
     return (
         <>
             <SEO title='L2 Planet | Stats' description='L2 Planet' favicon='/favicon.ico' />
 
-            {tvls && (
+            {fees && tpss && (
                 <Flex4StatsTables>
-                    <TableFees data={tvls} />
+                    <TableFees data={fees} />
                     <TableTPS
-                        data={tvls.map((tvl) => ({ name: tvl.name, icon: tvl.icon, tps: '0' }))}
+                        data={tpss}
                     />
                 </Flex4StatsTables>
             )}

@@ -133,6 +133,7 @@ export interface APIGetLayer2 {
     investors: string[]
     price?: number
     tvl: number
+    tps: string
     tvls: ChartDataItem[]
 }
 
@@ -153,6 +154,7 @@ export interface InternalLayer2 {
     investors: string[]
     price?: number
     tvl: number
+    tps: string
     tvls: ChartDataItem[]
 }
 

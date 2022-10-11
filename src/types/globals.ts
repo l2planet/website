@@ -38,5 +38,5 @@ export type FeesTableData = {
 export type TPSTableData = {
     icon: string
     name: string
-    tps: string
+    tps: number
 }[]

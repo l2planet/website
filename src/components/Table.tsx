@@ -128,7 +128,11 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                                 {l2.name}
                             </DivRow>
                         </Td>
-                        <Td className='min-w-fit'>{l2.tps} tx/s</Td>
+                        <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
+                            notation: 'compact',
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        }).format(l2.tps)} tx/s</Td>
                     </TrCommon>
                 ))}
             </Table>
