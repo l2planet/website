@@ -94,7 +94,7 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
             lineWidth: 2,
         })
 
-        areaSeries.setData(data.map(d => ({time: parseInt(d.t as any) as any, value: d.v})))
+        areaSeries.setData(data.map(d => ({time: parseInt(d.t) as any, value: d.v})))
 
         // update tooltip
         chart.subscribeCrosshairMove((param) => {
