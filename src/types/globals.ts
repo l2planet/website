@@ -20,8 +20,8 @@ export interface LabeledInputProps {
 }
 
 export interface ChartDataItem {
-    t: string
-    v?: number
+    t: number
+    v: number
 }
 
 export interface StatusProps {

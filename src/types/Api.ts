@@ -133,13 +133,7 @@ export interface APIGetLayer2 {
     investors: string[]
     price?: number
     tvl: number
-    tvls: {
-        daily: ChartDataItem[] // max. 7 pcs of `ChartDataItem`
-        weekly: ChartDataItem[]
-        monthly: ChartDataItem[]
-        quarterly: ChartDataItem[]
-        yearly: ChartDataItem[]
-    }
+    tvls: ChartDataItem[]
 }
 
 // Gets calculated client side
@@ -159,13 +153,7 @@ export interface InternalLayer2 {
     investors: string[]
     price?: number
     tvl: number
-    tvls: {
-        daily: ChartDataItem[]
-        weekly: ChartDataItem[]
-        monthly: ChartDataItem[]
-        quarterly: ChartDataItem[]
-        yearly: ChartDataItem[]
-    }
+    tvls: ChartDataItem[]
 }
 
 export interface RawFormProject {
