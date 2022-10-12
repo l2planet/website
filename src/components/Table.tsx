@@ -20,9 +20,21 @@ export const TableFees = ({ data }: { data: FeesTableData }) => {
                                 {l2.name}
                             </DivRow>
                         </Td>
-                        <Td className='text-center'>$ {l2.send}</Td>
+                        <Td className='text-center'>{Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                            notation: 'compact',
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                        }).format(l2.send)}</Td>
                         
-                        <Td className='min-w-fit'>$ {l2.swap}</Td>
+                        <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                            notation: 'compact',
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                        }).format(l2.swap)}</Td>
                     </TrFeesCommon>
                 ))}
             </Table>
