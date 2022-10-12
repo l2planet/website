@@ -134,6 +134,8 @@ export interface APIGetLayer2 {
     price?: number
     tvl: number
     tps: string
+    send: string
+    swap: string
     tvls: ChartDataItem[]
 }
 
@@ -155,6 +157,8 @@ export interface InternalLayer2 {
     price?: number
     tvl: number
     tps: string
+    send: string
+    swap: string
     tvls: ChartDataItem[]
 }
 
