@@ -50,7 +50,7 @@ export const HLayer2Common = wrapn('h1')`
     sm:text-2xl
 `
 
-// projects pages
+// [projects] pages
 
 export const HProjects = wrapn('h1')`
     font-bold
@@ -67,4 +67,15 @@ export const HProjectsL2 = wrapn('h1')`
     sm:text-4xl
     md:text-5xl
     lg:text-6xl
+`
+
+
+/// stats page
+export const HStats = wrapn('h1')`
+    text-center
+
+    font-bold
+    text-5xl
+    sm:text-6xl
+    md:text-7xl
 `
