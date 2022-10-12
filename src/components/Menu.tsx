@@ -53,7 +53,7 @@ export const Menu = (props: { onClick: () => void }) => {
 const WMenu = wrapn('div')`
     lg:hidden
 
-    absolute
+    fixed
     top-16
     z-20
 
