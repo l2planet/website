@@ -65,6 +65,8 @@ export class ApiManager {
                     tvl: layer2.tvl,
                     tvls: layer2.tvls,
                     tps: layer2.tps,
+                    send: layer2.send,
+                    swap: layer2.swap,
                 }
             }
         }
@@ -139,16 +141,21 @@ export class ApiManager {
 
         for (const l2 of Object.values(this.data.layer2s)) {
             const tps = parseFloat((l2 as APIGetLayer2).tps)
+
             tpss.push({
                 name: (l2 as APIGetLayer2).name,
                 icon: (l2 as APIGetLayer2).icon,
                 tps: Number.isNaN(tps) ? 0 : tps,
             })
 
+            const send = parseFloat((l2 as APIGetLayer2).send)
+
+            const swap = parseFloat((l2 as APIGetLayer2).swap)
+
             fees.push({
                 name: (l2 as APIGetLayer2).name,
-                send: 0,
-                swap: 0,
+                send: Number.isNaN(send) ? 0 : send,
+                swap: Number.isNaN(swap) ? 0 : swap,
                 icon: (l2 as APIGetLayer2).icon,
             })
         }
