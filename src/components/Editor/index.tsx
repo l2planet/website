@@ -55,7 +55,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                     return {
                         type: block.type,
                         content: block.content,
-                        links: block.links,
+                        links: block.links.sort((a, b) => a.start - b.start),
                     }
                 } else {
                     switch (block.type) {
@@ -259,7 +259,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onElse() {},
+                                        onElse() { },
 
                                         onEnter() {
                                             if (i > 1) {
@@ -300,7 +300,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             if (
                                                 i < blocks.length - 1 &&
                                                 e.currentTarget.selectionStart ==
-                                                    e.currentTarget.value.length
+                                                e.currentTarget.value.length
                                             ) {
                                                 setFocusedBlock(i + 1)
                                                 setBlocks(blocks.slice(0))
