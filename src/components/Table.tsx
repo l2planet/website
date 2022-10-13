@@ -7,36 +7,42 @@ export const TableFees = ({ data }: { data: FeesTableData }) => {
     return (
         <Div>
             <Table>
-                <TrFeesMain>
-                    <Th className='col-span-2 text-left'>Layer 2</Th>
-                    <Th className='text-right'>Send</Th>
-                    <Th className='text-right'>Swap</Th>
-                </TrFeesMain>
-                {data.map((l2) => (
-                    <TrFeesCommon key={`${l2.name} row`}>
-                        <Td className='col-span-2'>
-                            <DivRow >
-                                <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
-                                {l2.name}
-                            </DivRow>
-                        </Td>
-                        <Td className='text-center'>{Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency: 'USD',
-                            notation: 'compact',
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                        }).format(l2.send)}</Td>
-                        
-                        <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency: 'USD',
-                            notation: 'compact',
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                        }).format(l2.swap)}</Td>
-                    </TrFeesCommon>
-                ))}
+                <thead>
+
+                    <TrFeesMain>
+                        <Th className='col-span-2 text-left'>Layer 2</Th>
+                        <Th className='text-right'>Send</Th>
+                        <Th className='text-right'>Swap</Th>
+                    </TrFeesMain>
+                </thead>
+                <Tbody>
+                    {data.map((l2) => (
+                        <TrFeesCommon key={`${l2.name} row`}>
+                            <Td className='col-span-2'>
+                                <DivRow >
+                                    <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
+                                    {l2.name}
+                                </DivRow>
+                            </Td>
+                            <Td className='text-center'>{Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                                notation: 'compact',
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            }).format(l2.send)}</Td>
+
+                            <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                                notation: 'compact',
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            }).format(l2.swap)}</Td>
+                        </TrFeesCommon>
+                    ))}
+                </Tbody>
+
             </Table>
         </Div>
     )
@@ -71,6 +77,12 @@ const Table = wrapn('table')`
 
     bg-gris-2/50
 	dark:bg-[#0b1221]
+`
+
+const Tbody = wrapn('tbody')`
+    flex
+    flex-col
+    space-y-2
 `
 
 const TrFees = wrapn('tr')`
@@ -128,25 +140,29 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
     return (
         <Div>
             <Table>
-                <TrMain>
-                    <Th>Layer 2</Th>
-                    <Th>TPS</Th>
-                </TrMain>
-                {data.map((l2) => (
-                    <TrCommon key={`${l2.name} row`}>
-                        <Td className='w-full'>
-                            <DivRow>
-                                <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
-                                {l2.name}
-                            </DivRow>
-                        </Td>
-                        <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
-                            notation: 'compact',
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2
-                        }).format(l2.tps)} tx/s</Td>
-                    </TrCommon>
-                ))}
+                <thead>
+                    <TrMain>
+                        <Th>Layer 2</Th>
+                        <Th>TPS</Th>
+                    </TrMain>
+                </thead>
+                <Tbody>
+                    {data.map((l2) => (
+                        <TrCommon key={`${l2.name} row`}>
+                            <Td className='w-full'>
+                                <DivRow>
+                                    <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
+                                    {l2.name}
+                                </DivRow>
+                            </Td>
+                            <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
+                                notation: 'compact',
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            }).format(l2.tps)} tx/s</Td>
+                        </TrCommon>
+                    ))}
+                </Tbody>
             </Table>
         </Div>
     )

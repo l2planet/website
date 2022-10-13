@@ -46,10 +46,12 @@ const ButtonIcon = wrapn(ButtonPrimary)`
 
 export const ButtonTheme = wrapn(ButtonIcon)`
     hidden lg:block
+    w-12
 `
 
 export const ButtonMenu = wrapn(ButtonIcon)`
     lg:hidden
+    w-12
 `
 
 export const ButtonMenuTheme = wrapn(ButtonPrimary)`

@@ -25,6 +25,7 @@ export const ANav = wrapn(APrimary)`
     text-none
 
     h-11
+    w-18
 
     py-1
     px-4
