@@ -160,6 +160,6 @@ export class ApiManager {
             })
         }
 
-        return [fees, tpss]
+        return [fees.sort((a, b) => a.swap - b.swap), tpss.sort((a, b) => b.tps - a.tps)]
     }
 }
