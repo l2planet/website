@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { APanel } from '../../components/A'
+import { wrapn } from 'wrapn'
+import { AModifyOld, APanel } from '../../components/A'
 import { H1 } from '../../components/H'
 import { Link } from '../../components/Link'
 import { SectionPanel } from '../../components/Section'
@@ -19,7 +20,7 @@ const Panel: NextPage = () => {
                     Chain
                 </Link>
                 <Link a={APanel} href='/members/new/layer2'>
-                    Layer2
+                    Layer 2
                 </Link>
                 <Link a={APanel} href='/members/new/project'>
                     Project
@@ -28,6 +29,10 @@ const Panel: NextPage = () => {
                     Newsletter
                 </Link>
             </SectionPanel>
+
+            <Link a={AModifyOld} href='/members/old'>
+                Modify Olds
+            </Link>
         </>
     )
 }
