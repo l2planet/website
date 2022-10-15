@@ -74,6 +74,10 @@ const Header = wrapn('header')`
     h-16
     px-8
 
+    border-b
+    border-gris-2
+    dark:border-gris-8
+
     bg-gris-0/50
     dark:bg-gris-9/50
     
