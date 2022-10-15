@@ -16,6 +16,6 @@ const B = wrapn('div')`
     text-left
     
     rounded-xl
-    gap-y-5 sm:gap-y-6 md:gap-y-7
+    gap-y-3 sm:gap-y-4 md:gap-y-5
     self-center w-full max-w-3xl
 `
