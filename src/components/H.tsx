@@ -69,7 +69,6 @@ export const HProjectsL2 = wrapn('h1')`
     lg:text-6xl
 `
 
-
 /// stats page
 export const HStats = wrapn('h1')`
     text-center

@@ -93,7 +93,7 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
             lineWidth: 2,
         })
 
-        areaSeries.setData(data.map(d => ({time: parseInt(d.t) as any, value: d.v})))
+        areaSeries.setData(data.map((d) => ({ time: parseInt(d.t) as any, value: d.v })))
 
         // update tooltip
         chart.subscribeCrosshairMove((param) => {
@@ -120,7 +120,6 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
                 currency: 'USD',
                 notation: 'compact',
                 minimumFractionDigits: 2,
-
             }).format(price)}`
 
             var y = param.point.y

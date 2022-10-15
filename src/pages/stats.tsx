@@ -10,7 +10,7 @@ import { useApi } from '../contexts/ApiContext'
 
 const Stats: NextPage = () => {
     const { useStats } = useApi()
-    const [fees, tpss] = useStats() ?? [];
+    const [fees, tpss] = useStats() ?? []
 
     return (
         <>
@@ -21,9 +21,7 @@ const Stats: NextPage = () => {
             {fees && tpss && (
                 <Flex4StatsTables>
                     <TableFees data={fees} />
-                    <TableTPS
-                        data={tpss}
-                    />
+                    <TableTPS data={tpss} />
                 </Flex4StatsTables>
             )}
         </>

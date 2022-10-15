@@ -189,3 +189,37 @@ export const APanel = wrapn('a')`
 
     duration-200
 `
+
+export const AModifyOld = wrapn('a')`
+    flex
+    items-center
+    justify-center
+
+    h-44
+    px-5
+    
+
+    rounded-lg2
+
+    font-semibold
+    text-3xl
+
+    border
+    border-pri-2
+    dark:border-pri-7
+
+    hover:border-pri-3
+    hover:dark:border-pri-6
+
+
+    bg-pri-2/50
+    dark:bg-pri-7/50
+
+    hover:bg-pri-3/50
+    hover:dark:bg-pri-6/50
+
+    hover:scale-95
+    active:scale-105
+
+    duration-200
+`

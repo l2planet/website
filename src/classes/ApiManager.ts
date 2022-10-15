@@ -133,9 +133,7 @@ export class ApiManager {
         }
     }
 
-
-
-    getStats(): [FeesTableData,TPSTableData] {
+    getStats(): [FeesTableData, TPSTableData] {
         const fees: FeesTableData = []
         const tpss: TPSTableData = []
 

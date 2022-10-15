@@ -27,11 +27,24 @@ export class BlockClass {
         const subsequentChar = this.content.at(end)
         console.log(previousChar, '--', subsequentChar)
 
-        if (start != 0 && (previousChar != ' ' &&  subsequentChar != '.' && subsequentChar != ',' && subsequentChar != '!') && previousChar) return true
+        if (
+            start != 0 &&
+            previousChar != ' ' &&
+            subsequentChar != '.' &&
+            subsequentChar != ',' &&
+            subsequentChar != '!' &&
+            previousChar
+        )
+            return true
 
-        if ((subsequentChar != ' ' && subsequentChar != '.' && subsequentChar != ',' && subsequentChar != '!' ) && subsequentChar) return true
-
-        
+        if (
+            subsequentChar != ' ' &&
+            subsequentChar != '.' &&
+            subsequentChar != ',' &&
+            subsequentChar != '!' &&
+            subsequentChar
+        )
+            return true
 
         return false
     }

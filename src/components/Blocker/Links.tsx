@@ -11,9 +11,11 @@ export const Links = ({ block }: { block: Block }) => (
                     <>
                         <Span key={`link ${i}`} href={link.url}>
                             {block.content.slice(link.start, link.end)}
-                        </Span>
-                        {' '}
-                        {block.content.slice(link.end, (block.links?.at(i + 1)?.start || undefined))}
+                        </Span>{' '}
+                        {block.content.slice(
+                            link.end,
+                            block.links?.at(i + 1)?.start || undefined
+                        )}
                     </>
                 ))}
             </>

@@ -8,7 +8,6 @@ export const TableFees = ({ data }: { data: FeesTableData }) => {
         <Div>
             <Table>
                 <thead>
-
                     <TrFeesMain>
                         <Th className='col-span-2 text-left'>Layer 2</Th>
                         <Th className='text-right'>Send</Th>
@@ -19,35 +18,37 @@ export const TableFees = ({ data }: { data: FeesTableData }) => {
                     {data.map((l2) => (
                         <TrFeesCommon key={`${l2.name} row`}>
                             <Td className='col-span-2'>
-                                <DivRow >
+                                <DivRow>
                                     <Img img={ImgIcon} alt={`${l2.name} logo`} src={l2.icon} />
                                     {l2.name}
                                 </DivRow>
                             </Td>
-                            <Td className='text-center'>{Intl.NumberFormat('en-US', {
-                                style: 'currency',
-                                currency: 'USD',
-                                notation: 'compact',
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2,
-                            }).format(l2.send)}</Td>
+                            <Td className='text-center'>
+                                {Intl.NumberFormat('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                    notation: 'compact',
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(l2.send)}
+                            </Td>
 
-                            <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
-                                style: 'currency',
-                                currency: 'USD',
-                                notation: 'compact',
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2,
-                            }).format(l2.swap)}</Td>
+                            <Td className='min-w-fit'>
+                                {Intl.NumberFormat('en-US', {
+                                    style: 'currency',
+                                    currency: 'USD',
+                                    notation: 'compact',
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(l2.swap)}
+                            </Td>
                         </TrFeesCommon>
                     ))}
                 </Tbody>
-
             </Table>
         </Div>
     )
 }
-
 
 const Div = wrapn('div')`
     w-full
@@ -134,7 +135,6 @@ const ImgIcon = wrapn('img')`
     h-5
 `
 
-
 // TPS table
 export const TableTPS = ({ data }: { data: TPSTableData }) => {
     return (
@@ -155,11 +155,14 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                                     {l2.name}
                                 </DivRow>
                             </Td>
-                            <Td className='min-w-fit'>{Intl.NumberFormat('en-US', {
-                                notation: 'compact',
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2
-                            }).format(l2.tps)} tx/s</Td>
+                            <Td className='min-w-fit'>
+                                {Intl.NumberFormat('en-US', {
+                                    notation: 'compact',
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                }).format(l2.tps)}{' '}
+                                tx/s
+                            </Td>
                         </TrCommon>
                     ))}
                 </Tbody>
@@ -167,7 +170,6 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
         </Div>
     )
 }
-
 
 const Tr = wrapn('tr')`
     flex
