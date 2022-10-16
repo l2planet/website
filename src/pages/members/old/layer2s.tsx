@@ -13,14 +13,19 @@ const NewChain: NextPage = () => {
 
     return (
         <>
-            <SEO title='L2 Planet | Modify Layer 2s' description='L2 Planet' favicon='/favicon.ico' />
+            <SEO
+                title='L2 Planet | Modify Layer 2s'
+                description='L2 Planet'
+                favicon='/favicon.ico'
+            />
 
             <H1>Modify Layer 2s</H1>
 
             <Grid4OldDatas>
-                {layer2s.map(l2 => <CardOldData {...l2} type='layer2' key={l2.id} />)}
+                {layer2s.map((l2) => (
+                    <CardOldData {...l2} type='layer2' key={l2.id} />
+                ))}
             </Grid4OldDatas>
-
         </>
     )
 }

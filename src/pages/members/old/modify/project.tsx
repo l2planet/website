@@ -8,7 +8,6 @@ import { useApi } from '../../../../contexts/ApiContext'
 import { sendChain } from '../../../../functions/api'
 
 const OldChains: NextPage = () => {
-
     const { useProject, useLayer2s } = useApi()
 
     const project = useProject()
@@ -16,7 +15,11 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-            <SEO title={`L2 Planet | Modify ${project?.name ?? 'Project'}`} description='L2 Planet' favicon='/favicon.ico' />
+            <SEO
+                title={`L2 Planet | Modify ${project?.name ?? 'Project'}`}
+                description='L2 Planet'
+                favicon='/favicon.ico'
+            />
 
             {project && (
                 <>
@@ -25,14 +28,10 @@ const OldChains: NextPage = () => {
                     <ProjectForm
                         project={project}
                         layer2s={layer2s}
-                        onSubmit={(formData) => {
-
-                        }}
+                        onSubmit={(formData) => {}}
                     />
                 </>
-
             )}
-
         </>
     )
 }

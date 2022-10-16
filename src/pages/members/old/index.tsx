@@ -11,7 +11,11 @@ import { SEO } from '../../../components/SEO'
 const Panel: NextPage = () => {
     return (
         <>
-            <SEO title='L2 Planet | Modify Olds' description='L2 Planet' favicon='/favicon.ico' />
+            <SEO
+                title='L2 Planet | Modify Olds'
+                description='L2 Planet'
+                favicon='/favicon.ico'
+            />
 
             <H1>Modify Olds</H1>
 

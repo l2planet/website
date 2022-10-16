@@ -8,21 +8,25 @@ import { useApi } from '../../../contexts/ApiContext'
 import { sendChain } from '../../../functions/api'
 
 const OldChains: NextPage = () => {
-
     const { useChains } = useApi()
 
     const chains = useChains()
 
     return (
         <>
-            <SEO title='L2 Planet | Modify Chains' description='L2 Planet' favicon='/favicon.ico' />
+            <SEO
+                title='L2 Planet | Modify Chains'
+                description='L2 Planet'
+                favicon='/favicon.ico'
+            />
 
             <H1>Modify Chains</H1>
 
             <Grid4OldDatas>
-                {chains.map(chain => <CardOldData {...chain} type='chain' key={chain.id} />)}
+                {chains.map((chain) => (
+                    <CardOldData {...chain} type='chain' key={chain.id} />
+                ))}
             </Grid4OldDatas>
-
         </>
     )
 }

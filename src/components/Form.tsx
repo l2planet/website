@@ -198,7 +198,10 @@ export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
 }
 
 /** Chain Form */
-export const ChainForm = ({ onSubmit, chain }: FormProps<RawFormChain> & { chain?: InternalChain }) => {
+export const ChainForm = ({
+    onSubmit,
+    chain,
+}: FormProps<RawFormChain> & { chain?: InternalChain }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -230,13 +233,19 @@ export const ChainForm = ({ onSubmit, chain }: FormProps<RawFormChain> & { chain
                     default={chain?.description}
                 />
             </DivForm>
-            <ButtonForm type='submit'>{chain ? 'Modify Old Chain' : 'Add a New Chain'}</ButtonForm>
+            <ButtonForm type='submit'>
+                {chain ? 'Modify Old Chain' : 'Add a New Chain'}
+            </ButtonForm>
         </Form>
     )
 }
 
 /** Layer2 Form */
-export const Layer2Form = ({ onSubmit, layer2, chains }: FormProps<RawFormLayer2> & { layer2: InternalLayer2, chains?: InternalChain[] }) => {
+export const Layer2Form = ({
+    onSubmit,
+    layer2,
+    chains,
+}: FormProps<RawFormLayer2> & { layer2: InternalLayer2; chains?: InternalChain[] }) => {
     const [bridges, setBridges] = useState<RawBridge[]>([
         {
             address: '',
@@ -257,7 +266,12 @@ export const Layer2Form = ({ onSubmit, layer2, chains }: FormProps<RawFormLayer2
                     label='Chain of the Layer 2'
                     tip='The ID of the chain this L2 is for.'
                     placeHolder='ethereum'
-                    default={chains?.filter(chain => (chain.layer2s as unknown as string[]).includes(layer2.id)).map(chain => chain.id).join(', ')}
+                    default={chains
+                        ?.filter((chain) =>
+                            (chain.layer2s as unknown as string[]).includes(layer2.id)
+                        )
+                        .map((chain) => chain.id)
+                        .join(', ')}
                 />
                 <LabeledInput
                     name='name'
@@ -344,7 +358,11 @@ export const Layer2Form = ({ onSubmit, layer2, chains }: FormProps<RawFormLayer2
 }
 
 /** Project Form */
-export const ProjectForm = ({ onSubmit, project, layer2s }: FormProps<RawFormProject> & { project: InternalProject, layer2s?: InternalLayer2[] }) => {
+export const ProjectForm = ({
+    onSubmit,
+    project,
+    layer2s,
+}: FormProps<RawFormProject> & { project: InternalProject; layer2s?: InternalLayer2[] }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -358,7 +376,12 @@ export const ProjectForm = ({ onSubmit, project, layer2s }: FormProps<RawFormPro
                     label='Layer 2 IDs'
                     tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
                     placeHolder='starket, arbitrum_one'
-                    default={layer2s?.filter(l2 => (l2.projects as unknown as string[]).includes(project.id)).map(l2 => l2.id).join(', ')}
+                    default={layer2s
+                        ?.filter((l2) =>
+                            (l2.projects as unknown as string[]).includes(project.id)
+                        )
+                        .map((l2) => l2.id)
+                        .join(', ')}
                 />
                 <LabeledInput
                     name='name'
@@ -407,5 +430,3 @@ export const ProjectForm = ({ onSubmit, project, layer2s }: FormProps<RawFormPro
         </Form>
     )
 }
-
-

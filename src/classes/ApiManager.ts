@@ -96,7 +96,6 @@ export class ApiManager {
         return null
     }
 
-
     getProject(id: string): InternalProject | null {
         const project = this.data.projects[id]
         if (project !== undefined) {
@@ -112,7 +111,6 @@ export class ApiManager {
         }
         return null
     }
-
 
     getAllChains(): InternalChain[] {
         return Object.entries(this.data.chains).map(([id, chain]: any) => ({

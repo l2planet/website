@@ -1,5 +1,10 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import { InternalChain, InternalLayer2, InternalNewsletter, InternalProject } from '../types/Api'
+import {
+    InternalChain,
+    InternalLayer2,
+    InternalNewsletter,
+    InternalProject,
+} from '../types/Api'
 import { ChildrenProp, FeesTableData, TPSTableData } from '../types/globals'
 import API from '../api.json'
 import { ApiManager } from '../classes/ApiManager'
@@ -30,7 +35,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     const [manager, setManager] = useState<ApiManager | null>(null)
 
     const router = useRouter()
-    const go404 = useCallback(() => { }, [])
+    const go404 = useCallback(() => {}, [])
 
     const useChains = useCallback(() => {
         if (manager === null) return []
@@ -115,9 +120,8 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
         }
     }, [manager, go404, router])
 
-
     useEffect(() => {
-        (async () => {
+        ;(async () => {
             try {
                 const apiData = await getApiData()
                 if (apiData?.chains !== undefined) {
