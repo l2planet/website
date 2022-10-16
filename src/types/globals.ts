@@ -17,6 +17,7 @@ export interface LabeledInputProps {
     tip: string
     placeHolder: string
     isPassword?: boolean
+    default?: string
 }
 
 export interface ChartDataItem {

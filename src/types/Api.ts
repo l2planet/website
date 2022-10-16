@@ -193,6 +193,7 @@ export interface APIGetProject {
 }
 
 export interface InternalProject {
+    id: string
     name: string
     icon: string
     description: string
