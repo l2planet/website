@@ -1,6 +1,7 @@
 import { Block } from '../components/Editor/types'
 import { getLayer2Categories, getProjectCategories } from '../functions/getAvailableCategories'
 import {
+    APIGetChain,
     APIGetLayer2,
     APIPrimaryData,
     InternalChain,
@@ -31,7 +32,7 @@ export class ApiManager {
             for (const projectId of l2.projects) {
                 const project = this.data.projects[projectId]
                 if (project !== undefined) {
-                    projects.push(project)
+                    projects.push({ ...project, id: projectId })
                 }
             }
             return projects
@@ -95,6 +96,24 @@ export class ApiManager {
         return null
     }
 
+
+    getProject(id: string): InternalProject | null {
+        const project = this.data.projects[id]
+        if (project !== undefined) {
+            return {
+                id: id,
+                name: project.name,
+                icon: project.icon,
+                description: project.description,
+                categories: project.categories,
+                twitter: project.twitter,
+                website: project.website,
+            }
+        }
+        return null
+    }
+
+
     getAllChains(): InternalChain[] {
         return Object.entries(this.data.chains).map(([id, chain]: any) => ({
             ...chain,
@@ -105,6 +124,13 @@ export class ApiManager {
     getAllLayer2s(): InternalLayer2[] {
         return Object.entries(this.data.layer2s).map(([id, layer2]: any) => ({
             ...layer2,
+            id,
+        }))
+    }
+
+    getAllProjects(): InternalProject[] {
+        return Object.entries(this.data.projects).map(([id, project]: any) => ({
+            ...project,
             id,
         }))
     }

@@ -75,3 +75,14 @@ export const Flex4StatsTables = wrapn('div')`
     lg:space-x-8
 
 `
+
+
+// Divs for `members/old/...` pages
+export const Grid4OldDatas = wrapn('div')`
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    lg:grid-cols-3
+
+    gap-5
+`

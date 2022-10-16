@@ -369,3 +369,12 @@ const CategoryProject = wrapn('p')`
     bg-gris-3
     dark:bg-gris-6
 `
+
+
+// Card for `members/old/..` pages
+export const CardOldData = (props: { id: string, icon: string, name: string, type: 'chain' | 'layer2' | 'project' }) => (
+    <Link a={ALayer2} href={`/members/old/modify/${props.type}?id=${props.id}`}>
+        <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`} />
+        <NameLayer2>{props.name}</NameLayer2>
+    </Link>
+)

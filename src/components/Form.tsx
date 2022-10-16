@@ -7,6 +7,9 @@ import {
     RawFormAuth,
     RawFormProject,
     RawBridge,
+    InternalChain,
+    InternalLayer2,
+    InternalProject,
 } from '../types/Api'
 import { FormProps, LabeledInputProps } from '../types/globals'
 import { Bridger } from './Bridger'
@@ -109,6 +112,7 @@ const LabeledInput = (props: LabeledInputProps) => {
             <Label>{props.label}</Label>
             <ToolTipText>{props.tip}</ToolTipText>
             <Input
+                defaultValue={props.default ?? ''}
                 placeholder={props.placeHolder}
                 name={props.name}
                 type={props.isPassword ? 'password' : 'text'}
@@ -125,6 +129,7 @@ const LabeledTextArea = (props: LabeledInputProps) => {
             <ToolTipText>{props.tip}</ToolTipText>
             <input readOnly hidden name={props.name} type='text' value={val} />
             <TextArea
+                defaultValue={props.default ?? ''}
                 placeholder={props.placeHolder}
                 onChange={(e) => setVal(e.target.value)}
             />
@@ -193,7 +198,7 @@ export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
 }
 
 /** Chain Form */
-export const ChainForm = ({ onSubmit }: FormProps<RawFormChain>) => {
+export const ChainForm = ({ onSubmit, chain }: FormProps<RawFormChain> & { chain?: InternalChain }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -208,27 +213,30 @@ export const ChainForm = ({ onSubmit }: FormProps<RawFormChain>) => {
                     label='Chain Name'
                     tip='The name of the chain.'
                     placeHolder='Ethereum'
+                    default={chain?.name}
                 />
                 <LabeledInput
                     name='icon'
                     label='Icon URL'
                     tip='URL of the chain icon as SVG.'
                     placeHolder='https://raw.githubusercontent.com/l2planet/images/main/chains/ethereum.svg'
+                    default={chain?.icon}
                 />
                 <LabeledTextArea
                     name='description'
                     label='Description'
                     tip='A short description about the chain.'
                     placeHolder='Ethereum is...'
+                    default={chain?.description}
                 />
             </DivForm>
-            <ButtonForm type='submit'>Add a New Chain</ButtonForm>
+            <ButtonForm type='submit'>{chain ? 'Modify Old Chain' : 'Add a New Chain'}</ButtonForm>
         </Form>
     )
 }
 
 /** Layer2 Form */
-export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
+export const Layer2Form = ({ onSubmit, layer2, chains }: FormProps<RawFormLayer2> & { layer2: InternalLayer2, chains?: InternalChain[] }) => {
     const [bridges, setBridges] = useState<RawBridge[]>([
         {
             address: '',
@@ -249,48 +257,56 @@ export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
                     label='Chain of the Layer 2'
                     tip='The ID of the chain this L2 is for.'
                     placeHolder='ethereum'
+                    default={chains?.filter(chain => (chain.layer2s as unknown as string[]).includes(layer2.id)).map(chain => chain.id).join(', ')}
                 />
                 <LabeledInput
                     name='name'
                     label='Layer 2 Name'
                     tip='The name of the layer 2.'
                     placeHolder='Arbitrum'
+                    default={layer2.name}
                 />
                 <LabeledInput
                     name='status'
                     label='Layer 2 Status'
                     tip='The status of the layer 2. (live or testnet or close)'
                     placeHolder='testnet'
+                    default={layer2.status}
                 />
                 <LabeledInput
                     name='icon'
                     label='Icon URL'
                     tip='URL of the layer 2 icon as SVG.'
                     placeHolder='https://example.com/atbitrum.svg'
+                    default={layer2.icon}
                 />
                 <LabeledTextArea
                     name='description'
                     label='Description'
                     tip='A long description about the layer 2.'
                     placeHolder='Arbitrum is...'
+                    default={layer2.description}
                 />
                 <LabeledInput
                     name='categories'
                     label='Categories'
                     tip='For example: SNARKs, STARKs, ZK, etc. (COMMA SEPERATED)'
                     placeHolder='SNARKs, ZK'
+                    default={layer2.categories.join(', ')}
                 />
                 <LabeledInput
                     name='website'
                     label='Website URL'
                     tip='URL of the official website.'
                     placeHolder='https://arbitrum.io'
+                    default={layer2.website}
                 />
                 <LabeledInput
                     name='evm_id'
                     label='EVM ID'
                     tip='EVM ID of the layer 2.'
                     placeHolder='35'
+                    default={layer2.gecko}
                 />
                 <Bridger bridges={bridges} setBridges={setBridges} />
                 <LabeledInput
@@ -298,24 +314,28 @@ export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/arbitrum'
+                    default={'https://twitter.com/' + layer2.twitter}
                 />
                 <LabeledInput
                     name='videos'
                     label='Video URLs'
                     tip='URLs of YouTube videos. (COMMA SEPERATED)'
                     placeHolder='https://youtu.be/ufKxCczY7-c , https://youtu.be/usDxRtl35-c'
+                    default={layer2.videos.join(', ')}
                 />
                 <LabeledInput
                     name='gecko'
                     label='Coin Gecko URL'
                     tip='Coin Gecko URL of the native coin of the layer 2. (OPTIONAL)'
                     placeHolder='https://www.coingecko.com/en/coins/arbitrum'
+                    default={layer2.gecko}
                 />
                 <LabeledInput
                     name='investors'
                     label='Investor Icons'
                     tip='URL of the icons of the investors. (COMMA SEPERATED)'
                     placeHolder='https://example.com/venture-capital-1.svg , https://example.com/venture-capital-2.svg'
+                    default={layer2.investors.join(', ')}
                 />
             </DivForm>
             <ButtonForm type='submit'>Add a New Layer 2</ButtonForm>
@@ -324,7 +344,7 @@ export const Layer2Form = ({ onSubmit }: FormProps<RawFormLayer2>) => {
 }
 
 /** Project Form */
-export const ProjectForm = ({ onSubmit }: FormProps<RawFormProject>) => {
+export const ProjectForm = ({ onSubmit, project, layer2s }: FormProps<RawFormProject> & { project: InternalProject, layer2s?: InternalLayer2[] }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -338,45 +358,54 @@ export const ProjectForm = ({ onSubmit }: FormProps<RawFormProject>) => {
                     label='Layer 2 IDs'
                     tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
                     placeHolder='starket, arbitrum_one'
+                    default={layer2s?.filter(l2 => (l2.projects as unknown as string[]).includes(project.id)).map(l2 => l2.id).join(', ')}
                 />
                 <LabeledInput
                     name='name'
                     label='Project Name'
                     tip='The name of the project.'
                     placeHolder='Uniswap'
+                    default={project.name}
                 />
                 <LabeledInput
                     name='icon'
                     label='Icon URL'
                     tip='URL of the project icon as SVG.'
                     placeHolder='https://example.com/uniswap.svg'
+                    default={project.icon}
                 />
                 <LabeledTextArea
                     name='description'
                     label='Description'
                     tip='Description about the project.'
                     placeHolder='Uniswap is...'
+                    default={project.description}
                 />
                 <LabeledInput
                     name='categories'
                     label='Categories'
                     tip='For example: DEX, NFT Marketplace, AMM, etc. (COMMA SEPERATED)'
                     placeHolder='DEX, AMM'
+                    default={project.categories.join(', ')}
                 />
                 <LabeledInput
                     name='website'
                     label='Website'
                     tip='URL of the official website. (OPTIONAL)'
                     placeHolder='https://uniswap.org'
+                    default={project.website}
                 />
                 <LabeledInput
                     name='twitter'
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/uniswap'
+                    default={'https://twitter.com/' + project.twitter}
                 />
             </DivForm>
             <ButtonForm type='submit'>Add a New Project</ButtonForm>
         </Form>
     )
 }
+
+

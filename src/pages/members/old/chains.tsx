@@ -20,7 +20,7 @@ const OldChains: NextPage = () => {
             <H1>Modify Chains</H1>
 
             <Grid4OldDatas>
-                {chains.map(chain => <CardOldData {...chain} type='chain' />)}
+                {chains.map(chain => <CardOldData {...chain} type='chain' key={chain.id} />)}
             </Grid4OldDatas>
 
         </>

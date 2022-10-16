@@ -18,7 +18,7 @@ const NewChain: NextPage = () => {
             <H1>Modify Layer 2s</H1>
 
             <Grid4OldDatas>
-                {layer2s.map(l2 => <CardOldData {...l2} type='layer2' />)}
+                {layer2s.map(l2 => <CardOldData {...l2} type='layer2' key={l2.id} />)}
             </Grid4OldDatas>
 
         </>

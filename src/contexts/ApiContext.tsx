@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import { InternalChain, InternalLayer2, InternalNewsletter } from '../types/Api'
+import { InternalChain, InternalLayer2, InternalNewsletter, InternalProject } from '../types/Api'
 import { ChildrenProp, FeesTableData, TPSTableData } from '../types/globals'
 import API from '../api.json'
 import { ApiManager } from '../classes/ApiManager'
@@ -10,9 +10,11 @@ import { getApiData } from '../functions/api'
 interface ApiContextState {
     useChain: () => InternalChain | undefined
     useLayer2: () => InternalLayer2 | undefined
+    useProject: () => InternalProject | undefined
     useLayer2WithProjects: () => InternalLayer2 | undefined
     useChains: () => InternalChain[]
     useLayer2s: () => InternalLayer2[]
+    useProjects: () => InternalProject[]
     useNewsletter: () => InternalNewsletter | undefined
     useStats: () => [FeesTableData, TPSTableData] | undefined
 }
@@ -28,7 +30,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     const [manager, setManager] = useState<ApiManager | null>(null)
 
     const router = useRouter()
-    const go404 = useCallback(() => {}, [])
+    const go404 = useCallback(() => { }, [])
 
     const useChains = useCallback(() => {
         if (manager === null) return []
@@ -53,6 +55,11 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
     const useLayer2s = useCallback(() => {
         if (manager === null) return []
         return manager.getAllLayer2s()
+    }, [manager])
+
+    const useProjects = useCallback(() => {
+        if (manager === null) return []
+        return manager.getAllProjects()
     }, [manager])
 
     const useLayer2 = useCallback(() => {
@@ -93,8 +100,24 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
         return manager?.getStats()
     }, [manager])
 
+    const useProject = useCallback(() => {
+        if (manager === null) return
+        const id = router.query.id
+        if (id === undefined) {
+            go404()
+            return
+        }
+        const currentProject = manager.getProject(id.toString())
+        if (currentProject === null) {
+            go404()
+        } else {
+            return currentProject
+        }
+    }, [manager, go404, router])
+
+
     useEffect(() => {
-        ;(async () => {
+        (async () => {
             try {
                 const apiData = await getApiData()
                 if (apiData?.chains !== undefined) {
@@ -113,9 +136,11 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
                 useLayer2s,
                 useChain,
                 useLayer2,
+                useProject,
                 useLayer2WithProjects,
                 useNewsletter,
                 useStats,
+                useProjects,
             }}
         >
             {children}
