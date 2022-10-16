@@ -16,17 +16,17 @@ const Panel: NextPage = () => {
             <H1>Modify Olds</H1>
 
             <SectionPanel>
-                <Link a={APanel} href='/members/old/chain'>
-                    Chain
+                <Link a={APanel} href='/members/old/chains'>
+                    Chains
                 </Link>
-                <Link a={APanel} href='/members/old/layer2'>
-                    Layer 2
+                <Link a={APanel} href='/members/old/layer2s'>
+                    Layer 2s
                 </Link>
-                <Link a={APanel} href='/members/old/project'>
-                    Project
+                <Link a={APanel} href='/members/old/projects'>
+                    Projects
                 </Link>
-                <Link a={APanel} href='/members/old/newsletter'>
-                    Newsletter
+                <Link a={APanel} href='/members/old/newsletters'>
+                    Newsletters
                 </Link>
             </SectionPanel>
         </>
