@@ -126,7 +126,7 @@ const LabeledInput = (props: LabeledInputProps) => {
 }
 
 const LabeledTextArea = (props: LabeledInputProps) => {
-    const [val, setVal] = useState('')
+    const [val, setVal] = useState(props.default ?? '')
     return (
         <DivLabeledInput>
             <Label>{props.label}</Label>
