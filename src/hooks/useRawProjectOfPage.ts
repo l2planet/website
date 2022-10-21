@@ -36,7 +36,10 @@ export function useRawProjectOfPage(): ChainOfPage {
 
         const layer2_ids: string[] = []
 
-        for (const [layer2Id, layer2Data] of Object.entries(endpointInfo.layer2s) as [string, APIGetLayer2][]) {
+        for (const [layer2Id, layer2Data] of Object.entries(endpointInfo.layer2s) as [
+            string,
+            APIGetLayer2
+        ][]) {
             if (layer2Data.projects.includes(id)) {
                 layer2_ids.push(layer2Id)
             }
@@ -47,7 +50,6 @@ export function useRawProjectOfPage(): ChainOfPage {
             id,
             layer2_ids,
         }
-
     }, [endpointInfo, id, navigateToNotFound])
 
     // Return `rawProject` inside a readonly object.

@@ -6,7 +6,6 @@ import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
 import { useRawProjectOfPage } from '../../../../hooks/useRawProjectOfPage'
 
 const OldChains: NextPage = () => {
-
     const { rawProject } = useRawProjectOfPage()
 
     return (
@@ -21,10 +20,7 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {rawProject.name}</H1>
 
-                    <ProjectForm
-                        project={rawProject}
-                        onSubmit={(formData) => { }}
-                    />
+                    <ProjectForm project={rawProject} onSubmit={(formData) => {}} />
                 </>
             )}
         </>

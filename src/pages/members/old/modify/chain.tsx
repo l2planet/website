@@ -22,7 +22,7 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {chain.name}</H1>
 
-                    <ChainForm chain={chain} onSubmit={(formData) => { }} />
+                    <ChainForm chain={chain} onSubmit={(formData) => {}} />
                 </>
             )}
         </>

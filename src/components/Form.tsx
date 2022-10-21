@@ -279,7 +279,6 @@ export const Layer2Form = ({
                     tip='The name of the layer 2.'
                     placeHolder='Arbitrum'
                     default={layer2?.name}
-
                 />
                 <LabeledInput
                     name='status'
@@ -371,7 +370,6 @@ export const ProjectForm = ({
             }}
         >
             <DivForm>
-
                 <LabeledInput
                     name='name'
                     label='Project Name'

@@ -20,9 +20,9 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
     const [rawLayer2, setRawLayer2] = useState<undefined | InternalRawLayer2>()
 
     useEffect(() => {
-        if(rawLayer2) return
+        if (rawLayer2) return
         try {
-            fetch('https://api.l2planet.xyz/raw').then(res =>
+            fetch('https://api.l2planet.xyz/raw').then((res) =>
                 res.json().then((rawEndpointData: RawEndpointData) => {
                     if (!id) {
                         return
@@ -48,8 +48,6 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
             navigateToNotFound()
         }
     }, [id, navigateToNotFound, rawLayer2])
-
-
 
     // Return `layer2` inside a readonly object.
     return { rawLayer2 } as const

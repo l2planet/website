@@ -42,7 +42,7 @@ export interface APIGetLogin {
     token: string
 }
 
-export interface ApiGetRegister { }
+export interface ApiGetRegister {}
 
 /** Comes from the chain form on admin panel */
 export interface RawFormChain {
@@ -210,7 +210,6 @@ export interface InternalRawLayer2 {
         tokens: string[]
     }[]
 }
-
 
 export interface RawFormProject {
     chain_id: string

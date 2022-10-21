@@ -6,7 +6,6 @@ import { SEO } from '../../../components/SEO'
 import { useAllChains } from '../../../hooks/useAllChains'
 
 const OldChains: NextPage = () => {
-
     const { chains } = useAllChains()
 
     return (

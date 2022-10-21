@@ -10,7 +10,6 @@ import { useRawLayer2OfPage } from '../../../../hooks/useRawLayer2OfPage'
 const OldChains: NextPage = () => {
     const { rawLayer2 } = useRawLayer2OfPage()
 
-
     return (
         <>
             <SEO
@@ -23,7 +22,7 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {rawLayer2.name}</H1>
 
-                    <Layer2Form layer2={rawLayer2} onSubmit={(formData) => { }} />
+                    <Layer2Form layer2={rawLayer2} onSubmit={(formData) => {}} />
                 </>
             )}
         </>
