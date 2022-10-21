@@ -4,13 +4,11 @@ import { Grid4OldDatas } from '../../../../components/Div'
 import { ChainForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
-import { useApi } from '../../../../contexts/ApiContext'
 import { sendChain } from '../../../../functions/api'
+import { useChainOfPage } from '../../../../hooks/useChainOfPage'
 
 const OldChains: NextPage = () => {
-    const { useChain } = useApi()
-
-    const chain = useChain()
+    const { chain } = useChainOfPage()
 
     return (
         <>
@@ -24,7 +22,7 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {chain.name}</H1>
 
-                    <ChainForm chain={chain} onSubmit={(formData) => {}} />
+                    <ChainForm chain={chain} onSubmit={(formData) => { }} />
                 </>
             )}
         </>

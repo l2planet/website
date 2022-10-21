@@ -1,16 +1,13 @@
 import type { NextPage } from 'next'
 import { CardOldData } from '../../../components/Card'
 import { Grid4OldDatas } from '../../../components/Div'
-import { ChainForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
 import { SEO } from '../../../components/SEO'
-import { useApi } from '../../../contexts/ApiContext'
-import { sendChain } from '../../../functions/api'
+import { useAllChains } from '../../../hooks/useAllChains'
 
 const OldChains: NextPage = () => {
-    const { useChains } = useApi()
 
-    const chains = useChains()
+    const { chains } = useAllChains()
 
     return (
         <>
@@ -23,7 +20,7 @@ const OldChains: NextPage = () => {
             <H1>Modify Chains</H1>
 
             <Grid4OldDatas>
-                {chains.map((chain) => (
+                {chains?.map((chain) => (
                     <CardOldData {...chain} type='chain' key={chain.id} />
                 ))}
             </Grid4OldDatas>

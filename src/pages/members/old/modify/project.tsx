@@ -1,34 +1,29 @@
 import type { NextPage } from 'next'
-import { CardOldData } from '../../../../components/Card'
-import { Grid4OldDatas } from '../../../../components/Div'
-import { ChainForm, ProjectForm } from '../../../../components/Form'
+import { ProjectForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
-import { useApi } from '../../../../contexts/ApiContext'
-import { sendChain } from '../../../../functions/api'
+import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
+import { useRawProjectOfPage } from '../../../../hooks/useRawProjectOfPage'
 
 const OldChains: NextPage = () => {
-    const { useProject, useLayer2s } = useApi()
 
-    const project = useProject()
-    const layer2s = useLayer2s()
+    const { rawProject } = useRawProjectOfPage()
 
     return (
         <>
             <SEO
-                title={`L2 Planet | Modify ${project?.name ?? 'Project'}`}
+                title={`L2 Planet | Modify ${rawProject?.name ?? 'Project'}`}
                 description='L2 Planet'
                 favicon='/favicon.ico'
             />
 
-            {project && (
+            {rawProject && (
                 <>
-                    <H1>Modify {project.name}</H1>
+                    <H1>Modify {rawProject.name}</H1>
 
                     <ProjectForm
-                        project={project}
-                        layer2s={layer2s}
-                        onSubmit={(formData) => {}}
+                        project={rawProject}
+                        onSubmit={(formData) => { }}
                     />
                 </>
             )}
