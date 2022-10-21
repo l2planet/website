@@ -1,11 +1,6 @@
 import type { NextPage } from 'next'
-import { CardOldData } from '../../../../components/Card'
-import { Grid4OldDatas } from '../../../../components/Div'
-import { ChainForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
-import { useApi } from '../../../../contexts/ApiContext'
-import { sendChain } from '../../../../functions/api'
 
 const OldChains: NextPage = () => {
     return (
