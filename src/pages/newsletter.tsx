@@ -1,9 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
-import { Suspense } from 'react'
 import { Blocker } from '../components/Blocker'
 import { SEO } from '../components/SEO'
-import { useApi } from '../contexts/ApiContext'
 import { useLatestNewsletter } from '../hooks/useLatestNewsletter'
 
 const Newsletter: NextPage = () => {

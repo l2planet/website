@@ -2,7 +2,7 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import { wrapn } from 'wrapn'
-import { CardIndex, CardLayer2, CardOldData } from '../components/Card'
+import { CardLayer2 } from '../components/Card'
 import { Col4Select, Grid4ChainPage } from '../components/Div'
 import { HChain, HSelect } from '../components/H'
 import { Img } from '../components/Image'
@@ -10,7 +10,6 @@ import { PChainDescription } from '../components/P'
 import { SectionChainIntro, SectionChainL2s } from '../components/Section'
 import { Select } from '../components/Select'
 import { SEO } from '../components/SEO'
-import { useApi } from '../contexts/ApiContext'
 import { useChainOfPage } from '../hooks/useChainOfPage'
 
 const SPARE_ICON =
@@ -49,11 +48,11 @@ const Chain: NextPage = () => {
                                 <>
                                     {category
                                         ? chain.layer2s
-                                              .filter((l2) => l2.categories.includes(category))
-                                              .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
+                                            .filter((l2) => l2.categories.includes(category))
+                                            .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
                                         : chain.layer2s.map((l2) => (
-                                              <CardLayer2 key={l2.id} {...l2} />
-                                          ))}
+                                            <CardLayer2 key={l2.id} {...l2} />
+                                        ))}
                                 </>
                             ) : (
                                 <Text>We can't find any layer 2 for {chain.name}. 🙁</Text>

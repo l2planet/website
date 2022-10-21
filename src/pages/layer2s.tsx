@@ -18,7 +18,6 @@ import {
 import { SEO } from '../components/SEO'
 import { Timeline } from '../components/Timeline'
 import { Videos } from '../components/Videos'
-import { useApi } from '../contexts/ApiContext'
 import { parsePrice } from '../functions/parsePrice'
 import { useLayer2OfPage } from '../hooks/useLayer2OfPage'
 

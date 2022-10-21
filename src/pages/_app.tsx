@@ -5,7 +5,6 @@ import { ThemeProvider } from '../contexts/ThemeContext'
 import { TopBar } from '../components/TopBar'
 import { Main } from '../components/Main'
 import { Footer } from '../components/Footer'
-import { ApiProvider } from '../contexts/ApiContext'
 import { InfoEndpointProvider } from '../contexts/InfoEndpointContext'
 
 // This component is shared by every page.
@@ -13,15 +12,13 @@ import { InfoEndpointProvider } from '../contexts/InfoEndpointContext'
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ThemeProvider>
-            <ApiProvider>
-                <InfoEndpointProvider>
-                    <TopBar />
-                    <Main>
-                        <Component {...pageProps} />
-                    </Main>
-                    <Footer />
-                </InfoEndpointProvider>
-            </ApiProvider>
+            <InfoEndpointProvider>
+                <TopBar />
+                <Main>
+                    <Component {...pageProps} />
+                </Main>
+                <Footer />
+            </InfoEndpointProvider>
         </ThemeProvider>
     )
 }

@@ -1,14 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect, useMemo } from 'react'
 import { CardIndex } from '../components/Card'
 import { H1 } from '../components/H'
 import { P1 } from '../components/P'
-import { Section, SectionIndexCards, SectionIndexIntro } from '../components/Section'
+import { SectionIndexCards, SectionIndexIntro } from '../components/Section'
 import { SEO } from '../components/SEO'
-import { useApi } from '../contexts/ApiContext'
 import { useAllChains } from '../hooks/useAllChains'
 
 const Home: NextPage = () => {

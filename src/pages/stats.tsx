@@ -6,11 +6,10 @@ import { Flex4StatsTables } from '../components/Div'
 import { HStats } from '../components/H'
 import { SEO } from '../components/SEO'
 import { TableTPS, TableFees } from '../components/Table'
-import { useApi } from '../contexts/ApiContext'
+import { useStats } from '../hooks/useStats'
 
 const Stats: NextPage = () => {
-    const { useStats } = useApi()
-    const [fees, tpss] = useStats() ?? []
+    const { feeStats, tpsStats } = useStats()
 
     return (
         <>
@@ -18,10 +17,10 @@ const Stats: NextPage = () => {
 
             <HStats>Stats</HStats>
 
-            {fees && tpss && (
+            {feeStats && tpsStats && (
                 <Flex4StatsTables>
-                    <TableFees data={fees} />
-                    <TableTPS data={tpss} />
+                    <TableFees data={feeStats} />
+                    <TableTPS data={tpsStats} />
                 </Flex4StatsTables>
             )}
         </>

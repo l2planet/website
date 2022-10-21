@@ -13,7 +13,6 @@ import { Img } from '../components/Image'
 import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section'
 import { Select } from '../components/Select'
 import { SEO } from '../components/SEO'
-import { useApi } from '../contexts/ApiContext'
 import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage'
 
 const SPARE_ICON =
