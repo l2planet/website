@@ -20,6 +20,12 @@ export interface InfoEndpointData {
     }
 }
 
+export interface RawEndpointData {
+    layer2s: {
+        [layer2Id in string]?: APIGetRawLayer2
+    }
+}
+
 export interface RawFormAuth {
     username: string
     password: string
@@ -36,7 +42,7 @@ export interface APIGetLogin {
     token: string
 }
 
-export interface ApiGetRegister {}
+export interface ApiGetRegister { }
 
 /** Comes from the chain form on admin panel */
 export interface RawFormChain {
@@ -113,7 +119,7 @@ export interface APIPostLayer2 {
 }
 
 export interface RawBridge {
-    address: string
+    contract_address: string
     tokens: string
 }
 
@@ -121,7 +127,7 @@ export interface RawBridge {
 // Server will add new projects' IDs to "projects" prop
 export interface APIGetLayer2 {
     name: string
-    status: string
+    status: 'testnet' | 'live' | 'close'
     icon: string
     description: string
     categories: string[]
@@ -162,7 +168,52 @@ export interface InternalLayer2 {
     tvls: ChartDataItem[]
 }
 
+// Backend calculates this value
+// Server will add new projects' IDs to "projects" prop
+export interface APIGetRawLayer2 {
+    chain_id: string
+    evm_id: string
+    name: string
+    status: 'testnet' | 'live' | 'close'
+    icon: string
+    description: string
+    categories: string[]
+    projects: string[]
+    website: string
+    twitter?: string
+    gecko?: string
+    videos: string[]
+    investors: string[]
+    bridges: {
+        contract_address: string
+        tokens: string[]
+    }[]
+}
+
+// Gets calculated client side
+export interface InternalRawLayer2 {
+    chain_id: string
+    id: string
+    name: string
+    status: 'testnet' | 'live' | 'close'
+    icon: string
+    description: string
+    categories: string[]
+    projects: string[]
+    website: string
+    twitter?: string
+    gecko?: string
+    videos: string[]
+    investors: string[]
+    bridges: {
+        contract_address: string
+        tokens: string[]
+    }[]
+}
+
+
 export interface RawFormProject {
+    chain_id: string
     l2_ids: string
     name: string
     icon: string
@@ -193,6 +244,17 @@ export interface APIGetProject {
 }
 
 export interface InternalProject {
+    id: string
+    name: string
+    icon: string
+    description: string
+    categories: string[]
+    website?: string
+    twitter?: string
+}
+
+export interface InternalRawProject {
+    layer2_ids: string[]
     id: string
     name: string
     icon: string
