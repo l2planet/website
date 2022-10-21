@@ -3,7 +3,6 @@ import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
 import { APIGetLayer2 } from '../types/Api'
 import { FeesTableData, TPSTableData } from '../types/globals'
 
-
 /**
  * The hook that enables getting the stats of layer 2 solutions.
  *
@@ -51,10 +50,6 @@ export function useStats(): Stats {
             feeStats: feeStats.sort((a, b) => a.swap - b.swap),
             tpsStats: tpsStats.sort((a, b) => b.tps - a.tps),
         }
-
-
-
-
     }, [endpointInfo])
 
     // Return `stats`.
@@ -63,6 +58,6 @@ export function useStats(): Stats {
 
 /** The interface for the return value of `useStats`. */
 interface Stats {
-    feeStats?: FeesTableData,
-    tpsStats?: TPSTableData,
+    feeStats?: FeesTableData
+    tpsStats?: TPSTableData
 }

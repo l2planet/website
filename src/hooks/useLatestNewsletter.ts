@@ -3,7 +3,6 @@ import { Block } from '../components/Editor/types'
 import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
 import { InternalNewsletter } from '../types/Api'
 
-
 /**
  * The hook that enables getting the latest newsletter available.
  *
