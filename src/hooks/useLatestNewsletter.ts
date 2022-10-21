@@ -1,9 +1,8 @@
 import { useMemo } from 'react'
 import { Block } from '../components/Editor/types'
-import { useApi } from '../contexts/ApiContext'
 import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
-import { APIGetLayer2, InternalChain, InternalLayer2, InternalNewsletter } from '../types/Api'
-import { useRoute } from './useRoute'
+import { InternalNewsletter } from '../types/Api'
+
 
 /**
  * The hook that enables getting the latest newsletter available.
@@ -19,7 +18,6 @@ import { useRoute } from './useRoute'
 export function useLatestNewsletter(): ChainOfPage {
     // Extract `endpointInfo` and `navigateToNotFound`.
     const { endpointInfo } = useInfoEndpoint()
-    const { navigateToNotFound } = useRoute()
 
     // Declare `latestNewsletter` memoized value.
     const latestNewsletter: InternalNewsletter | undefined = useMemo(() => {
@@ -36,7 +34,7 @@ export function useLatestNewsletter(): ChainOfPage {
             console.error(error)
             return
         }
-    }, [endpointInfo, navigateToNotFound])
+    }, [endpointInfo])
 
     // Return `latestNewsletter` inside a readonly object.
     return { latestNewsletter } as const
