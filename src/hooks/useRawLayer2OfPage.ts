@@ -47,7 +47,7 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
             alert('An error occured!')
             navigateToNotFound()
         }
-    }, [id, navigateToNotFound])
+    }, [id, navigateToNotFound, rawLayer2])
 
 
 
