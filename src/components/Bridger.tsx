@@ -15,7 +15,7 @@ export const Bridger = ({
         (index: number, val: string) => {
             setBridges((bridges) => [
                 ...bridges.slice(0, index),
-                { address: val, tokens: bridges[index].tokens },
+                { contract_address: val, tokens: bridges[index].tokens },
                 ...bridges.slice(index + 1),
             ])
         },
@@ -26,7 +26,7 @@ export const Bridger = ({
         (index: number, val: string) => {
             setBridges((bridges) => [
                 ...bridges.slice(0, index),
-                { address: bridges[index].address, tokens: val },
+                { contract_address: bridges[index].contract_address, tokens: val },
                 ...bridges.slice(index + 1),
             ])
         },
@@ -34,7 +34,7 @@ export const Bridger = ({
     )
 
     const addBridges = useCallback(() => {
-        setBridges((bridges) => [...bridges, { address: '', tokens: '' }])
+        setBridges((bridges) => [...bridges, { contract_address: '', tokens: '' }])
     }, [setBridges])
 
     return (
@@ -45,7 +45,7 @@ export const Bridger = ({
                     <Bridge
                         key={`bridge${i}`}
                         label={`Bridge ${i + 1}`}
-                        contract={bridge.address}
+                        contract={bridge.contract_address}
                         tokens={bridge.tokens}
                         setContract={(val) => setContractOf(i, val)}
                         setTokens={(val) => setTokensOf(i, val)}
