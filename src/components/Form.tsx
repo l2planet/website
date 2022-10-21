@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { wrapn } from 'wrapn'
 import { getFormData } from '../functions/getFormData'
 import {
@@ -10,6 +10,8 @@ import {
     InternalChain,
     InternalLayer2,
     InternalProject,
+    InternalRawLayer2,
+    InternalRawProject,
 } from '../types/Api'
 import { FormProps, LabeledInputProps } from '../types/globals'
 import { Bridger } from './Bridger'
@@ -82,6 +84,8 @@ const TextArea = wrapn('textarea')`
     placeholder:font-medium
 
     h-40
+
+    leading-relaxed
 
     px-3
     py-2
@@ -244,14 +248,16 @@ export const ChainForm = ({
 export const Layer2Form = ({
     onSubmit,
     layer2,
-    chains,
-}: FormProps<RawFormLayer2> & { layer2?: InternalLayer2; chains?: InternalChain[] }) => {
-    const [bridges, setBridges] = useState<RawBridge[]>([
-        {
-            address: '',
-            tokens: '',
-        },
-    ])
+}: FormProps<RawFormLayer2> & { layer2: InternalLayer2 | InternalRawLayer2 }) => {
+    const [bridges, setBridges] = useState<RawBridge[]>(
+        // Change to `bridges` soon.
+        (layer2 as any).Bridges ?? [
+            {
+                contract_address: '',
+                tokens: '',
+            },
+        ]
+    )
 
     return (
         <Form
@@ -266,16 +272,7 @@ export const Layer2Form = ({
                     label='Chain of the Layer 2'
                     tip='The ID of the chain this L2 is for.'
                     placeHolder='ethereum'
-                    default={
-                        layer2
-                            ? chains
-                                  ?.filter((chain) =>
-                                      (chain.layer2s as unknown as string[]).includes(layer2.id)
-                                  )
-                                  .map((chain) => chain.id)
-                                  .join(', ')
-                            : undefined
-                    }
+                    default={(layer2 as any)?.chain_id}
                 />
                 <LabeledInput
                     name='name'
@@ -283,6 +280,7 @@ export const Layer2Form = ({
                     tip='The name of the layer 2.'
                     placeHolder='Arbitrum'
                     default={layer2?.name}
+
                 />
                 <LabeledInput
                     name='status'
@@ -324,7 +322,7 @@ export const Layer2Form = ({
                     label='EVM ID'
                     tip='EVM ID of the layer 2.'
                     placeHolder='35'
-                    default={layer2?.gecko}
+                    default={(layer2 as any)?.evm_id}
                 />
                 <Bridger bridges={bridges} setBridges={setBridges} />
                 <LabeledInput
@@ -332,13 +330,13 @@ export const Layer2Form = ({
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/arbitrum'
-                    default={'https://twitter.com/' + layer2?.twitter}
+                    default={layer2 ? 'https://twitter.com/' + layer2.twitter : undefined}
                 />
-                <LabeledInput
+                <LabeledTextArea
                     name='videos'
                     label='Video URLs'
                     tip='URLs of YouTube videos. (COMMA SEPERATED)'
-                    placeHolder='https://youtu.be/ufKxCczY7-c , https://youtu.be/usDxRtl35-c'
+                    placeHolder='https://youtu.be/ufKxCczY7-c, https://youtu.be/usDxRtl35-c'
                     default={layer2?.videos.join(', ')}
                 />
                 <LabeledInput
@@ -348,7 +346,7 @@ export const Layer2Form = ({
                     placeHolder='https://www.coingecko.com/en/coins/arbitrum'
                     default={layer2?.gecko}
                 />
-                <LabeledInput
+                <LabeledTextArea
                     name='investors'
                     label='Investor Icons'
                     tip='URL of the icons of the investors. (COMMA SEPERATED)'
@@ -365,8 +363,7 @@ export const Layer2Form = ({
 export const ProjectForm = ({
     onSubmit,
     project,
-    layer2s,
-}: FormProps<RawFormProject> & { project?: InternalProject; layer2s?: InternalLayer2[] }) => {
+}: FormProps<RawFormProject> & { project: InternalProject | InternalRawProject }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -375,28 +372,20 @@ export const ProjectForm = ({
             }}
         >
             <DivForm>
-                <LabeledInput
-                    name='l2_ids'
-                    label='Layer 2 IDs'
-                    tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
-                    placeHolder='starket, arbitrum_one'
-                    default={
-                        project
-                            ? layer2s
-                                  ?.filter((l2) =>
-                                      (l2.projects as unknown as string[]).includes(project.id)
-                                  )
-                                  .map((l2) => l2.id)
-                                  .join(', ')
-                            : undefined
-                    }
-                />
+
                 <LabeledInput
                     name='name'
                     label='Project Name'
                     tip='The name of the project.'
                     placeHolder='Uniswap'
                     default={project?.name}
+                />
+                <LabeledInput
+                    name='l2_ids'
+                    label='Layer 2 IDs'
+                    tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
+                    placeHolder='starket, arbitrum_one'
+                    default={(project as any)?.layer2_ids.join(', ')}
                 />
                 <LabeledInput
                     name='icon'
@@ -431,7 +420,7 @@ export const ProjectForm = ({
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/uniswap'
-                    default={'https://twitter.com/' + project?.twitter}
+                    default={project ? 'https://twitter.com/' + project?.twitter : undefined}
                 />
             </DivForm>
             <ButtonForm type='submit'>Add a New Project</ButtonForm>
