@@ -131,7 +131,7 @@ const LabeledTextArea = (props: LabeledInputProps) => {
         <DivLabeledInput>
             <Label>{props.label}</Label>
             <ToolTipText>{props.tip}</ToolTipText>
-            <input readOnly hidden name={props.name} type='text' value={val} />
+            <input readOnly hidden name={props.name} defaultValue={props.default ?? ''} type='text' value={val} />
             <TextArea
                 defaultValue={props.default ?? ''}
                 placeholder={props.placeHolder}
