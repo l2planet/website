@@ -248,9 +248,9 @@ export const ChainForm = ({
 export const Layer2Form = ({
     onSubmit,
     layer2,
-}: FormProps<RawFormLayer2> & { layer2: InternalLayer2 | InternalRawLayer2 }) => {
+}: FormProps<RawFormLayer2> & { layer2?: InternalRawLayer2 }) => {
     const [bridges, setBridges] = useState<RawBridge[]>(
-        (layer2 as any)?.bridges ?? [
+        layer2?.bridges ?? [
             {
                 contract_address: '',
                 tokens: '',
@@ -271,7 +271,7 @@ export const Layer2Form = ({
                     label='Chain of the Layer 2'
                     tip='The ID of the chain this L2 is for.'
                     placeHolder='ethereum'
-                    default={(layer2 as any)?.chain_id}
+                    default={layer2?.chain_id}
                 />
                 <LabeledInput
                     name='name'
@@ -320,7 +320,7 @@ export const Layer2Form = ({
                     label='EVM ID'
                     tip='EVM ID of the layer 2.'
                     placeHolder='35'
-                    default={(layer2 as any)?.evm_id}
+                    default={layer2?.evm_id}
                 />
                 <Bridger bridges={bridges} setBridges={setBridges} />
                 <LabeledInput
@@ -361,7 +361,7 @@ export const Layer2Form = ({
 export const ProjectForm = ({
     onSubmit,
     project,
-}: FormProps<RawFormProject> & { project: InternalProject | InternalRawProject }) => {
+}: FormProps<RawFormProject> & { project?: InternalRawProject }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -382,7 +382,7 @@ export const ProjectForm = ({
                     label='Layer 2 IDs'
                     tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
                     placeHolder='starket, arbitrum_one'
-                    default={(project as any)?.layer2_ids.join(', ')}
+                    default={project?.layer2_ids.join(', ')}
                 />
                 <LabeledInput
                     name='icon'
