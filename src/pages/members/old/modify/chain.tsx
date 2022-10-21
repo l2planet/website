@@ -22,7 +22,18 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {chain.name}</H1>
 
-                    <ChainForm chain={chain} onSubmit={(formData) => {}} />
+                    <ChainForm
+                        chain={chain}
+                        onSubmit={async (formData) => {
+                            try {
+                                await sendChain(formData, 'PATCH')
+                                alert('Successfully modified!')
+                            } catch (error: any) {
+                                alert(error.message)
+                            }
+                        }}
+
+                    />
                 </>
             )}
         </>

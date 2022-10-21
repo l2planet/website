@@ -14,7 +14,7 @@ const NewChain: NextPage = () => {
             <ChainForm
                 onSubmit={async (formData) => {
                     try {
-                        await sendChain(formData)
+                        await sendChain(formData, 'POST')
                         alert('Succesfully added!')
                     } catch (err: any) {
                         alert(err.message)

@@ -18,7 +18,7 @@ const NewLayer2: NextPage = () => {
             <Layer2Form
                 onSubmit={async (l2FormData) => {
                     try {
-                        await sendLayer2(l2FormData)
+                        await sendLayer2(l2FormData, 'POST')
                         alert('Succesfully added!')
                     } catch (err: any) {
                         alert(err.message)

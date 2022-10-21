@@ -16,7 +16,7 @@ const NewProject: NextPage = () => {
             <ProjectForm
                 onSubmit={async (projectFormData) => {
                     try {
-                        await sendProject(projectFormData)
+                        await sendProject(projectFormData, 'POST')
                         alert('Succesfully added!')
                     } catch (err: any) {
                         alert(err.message)

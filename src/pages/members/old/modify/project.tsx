@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { ProjectForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
+import { sendProject } from '../../../../functions/api'
 import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
 import { useRawProjectOfPage } from '../../../../hooks/useRawProjectOfPage'
 
@@ -20,7 +21,17 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {rawProject.name}</H1>
 
-                    <ProjectForm project={rawProject} onSubmit={(formData) => {}} />
+                    <ProjectForm
+                        project={rawProject}
+                        onSubmit={async (formData) => {
+                            try {
+                                await sendProject(formData, 'PATCH')
+                                alert('Successfully modified!')
+                            } catch (error: any) {
+                                alert(error.message)
+                            }
+                        }}
+                    />
                 </>
             )}
         </>

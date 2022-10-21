@@ -58,13 +58,13 @@ export async function authRegister(formData: RawFormAuth): Promise<void> {
 }
 
 /** Makes a post request to the backend to send a new Chain. */
-export async function sendChain(formData: RawFormChain): Promise<void> {
+export async function sendChain(formData: RawFormChain, type: 'PATCH' | 'POST'): Promise<void> {
     try {
         const jwt = getJwtCookie()
         const chainData: APIPostChain = formatChain(formData)
 
         const res = await fetch('https://api.l2planet.xyz/auth/chain', {
-            method: 'POST',
+            method: type,
             body: JSON.stringify(chainData),
             headers: {
                 'Content-Type': 'application/json',
@@ -84,13 +84,13 @@ export async function sendChain(formData: RawFormChain): Promise<void> {
 }
 
 /** Makes a post request to the backend to send a new Layer 2. */
-export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
+export async function sendLayer2(formData: RawFormLayer2, type: 'PATCH' | 'POST'): Promise<void> {
     try {
         const jwt = getJwtCookie()
         const layer2Data: APIPostLayer2 = formatLayer2(formData)
 
         const res = await fetch('https://api.l2planet.xyz/auth/solution', {
-            method: 'POST',
+            method: type,
             body: JSON.stringify(layer2Data),
             headers: {
                 'Content-Type': 'application/json',
@@ -110,13 +110,13 @@ export async function sendLayer2(formData: RawFormLayer2): Promise<void> {
 }
 
 /** Makes a post request to the backend to send a new Project. */
-export async function sendProject(formData: RawFormProject): Promise<void> {
+export async function sendProject(formData: RawFormProject, type: 'PATCH' | 'POST'): Promise<void> {
     try {
         const jwt = getJwtCookie()
         const projectData: APIPostProject = formatProject(formData)
 
         const res = await fetch('https://api.l2planet.xyz/auth/project', {
-            method: 'POST',
+            method: type,
             body: JSON.stringify(projectData),
             headers: {
                 'Content-Type': 'application/json',
@@ -165,18 +165,3 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
     }
 }
 
-/** Returns primary API data. */
-export async function getApiData(): Promise<InfoEndpointData> {
-    try {
-        const res = await fetch('https://api.l2planet.xyz/info')
-        if (!res.ok) {
-            throw new Error(`Cannot get data from API`)
-        }
-
-        const json = await res.json()
-        return json as InfoEndpointData
-    } catch (e: any) {
-        if (e?.message) throw e
-        throw new Error('An unknown error is occured.')
-    }
-}

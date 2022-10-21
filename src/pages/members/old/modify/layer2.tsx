@@ -5,6 +5,7 @@ import { Grid4OldDatas } from '../../../../components/Div'
 import { ChainForm, Layer2Form } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
+import { sendLayer2 } from '../../../../functions/api'
 import { useRawLayer2OfPage } from '../../../../hooks/useRawLayer2OfPage'
 
 const OldChains: NextPage = () => {
@@ -22,7 +23,18 @@ const OldChains: NextPage = () => {
                 <>
                     <H1>Modify {rawLayer2.name}</H1>
 
-                    <Layer2Form layer2={rawLayer2} onSubmit={(formData) => {}} />
+                    <Layer2Form
+                        layer2={rawLayer2}
+                        onSubmit={async (formData) => {
+                            try {
+                                await sendLayer2(formData, 'PATCH')
+                                alert('Successfully modified!')
+                            } catch (error: any) {
+                                alert(error.message)
+                            }
+                        }}
+                    
+                    />
                 </>
             )}
         </>

@@ -423,7 +423,7 @@ export const ProjectForm = ({
                     default={project ? 'https://twitter.com/' + project?.twitter : undefined}
                 />
             </DivForm>
-            <ButtonForm type='submit'>Add a New Project</ButtonForm>
+            <ButtonForm type='submit'>{project ? 'Modify Project' : 'Add a New Project'}</ButtonForm>
         </Form>
     )
 }
