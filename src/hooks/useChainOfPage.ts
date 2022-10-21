@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
-import { useApi } from '../contexts/ApiContext'
 import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
-import { APIGetLayer2, InternalChain, InternalLayer2 } from '../types/Api'
+import { InternalChain, InternalLayer2 } from '../types/Api'
 import { useRoute } from './useRoute'
 
 /**
