@@ -266,12 +266,16 @@ export const Layer2Form = ({
                     label='Chain of the Layer 2'
                     tip='The ID of the chain this L2 is for.'
                     placeHolder='ethereum'
-                    default={layer2 ? chains
-                        ?.filter((chain) =>
-                            (chain.layer2s as unknown as string[]).includes(layer2.id)
-                        )
-                        .map((chain) => chain.id)
-                        .join(', ') : undefined}
+                    default={
+                        layer2
+                            ? chains
+                                  ?.filter((chain) =>
+                                      (chain.layer2s as unknown as string[]).includes(layer2.id)
+                                  )
+                                  .map((chain) => chain.id)
+                                  .join(', ')
+                            : undefined
+                    }
                 />
                 <LabeledInput
                     name='name'
@@ -376,12 +380,16 @@ export const ProjectForm = ({
                     label='Layer 2 IDs'
                     tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
                     placeHolder='starket, arbitrum_one'
-                    default={project ? layer2s
-                        ?.filter((l2) =>
-                            (l2.projects as unknown as string[]).includes(project.id)
-                        )
-                        .map((l2) => l2.id)
-                        .join(', ') : undefined}
+                    default={
+                        project
+                            ? layer2s
+                                  ?.filter((l2) =>
+                                      (l2.projects as unknown as string[]).includes(project.id)
+                                  )
+                                  .map((l2) => l2.id)
+                                  .join(', ')
+                            : undefined
+                    }
                 />
                 <LabeledInput
                     name='name'

@@ -4,10 +4,10 @@ import { Suspense } from 'react'
 import { Blocker } from '../components/Blocker'
 import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
+import { useLatestNewsletter } from '../hooks/useLatestNewsletter'
 
 const Newsletter: NextPage = () => {
-    const { useNewsletter } = useApi()
-    const newsletter = useNewsletter()
+    const { latestNewsletter: newsletter } = useLatestNewsletter()
 
     return (
         <>

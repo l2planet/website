@@ -1,25 +1,24 @@
-import { useMemo } from "react";
-import { useApi } from "../contexts/ApiContext";
-import { useInfoEndpoint } from "../contexts/InfoEndpointContext";
-import { APIGetLayer2, InternalChain, InternalLayer2 } from "../types/Api";
-import { useRoute } from "./useRoute";
+import { useMemo } from 'react'
+import { useApi } from '../contexts/ApiContext'
+import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { APIGetLayer2, InternalChain, InternalLayer2 } from '../types/Api'
+import { useRoute } from './useRoute'
 
 /**
  * The hook that enables getting the chain with the ID of `id` URL parameter.
- * 
+ *
  * # Usage
  * ```tsx
  * export const Comp = () => {
- *     const { chain } = useChainOfPage()   
+ *     const { chain } = useChainOfPage()
  *     return </>
  * }
  * ```
  */
 export function useChainOfPage(): ChainOfPage {
-    // Extract `apiManager`.
+    // Extract `endpointInfo`, `id`, and `navigateToNotFound`.
     const { endpointInfo } = useInfoEndpoint()
     const { id, navigateToNotFound } = useRoute()
-
 
     // Declare `chain` memoized value.
     const chain: InternalChain | undefined = useMemo(() => {
@@ -39,7 +38,6 @@ export function useChainOfPage(): ChainOfPage {
         const layer2s: InternalLayer2[] = []
         const uniqueL2CategoriesSet = new Set<string>()
 
-
         for (const l2Id of _chain.layer2s) {
             const l2 = endpointInfo.layer2s[l2Id]
             if (l2) {
@@ -52,7 +50,7 @@ export function useChainOfPage(): ChainOfPage {
 
         const uniqueL2Categories: string[] = []
 
-        uniqueL2CategoriesSet.forEach(category => uniqueL2Categories.push(category))
+        uniqueL2CategoriesSet.forEach((category) => uniqueL2Categories.push(category))
 
         return {
             ..._chain,
@@ -60,8 +58,6 @@ export function useChainOfPage(): ChainOfPage {
             l2Categories: uniqueL2Categories,
             id,
         }
-
-
     }, [endpointInfo, id, navigateToNotFound])
 
     // Return `chain` inside a readonly object.

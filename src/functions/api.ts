@@ -8,7 +8,7 @@ import {
     RawFormProject,
     APIPostLayer2,
     APIPostProject,
-    APIPrimaryData,
+    InfoEndpointData,
 } from '../types/Api'
 import { getJwtCookie, setJwtCookie } from './cookie'
 import { Block } from '../components/Editor/types'
@@ -166,7 +166,7 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
 }
 
 /** Returns primary API data. */
-export async function getApiData(): Promise<APIPrimaryData> {
+export async function getApiData(): Promise<InfoEndpointData> {
     try {
         const res = await fetch('https://api.l2planet.xyz/info')
         if (!res.ok) {
@@ -174,7 +174,7 @@ export async function getApiData(): Promise<APIPrimaryData> {
         }
 
         const json = await res.json()
-        return json as APIPrimaryData
+        return json as InfoEndpointData
     } catch (e: any) {
         if (e?.message) throw e
         throw new Error('An unknown error is occured.')

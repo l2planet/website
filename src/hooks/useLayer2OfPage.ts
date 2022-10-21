@@ -1,25 +1,24 @@
-import { useMemo } from "react";
-import { useApi } from "../contexts/ApiContext";
-import { useInfoEndpoint } from "../contexts/InfoEndpointContext";
-import { APIGetLayer2, InternalChain, InternalLayer2 } from "../types/Api";
-import { useRoute } from "./useRoute";
+import { useMemo } from 'react'
+import { useApi } from '../contexts/ApiContext'
+import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { APIGetLayer2, InternalChain, InternalLayer2 } from '../types/Api'
+import { useRoute } from './useRoute'
 
 /**
  * The hook that enables getting the layer 2 solution with the ID of `id` URL parameter.
- * 
+ *
  * # Usage
  * ```tsx
  * export const Comp = () => {
- *     const { layer2 } = useLayer2OfPage()   
+ *     const { layer2 } = useLayer2OfPage()
  *     return </>
  * }
  * ```
  */
 export function useLayer2OfPage(): Layer2OfPage {
-    // Extract `apiManager`.
+    // Extract `endpointInfo`, `id`, and `navigateToNotFound`.
     const { endpointInfo } = useInfoEndpoint()
     const { id, navigateToNotFound } = useRoute()
-
 
     // Declare `layer2` memoized value.
     const layer2: InternalLayer2 | undefined = useMemo(() => {
@@ -40,8 +39,6 @@ export function useLayer2OfPage(): Layer2OfPage {
             ..._layer2,
             id,
         } as unknown as InternalLayer2
-
-
     }, [endpointInfo, id, navigateToNotFound])
 
     // Return `chain` inside a readonly object.

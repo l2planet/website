@@ -3,7 +3,7 @@ import { getLayer2Categories, getProjectCategories } from '../functions/getAvail
 import {
     APIGetChain,
     APIGetLayer2,
-    APIPrimaryData,
+    InfoEndpointData,
     InternalChain,
     InternalLayer2,
     InternalNewsletter,
@@ -19,11 +19,11 @@ const getChainPath = () => getPaths()[1]
 const getLayer2Path = () => getPaths()[1]
 
 export class ApiManager {
-    constructor(initData: APIPrimaryData) {
+    constructor(initData: InfoEndpointData) {
         this.data = initData
     }
 
-    private data: APIPrimaryData
+    private data: InfoEndpointData
 
     getProjects(l2Id: string): InternalProject[] | null {
         const l2 = this.data.layer2s[l2Id]

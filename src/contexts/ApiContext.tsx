@@ -22,6 +22,7 @@ interface ApiContextState {
     useProjects: () => InternalProject[]
     useNewsletter: () => InternalNewsletter | undefined
     useStats: () => [FeesTableData, TPSTableData] | undefined
+    api?: ApiManager
 }
 
 /** The context that stores `ApiContextState`. */
@@ -145,6 +146,7 @@ export const ApiProvider = ({ children }: ChildrenProp) => {
                 useNewsletter,
                 useStats,
                 useProjects,
+                api: manager ?? undefined,
             }}
         >
             {children}

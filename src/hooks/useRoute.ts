@@ -1,15 +1,15 @@
-import { useRouter } from "next/router";
-import { useMemo } from "react";
-import { useInfoEndpoint } from "../contexts/InfoEndpointContext";
-import { APIGetChain, InternalChain } from "../types/Api";
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
+import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { APIGetChain, InternalChain } from '../types/Api'
 
 /**
  * The hook that enables getting `id` url parameter, and a method that navigates to `404` page.
- * 
+ *
  * # Usage
  * ```tsx
  * export const Comp = () => {
- *     const { id, navigateToNotFound } = useRoute()   
+ *     const { id, navigateToNotFound } = useRoute()
  *     return </>
  * }
  * ```
@@ -20,7 +20,7 @@ export function useRoute(): IdParam {
 
     return {
         id: query.id?.toString(),
-        navigateToNotFound: () => push('/404')
+        navigateToNotFound: () => push('/404'),
     } as const
 }
 

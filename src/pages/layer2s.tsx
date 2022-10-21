@@ -20,39 +20,42 @@ import { Timeline } from '../components/Timeline'
 import { Videos } from '../components/Videos'
 import { useApi } from '../contexts/ApiContext'
 import { parsePrice } from '../functions/parsePrice'
+import { useLayer2OfPage } from '../hooks/useLayer2OfPage'
 
 const Layer2: NextPage = () => {
-    const { useLayer2 } = useApi()
-
-    const l2 = useLayer2()
+    const { layer2 } = useLayer2OfPage()
 
     return (
         <>
             <SEO
-                title={`L2 Planet | ${l2?.name || 'Layer 2'}`}
+                title={`L2 Planet | ${layer2?.name || 'Layer 2'}`}
                 description='L2 Planet'
                 favicon='/favicon.ico'
             />
 
-            {l2 && (
+            {layer2 && (
                 <>
                     <SectionLayer2Intro>
                         <DivMeta>
                             <DivName>
-                                <Img alt={`${l2.name} Logo`} img={ImgLayer2} src={l2.icon} />
-                                <HLayer2>{l2.name}</HLayer2>
+                                <Img
+                                    alt={`${layer2.name} Logo`}
+                                    img={ImgLayer2}
+                                    src={layer2.icon}
+                                />
+                                <HLayer2>{layer2.name}</HLayer2>
                             </DivName>
                             <DivLinks>
                                 <Row4Layer2Links>
-                                    {l2.website && (
-                                        <Link a={ALayer2} href={l2.website} newTab>
+                                    {layer2.website && (
+                                        <Link a={ALayer2} href={layer2.website} newTab>
                                             Website
                                         </Link>
                                     )}
-                                    {l2.twitter ? (
+                                    {layer2.twitter ? (
                                         <Link
                                             a={ALayer2}
-                                            href={`https://twitter.com/${l2.twitter}`}
+                                            href={`https://twitter.com/${layer2.twitter}`}
                                             newTab
                                         >
                                             Twitter
@@ -62,13 +65,13 @@ const Layer2: NextPage = () => {
                                             Twitter
                                         </Link>
                                     )}
-                                    {l2.gecko && l2.price ? (
+                                    {layer2.gecko && layer2.price ? (
                                         <Link
                                             a={ALayer2}
-                                            href={`https://coingecko.com/en/coins/${l2.gecko}`}
+                                            href={`https://coingecko.com/en/coins/${layer2.gecko}`}
                                             newTab
                                         >
-                                            ${parsePrice(l2.price)}
+                                            ${parsePrice(layer2.price)}
                                         </Link>
                                     ) : (
                                         <Link a={ALayer2} href='#'>
@@ -76,41 +79,41 @@ const Layer2: NextPage = () => {
                                         </Link>
                                     )}
                                 </Row4Layer2Links>
-                                <Link a={AL2Projects} href={`/projects?id=${l2?.id}`}>
-                                    Projects on {l2?.name || 'Layer 2'}
+                                <Link a={AL2Projects} href={`/projects?id=${layer2?.id}`}>
+                                    Projects on {layer2?.name || 'Layer 2'}
                                 </Link>
                             </DivLinks>
                         </DivMeta>
 
                         <DivDescription>
                             <DivCategory>
-                                {l2.categories.map((category) => (
+                                {layer2.categories.map((category) => (
                                     <Category key={category}>{category}</Category>
                                 ))}
                             </DivCategory>
-                            <PLayer2Description>{l2.description}</PLayer2Description>
+                            <PLayer2Description>{layer2.description}</PLayer2Description>
                         </DivDescription>
                     </SectionLayer2Intro>
 
                     <SectionLayer2Charts>
                         <DivTVL>
                             <HLayer2Common>TVL - Total Value Locked:</HLayer2Common>
-                            {l2.tvls && <Chart data={l2.tvls} />}
+                            {layer2.tvls && <Chart data={layer2.tvls} />}
                         </DivTVL>
                     </SectionLayer2Charts>
 
                     <SectionLayer2Social>
                         <HLayer2Common>Social:</HLayer2Common>
                         <DivSocial>
-                            <Timeline account={l2.twitter} />
-                            <Videos videoIds={l2.videos || []} />
+                            <Timeline account={layer2.twitter} />
+                            <Videos videoIds={layer2.videos || []} />
                         </DivSocial>
                     </SectionLayer2Social>
 
                     <SectionLayer2Investors>
                         <HLayer2Common>Investors:</HLayer2Common>
                         <Grid4Layer2Investors>
-                            {l2?.investors.map((investor) => (
+                            {layer2?.investors.map((investor) => (
                                 <Img
                                     alt='Investor Logo'
                                     img={ImgInvestor}

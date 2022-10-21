@@ -1,17 +1,17 @@
-import { useMemo } from "react";
-import { Block } from "../components/Editor/types";
-import { useApi } from "../contexts/ApiContext";
-import { useInfoEndpoint } from "../contexts/InfoEndpointContext";
-import { APIGetLayer2, InternalChain, InternalLayer2, InternalNewsletter } from "../types/Api";
-import { useRoute } from "./useRoute";
+import { useMemo } from 'react'
+import { Block } from '../components/Editor/types'
+import { useApi } from '../contexts/ApiContext'
+import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { APIGetLayer2, InternalChain, InternalLayer2, InternalNewsletter } from '../types/Api'
+import { useRoute } from './useRoute'
 
 /**
  * The hook that enables getting the latest newsletter available.
- * 
+ *
  * # Usage
  * ```tsx
  * export const Comp = () => {
- *     const { latestNewsletter } = useLatestNewsletter()   
+ *     const { latestNewsletter } = useLatestNewsletter()
  *     return </>
  * }
  * ```
@@ -20,7 +20,6 @@ export function useLatestNewsletter(): ChainOfPage {
     // Extract `endpointInfo` and `navigateToNotFound`.
     const { endpointInfo } = useInfoEndpoint()
     const { navigateToNotFound } = useRoute()
-
 
     // Declare `latestNewsletter` memoized value.
     const latestNewsletter: InternalNewsletter | undefined = useMemo(() => {
@@ -31,13 +30,12 @@ export function useLatestNewsletter(): ChainOfPage {
         try {
             return {
                 author: _latest_newsletter.username,
-                blocks: JSON.parse(_latest_newsletter.newsletter) as Block[]
+                blocks: JSON.parse(_latest_newsletter.newsletter) as Block[],
             }
         } catch (error) {
             console.error(error)
             return
         }
-
     }, [endpointInfo, navigateToNotFound])
 
     // Return `latestNewsletter` inside a readonly object.

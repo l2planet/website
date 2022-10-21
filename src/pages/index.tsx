@@ -9,10 +9,10 @@ import { P1 } from '../components/P'
 import { Section, SectionIndexCards, SectionIndexIntro } from '../components/Section'
 import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
+import { useAllChains } from '../hooks/useAllChains'
 
 const Home: NextPage = () => {
-    const { useChains } = useApi()
-    const chains = useChains()
+    const { chains } = useAllChains()
 
     return (
         <>
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             </SectionIndexIntro>
 
             <SectionIndexCards>
-                {chains.map((chain) => (
+                {chains?.map((chain) => (
                     <CardIndex key={chain.name} {...chain} />
                 ))}
             </SectionIndexCards>

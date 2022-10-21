@@ -14,28 +14,28 @@ import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Sec
 import { Select } from '../components/Select'
 import { SEO } from '../components/SEO'
 import { useApi } from '../contexts/ApiContext'
+import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage'
 
 const SPARE_ICON =
     'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
 
 const Layer2: NextPage = () => {
     const [filter, setFilter] = useState('')
-    const { useLayer2WithProjects } = useApi()
 
-    const l2 = useLayer2WithProjects()
+    const { layer2 } = useLayer2AndProjectsOfPage()
 
     const projects = useMemo(
         () =>
             filter
-                ? l2?.projects.filter((project) => project.categories.includes(filter))
-                : l2?.projects,
-        [l2, filter]
+                ? layer2?.projects.filter((project) => project.categories.includes(filter))
+                : layer2?.projects,
+        [layer2, filter]
     )
 
     return (
         <>
             <SEO
-                title={`L2 Planet | Projects on ${l2?.name || 'Layer 2'}`}
+                title={`L2 Planet | Projects on ${layer2?.name || 'Layer 2'}`}
                 description='L2 Planet'
                 favicon='/favicon.ico'
             />
@@ -43,8 +43,12 @@ const Layer2: NextPage = () => {
             <SectionProjectsIntro>
                 <HProjects>Projects on</HProjects>
                 <DivMeta>
-                    <HProjectsL2>{l2?.name || 'Layer 2'}</HProjectsL2>
-                    <Img alt={`${l2?.name} Logo`} img={ImgL2} src={l2?.icon || SPARE_ICON} />
+                    <HProjectsL2>{layer2?.name || 'Layer 2'}</HProjectsL2>
+                    <Img
+                        alt={`${layer2?.name} Logo`}
+                        img={ImgL2}
+                        src={layer2?.icon || SPARE_ICON}
+                    />
                 </DivMeta>
             </SectionProjectsIntro>
 
@@ -53,7 +57,7 @@ const Layer2: NextPage = () => {
                     <HSelect>Categories:</HSelect>
                     <Select
                         onSelect={(category) => setFilter(category)}
-                        options={l2?.projectCategories || []}
+                        options={layer2?.projectCategories || []}
                     />
                 </Col4Select>
                 <Flex4ProjectsGrid4Projects>
@@ -71,7 +75,7 @@ const Layer2: NextPage = () => {
                             </Grid4ProjectsProjects>
                         </>
                     ) : (
-                        <Text>We can't find any project on {l2?.name}. 🙁</Text>
+                        <Text>We can't find any project on {layer2?.name}. 🙁</Text>
                     )}
                 </Flex4ProjectsGrid4Projects>
             </SectionProjectsProjects>

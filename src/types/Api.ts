@@ -1,7 +1,7 @@
 import { Block } from '../components/Editor/types'
 import { ChartDataItem } from './globals'
 
-export interface APIPrimaryData {
+export interface InfoEndpointData {
     chains: {
         [chainId in string]?: APIGetChain
     }
