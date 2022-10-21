@@ -3,7 +3,7 @@ import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
 import { APIGetLayer2, InternalLayer2 } from '../types/Api'
 
 /**
- * The hook that enables getting all the chains available on the backend inside a component.
+ * The hook that enables getting all the layer 2 solutions available on the backend inside a component.
  *
  * # Usage
  * ```tsx
