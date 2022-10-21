@@ -193,6 +193,7 @@ export interface APIGetRawLayer2 {
 // Gets calculated client side
 export interface InternalRawLayer2 {
     chain_id: string
+    evm_id: string
     id: string
     name: string
     status: 'testnet' | 'live' | 'close'
