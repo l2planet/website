@@ -4,7 +4,7 @@ import { useInfoEndpoint } from "../contexts/InfoEndpointContext";
 import { APIGetChain, InternalChain } from "../types/Api";
 
 /**
- * The hook that enables getting `id` url parameter.
+ * The hook that enables getting `id` url parameter, and a method that navigates to `404` page.
  * 
  * # Usage
  * ```tsx
