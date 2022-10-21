@@ -21,7 +21,7 @@ export function useChainOfPage(): ChainOfPage {
     const { id, navigateToNotFound } = useRoute()
 
 
-    // Declare `layer2s` memoized value.
+    // Declare `chain` memoized value.
     const chain: InternalChain | undefined = useMemo(() => {
         if (!endpointInfo) return
         if (!id) {
@@ -43,7 +43,7 @@ export function useChainOfPage(): ChainOfPage {
         for (const l2Id of _chain.layer2s) {
             const l2 = endpointInfo.layer2s[l2Id]
             if (l2) {
-                layer2s.push(l2 as unknown as InternalLayer2)
+                layer2s.push({ ...l2, id: l2Id } as unknown as InternalLayer2)
                 for (const category of l2.categories) {
                     uniqueL2CategoriesSet.add(category)
                 }
