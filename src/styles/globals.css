@@ -22,9 +22,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-    @apply bg-gris-1
-    dark:bg-gris-9
+    @apply bg-transparent
     w-3;
+}
+
+::-webkit-scrollbar-corner {
+    @apply bg-transparent;
 }
 
 ::-webkit-scrollbar-thumb {
