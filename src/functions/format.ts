@@ -74,7 +74,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     const investors: string[] = []
 
     formData.bridges.forEach((bridge) => {
-        const address = cleanWords(bridge.address)
+        const contract_address = cleanWords(bridge.contract_address)
         const tokens: string[] = []
         cleanWords(bridge.tokens)
             .split(',')
@@ -85,7 +85,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
                 }
             })
 
-        bridges.push({ contract_address: address, tokens })
+        bridges.push({ contract_address, tokens })
     })
 
     formData.videos
