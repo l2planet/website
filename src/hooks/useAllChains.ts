@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { useApi } from "../contexts/ApiContext";
-import { InternalChain } from "../types/Api";
+import { useInfoEndpoint } from "../contexts/InfoEndpointContext";
+import { APIGetChain, InternalChain } from "../types/Api";
 
 /**
  * The hook that enables getting all the chains available on the backend inside a component.
@@ -15,10 +15,15 @@ import { InternalChain } from "../types/Api";
  */
 export function useAllChains(): AllChains {
     // Extract `apiManager`.
-    const { api } = useApi()
+    const { endpointInfo } = useInfoEndpoint()
 
     // Declare `chains` memoized value.
-    const chains = useMemo(() => api?.getAllChains(), [api])
+    const chains: InternalChain[] | undefined = useMemo(() => {
+        if (!endpointInfo) return undefined
+
+        return Object.entries(endpointInfo.chains).map(([id, data]) => ({ ...data as APIGetChain, id })) as unknown as InternalChain[]
+
+    }, [endpointInfo])
 
     // Return `chains` inside a readonly object.
     return { chains } as const
