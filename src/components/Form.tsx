@@ -250,8 +250,7 @@ export const Layer2Form = ({
     layer2,
 }: FormProps<RawFormLayer2> & { layer2: InternalLayer2 | InternalRawLayer2 }) => {
     const [bridges, setBridges] = useState<RawBridge[]>(
-        // Change to `bridges` soon.
-        (layer2 as any).Bridges ?? [
+        (layer2 as any)?.bridges ?? [
             {
                 contract_address: '',
                 tokens: '',
