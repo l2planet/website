@@ -8,30 +8,6 @@ class ParseURL {
 
 
 /**
- * A class that represents Twitter accounts.
- * ## Usage
- * ```js
- * const accountId = new TwitterAccount(url).getId()
- * ```
- */
-export class TwitterAccount extends ParseURL {
-    getId(): string | null {
-        try {
-            const url = new URL(this.innerURL)
-            if (url.host == 'twitter.com') {
-                const id = url.pathname.split('/').at(1)
-                return id !== undefined && id.length > 0 ? id : null
-            } else {
-                return null
-            }
-        } catch {
-            return null
-        }
-    }
-}
-
-
-/**
  * A class that represents Image URLs.
  * ## Usage
  * ```js
