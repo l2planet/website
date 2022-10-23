@@ -47,6 +47,7 @@ export function useRawProjectOfPage(): ChainOfPage {
 
         return {
             ..._projects,
+            categories: _projects.categories ?? [],
             id,
             layer2_ids,
         }

@@ -38,6 +38,10 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
 
                     setRawLayer2({
                         ..._rawLayer2,
+                        projects: _rawLayer2.projects ?? [],
+                        categories: _rawLayer2.categories ?? [],
+                        videos: _rawLayer2.videos ?? [],
+                        investors: _rawLayer2.investors ?? [],
                         id,
                     })
                 })
