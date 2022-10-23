@@ -32,7 +32,6 @@ const OldChains: NextPage = () => {
                                 alert(error.message)
                             }
                         }}
-
                     />
                 </>
             )}

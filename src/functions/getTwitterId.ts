@@ -19,7 +19,6 @@ export function getTwitterAccountId(url: string): null | string {
     return null
 }
 
-
 export function getTweetId(twitterUrl: string): null | string {
     twitterUrl = twitterUrl.trim()
 

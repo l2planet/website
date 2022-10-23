@@ -10,7 +10,6 @@ const OldChains: NextPage = () => {
                 description='L2 Planet'
                 favicon='/favicon.ico'
             />
-
             {<H1>Modify Newsletters</H1>}
             To do!
         </>

@@ -69,8 +69,9 @@ const Layer2: NextPage = () => {
                                             href={`https://coingecko.com/en/coins/${layer2.gecko}`}
                                             newTab
                                         >
-                                            ${Intl.NumberFormat('en-US', {
-                                                notation: 'compact'
+                                            $
+                                            {Intl.NumberFormat('en-US', {
+                                                notation: 'compact',
                                             }).format(layer2.price)}
                                         </Link>
                                     ) : (

@@ -27,7 +27,7 @@ export function useLatestNewsletter(): ChainOfPage {
         try {
             return {
                 author: _latest_newsletter.username,
-                blocks: JSON.parse(_latest_newsletter.newsletter) as Block[] ?? [],
+                blocks: (JSON.parse(_latest_newsletter.newsletter) as Block[]) ?? [],
             }
         } catch (error) {
             console.error(error)

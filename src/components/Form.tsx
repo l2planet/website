@@ -131,7 +131,14 @@ const LabeledTextArea = (props: LabeledInputProps) => {
         <DivLabeledInput>
             <Label>{props.label}</Label>
             <ToolTipText>{props.tip}</ToolTipText>
-            <input readOnly hidden name={props.name} defaultValue={props.default ?? ''} type='text' value={val} />
+            <input
+                readOnly
+                hidden
+                name={props.name}
+                defaultValue={props.default ?? ''}
+                type='text'
+                value={val}
+            />
             <TextArea
                 defaultValue={props.default ?? ''}
                 placeholder={props.placeHolder}
@@ -250,9 +257,9 @@ export const Layer2Form = ({
     layer2,
 }: FormProps<RawFormLayer2> & { layer2?: InternalRawLayer2 }) => {
     const [bridges, setBridges] = useState<RawBridge[]>(
-        layer2?.bridges?.map(bridge => ({
+        layer2?.bridges?.map((bridge) => ({
             ...bridge,
-            tokens: bridge.tokens.join(', ')
+            tokens: bridge.tokens.join(', '),
         })) ?? [
             {
                 contract_address: '',
@@ -423,7 +430,9 @@ export const ProjectForm = ({
                     default={project ? 'https://twitter.com/' + project?.twitter : undefined}
                 />
             </DivForm>
-            <ButtonForm type='submit'>{project ? 'Modify Project' : 'Add a New Project'}</ButtonForm>
+            <ButtonForm type='submit'>
+                {project ? 'Modify Project' : 'Add a New Project'}
+            </ButtonForm>
         </Form>
     )
 }

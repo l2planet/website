@@ -37,8 +37,9 @@ export const EditableBlock = ({
     const yt = useMemo(
         () =>
             block.is('V')
-                ? `https://www.youtube-nocookie.com/embed/${getYoutubeId(p.value as string) || ''
-                }`
+                ? `https://www.youtube-nocookie.com/embed/${
+                      getYoutubeId(p.value as string) || ''
+                  }`
                 : '',
         [block, p.value]
     )

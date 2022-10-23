@@ -84,7 +84,10 @@ export async function sendChain(formData: RawFormChain, type: 'PATCH' | 'POST'):
 }
 
 /** Makes a post request to the backend to send a new Layer 2. */
-export async function sendLayer2(formData: RawFormLayer2, type: 'PATCH' | 'POST'): Promise<void> {
+export async function sendLayer2(
+    formData: RawFormLayer2,
+    type: 'PATCH' | 'POST'
+): Promise<void> {
     try {
         const jwt = getJwtCookie()
         const layer2Data: APIPostLayer2 = formatLayer2(formData)
@@ -110,7 +113,10 @@ export async function sendLayer2(formData: RawFormLayer2, type: 'PATCH' | 'POST'
 }
 
 /** Makes a post request to the backend to send a new Project. */
-export async function sendProject(formData: RawFormProject, type: 'PATCH' | 'POST'): Promise<void> {
+export async function sendProject(
+    formData: RawFormProject,
+    type: 'PATCH' | 'POST'
+): Promise<void> {
     try {
         const jwt = getJwtCookie()
         const projectData: APIPostProject = formatProject(formData)
@@ -164,4 +170,3 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
         throw new Error('An unknown error is occured.')
     }
 }
-

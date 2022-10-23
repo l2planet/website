@@ -34,8 +34,6 @@ export function useLayer2OfPage(): Layer2OfPage {
             return
         }
 
-
-
         return {
             ..._layer2,
             projects: _layer2.projects ?? [],
