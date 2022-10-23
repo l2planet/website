@@ -14,7 +14,7 @@ import { Blocker } from '../Blocker'
 import { ButtonForm } from '../Button'
 import { BlockClass } from './classes'
 import { EditableBlock } from './components'
-import { onKeyDownHandler, getCaretPos, getValidImage } from './functions'
+import { onKeyDownHandler, tool, directions, resizeTextareaHeight } from './functions'
 import { EditorBlockType, Block } from './types'
 
 export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) => {
@@ -250,7 +250,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onElse() {},
+                                        onElse() { },
 
                                         onEnter() {
                                             if (i > 1) {
@@ -291,7 +291,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             if (
                                                 i < blocks.length - 1 &&
                                                 e.currentTarget.selectionStart ==
-                                                    e.currentTarget.value.length
+                                                e.currentTarget.value.length
                                             ) {
                                                 setFocusedBlock(i + 1)
                                                 setBlocks(blocks.slice(0))
