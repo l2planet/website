@@ -2,7 +2,6 @@ import { cleanWords } from './cleanWords'
 import { getCoinGeckoId } from './getCoinGeckoId'
 import { getTwitterAccountId } from './getTwitterId'
 import { getYoutubeId } from './getYoutubeId'
-import { ImageURL } from '../classes/Parsers'
 import {
     RawFormChain,
     RawFormLayer2,
@@ -12,6 +11,7 @@ import {
     APIPostLayer2,
     APIPostProject,
 } from '../types/Api'
+import { getImageUrl } from './getImageUrl'
 
 /**
  Converts `RawFormChain` data into `ApiPostChain`.
@@ -95,7 +95,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     formData.investors
         .split(',')
         .map((inv) => inv.trim())
-        .forEach((url) => (new ImageURL(url).getURL() ? investors.push(url) : {}))
+        .forEach((url) => (getImageUrl(url) ? investors.push(url) : {}))
 
     if (!formData.icon.startsWith('https://')) {
         throw new Error('Icon URL is not valid.')

@@ -6,9 +6,9 @@ import { BlockClass } from './classes'
 import { getValidImage, resizeTextareaHeight } from './functions'
 import { IconDirection } from '../icons/IconDirection'
 import { IconPlus } from '../icons/IconPlus'
-import { ImageURL } from '../../classes/Parsers'
 import { getYoutubeId } from '../../functions/getYoutubeId'
 import { getTweetId } from '../../functions/getTwitterId'
+import { getImageUrl } from '../../functions/getImageUrl'
 
 export const EditableBlock = ({
     block,
@@ -27,7 +27,7 @@ export const EditableBlock = ({
     directionsId: string
 }) => {
     const img = useMemo(
-        () => (block.is('I') ? new ImageURL(p.value as string).getURL() : ''),
+        () => (block.is('I') ? getImageUrl(p.value as string) : ''),
         [block, p.value]
     )
     const tw = useMemo(

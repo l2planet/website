@@ -1,3 +1,4 @@
+import { getImageSize } from 'next/dist/server/image-optimizer'
 import {
     ComponentProps,
     MouseEventHandler,
@@ -8,7 +9,7 @@ import {
     useState,
 } from 'react'
 import { wrapn } from 'wrapn'
-import { ImageURL } from '../../classes/Parsers'
+import { getImageUrl } from '../../functions/getImageUrl'
 import { getTweetId } from '../../functions/getTwitterId'
 import { getYoutubeId } from '../../functions/getYoutubeId'
 import { Blocker } from '../Blocker'
@@ -217,7 +218,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                 null:
                                                 blocks[i] = block.as('V')
                                                 break
-                                            case new ImageURL(e.target.value).getURL() !== null:
+                                            case getImageUrl(e.target.value) !== null:
                                                 blocks[i] = block.as('I')
                                                 break
                                             default:
