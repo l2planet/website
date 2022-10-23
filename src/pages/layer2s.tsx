@@ -18,7 +18,6 @@ import {
 import { SEO } from '../components/SEO'
 import { Timeline } from '../components/Timeline'
 import { Videos } from '../components/Videos'
-import { parsePrice } from '../functions/parsePrice'
 import { useLayer2OfPage } from '../hooks/useLayer2OfPage'
 
 const Layer2: NextPage = () => {
@@ -70,7 +69,9 @@ const Layer2: NextPage = () => {
                                             href={`https://coingecko.com/en/coins/${layer2.gecko}`}
                                             newTab
                                         >
-                                            ${parsePrice(layer2.price)}
+                                            ${Intl.NumberFormat('en-US', {
+                                                notation: 'compact'
+                                            }).format(layer2.price)}
                                         </Link>
                                     ) : (
                                         <Link a={ALayer2} href='#'>

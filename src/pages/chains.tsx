@@ -12,9 +12,6 @@ import { Select } from '../components/Select'
 import { SEO } from '../components/SEO'
 import { useChainOfPage } from '../hooks/useChainOfPage'
 
-const SPARE_ICON =
-    'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
-
 const Chain: NextPage = () => {
     const { chain } = useChainOfPage()
     const [category, setCategory] = useState('')

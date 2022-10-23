@@ -15,9 +15,6 @@ import { Select } from '../components/Select'
 import { SEO } from '../components/SEO'
 import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage'
 
-const SPARE_ICON =
-    'https://raw.githubusercontent.com/l2planet/images/6c2f47bea857e600a66ce688b9e94887cd7ba41a/chains/ethereum.svg'
-
 const Layer2: NextPage = () => {
     const [filter, setFilter] = useState('')
 
@@ -39,45 +36,52 @@ const Layer2: NextPage = () => {
                 favicon='/favicon.ico'
             />
 
-            <SectionProjectsIntro>
-                <HProjects>Projects on</HProjects>
-                <DivMeta>
-                    <HProjectsL2>{layer2?.name || 'Layer 2'}</HProjectsL2>
-                    <Img
-                        alt={`${layer2?.name} Logo`}
-                        img={ImgL2}
-                        src={layer2?.icon || SPARE_ICON}
-                    />
-                </DivMeta>
-            </SectionProjectsIntro>
+            {
+                layer2 && (
+                    <>
+                        <SectionProjectsIntro>
+                            <HProjects>Projects on</HProjects>
+                            <DivMeta>
+                                <HProjectsL2>{layer2.name}</HProjectsL2>
+                                <Img
+                                    alt={`${layer2.name} Logo`}
+                                    img={ImgL2}
+                                    src={layer2.icon}
+                                />
+                            </DivMeta>
+                        </SectionProjectsIntro>
 
-            <SectionProjectsProjects>
-                <Col4Select>
-                    <HSelect>Categories:</HSelect>
-                    <Select
-                        onSelect={(category) => setFilter(category)}
-                        options={layer2?.projectCategories || []}
-                    />
-                </Col4Select>
-                <Flex4ProjectsGrid4Projects>
-                    {projects?.at(0) ? (
-                        <>
-                            <Grid4ProjectsProjects>
-                                {projects?.slice(projects.length / 2).map((project) => (
-                                    <CardProject key={project.name} {...project} />
-                                ))}
-                            </Grid4ProjectsProjects>
-                            <Grid4ProjectsProjects>
-                                {projects?.slice(0, projects.length / 2).map((project) => (
-                                    <CardProject key={project.name} {...project} />
-                                ))}
-                            </Grid4ProjectsProjects>
-                        </>
-                    ) : (
-                        <Text>We can't find any project on {layer2?.name}. 🙁</Text>
-                    )}
-                </Flex4ProjectsGrid4Projects>
-            </SectionProjectsProjects>
+                        <SectionProjectsProjects>
+                            <Col4Select>
+                                <HSelect>Categories:</HSelect>
+                                <Select
+                                    onSelect={(category) => setFilter(category)}
+                                    options={layer2.projectCategories}
+                                />
+                            </Col4Select>
+                            <Flex4ProjectsGrid4Projects>
+                                {projects?.at(0) ? (
+                                    <>
+                                        <Grid4ProjectsProjects>
+                                            {projects.slice(projects.length / 2).map((project) => (
+                                                <CardProject key={project.name} {...project} />
+                                            ))}
+                                        </Grid4ProjectsProjects>
+                                        <Grid4ProjectsProjects>
+                                            {projects?.slice(0, projects.length / 2).map((project) => (
+                                                <CardProject key={project.name} {...project} />
+                                            ))}
+                                        </Grid4ProjectsProjects>
+                                    </>
+                                ) : (
+                                    <Text>We can't find any project on {layer2.name}. 🙁</Text>
+                                )}
+                            </Flex4ProjectsGrid4Projects>
+                        </SectionProjectsProjects>
+                    </>
+                )
+
+            }
         </>
     )
 }

@@ -1,6 +1,5 @@
-import { wrap } from 'module'
 import { wrapn } from 'wrapn'
-import { APIGetChain, InternalChain, InternalLayer2, InternalProject } from '../types/Api'
+import { InternalChain, InternalLayer2, InternalProject } from '../types/Api'
 import { StatusProps } from '../types/globals'
 import { AProjects } from './A'
 import { Img } from './Image'

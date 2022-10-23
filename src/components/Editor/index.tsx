@@ -1,6 +1,5 @@
-import { getImageSize } from 'next/dist/server/image-optimizer'
+
 import {
-    ComponentProps,
     MouseEventHandler,
     MutableRefObject,
     useCallback,
@@ -17,12 +16,8 @@ import { ButtonForm } from '../Button'
 import { BlockClass } from './classes'
 import { EditableBlock } from './components'
 import {
-    isReadyToBeDeletedAt,
     onKeyDownHandler,
-    resizeTextareaHeight,
     getCaretPos,
-    tool,
-    directions,
     getValidImage,
 } from './functions'
 import { EditorBlockType, Block } from './types'

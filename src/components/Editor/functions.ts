@@ -1,5 +1,4 @@
-import { url } from 'inspector'
-import { ChangeEvent, KeyboardEvent } from 'react'
+import {  KeyboardEvent } from 'react'
 import { OnKeyDownHandler } from './types'
 
 export const resizeTextareaHeight = (el: HTMLTextAreaElement) => {
