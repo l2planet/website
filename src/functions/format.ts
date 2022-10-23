@@ -1,6 +1,6 @@
 import { cleanWords } from './cleanWords'
 import { getCoinGeckoId } from './getCoinGeckoId'
-import { getTwitterId } from './getTwitterId'
+import { getTwitterAccountId } from './getTwitterId'
 import { getYoutubeId } from './getYoutubeId'
 import { ImageURL } from '../classes/Parsers'
 import {
@@ -69,7 +69,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
     const evm_id = cleanWords(formData.evm_id)
     const bridges: APIPostLayer2['bridges'] = []
     const gecko = getCoinGeckoId(cleanWords(formData.gecko)) ?? ''
-    const twitter = getTwitterId(cleanWords(formData.twitter)) ?? ''
+    const twitter = getTwitterAccountId(cleanWords(formData.twitter)) ?? ''
     const videos: string[] = []
     const investors: string[] = []
 
@@ -153,7 +153,7 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     const icon = formData.icon
     const description = formData.description.split('\n').join(' ')
     const categories = formData.categories.split(',').map((cat) => cat.trim())
-    const twitter = getTwitterId(formData.twitter) ?? ''
+    const twitter = getTwitterAccountId(formData.twitter) ?? ''
     const website = formData.website.includes('https://') ? formData.website : ''
 
     if (!formData.icon.startsWith('https://')) {

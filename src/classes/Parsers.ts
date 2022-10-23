@@ -30,28 +30,6 @@ export class TwitterAccount extends ParseURL {
     }
 }
 
-/**
- * A class that represents Twitter tweets.
- * ## Usage
- * ```js
- * const tweetId = new TwitterTweet(url).getId()
- * ```
- */
-export class TwitterTweet extends ParseURL {
-    getId(): string | null {
-        try {
-            const url = new URL(this.innerURL)
-            if (url.host == 'twitter.com') {
-                const id = url.pathname.split('/').at(3)
-                return id !== undefined && id.length == 19 ? id : null
-            } else {
-                return null
-            }
-        } catch {
-            return null
-        }
-    }
-}
 
 /**
  * A class that represents Image URLs.

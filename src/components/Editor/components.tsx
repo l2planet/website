@@ -6,8 +6,9 @@ import { BlockClass } from './classes'
 import { getValidImage, resizeTextareaHeight } from './functions'
 import { IconDirection } from '../icons/IconDirection'
 import { IconPlus } from '../icons/IconPlus'
-import { ImageURL, TwitterTweet } from '../../classes/Parsers'
+import { ImageURL } from '../../classes/Parsers'
 import { getYoutubeId } from '../../functions/getYoutubeId'
+import { getTweetId } from '../../functions/getTwitterId'
 
 export const EditableBlock = ({
     block,
@@ -30,7 +31,7 @@ export const EditableBlock = ({
         [block, p.value]
     )
     const tw = useMemo(
-        () => (block.is('W') ? new TwitterTweet(p.value as string).getId() : ''),
+        () => (block.is('W') ? getTweetId(p.value as string) : ''),
         [block, p.value]
     )
     const yt = useMemo(

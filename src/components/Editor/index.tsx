@@ -8,7 +8,8 @@ import {
     useState,
 } from 'react'
 import { wrapn } from 'wrapn'
-import { ImageURL, TwitterTweet } from '../../classes/Parsers'
+import { ImageURL } from '../../classes/Parsers'
+import { getTweetId } from '../../functions/getTwitterId'
 import { getYoutubeId } from '../../functions/getYoutubeId'
 import { Blocker } from '../Blocker'
 import { ButtonForm } from '../Button'
@@ -63,7 +64,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         case 'W':
                             return {
                                 type: 'W',
-                                content: new TwitterTweet(block.content).getId() || '',
+                                content: getTweetId(block.content) || '',
                             }
                         case 'V':
                             return {
@@ -208,7 +209,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                         block.is('V')
                                     ) {
                                         switch (true) {
-                                            case new TwitterTweet(e.target.value).getId() !==
+                                            case getTweetId(e.target.value) !==
                                                 null:
                                                 blocks[i] = block.as('W')
                                                 break

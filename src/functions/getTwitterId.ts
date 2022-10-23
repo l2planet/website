@@ -1,5 +1,5 @@
 /** Extracts Twitter ID from the URL. */
-export function getTwitterId(url: string): null | string {
+export function getTwitterAccountId(url: string): null | string {
     url = url.trim()
 
     if (url.startsWith('https://')) {
@@ -17,4 +17,21 @@ export function getTwitterId(url: string): null | string {
     }
 
     return null
+}
+
+
+export function getTweetId(twitterUrl: string): null | string {
+    twitterUrl = twitterUrl.trim()
+
+    try {
+        const url = new URL(twitterUrl)
+        if (url.host == 'twitter.com') {
+            const id = url.pathname.split('/').at(3)
+            return id !== undefined && id.length == 19 ? id : null
+        } else {
+            return null
+        }
+    } catch {
+        return null
+    }
 }
