@@ -33,6 +33,7 @@ export function useChainOfPage(): ChainOfPage {
             navigateToNotFound()
             return
         }
+        _chain.layer2s = _chain.layer2s ?? []
 
         const layer2s: InternalLayer2[] = []
         const uniqueL2CategoriesSet = new Set<string>()

@@ -29,10 +29,15 @@ export function useLayer2AndProjectsOfPage(): Layer2AndProjectsOfPage {
 
         const _layer2 = endpointInfo.layer2s[id]
 
+
+
         if (!_layer2) {
             navigateToNotFound()
             return
         }
+
+
+        _layer2.projects == _layer2.projects ?? []
 
         const projects: InternalProject[] = []
 

@@ -34,8 +34,11 @@ export function useLayer2OfPage(): Layer2OfPage {
             return
         }
 
+
+
         return {
             ..._layer2,
+            projects: _layer2.projects ?? [],
             id,
         } as unknown as InternalLayer2
     }, [endpointInfo, id, navigateToNotFound])
