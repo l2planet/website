@@ -8,7 +8,8 @@ import {
     useState,
 } from 'react'
 import { wrapn } from 'wrapn'
-import { ImageURL, TwitterTweet, YoutubeVideo } from '../../classes/Parsers'
+import { ImageURL, TwitterTweet } from '../../classes/Parsers'
+import { getYoutubeId } from '../../functions/getYoutubeId'
 import { Blocker } from '../Blocker'
 import { ButtonForm } from '../Button'
 import { BlockClass } from './classes'
@@ -67,7 +68,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         case 'V':
                             return {
                                 type: 'V',
-                                content: new YoutubeVideo(block.content).getId() || '',
+                                content: getYoutubeId(block.content) || '',
                             }
                         case 'BR':
                             return {
@@ -211,7 +212,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                 null:
                                                 blocks[i] = block.as('W')
                                                 break
-                                            case new YoutubeVideo(e.target.value).getId() !==
+                                            case getYoutubeId(e.target.value) !==
                                                 null:
                                                 blocks[i] = block.as('V')
                                                 break
@@ -259,7 +260,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onElse() {},
+                                        onElse() { },
 
                                         onEnter() {
                                             if (i > 1) {
@@ -300,7 +301,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             if (
                                                 i < blocks.length - 1 &&
                                                 e.currentTarget.selectionStart ==
-                                                    e.currentTarget.value.length
+                                                e.currentTarget.value.length
                                             ) {
                                                 setFocusedBlock(i + 1)
                                                 setBlocks(blocks.slice(0))

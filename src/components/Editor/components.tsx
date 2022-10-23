@@ -6,7 +6,8 @@ import { BlockClass } from './classes'
 import { getValidImage, resizeTextareaHeight } from './functions'
 import { IconDirection } from '../icons/IconDirection'
 import { IconPlus } from '../icons/IconPlus'
-import { ImageURL, TwitterTweet, YoutubeVideo } from '../../classes/Parsers'
+import { ImageURL, TwitterTweet } from '../../classes/Parsers'
+import { getYoutubeId } from '../../functions/getYoutubeId'
 
 export const EditableBlock = ({
     block,
@@ -35,9 +36,8 @@ export const EditableBlock = ({
     const yt = useMemo(
         () =>
             block.is('V')
-                ? `https://www.youtube-nocookie.com/embed/${
-                      new YoutubeVideo(p.value as string).getId() || ''
-                  }`
+                ? `https://www.youtube-nocookie.com/embed/${getYoutubeId(p.value as string) || ''
+                }`
                 : '',
         [block, p.value]
     )
