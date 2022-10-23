@@ -33,7 +33,7 @@ export const formatChain = (formData: RawFormChain): APIPostChain => {
         throw new Error('Icon URL is not valid.')
     }
 
-    if (!formData.icon.includes('.svg') || !formData.icon.includes('.png')) {
+    if (!formData.icon.includes('.svg') && !formData.icon.includes('.png')) {
         throw new Error('Icon is not an SVG or PNG file')
     }
 
@@ -101,8 +101,8 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         throw new Error('Icon URL is not valid.')
     }
 
-    if (!formData.icon.includes('.svg')) {
-        throw new Error('Icon is not an SVG file.')
+    if (!formData.icon.includes('.svg') && !formData.icon.includes('.png')) {
+        throw new Error('Icon is not an SVG or PNG file')
     }
 
     if (!formData.website.includes('https://')) {
@@ -160,8 +160,8 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
         throw new Error('Icon URL is not valid.')
     }
 
-    if (!formData.icon.includes('.svg')) {
-        throw new Error('Icon is not an SVG file.')
+    if (!formData.icon.includes('.svg') && !formData.icon.includes('.png')) {
+        throw new Error('Icon is not an SVG or PNG file')
     }
 
     const data = {
