@@ -194,6 +194,10 @@ const Category = wrapn('p')`
 const ImgInvestor = wrapn('img')`
     h-full
     w-full
+    p-4
+    rounded-xl
+    bg-gris-2
+    dark:bg-gris-7
 `
 
 const DivTVL = wrapn('div')`

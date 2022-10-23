@@ -37,7 +37,7 @@ export const Grid4Layer2Investors = wrapn('div')`
     grid
     grid-cols-2
     sm:grid-cols-3
-    lg:grid-cols-4
+    md:grid-cols-4
 
     gap-6
     md:gap-8
