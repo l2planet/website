@@ -345,7 +345,7 @@ export const Layer2Form = ({
                     label='Video URLs'
                     tip='URLs of YouTube videos. (COMMA SEPERATED)'
                     placeHolder='https://youtu.be/ufKxCczY7-c, https://youtu.be/usDxRtl35-c'
-                    default={layer2?.videos.join(', ')}
+                    default={layer2?.videos.map(vid => 'https://www.youtube.com/watch?v=' + vid).join(', ')}
                 />
                 <LabeledInput
                     name='gecko'
