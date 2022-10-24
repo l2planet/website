@@ -338,7 +338,7 @@ export const Layer2Form = ({
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/arbitrum'
-                    default={layer2 ? 'https://twitter.com/' + layer2.twitter : undefined}
+                    default={layer2?.twitter ? 'https://twitter.com/' + layer2.twitter : undefined}
                 />
                 <LabeledTextArea
                     name='videos'
@@ -352,7 +352,7 @@ export const Layer2Form = ({
                     label='Coin Gecko URL'
                     tip='Coin Gecko URL of the native coin of the layer 2. (OPTIONAL)'
                     placeHolder='https://www.coingecko.com/en/coins/arbitrum'
-                    default={layer2?.gecko}
+                    default={layer2?.gecko ? 'https://www.coingecko.com/en/coins/' + layer2.gecko : undefined}
                 />
                 <LabeledTextArea
                     name='investors'
