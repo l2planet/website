@@ -75,6 +75,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
 
     formData.bridges.forEach((bridge) => {
         const contract_address = cleanWords(bridge.contract_address)
+        if(!contract_address) return
         const tokens: string[] = []
         cleanWords(bridge.tokens)
             .split(',')
