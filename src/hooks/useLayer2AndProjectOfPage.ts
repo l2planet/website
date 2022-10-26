@@ -34,7 +34,7 @@ export function useLayer2AndProjectsOfPage(): Layer2AndProjectsOfPage {
             return
         }
 
-        _layer2.projects == _layer2.projects ?? []
+        _layer2.projects = _layer2.projects ?? []
 
         const projects: InternalProject[] = []
 
