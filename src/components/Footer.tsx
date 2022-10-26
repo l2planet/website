@@ -19,7 +19,7 @@ export const Footer = () => {
                             <Link a={A} href='https://www.youtube.com/c/L2Planet' newTab>
                                 YouTube
                             </Link>
-                            <Link a={A} href='https://discord.com/layer2planet' newTab>
+                            <Link a={A} href='https://discord.com/invite/trSb3WqzFJ' newTab>
                                 Discord
                             </Link>
                         </SecondarySubBox>
@@ -30,7 +30,7 @@ export const Footer = () => {
                             <Link a={A} href='/about'>
                                 About
                             </Link>
-                            <Link a={A} href='/donate'>
+                            <Link a={A} newTab href='https://gitcoin.co/grants/4450/layer2-planet'>
                                 Donate
                             </Link>
                             <Link a={A} href='/members/login'>
