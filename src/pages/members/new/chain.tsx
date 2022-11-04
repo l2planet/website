@@ -3,8 +3,10 @@ import { ChainForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
 import { SEO } from '../../../components/SEO'
 import { sendChain } from '../../../functions/api'
+import { useAllChains } from '../../../hooks/useAllChains'
 
 const NewChain: NextPage = () => {
+    const { chains } = useAllChains()
     return (
         <>
             <SEO title='L2 Planet | New Chain' description='L2 Planet' favicon='/favicon.ico' />
@@ -14,7 +16,8 @@ const NewChain: NextPage = () => {
             <ChainForm
                 onSubmit={async (formData) => {
                     try {
-                        await sendChain(formData, 'POST')
+                        if (!chains) throw new Error(`Try again!`)
+                        await sendChain(formData, 'POST', chains)
                         alert('Succesfully added!')
                     } catch (err: any) {
                         alert(err.message)

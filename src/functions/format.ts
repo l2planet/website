@@ -10,6 +10,10 @@ import {
     APIPostChain,
     APIPostLayer2,
     APIPostProject,
+    APIGetChain,
+    InternalChain,
+    InternalLayer2,
+    InternalProject,
 } from '../types/Api'
 import { getImageUrl } from './getImageUrl'
 
@@ -18,27 +22,37 @@ import { getImageUrl } from './getImageUrl'
  
  If an error occurs, it throws it. So don't forget to catch.
  */
-export const formatChain = (formData: RawFormChain): APIPostChain => {
+export const formatChain = (formData: RawFormChain, method: 'update' | 'new', allChains: InternalChain[]): APIPostChain => {
     Object.entries(formData).forEach(([_key, _]) => {
         const key = _key as keyof RawFormChain
         formData[key] = cleanWords(formData[key])
     })
 
-    const id = formData.name.split(' ').join('_').toLowerCase()
+
+    const string_id = formData.name.split(' ').join('_').toLowerCase()
     const name = formData.name
     const icon = formData.icon
     const description = formData.description.split('\n').join(' ')
 
-    if (!formData.icon.startsWith('https://')) {
-        throw new Error('Icon URL is not valid.')
+
+    if (method === 'new' && allChains.find((chain) => chain.id === string_id)) {
+        throw new Error(`'${name}' already exists. Wanna update it?`)
     }
 
-    if (!formData.icon.includes('.svg') && !formData.icon.includes('.png')) {
-        throw new Error('Icon is not an SVG or PNG file')
+    if (name.length === 0) {
+        throw new Error('Chain Name is empty!')
+    }
+
+    if (/^http[^\?]*.(jpg|jpeg|gif|png|webp)(\?(.*))?$/gim.test(icon)) {
+        throw new Error('Icon URL is not valid!')
+    }
+
+    if (description.length === 0) {
+        throw new Error('Description is empty!')
     }
 
     const data = {
-        string_id: id,
+        string_id,
         name,
         icon,
         description,
@@ -54,7 +68,7 @@ export const formatChain = (formData: RawFormChain): APIPostChain => {
  
  If an error occurs, it throws it. So don't forget to catch.
  */
-export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
+export const formatLayer2 = (formData: RawFormLayer2, method: 'update' | 'new', allChains: InternalChain[], allLayer2s: InternalLayer2[]): APIPostLayer2 => {
     const string_id = cleanWords(formData.name).split(' ').join('_').toLowerCase()
     const chain_id = cleanWords(formData.chain_id)
     const name = cleanWords(formData.name)
@@ -75,7 +89,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
 
     formData.bridges.forEach((bridge) => {
         const contract_address = cleanWords(bridge.contract_address)
-        if(!contract_address) return
+        if (!contract_address) return
         const tokens: string[] = []
         cleanWords(bridge.tokens)
             .split(',')
@@ -98,12 +112,25 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         .map((inv) => inv.trim())
         .forEach((url) => (getImageUrl(url) ? investors.push(url) : {}))
 
-    if (!formData.icon.startsWith('https://')) {
-        throw new Error('Icon URL is not valid.')
+
+    if (!allChains.find((chain) => chain.id === chain_id)) {
+        throw new Error(`Chain '${chain_id}' does not exist!`)
     }
 
-    if (!formData.icon.includes('.svg') && !formData.icon.includes('.png')) {
-        throw new Error('Icon is not an SVG or PNG file')
+    if (method === 'new' && allLayer2s.find((l2) => l2.id === string_id)) {
+        throw new Error(`'${name}' already exists. Wanna update it?`)
+    }
+
+    if (name.length === 0) {
+        throw new Error('Chain Name is empty!')
+    }
+
+    if (/^http[^\?]*.(jpg|jpeg|gif|png|webp)(\?(.*))?$/gim.test(icon)) {
+        throw new Error('Icon URL is not valid!')
+    }
+
+    if (description.length === 0) {
+        throw new Error('Description is empty!')
     }
 
     if (!formData.website.includes('https://')) {
@@ -126,7 +153,6 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
         gecko,
         twitter,
     }
-    console.log(data)
 
     return data
 }
@@ -136,7 +162,7 @@ export const formatLayer2 = (formData: RawFormLayer2): APIPostLayer2 => {
  
  If an error occurs, it throws it. So don't forget to catch.
  */
-export const formatProject = (formData: RawFormProject): APIPostProject => {
+export const formatProject = (formData: RawFormProject, method: 'new' | 'update', allLayer2s: InternalLayer2[], allProjects: InternalProject[],): APIPostProject => {
     Object.entries(formData).forEach(([_key, _]) => {
         const key = _key as keyof RawFormProject
         formData[key] = cleanWords(formData[key])
@@ -157,12 +183,29 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
     const twitter = getTwitterAccountId(formData.twitter) ?? ''
     const website = formData.website.includes('https://') ? formData.website : ''
 
-    if (!formData.icon.startsWith('https://')) {
-        throw new Error('Icon URL is not valid.')
+
+
+    l2_ids.forEach((l2_id) => {
+        if (!allLayer2s.find(l2 => l2.id === l2_id)) {
+            throw new Error(`Layer 2 '${l2_id}' does not exist!`)
+        }
+    })
+
+    if (method === 'new' && allProjects.find((project) => project.id === string_id)) {
+        throw new Error(`'${name}' already exists. Wanna update it?`)
     }
 
-    if (!formData.icon.includes('.svg') && !formData.icon.includes('.png')) {
-        throw new Error('Icon is not an SVG or PNG file')
+
+    if (name.length === 0) {
+        throw new Error('Chain Name is empty!')
+    }
+
+    if (/^http[^\?]*.(jpg|jpeg|gif|png|webp)(\?(.*))?$/gim.test(icon)) {
+        throw new Error('Icon URL is not valid!')
+    }
+
+    if (description.length === 0) {
+        throw new Error('Description is empty!')
     }
 
     const data = {
@@ -175,7 +218,6 @@ export const formatProject = (formData: RawFormProject): APIPostProject => {
         twitter,
         website,
     }
-    console.log(data)
 
     return data
 }

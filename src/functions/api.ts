@@ -9,6 +9,9 @@ import {
     APIPostLayer2,
     APIPostProject,
     InfoEndpointData,
+    InternalChain,
+    InternalLayer2,
+    InternalProject,
 } from '../types/Api'
 import { getJwtCookie, setJwtCookie } from './cookie'
 import { Block } from '../components/Editor/types'
@@ -58,10 +61,10 @@ export async function authRegister(formData: RawFormAuth): Promise<void> {
 }
 
 /** Makes a post request to the backend to send a new Chain. */
-export async function sendChain(formData: RawFormChain, type: 'PATCH' | 'POST'): Promise<void> {
+export async function sendChain(formData: RawFormChain, type: 'PATCH' | 'POST', allChains: InternalChain[]): Promise<void> {
     try {
         const jwt = getJwtCookie()
-        const chainData: APIPostChain = formatChain(formData)
+        const chainData: APIPostChain = formatChain(formData, type === 'PATCH' ? 'update' : 'new', allChains)
 
         const res = await fetch('https://api.l2planet.xyz/auth/chain', {
             method: type,
@@ -86,11 +89,13 @@ export async function sendChain(formData: RawFormChain, type: 'PATCH' | 'POST'):
 /** Makes a post request to the backend to send a new Layer 2. */
 export async function sendLayer2(
     formData: RawFormLayer2,
-    type: 'PATCH' | 'POST'
+    type: 'PATCH' | 'POST',
+    allChains: InternalChain[],
+    allLayer2s: InternalLayer2[],
 ): Promise<void> {
     try {
         const jwt = getJwtCookie()
-        const layer2Data: APIPostLayer2 = formatLayer2(formData)
+        const layer2Data: APIPostLayer2 = formatLayer2(formData, type === 'PATCH' ? 'update' : 'new', allChains, allLayer2s)
 
         const res = await fetch('https://api.l2planet.xyz/auth/solution', {
             method: type,
@@ -115,11 +120,13 @@ export async function sendLayer2(
 /** Makes a post request to the backend to send a new Project. */
 export async function sendProject(
     formData: RawFormProject,
-    type: 'PATCH' | 'POST'
+    type: 'PATCH' | 'POST',
+    allLayer2s: InternalLayer2[],
+    allProjects: InternalProject[],
 ): Promise<void> {
     try {
         const jwt = getJwtCookie()
-        const projectData: APIPostProject = formatProject(formData)
+        const projectData: APIPostProject = formatProject(formData, type === 'PATCH' ? 'update' : 'new', allLayer2s, allProjects)
 
         const res = await fetch('https://api.l2planet.xyz/auth/project', {
             method: type,

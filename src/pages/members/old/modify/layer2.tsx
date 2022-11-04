@@ -6,10 +6,15 @@ import { ChainForm, Layer2Form } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
 import { sendLayer2 } from '../../../../functions/api'
+import { useAllChains } from '../../../../hooks/useAllChains'
+import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
+import { useAllProjects } from '../../../../hooks/useAllProjects'
 import { useRawLayer2OfPage } from '../../../../hooks/useRawLayer2OfPage'
 
 const OldChains: NextPage = () => {
     const { rawLayer2 } = useRawLayer2OfPage()
+    const { chains } = useAllChains()
+    const { layer2s } = useAllLayer2s()
 
     return (
         <>
@@ -27,7 +32,8 @@ const OldChains: NextPage = () => {
                         layer2={rawLayer2}
                         onSubmit={async (formData) => {
                             try {
-                                await sendLayer2(formData, 'PATCH')
+                                if (!layer2s || !chains) throw new Error(`Try again!`)
+                                await sendLayer2(formData, 'PATCH', chains, layer2s)
                                 alert('Successfully modified!')
                             } catch (error: any) {
                                 alert(error.message)

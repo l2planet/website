@@ -4,10 +4,13 @@ import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
 import { sendProject } from '../../../../functions/api'
 import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
+import { useAllProjects } from '../../../../hooks/useAllProjects'
 import { useRawProjectOfPage } from '../../../../hooks/useRawProjectOfPage'
 
 const OldChains: NextPage = () => {
     const { rawProject } = useRawProjectOfPage()
+    const { layer2s } = useAllLayer2s()
+    const { projects } = useAllProjects()
 
     return (
         <>
@@ -25,7 +28,8 @@ const OldChains: NextPage = () => {
                         project={rawProject}
                         onSubmit={async (formData) => {
                             try {
-                                await sendProject(formData, 'PATCH')
+                                if (!layer2s || !projects) throw new Error(`Try again!`)
+                                await sendProject(formData, 'PATCH', layer2s, projects)
                                 alert('Successfully modified!')
                             } catch (error: any) {
                                 alert(error.message)

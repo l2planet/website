@@ -5,10 +5,12 @@ import { ChainForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
 import { SEO } from '../../../../components/SEO'
 import { sendChain } from '../../../../functions/api'
+import { useAllChains } from '../../../../hooks/useAllChains'
 import { useChainOfPage } from '../../../../hooks/useChainOfPage'
 
 const OldChains: NextPage = () => {
     const { chain } = useChainOfPage()
+    const { chains } = useAllChains()
 
     return (
         <>
@@ -26,7 +28,8 @@ const OldChains: NextPage = () => {
                         chain={chain}
                         onSubmit={async (formData) => {
                             try {
-                                await sendChain(formData, 'PATCH')
+                                if (!chains) throw new Error(`Try again!`)
+                                await sendChain(formData, 'PATCH', chains)
                                 alert('Successfully modified!')
                             } catch (error: any) {
                                 alert(error.message)
