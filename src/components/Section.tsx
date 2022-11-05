@@ -23,6 +23,14 @@ export const SectionIndexCards = wrapn(Section)`
     gap-4
     sm:gap-5
 `
+export const SectionIndexSubscribe = wrapn(Section)`
+    self-center
+    max-w-3xl
+    space-y-3
+    sm:space-y-4
+    md:space-y-5
+    lg:space-y-6
+`
 
 // About page
 
