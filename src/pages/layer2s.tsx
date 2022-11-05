@@ -149,6 +149,7 @@ const DivName = wrapn('div')`
 `
 
 const ImgLayer2 = wrapn('img')`
+    aspect-square
     h-18
     sm:h-22
     md:h-28
