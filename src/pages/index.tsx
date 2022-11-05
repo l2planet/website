@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
 import { CardIndex } from '../components/Card'
-import { H1 } from '../components/H'
+import { H1, H2 } from '../components/H'
+import { SubscribeForm } from '../components/SubscribeForm'
 import { P1 } from '../components/P'
-import { SectionIndexCards, SectionIndexIntro } from '../components/Section'
+import { SectionIndexCards, SectionIndexIntro, SectionIndexSubscribe } from '../components/Section'
 import { SEO } from '../components/SEO'
 import { useAllChains } from '../hooks/useAllChains'
 
@@ -24,6 +25,13 @@ const Home: NextPage = () => {
                     <CardIndex key={chain.name} {...chain} />
                 ))}
             </SectionIndexCards>
+
+            <SectionIndexSubscribe>
+                <H2>Email Newsletter</H2>
+                <P1>We have been running the first and the best Layer-2 Newsletter in the world for over 1 year. Join +1000 people and get biweekly Layer-2 news by subscribing.</P1>
+                <SubscribeForm />
+            </SectionIndexSubscribe>
+
         </>
     )
 }
