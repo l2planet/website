@@ -4,7 +4,7 @@ export function getImageUrl(imageUrl: string) {
 
     try {
         const url = new URL(imageUrl).href
-        return /^http[^\?]*.(jpg|jpeg|gif|png|webp)(\?(.*))?$/gim.test(url) ? url : null
+        return /^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(url) ? url : null
     } catch {
         return null
     }
