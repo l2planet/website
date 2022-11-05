@@ -43,7 +43,7 @@ export const formatChain = (formData: RawFormChain, method: 'update' | 'new', al
         throw new Error('Chain Name is empty!')
     }
 
-    if (/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon)) {
+    if (!(/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon))) {
         throw new Error('Icon URL is not valid!')
     }
 
@@ -125,7 +125,7 @@ export const formatLayer2 = (formData: RawFormLayer2, method: 'update' | 'new', 
         throw new Error('Chain Name is empty!')
     }
 
-    if (/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon)) {
+    if (!(/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon))) {
         throw new Error('Icon URL is not valid!')
     }
 
@@ -200,7 +200,7 @@ export const formatProject = (formData: RawFormProject, method: 'new' | 'update'
         throw new Error('Chain Name is empty!')
     }
 
-    if (/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon)) {
+    if (!(/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon))) {
         throw new Error('Icon URL is not valid!')
     }
 
