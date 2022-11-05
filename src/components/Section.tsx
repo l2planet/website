@@ -24,6 +24,8 @@ export const SectionIndexCards = wrapn(Section)`
     sm:gap-5
 `
 export const SectionIndexSubscribe = wrapn(Section)`
+    pt-6
+    sm:pt-10
     self-center
     max-w-3xl
     space-y-3
