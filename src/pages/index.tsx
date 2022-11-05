@@ -15,8 +15,8 @@ const Home: NextPage = () => {
             <SEO title='L2 Planet | Home' description='L2 Planet' favicon='/favicon.ico' />
 
             <SectionIndexIntro>
-                <H1>Welcome to Layer 2 Planet</H1>
-                <P1>Choose your path on the discovery of planets.</P1>
+                <H1>Welcome to Layer-2 Planet</H1>
+                <P1>Chains that have a Layer-2 solution are like countries on L2 Planet. Choose a country you want to visit. We recommend visiting Ethereum, especially. It is one of the popular destinations for travelers these days :)</P1>
             </SectionIndexIntro>
 
             <SectionIndexCards>
