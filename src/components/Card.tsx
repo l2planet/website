@@ -238,6 +238,7 @@ const NameLayer2 = wrapn('h2')`
 
 const ImgLayer2 = wrapn('img')`
     h-full
+    aspect-square
 `
 
 // Card for projects pages
@@ -313,6 +314,7 @@ const DivProjectMeta = wrapn('div')`
 
 const ImgProject = wrapn('img')`
     h-full
+    aspect-square
 `
 
 const NameProject = wrapn('h2')`
