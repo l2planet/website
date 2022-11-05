@@ -2,6 +2,7 @@ import { wrapn } from 'wrapn'
 import { InternalChain, InternalLayer2, InternalProject } from '../types/Api'
 import { StatusProps } from '../types/globals'
 import { AProjects } from './A'
+import { IconCoinGecko, IconTwitter, IconWebsite } from './icons/IconBrands'
 import { Img } from './Image'
 import { Link } from './Link'
 
@@ -257,12 +258,12 @@ export const CardProject = (props: InternalProject) => (
             <Flex4ProjectLinks>
                 {props.website && (
                     <Link a={AProjects} href={props.website} newTab>
-                        Website
+                        <IconWebsite/>
                     </Link>
                 )}
                 {props.twitter && (
                     <Link a={AProjects} href={`https://twitter.com/${props.twitter}`} newTab>
-                        Twitter
+                        <IconTwitter />
                     </Link>
                 )}
             </Flex4ProjectLinks>
@@ -344,7 +345,7 @@ const DescriptionProject = wrapn('p')`
 
 const Flex4ProjectLinks = wrapn('div')`
     flex
-    space-x-4
+    space-x-3
 `
 
 const Flex4ProjectCategories = wrapn('div')`

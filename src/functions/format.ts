@@ -22,18 +22,20 @@ import { getImageUrl } from './getImageUrl'
  
  If an error occurs, it throws it. So don't forget to catch.
  */
-export const formatChain = (formData: RawFormChain, method: 'update' | 'new', allChains: InternalChain[]): APIPostChain => {
+export const formatChain = (
+    formData: RawFormChain,
+    method: 'update' | 'new',
+    allChains: InternalChain[]
+): APIPostChain => {
     Object.entries(formData).forEach(([_key, _]) => {
         const key = _key as keyof RawFormChain
         formData[key] = cleanWords(formData[key])
     })
 
-
     const string_id = formData.name.split(' ').join('_').toLowerCase()
     const name = formData.name
     const icon = formData.icon
     const description = formData.description.split('\n').join(' ')
-
 
     if (method === 'new' && allChains.find((chain) => chain.id === string_id)) {
         throw new Error(`'${name}' already exists. Wanna update it?`)
@@ -43,7 +45,7 @@ export const formatChain = (formData: RawFormChain, method: 'update' | 'new', al
         throw new Error('Chain Name is empty!')
     }
 
-    if (!(/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon))) {
+    if (!/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon)) {
         throw new Error('Icon URL is not valid!')
     }
 
@@ -68,7 +70,12 @@ export const formatChain = (formData: RawFormChain, method: 'update' | 'new', al
  
  If an error occurs, it throws it. So don't forget to catch.
  */
-export const formatLayer2 = (formData: RawFormLayer2, method: 'update' | 'new', allChains: InternalChain[], allLayer2s: InternalLayer2[]): APIPostLayer2 => {
+export const formatLayer2 = (
+    formData: RawFormLayer2,
+    method: 'update' | 'new',
+    allChains: InternalChain[],
+    allLayer2s: InternalLayer2[]
+): APIPostLayer2 => {
     const string_id = cleanWords(formData.name).split(' ').join('_').toLowerCase()
     const chain_id = cleanWords(formData.chain_id)
     const name = cleanWords(formData.name)
@@ -112,7 +119,6 @@ export const formatLayer2 = (formData: RawFormLayer2, method: 'update' | 'new', 
         .map((inv) => inv.trim())
         .forEach((url) => (getImageUrl(url) ? investors.push(url) : {}))
 
-
     if (!allChains.find((chain) => chain.id === chain_id)) {
         throw new Error(`Chain '${chain_id}' does not exist!`)
     }
@@ -125,7 +131,7 @@ export const formatLayer2 = (formData: RawFormLayer2, method: 'update' | 'new', 
         throw new Error('Chain Name is empty!')
     }
 
-    if (!(/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon))) {
+    if (!/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon)) {
         throw new Error('Icon URL is not valid!')
     }
 
@@ -162,7 +168,12 @@ export const formatLayer2 = (formData: RawFormLayer2, method: 'update' | 'new', 
  
  If an error occurs, it throws it. So don't forget to catch.
  */
-export const formatProject = (formData: RawFormProject, method: 'new' | 'update', allLayer2s: InternalLayer2[], allProjects: InternalProject[],): APIPostProject => {
+export const formatProject = (
+    formData: RawFormProject,
+    method: 'new' | 'update',
+    allLayer2s: InternalLayer2[],
+    allProjects: InternalProject[]
+): APIPostProject => {
     Object.entries(formData).forEach(([_key, _]) => {
         const key = _key as keyof RawFormProject
         formData[key] = cleanWords(formData[key])
@@ -183,10 +194,8 @@ export const formatProject = (formData: RawFormProject, method: 'new' | 'update'
     const twitter = getTwitterAccountId(formData.twitter) ?? ''
     const website = formData.website.includes('https://') ? formData.website : ''
 
-
-
     l2_ids.forEach((l2_id) => {
-        if (!allLayer2s.find(l2 => l2.id === l2_id)) {
+        if (!allLayer2s.find((l2) => l2.id === l2_id)) {
             throw new Error(`Layer 2 '${l2_id}' does not exist!`)
         }
     })
@@ -195,12 +204,11 @@ export const formatProject = (formData: RawFormProject, method: 'new' | 'update'
         throw new Error(`'${name}' already exists. Wanna update it?`)
     }
 
-
     if (name.length === 0) {
         throw new Error('Chain Name is empty!')
     }
 
-    if (!(/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon))) {
+    if (!/^http[^\?]*.(jpg|jpeg|gif|png|webp|svg)(\?(.*))?$/gim.test(icon)) {
         throw new Error('Icon URL is not valid!')
     }
 

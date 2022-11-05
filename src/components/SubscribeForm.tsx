@@ -1,21 +1,20 @@
-import { wrapn } from "wrapn";
-import { IconSubscribe } from "./icons/IconSubscribe";
-
+import { wrapn } from 'wrapn'
+import { IconSubscribe } from './icons/IconSubscribe'
 
 export const SubscribeForm = () => {
-
-    return <Form onSubmit={(e) => {
-        e.preventDefault()
-        alert('Logic will be added soon.')
-    }}>
-        <Input
-            name='email'
-            placeholder='elon@musk.com'
-        />
-        <Button type='submit'>
-            <IconSubscribe />
-        </Button>
-    </Form>
+    return (
+        <Form
+            onSubmit={(e) => {
+                e.preventDefault()
+                alert('Logic will be added soon.')
+            }}
+        >
+            <Input name='email' placeholder='elon@musk.com' />
+            <Button type='submit'>
+                <IconSubscribe />
+            </Button>
+        </Form>
+    )
 }
 
 const Form = wrapn('form')`
@@ -29,7 +28,6 @@ const Form = wrapn('form')`
     sm:mx-8
     rounded-lg
 `
-
 
 const Input = wrapn('input')`
     outline-none

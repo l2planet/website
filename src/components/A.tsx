@@ -66,9 +66,10 @@ export const ALayer2 = wrapn('a')`
     flex
     items-center
 
-    h-10
-    px-4
-    sm:px-5
+    h-11
+    sm:h-12
+    p-1
+    sm:p-2
 
     rounded-lg2
 
@@ -98,6 +99,7 @@ export const AL2Projects = wrapn('a')`
     justify-center
 
     h-11
+    w-full
     px-5
     
 
@@ -130,8 +132,8 @@ export const AProjects = wrapn('a')`
     flex
     items-center
 
-    h-10
-    px-4
+    h-11
+    p-2
     
 
     rounded-lg2

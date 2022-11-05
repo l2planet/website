@@ -27,10 +27,10 @@ export const Row4Layer2Links = wrapn('div')`
 
     min-w-fit
     
-    gap-x-3
-    sm:gap-x-6
-    gap-y-4
-    sm:gap-y-5
+    gap-x-2
+    sm:gap-x-4
+    gap-y-3
+    sm:gap-y-4
 `
 
 export const Grid4Layer2Investors = wrapn('div')`

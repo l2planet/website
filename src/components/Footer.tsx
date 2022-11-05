@@ -30,7 +30,11 @@ export const Footer = () => {
                             <Link a={A} href='/about'>
                                 About
                             </Link>
-                            <Link a={A} newTab href='https://gitcoin.co/grants/4450/layer2-planet'>
+                            <Link
+                                a={A}
+                                newTab
+                                href='https://gitcoin.co/grants/4450/layer2-planet'
+                            >
                                 Donate
                             </Link>
                             <Link a={A} href='/members/login'>

@@ -250,7 +250,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onElse() { },
+                                        onElse() {},
 
                                         onEnter() {
                                             if (i > 1) {
@@ -291,7 +291,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             if (
                                                 i < blocks.length - 1 &&
                                                 e.currentTarget.selectionStart ==
-                                                e.currentTarget.value.length
+                                                    e.currentTarget.value.length
                                             ) {
                                                 setFocusedBlock(i + 1)
                                                 setBlocks(blocks.slice(0))

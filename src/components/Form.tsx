@@ -338,21 +338,29 @@ export const Layer2Form = ({
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/arbitrum'
-                    default={layer2?.twitter ? 'https://twitter.com/' + layer2.twitter : undefined}
+                    default={
+                        layer2?.twitter ? 'https://twitter.com/' + layer2.twitter : undefined
+                    }
                 />
                 <LabeledTextArea
                     name='videos'
                     label='Video URLs'
                     tip='URLs of YouTube videos. (COMMA SEPERATED)'
                     placeHolder='https://youtu.be/ufKxCczY7-c, https://youtu.be/usDxRtl35-c'
-                    default={layer2?.videos.map(vid => 'https://www.youtube.com/watch?v=' + vid).join(', ')}
+                    default={layer2?.videos
+                        .map((vid) => 'https://www.youtube.com/watch?v=' + vid)
+                        .join(', ')}
                 />
                 <LabeledInput
                     name='gecko'
                     label='Coin Gecko URL'
                     tip='Coin Gecko URL of the native coin of the layer 2. (OPTIONAL)'
                     placeHolder='https://www.coingecko.com/en/coins/arbitrum'
-                    default={layer2?.gecko ? 'https://www.coingecko.com/en/coins/' + layer2.gecko : undefined}
+                    default={
+                        layer2?.gecko
+                            ? 'https://www.coingecko.com/en/coins/' + layer2.gecko
+                            : undefined
+                    }
                 />
                 <LabeledTextArea
                     name='investors'
