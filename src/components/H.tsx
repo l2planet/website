@@ -11,6 +11,17 @@ export const H1 = wrapn('h1')`
     lg:text-7xl
 `
 
+export const H2 = wrapn('h1')`
+    text-center
+
+    font-bold
+    
+    text-3xl
+    sm:text-4xl
+    md:text-5xl
+    
+`
+
 // [chain] pages
 
 export const HChain = wrapn('h1')`
