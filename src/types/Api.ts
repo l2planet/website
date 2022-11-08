@@ -92,6 +92,7 @@ export interface RawFormLayer2 {
     bridges: RawBridge[]
     gecko: string
     twitter: string
+    github: string
     videos: string
     investors: string
 }
@@ -114,6 +115,7 @@ export interface APIPostLayer2 {
     }[]
     gecko?: string
     twitter?: string
+    github?: string
     videos: string[]
     investors: string[]
 }
@@ -135,6 +137,7 @@ export interface APIGetLayer2 {
     website: string
     twitter?: string
     gecko?: string
+    github?: string
     videos: string[]
     investors: string[]
     price?: number
@@ -158,6 +161,7 @@ export interface InternalLayer2 {
     website: string
     twitter?: string
     gecko?: string
+    github?: string
     videos: string[]
     investors: string[]
     price?: number
@@ -181,6 +185,7 @@ export interface APIGetRawLayer2 {
     projects: string[]
     website: string
     twitter?: string
+    github?: string
     gecko?: string
     videos: string[]
     investors: string[]
@@ -204,6 +209,7 @@ export interface InternalRawLayer2 {
     website: string
     twitter?: string
     gecko?: string
+    github?: string
     videos: string[]
     investors: string[]
     bridges: {
@@ -221,6 +227,7 @@ export interface RawFormProject {
     categories: string
     website: string
     twitter: string
+    github: string
 }
 
 export interface APIPostProject {
@@ -232,6 +239,7 @@ export interface APIPostProject {
     categories: string[]
     website?: string
     twitter?: string
+    github?: string
 }
 
 export interface APIGetProject {
@@ -241,6 +249,7 @@ export interface APIGetProject {
     categories: string[]
     website?: string
     twitter?: string
+    github?: string
 }
 
 export interface InternalProject {
@@ -251,6 +260,7 @@ export interface InternalProject {
     categories: string[]
     website?: string
     twitter?: string
+    github?: string
 }
 
 export interface InternalRawProject {
@@ -262,6 +272,7 @@ export interface InternalRawProject {
     categories: string[]
     website?: string
     twitter?: string
+    github?: string
 }
 
 export interface InternalNewsletter {

@@ -6,7 +6,7 @@ import { ALayer2, AL2Projects } from '../components/A'
 const Chart = dynamic(() => import('../components/Chart'), { ssr: false })
 import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
 import { HLayer2, HLayer2Common } from '../components/H'
-import { IconCoinGecko, IconTwitter, IconWebsite } from '../components/icons/IconBrands'
+import { IconCoinGecko, IconGithub, IconTwitter, IconWebsite } from '../components/icons/IconBrands'
 import { Img } from '../components/Image'
 import { Link } from '../components/Link'
 import { PLayer2Description } from '../components/P'
@@ -37,11 +37,7 @@ const Layer2: NextPage = () => {
 					<SectionLayer2Intro>
 						<DivMeta>
 							<DivName>
-								<Img
-									alt={`${layer2.name} Logo`}
-									img={ImgLayer2}
-									src={layer2.icon}
-								/>
+								<Img alt={`${layer2.name} Logo`} img={ImgLayer2} src={layer2.icon} />
 								<HLayer2>{layer2.name}</HLayer2>
 							</DivName>
 							<DivLinks>
@@ -61,8 +57,22 @@ const Layer2: NextPage = () => {
 										</Link>
 									)}
 									{layer2.gecko && (
-										<Link a={ALayer2} href='#'>
+										<Link
+											a={ALayer2}
+											href={`https://www.coingecko.com/coins/${layer2.gecko}`}
+											newTab
+										>
 											<IconCoinGecko />
+										</Link>
+									)}
+
+									{layer2.github && (
+										<Link
+											a={ALayer2}
+											href={`https://twitter.com/${layer2.github}`}
+											newTab
+										>
+											<IconGithub />
 										</Link>
 									)}
 								</Row4Layer2Links>
@@ -101,12 +111,7 @@ const Layer2: NextPage = () => {
 						<HLayer2Common>Investors:</HLayer2Common>
 						<Grid4Layer2Investors>
 							{layer2?.investors.map((investor) => (
-								<Img
-									alt='Investor Logo'
-									img={ImgInvestor}
-									src={investor}
-									key={investor}
-								/>
+								<Img alt='Investor Logo' img={ImgInvestor} src={investor} key={investor} />
 							))}
 						</Grid4Layer2Investors>
 					</SectionLayer2Investors>

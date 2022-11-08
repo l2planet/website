@@ -16,6 +16,7 @@ import {
     InternalProject,
 } from '../types/Api'
 import { getImageUrl } from './getImageUrl'
+import { getGitHubName } from './getGithubName'
 
 /**
  Converts `RawFormChain` data into `ApiPostChain`.
@@ -53,7 +54,7 @@ export const formatChain = (
         throw new Error('Description is empty!')
     }
 
-    const data = {
+    const data: APIPostChain = {
         string_id,
         name,
         icon,
@@ -91,6 +92,7 @@ export const formatLayer2 = (
     const bridges: APIPostLayer2['bridges'] = []
     const gecko = getCoinGeckoId(cleanWords(formData.gecko)) ?? ''
     const twitter = getTwitterAccountId(cleanWords(formData.twitter)) ?? ''
+    const github = getGitHubName(cleanWords(formData.github)) ?? ''
     const videos: string[] = []
     const investors: string[] = []
 
@@ -158,6 +160,7 @@ export const formatLayer2 = (
         website,
         gecko,
         twitter,
+        github,
     }
 
     return data
@@ -193,6 +196,7 @@ export const formatProject = (
     const categories = formData.categories.split(',').map((cat) => cat.trim())
     const twitter = getTwitterAccountId(formData.twitter) ?? ''
     const website = formData.website.includes('https://') ? formData.website : ''
+    const github = getGitHubName(formData.github) ?? ''
 
     l2_ids.forEach((l2_id) => {
         if (!allLayer2s.find((l2) => l2.id === l2_id)) {
@@ -216,7 +220,7 @@ export const formatProject = (
         throw new Error('Description is empty!')
     }
 
-    const data = {
+    const data: APIPostProject = {
         string_id,
         l2_ids,
         name,
@@ -225,6 +229,7 @@ export const formatProject = (
         categories,
         twitter,
         website,
+        github,
     }
 
     return data

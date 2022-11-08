@@ -3,11 +3,7 @@ import type { NextPage } from 'next'
 import { useMemo, useState } from 'react'
 import { wrapn } from 'wrapn'
 import { CardProject } from '../components/Card'
-import {
-    Col4Select,
-    Flex4ProjectsGrid4Projects,
-    Grid4ProjectsProjects,
-} from '../components/Div'
+import { Col4Select, Flex4ProjectsGrid4Projects, Grid4ProjectsProjects } from '../components/Div'
 import { HProjects, HProjectsL2, HSelect } from '../components/H'
 import { Img } from '../components/Image'
 import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section'
@@ -63,11 +59,9 @@ const Layer2: NextPage = () => {
                                         ))}
                                     </Grid4ProjectsProjects>
                                     <Grid4ProjectsProjects>
-                                        {projects
-                                            ?.slice(0, projects.length / 2)
-                                            .map((project) => (
-                                                <CardProject key={project.name} {...project} />
-                                            ))}
+                                        {projects?.slice(0, projects.length / 2).map((project) => (
+                                            <CardProject key={project.name} {...project} />
+                                        ))}
                                     </Grid4ProjectsProjects>
                                 </>
                             ) : (

@@ -26,20 +26,12 @@ export const EditableBlock = ({
     plusId: string
     directionsId: string
 }) => {
-    const img = useMemo(
-        () => (block.is('I') ? getImageUrl(p.value as string) : ''),
-        [block, p.value]
-    )
-    const tw = useMemo(
-        () => (block.is('W') ? getTweetId(p.value as string) : ''),
-        [block, p.value]
-    )
+    const img = useMemo(() => (block.is('I') ? getImageUrl(p.value as string) : ''), [block, p.value])
+    const tw = useMemo(() => (block.is('W') ? getTweetId(p.value as string) : ''), [block, p.value])
     const yt = useMemo(
         () =>
             block.is('V')
-                ? `https://www.youtube-nocookie.com/embed/${
-                      getYoutubeId(p.value as string) || ''
-                  }`
+                ? `https://www.youtube-nocookie.com/embed/${getYoutubeId(p.value as string) || ''}`
                 : '',
         [block, p.value]
     )
@@ -115,24 +107,12 @@ const WButton = wrapn('button')`
     dark:group-hover:fill-white dark:group-hover:bg-gris-7
     duration-200
 `
-const ButtonPlus = ({
-    onClick,
-    id,
-}: {
-    onClick: MouseEventHandler<HTMLButtonElement>
-    id: string
-}) => (
+const ButtonPlus = ({ onClick, id }: { onClick: MouseEventHandler<HTMLButtonElement>; id: string }) => (
     <WButton id={id} onClick={onClick}>
         <IconPlus />
     </WButton>
 )
-const ButtonDirections = ({
-    onClick,
-    id,
-}: {
-    onClick: MouseEventHandler<HTMLButtonElement>
-    id: string
-}) => (
+const ButtonDirections = ({ onClick, id }: { onClick: MouseEventHandler<HTMLButtonElement>; id: string }) => (
     <WButton id={id} onClick={onClick}>
         <IconDirection />
     </WButton>

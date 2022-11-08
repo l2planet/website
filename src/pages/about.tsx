@@ -18,9 +18,9 @@ const About: NextPage = () => {
             <SectionAboutIntro>
                 <H1>About</H1>
                 <P1>
-                    L2 Planet is a project which works for public goods. The main goal is to
-                    accelerate Layer-2 adaptation and educate the community about it. Wanna help
-                    us? Join our Discord channel now and be an L2 alien!
+                    L2 Planet is a project which works for public goods. The main goal is to accelerate
+                    Layer-2 adaptation and educate the community about it. Wanna help us? Join our Discord
+                    channel now and be an L2 alien!
                 </P1>
             </SectionAboutIntro>
 

@@ -78,10 +78,7 @@ export const isReadyToBeUnfocused = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     return e.currentTarget.value.length == 0
 }
 
-export const onKeyDownHandler = (
-    e: KeyboardEvent<HTMLTextAreaElement>,
-    handlers: OnKeyDownHandler
-) => {
+export const onKeyDownHandler = (e: KeyboardEvent<HTMLTextAreaElement>, handlers: OnKeyDownHandler) => {
     handlers.onAll()
 
     switch (e.key) {

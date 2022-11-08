@@ -1,11 +1,4 @@
-import {
-    MouseEventHandler,
-    MutableRefObject,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from 'react'
+import { MouseEventHandler, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { wrapn } from 'wrapn'
 import { getImageUrl } from '../../functions/getImageUrl'
 import { getTweetId } from '../../functions/getTwitterId'
@@ -83,34 +76,19 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
     }, [])
 
     const addAfter = useCallback((i: number) => {
-        setBlocks((blocks) => [
-            ...blocks.slice(0, i),
-            blocks[i],
-            new BlockClass(),
-            ...blocks.slice(i + 1),
-        ])
+        setBlocks((blocks) => [...blocks.slice(0, i), blocks[i], new BlockClass(), ...blocks.slice(i + 1)])
     }, [])
 
     const moveUp = useCallback((i: number) => {
         if (i < 4) return
-        setBlocks((blocks) => [
-            ...blocks.slice(0, i - 1),
-            blocks[i],
-            blocks[i - 1],
-            ...blocks.slice(i + 1),
-        ])
+        setBlocks((blocks) => [...blocks.slice(0, i - 1), blocks[i], blocks[i - 1], ...blocks.slice(i + 1)])
         setFocusedBlock((focusedBlock) => focusedBlock - 1)
     }, [])
 
     const moveDown = useCallback(
         (i: number) => {
             if (i < 3 || i == blocks.length - 1) return
-            setBlocks((blocks) => [
-                ...blocks.slice(0, i),
-                blocks[i + 1],
-                blocks[i],
-                ...blocks.slice(i + 2),
-            ])
+            setBlocks((blocks) => [...blocks.slice(0, i), blocks[i + 1], blocks[i], ...blocks.slice(i + 2)])
             setFocusedBlock((focusedBlock) => focusedBlock + 1)
         },
         [blocks.length]
@@ -137,10 +115,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         Show Editor
                     </PreviewButton>
                     <div className='flex flex-col w-full cursor-not-allowed select-none'>
-                        <Blocker
-                            blocks={previewBlocks}
-                            author={localStorage.getItem('username') ?? ''}
-                        />
+                        <Blocker blocks={previewBlocks} author={localStorage.getItem('username') ?? ''} />
                     </div>
                 </>
             ) : (
@@ -154,10 +129,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         Show Preview
                     </PreviewButton>
                     <Tool changeType={changeType} isDivision={isDivisionKey} />
-                    <Directions
-                        onUp={() => moveUp(focusedBlock)}
-                        onDown={() => moveDown(focusedBlock)}
-                    />
+                    <Directions onUp={() => moveUp(focusedBlock)} onDown={() => moveDown(focusedBlock)} />
                     <BlockHolder>
                         {blocks.map((block, i) => (
                             <EditableBlock
@@ -193,12 +165,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
 
                                     resizeTextareaHeight(e.currentTarget)
 
-                                    if (
-                                        block.is('P') ||
-                                        block.is('I') ||
-                                        block.is('W') ||
-                                        block.is('V')
-                                    ) {
+                                    if (block.is('P') || block.is('I') || block.is('W') || block.is('V')) {
                                         switch (true) {
                                             case getTweetId(e.target.value) !== null:
                                                 blocks[i] = block.as('W')
@@ -290,8 +257,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                         onArrowRight() {
                                             if (
                                                 i < blocks.length - 1 &&
-                                                e.currentTarget.selectionStart ==
-                                                    e.currentTarget.value.length
+                                                e.currentTarget.selectionStart == e.currentTarget.value.length
                                             ) {
                                                 setFocusedBlock(i + 1)
                                                 setBlocks(blocks.slice(0))
@@ -300,21 +266,12 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                         },
 
                                         onShift() {
-                                            if (
-                                                !(
-                                                    block.is('P') ||
-                                                    block.is('Q') ||
-                                                    block.is('L')
-                                                )
-                                            )
-                                                return
+                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return
                                             const start = e.currentTarget.selectionStart
                                             const end = e.currentTarget.selectionEnd
                                             if (start == end) return
                                             if (block.linkPlaceInvalid(start, end)) {
-                                                alert(
-                                                    'There is already a URL between the range!'
-                                                )
+                                                alert('There is already a URL between the range!')
                                                 return
                                             }
                                             if (block.linkWordInvalid(start, end)) {
@@ -326,10 +283,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                 e.currentTarget.value.length
                                             )
                                             const url = prompt(
-                                                `Embed a URL to: ${block.content.slice(
-                                                    start,
-                                                    end
-                                                )}`
+                                                `Embed a URL to: ${block.content.slice(start, end)}`
                                             )
 
                                             if (url) {
@@ -353,14 +307,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                         },
 
                                         onMeta() {
-                                            if (
-                                                !(
-                                                    block.is('P') ||
-                                                    block.is('Q') ||
-                                                    block.is('L')
-                                                )
-                                            )
-                                                return
+                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return
                                             if (block.links.length == 0) {
                                                 alert('There is no URL embedded!')
                                             } else {
@@ -371,10 +318,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                                 `"${block.content.slice(
                                                                     link.start,
                                                                     link.end
-                                                                )}": ${link.url.slice(
-                                                                    0,
-                                                                    40
-                                                                )}...`
+                                                                )}": ${link.url.slice(0, 40)}...`
                                                         )
                                                         .join('\n')}`
                                                 )

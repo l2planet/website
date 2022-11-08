@@ -3,14 +3,7 @@ import { ChartDataItem } from '../types/globals'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { InternalLayer2 } from '../types/Api'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import {
-    BarPrice,
-    BusinessDay,
-    createChart,
-    CrosshairMode,
-    Time,
-    UTCTimestamp,
-} from 'lightweight-charts'
+import { BarPrice, BusinessDay, createChart, CrosshairMode, Time, UTCTimestamp } from 'lightweight-charts'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Chart = ({ data }: { data: ChartDataItem[] }) => {

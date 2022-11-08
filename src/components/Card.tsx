@@ -258,11 +258,16 @@ export const CardProject = (props: InternalProject) => (
             <Flex4ProjectLinks>
                 {props.website && (
                     <Link a={AProjects} href={props.website} newTab>
-                        <IconWebsite/>
+                        <IconWebsite />
                     </Link>
                 )}
                 {props.twitter && (
                     <Link a={AProjects} href={`https://twitter.com/${props.twitter}`} newTab>
+                        <IconTwitter />
+                    </Link>
+                )}
+                {props.github && (
+                    <Link a={AProjects} href={`https://github.com/${props.github}`} newTab>
                         <IconTwitter />
                     </Link>
                 )}

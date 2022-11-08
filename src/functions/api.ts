@@ -68,11 +68,7 @@ export async function sendChain(
 ): Promise<void> {
     try {
         const jwt = getJwtCookie()
-        const chainData: APIPostChain = formatChain(
-            formData,
-            type === 'PATCH' ? 'update' : 'new',
-            allChains
-        )
+        const chainData: APIPostChain = formatChain(formData, type === 'PATCH' ? 'update' : 'new', allChains)
 
         const res = await fetch('https://api.l2planet.xyz/auth/chain', {
             method: type,

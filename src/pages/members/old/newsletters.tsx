@@ -5,11 +5,7 @@ import { SEO } from '../../../components/SEO'
 const NewChain: NextPage = () => {
     return (
         <>
-            <SEO
-                title='L2 Planet | Modify Chains'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | Modify Chains' description='L2 Planet' favicon='/favicon.ico' />
 
             <H1>Modify Chains</H1>
         </>

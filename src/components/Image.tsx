@@ -18,13 +18,7 @@ import NextImage, { StaticImageData } from 'next/image'
 export const Image = ({ size, src, alt }: ImageProps) => {
     return (
         <div className={size}>
-            <NextImage
-                alt={alt}
-                src={src}
-                layout='responsive'
-                className='select-none'
-                draggable='false'
-            />
+            <NextImage alt={alt} src={src} layout='responsive' className='select-none' draggable='false' />
         </div>
     )
 }

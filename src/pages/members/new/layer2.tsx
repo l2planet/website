@@ -12,11 +12,7 @@ const NewLayer2: NextPage = () => {
 
     return (
         <>
-            <SEO
-                title='L2 Planet | New Layer 2'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | New Layer 2' description='L2 Planet' favicon='/favicon.ico' />
 
             <H1>New Layer 2</H1>
 

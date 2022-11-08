@@ -159,12 +159,7 @@ export const LoginForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
             className='self-center w-full max-w-2xl'
         >
             <DivForm>
-                <LabeledInput
-                    name='username'
-                    label='User Name'
-                    tip='Your user name.'
-                    placeHolder='elon'
-                />
+                <LabeledInput name='username' label='User Name' tip='Your user name.' placeHolder='elon' />
                 <LabeledInput
                     name='password'
                     label='Password'
@@ -189,12 +184,7 @@ export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
             className='self-center w-full max-w-2xl'
         >
             <DivForm>
-                <LabeledInput
-                    name='username'
-                    label='User Name'
-                    tip='Your user name.'
-                    placeHolder='elon'
-                />
+                <LabeledInput name='username' label='User Name' tip='Your user name.' placeHolder='elon' />
                 <LabeledInput
                     name='password'
                     label='Password'
@@ -209,10 +199,7 @@ export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
 }
 
 /** Chain Form */
-export const ChainForm = ({
-    onSubmit,
-    chain,
-}: FormProps<RawFormChain> & { chain?: InternalChain }) => {
+export const ChainForm = ({ onSubmit, chain }: FormProps<RawFormChain> & { chain?: InternalChain }) => {
     return (
         <Form
             onSubmit={(e) => {
@@ -244,9 +231,7 @@ export const ChainForm = ({
                     default={chain?.description}
                 />
             </DivForm>
-            <ButtonForm type='submit'>
-                {chain ? 'Modify Old Chain' : 'Add a New Chain'}
-            </ButtonForm>
+            <ButtonForm type='submit'>{chain ? 'Modify Old Chain' : 'Add a New Chain'}</ButtonForm>
         </Form>
     )
 }
@@ -338,29 +323,28 @@ export const Layer2Form = ({
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/arbitrum'
-                    default={
-                        layer2?.twitter ? 'https://twitter.com/' + layer2.twitter : undefined
-                    }
-                />
-                <LabeledTextArea
-                    name='videos'
-                    label='Video URLs'
-                    tip='URLs of YouTube videos. (COMMA SEPERATED)'
-                    placeHolder='https://youtu.be/ufKxCczY7-c, https://youtu.be/usDxRtl35-c'
-                    default={layer2?.videos
-                        .map((vid) => 'https://www.youtube.com/watch?v=' + vid)
-                        .join(', ')}
+                    default={layer2?.twitter ? 'https://twitter.com/' + layer2.twitter : undefined}
                 />
                 <LabeledInput
                     name='gecko'
                     label='Coin Gecko URL'
                     tip='Coin Gecko URL of the native coin of the layer 2. (OPTIONAL)'
                     placeHolder='https://www.coingecko.com/en/coins/arbitrum'
-                    default={
-                        layer2?.gecko
-                            ? 'https://www.coingecko.com/en/coins/' + layer2.gecko
-                            : undefined
-                    }
+                    default={layer2?.gecko ? 'https://www.coingecko.com/en/coins/' + layer2.gecko : undefined}
+                />
+                <LabeledInput
+                    name='github'
+                    label='Github Profile URL'
+                    tip='URL of the official Github profile of the layer 2. (OPTIONAL)'
+                    placeHolder='https://github.com/l2planet'
+                    default={layer2?.github ? 'https://github.com/' + layer2.github : undefined}
+                />
+                <LabeledTextArea
+                    name='videos'
+                    label='Video URLs'
+                    tip='URLs of YouTube videos. (COMMA SEPERATED)'
+                    placeHolder='https://youtu.be/ufKxCczY7-c, https://youtu.be/usDxRtl35-c'
+                    default={layer2?.videos.map((vid) => 'https://www.youtube.com/watch?v=' + vid).join(', ')}
                 />
                 <LabeledTextArea
                     name='investors'
@@ -435,12 +419,17 @@ export const ProjectForm = ({
                     label='Twitter URL'
                     tip='URL of the official Twitter account. (OPTIONAL)'
                     placeHolder='https://twitter.com/uniswap'
-                    default={project ? 'https://twitter.com/' + project?.twitter : undefined}
+                    default={project?.twitter ? 'https://twitter.com/' + project?.twitter : undefined}
+                />
+                <LabeledInput
+                    name='github'
+                    label='Github Profile URL'
+                    tip='URL of the official Github profile. (OPTIONAL)'
+                    placeHolder='https://github.com/l2planet'
+                    default={project?.github ? 'https://github.com/' + project.github : undefined}
                 />
             </DivForm>
-            <ButtonForm type='submit'>
-                {project ? 'Modify Project' : 'Add a New Project'}
-            </ButtonForm>
+            <ButtonForm type='submit'>{project ? 'Modify Project' : 'Add a New Project'}</ButtonForm>
         </Form>
     )
 }

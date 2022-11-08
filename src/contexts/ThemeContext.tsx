@@ -42,9 +42,7 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
                         document.documentElement.classList.add('dark')
                     }
                 }
-                window
-                    .matchMedia('(prefers-color-scheme: dark)')
-                    .addEventListener('change', listener)
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', listener)
                 break
             }
             case 'dark': {
@@ -62,9 +60,7 @@ export const ThemeProvider = ({ children }: ChildrenProp) => {
         setTheme((theme) => {
             switch (theme) {
                 case 'auto': {
-                    return window.matchMedia('(prefers-color-scheme: dark)').matches
-                        ? 'light'
-                        : 'dark'
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'
                 }
                 case 'dark': {
                     return 'light'

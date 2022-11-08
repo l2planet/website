@@ -12,11 +12,7 @@ const NewProject: NextPage = () => {
 
     return (
         <>
-            <SEO
-                title='L2 Planet | New Projext'
-                description='L2 Planet'
-                favicon='/favicon.ico'
-            />
+            <SEO title='L2 Planet | New Projext' description='L2 Planet' favicon='/favicon.ico' />
             <H1>New Project</H1>
             <ProjectForm
                 onSubmit={async (projectFormData) => {

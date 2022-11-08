@@ -47,9 +47,7 @@ const Chain: NextPage = () => {
                                         ? chain.layer2s
                                               .filter((l2) => l2.categories.includes(category))
                                               .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
-                                        : chain.layer2s.map((l2) => (
-                                              <CardLayer2 key={l2.id} {...l2} />
-                                          ))}
+                                        : chain.layer2s.map((l2) => <CardLayer2 key={l2.id} {...l2} />)}
                                 </>
                             ) : (
                                 <Text>We can't find any layer 2 for {chain.name}. 🙁</Text>

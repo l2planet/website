@@ -13,10 +13,7 @@ export class BlockClass {
 
     linkPlaceInvalid(start: number, end: number): boolean {
         for (const link of this.links) {
-            if (
-                (start >= link.start && start <= link.end) ||
-                (end >= link.start && end <= link.end)
-            )
+            if ((start >= link.start && start <= link.end) || (end >= link.start && end <= link.end))
                 return true
         }
         return false
