@@ -35,39 +35,35 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
 
     const filterBlocks = useCallback(() => {
         const json: Block[] = blocks
-            .filter(({ content }) => content)
+            .filter(({ content, type }) => content || type === 'BR')
             .map((block) => {
-                if (block.links.length > 0) {
-                    return {
-                        type: block.type,
-                        content: block.content,
-                        links: block.links.sort((a, b) => a.start - b.start),
-                    }
-                } else {
-                    switch (block.type) {
-                        case 'W':
-                            return {
-                                type: 'W',
-                                content: getTweetId(block.content) || '',
-                            }
-                        case 'V':
-                            return {
-                                type: 'V',
-                                content: getYoutubeId(block.content) || '',
-                            }
-                        case 'BR':
-                            return {
-                                type: 'BR',
-                                content: '',
-                            }
-                        default:
-                            return {
-                                type: block.type,
-                                content: block.content,
-                            }
-                    }
+                switch (block.type) {
+                    case 'W':
+                        return {
+                            type: 'W',
+                            content: getTweetId(block.content) || '',
+                        }
+                    case 'V':
+                        return {
+                            type: 'V',
+                            content: getYoutubeId(block.content) || '',
+                        }
+                    case 'BR':
+                        return {
+                            type: 'BR',
+                            content: '',
+                        }
+                    default:
+                        return {
+                            type: block.type,
+                            content: block.content,
+                            links: block.links.length ? block.bolds.length ? block.links.concat(block.bolds as any).sort((a, b) => a.start - b.start) : block.links.sort((a, b) => a.start - b.start) : block.bolds.length ? block.bolds.sort((a, b) => a.start - b.start) : undefined
+                        } as any
                 }
+
             })
+        console.log(json);
+
         return json
     }, [blocks])
 
@@ -184,7 +180,9 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                 }}
                                 onKeyDown={(e) =>
                                     onKeyDownHandler(e, {
-                                        onAll() {
+                                        onAll () {
+
+                                            console.log(e.key)
                                             if (e.key == '/') {
                                                 if (!isDivisionKey.current && i > 1) {
                                                     tool.setPos(i)
@@ -204,7 +202,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onBackspace() {
+                                        onBackspace () {
                                             if (e.currentTarget.value.length == 0) {
                                                 if (i > 2) {
                                                     removeAt(i)
@@ -217,9 +215,9 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onElse() {},
+                                        onElse () { },
 
-                                        onEnter() {
+                                        onEnter () {
                                             if (i > 1) {
                                                 addAfter(i)
                                                 setFocusedBlock(i + 1)
@@ -230,7 +228,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             e.preventDefault()
                                         },
 
-                                        onArrowUp() {
+                                        onArrowUp () {
                                             if (i > 0) {
                                                 setFocusedBlock(i - 1)
                                                 setBlocks(blocks.slice(0))
@@ -238,7 +236,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             e.preventDefault()
                                         },
 
-                                        onArrowDown() {
+                                        onArrowDown () {
                                             if (i < blocks.length - 1) {
                                                 setFocusedBlock(i + 1)
                                                 setBlocks(blocks.slice(0))
@@ -246,7 +244,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onArrowLeft() {
+                                        onArrowLeft () {
                                             if (i > 0 && e.currentTarget.selectionStart == 0) {
                                                 setFocusedBlock(i - 1)
                                                 setBlocks(blocks.slice(0))
@@ -254,7 +252,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onArrowRight() {
+                                        onArrowRight () {
                                             if (
                                                 i < blocks.length - 1 &&
                                                 e.currentTarget.selectionStart == e.currentTarget.value.length
@@ -265,7 +263,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onShift() {
+                                        onShift () {
                                             if (!(block.is('P') || block.is('Q') || block.is('L'))) return
                                             const start = e.currentTarget.selectionStart
                                             const end = e.currentTarget.selectionEnd
@@ -306,7 +304,39 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                             }
                                         },
 
-                                        onMeta() {
+                                        onCtrl () {
+                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return
+                                            const start = e.currentTarget.selectionStart
+                                            const end = e.currentTarget.selectionEnd
+                                            if (start == end) return
+                                            if (block.linkPlaceInvalid(start, end)) {
+                                                alert('Cannot make this range bold. Please remove and recreate this block.')
+                                                return
+                                            }
+                                            if (block.linkWordInvalid(start, end)) {
+                                                alert('You have to select a full word!')
+                                                return
+                                            }
+                                            e.currentTarget.setSelectionRange(
+                                                e.currentTarget.value.length,
+                                                e.currentTarget.value.length
+                                            )
+
+                                            if (confirm('Wanna make the selection BOLD?')) {
+                                                block.bolds.push({
+                                                    start,
+                                                    end,
+                                                })
+                                                alert('Successfully made bold.')
+                                            } else {
+                                                alert('Cancelled.')
+                                            }
+
+
+                                        },
+
+
+                                        onMeta () {
                                             if (!(block.is('P') || block.is('Q') || block.is('L'))) return
                                             if (block.links.length == 0) {
                                                 alert('There is no URL embedded!')
@@ -357,7 +387,7 @@ const Tool = ({
     changeType,
 }: {
     isDivision: MutableRefObject<boolean>
-    changeType(newType: EditorBlockType): void
+    changeType (newType: EditorBlockType): void
 }) => (
     <>
         <WTool

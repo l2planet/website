@@ -1,15 +1,17 @@
-import { EditorBlockLinks, EditorBlockType } from './types'
+import { EditorBlockBolds, EditorBlockLinks, EditorBlockType } from './types'
 
 export class BlockClass {
     constructor(type?: EditorBlockType) {
         this.content = ''
         this.type = type || 'P'
         this.links = []
+        this.bolds = []
     }
 
     content: string
     type: EditorBlockType
     links: EditorBlockLinks[]
+    bolds: EditorBlockBolds[]
 
     linkPlaceInvalid(start: number, end: number): boolean {
         for (const link of this.links) {
@@ -27,9 +29,12 @@ export class BlockClass {
         if (
             start != 0 &&
             previousChar != ' ' &&
-            subsequentChar != '.' &&
-            subsequentChar != ',' &&
-            subsequentChar != '!' &&
+            previousChar != '.' &&
+            previousChar != ',' &&
+            previousChar != '!' &&
+            previousChar != ':' &&
+            previousChar != ';' &&
+            previousChar != '?' &&
             previousChar
         )
             return true
@@ -39,6 +44,9 @@ export class BlockClass {
             subsequentChar != '.' &&
             subsequentChar != ',' &&
             subsequentChar != '!' &&
+            subsequentChar != ':' &&
+            subsequentChar != ';' &&
+            subsequentChar != '?' &&
             subsequentChar
         )
             return true

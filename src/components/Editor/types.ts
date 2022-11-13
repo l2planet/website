@@ -4,6 +4,12 @@ export interface Block {
     type: EditorBlockType
     content: string
     links?: BlockLink[]
+    bolds?: BlockBold[]
+}
+
+export interface BlockBold {
+    start: number
+    end: number
 }
 
 export interface BlockLink {
@@ -23,6 +29,11 @@ export interface EditorBlockLinks {
     url: string
 }
 
+export interface EditorBlockBolds {
+    start: number
+    end: number
+}
+
 export interface OnKeyDownHandler {
     onEnter: Function
     onAll: Function
@@ -33,5 +44,6 @@ export interface OnKeyDownHandler {
     onArrowLeft: Function
     onArrowRight: Function
     onShift: Function
+    onCtrl: Function
     onMeta: Function
 }
