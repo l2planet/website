@@ -33,6 +33,14 @@ export const SectionIndexSubscribe = wrapn(Section)`
     md:space-y-5
     lg:space-y-6
 `
+export const SectionPartners = wrapn(Section)`
+    pt-6
+    sm:pt-10
+    space-y-3
+    sm:space-y-4
+    md:space-y-5
+    lg:space-y-6
+`
 
 // About page
 
