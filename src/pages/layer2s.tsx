@@ -69,7 +69,7 @@ const Layer2: NextPage = () => {
 									{layer2.github && (
 										<Link
 											a={ALayer2}
-											href={`https://twitter.com/${layer2.github}`}
+											href={`https://github.com/${layer2.github}`}
 											newTab
 										>
 											<IconGithub />
