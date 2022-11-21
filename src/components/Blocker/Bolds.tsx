@@ -8,9 +8,7 @@ export const Links = ({ block }: { block: Block }) => (
                 {block.content.slice(0, block.links[0].start)}
                 {block.links.map((link, i) => (
                     <>
-                        <Span key={`link ${i}`}>
-                            {block.content.slice(link.start, link.end)}
-                        </Span>{' '}
+                        <Span key={`link ${i}`}>{block.content.slice(link.start, link.end)}</Span>{' '}
                         {block.content.slice(link.end, block.links?.at(i + 1)?.start || undefined)}
                     </>
                 ))}
@@ -18,7 +16,6 @@ export const Links = ({ block }: { block: Block }) => (
         )}
     </>
 )
-
 
 const Span = wrapn('span')`
     underline

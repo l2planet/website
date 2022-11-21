@@ -1,7 +1,7 @@
 import { wrapn } from 'wrapn'
 import { ChartDataItem } from '../types/globals'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { BarPrice, BusinessDay, createChart, } from 'lightweight-charts'
+import { BarPrice, BusinessDay, createChart } from 'lightweight-charts'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Chart = ({ data }: { data: ChartDataItem[] }) => {

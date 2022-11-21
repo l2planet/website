@@ -5,7 +5,9 @@ import { Img } from './Image'
 export const Partners = () => {
     return (
         <DivPartners>
-            {(PARTNERS as string[]).map(logoSrc => <PartnerLogo src={logoSrc} key={logoSrc} />)}
+            {(PARTNERS as string[]).map((logoSrc) => (
+                <PartnerLogo src={logoSrc} key={logoSrc} />
+            ))}
         </DivPartners>
     )
 }
@@ -19,9 +21,6 @@ const DivPartners = wrapn('div')`
     gap-6
     md:gap-8
 `
-
-
-
 
 const PartnerLogo = ({ src }: { src: string }) => {
     return <Img alt={src} img={ImgPartner} src={src} />

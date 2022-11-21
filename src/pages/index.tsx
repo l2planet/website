@@ -4,7 +4,12 @@ import { CardIndex } from '../components/Card'
 import { H1, H2 } from '../components/H'
 import { SubscribeForm } from '../components/SubscribeForm'
 import { P1 } from '../components/P'
-import { SectionIndexCards, SectionIndexIntro, SectionIndexSubscribe, SectionPartners } from '../components/Section'
+import {
+    SectionIndexCards,
+    SectionIndexIntro,
+    SectionIndexSubscribe,
+    SectionPartners,
+} from '../components/Section'
 import { SEO } from '../components/SEO'
 import { useAllChains } from '../hooks/useAllChains'
 import { wrapn } from 'wrapn'
@@ -45,10 +50,8 @@ const Home: NextPage = () => {
                 <H2>Partners</H2>
                 <Partners />
             </SectionPartners>
-
         </>
     )
 }
 
 export default Home
-

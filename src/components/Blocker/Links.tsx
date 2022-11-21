@@ -9,19 +9,17 @@ export const Links = ({ block }: { block: Block }) => (
                 {block.content.slice(0, block.links[0].start)}
                 {block.links.map((link, i) => (
                     <>
-                        {link.url ?
+                        {link.url ? (
                             <>
                                 <Href key={`link ${i}`} href={link.url}>
                                     {block.content.slice(link.start, link.end)}
                                 </Href>{' '}
-                            </> 
-                        :
-                            <>
-                                <Bold key={`bold ${i}`} >
-                                    {block.content.slice(link.start, link.end)}
-                                </Bold>{' '}
                             </>
-                        }
+                        ) : (
+                            <>
+                                <Bold key={`bold ${i}`}>{block.content.slice(link.start, link.end)}</Bold>{' '}
+                            </>
+                        )}
                         {block.content.slice(link.end, block.links?.at(i + 1)?.start || undefined)}
                     </>
                 ))}
