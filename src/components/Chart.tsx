@@ -1,9 +1,7 @@
 import { wrapn } from 'wrapn'
 import { ChartDataItem } from '../types/globals'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { InternalLayer2 } from '../types/Api'
-import { useLocalStorage } from '../hooks/useLocalStorage'
-import { BarPrice, BusinessDay, createChart, CrosshairMode, Time, UTCTimestamp } from 'lightweight-charts'
+import { BarPrice, BusinessDay, createChart, } from 'lightweight-charts'
 import { useTheme } from '../contexts/ThemeContext'
 
 const Chart = ({ data }: { data: ChartDataItem[] }) => {
@@ -42,12 +40,13 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
 		`
 
         const chart = createChart(htmlChart, {
+            width: 0,
+            height: 0,
+            leftPriceScale: {
+                visible: false,
+            },
             rightPriceScale: {
-                scaleMargins: {
-                    top: 0.2,
-                    bottom: 0.2,
-                },
-                borderVisible: false,
+                visible: false,
             },
             crosshair: {
                 horzLine: {
@@ -117,14 +116,14 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
 
             var y = param.point.y
 
-            var left = param.point.x + toolTipMargin
+            var left = param.point.x + toolTipMarginX
             if (left > width - htmlTooltip.clientWidth) {
-                left = param.point.x - toolTipMargin - htmlTooltip.clientWidth
+                left = param.point.x - toolTipMarginX - htmlTooltip.clientWidth
             }
 
-            var top = y + toolTipMargin
+            var top = y + toolTipMarginY
             if (top > height - htmlTooltip.clientHeight) {
-                top = y - htmlTooltip.clientHeight - toolTipMargin
+                top = y - htmlTooltip.clientHeight - toolTipMarginY
             }
 
             htmlTooltip.style.left = left + 'px'
@@ -171,4 +170,6 @@ function businessDayToString(businessDay: BusinessDay) {
     return businessDay.year + '-' + businessDay.month + '-' + businessDay.day
 }
 
-const toolTipMargin = 15
+const toolTipMarginX = 25
+
+const toolTipMarginY = -50
