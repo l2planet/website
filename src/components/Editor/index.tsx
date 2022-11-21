@@ -35,7 +35,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
 
     const filterBlocks = useCallback(() => {
         const json: Block[] = blocks
-            .filter(({ content, type }) => content || type === 'BR')
+            .filter(({ content, type }) => content.length !== 0 || type === 'BR')
             .map((block) => {
                 switch (block.type) {
                     case 'W':
