@@ -6,7 +6,7 @@ import { ALayer2, AL2Projects } from '../components/A'
 const Chart = dynamic(() => import('../components/Chart'), { ssr: false })
 import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
 import { HLayer2, HLayer2Common } from '../components/H'
-import { IconCoinGecko, IconGithub, IconTwitter, IconWebsite } from '../components/icons/IconBrands'
+import { IconCoinGecko, IconDiscord, IconGithub, IconTwitter, IconWebsite } from '../components/icons/IconBrands'
 import { Img } from '../components/Image'
 import { Link } from '../components/Link'
 import { PLayer2Description } from '../components/P'
@@ -65,7 +65,11 @@ const Layer2: NextPage = () => {
                                             <IconCoinGecko />
                                         </Link>
                                     )}
-
+                                    {layer2.discord && (
+                                        <Link a={ALayer2} href={layer2.discord} newTab>
+                                            <IconDiscord />
+                                        </Link>
+                                    )}
                                     {layer2.github && (
                                         <Link a={ALayer2} href={`https://github.com/${layer2.github}`} newTab>
                                             <IconGithub />
