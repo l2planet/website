@@ -8,8 +8,6 @@ import {
     RawFormProject,
     RawBridge,
     InternalChain,
-    InternalLayer2,
-    InternalProject,
     InternalRawLayer2,
     InternalRawProject,
 } from '../types/Api'
@@ -338,6 +336,13 @@ export const Layer2Form = ({
                     tip='URL of the official Github profile of the layer 2. (OPTIONAL)'
                     placeHolder='https://github.com/l2planet'
                     default={layer2?.github ? 'https://github.com/' + layer2.github : undefined}
+                />
+                <LabeledInput
+                    name='discord'
+                    label='Discord Invite Link'
+                    tip='Invite link for the Dicord server of the layer 2. (OPTIONAL)'
+                    placeHolder='https://discord.gg/l2planet'
+                    default={layer2?.discord ? layer2.discord : undefined}
                 />
                 <LabeledTextArea
                     name='videos'

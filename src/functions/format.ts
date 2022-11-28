@@ -93,6 +93,7 @@ export const formatLayer2 = (
     const gecko = getCoinGeckoId(cleanWords(formData.gecko)) ?? ''
     const twitter = getTwitterAccountId(cleanWords(formData.twitter)) ?? ''
     const github = getGitHubName(cleanWords(formData.github)) ?? ''
+    const discord = cleanWords(formData.discord)
     const videos: string[] = []
     const investors: string[] = []
 
@@ -161,6 +162,7 @@ export const formatLayer2 = (
         gecko,
         twitter,
         github,
+        discord,
     }
 
     return data

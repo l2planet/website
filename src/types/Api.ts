@@ -93,6 +93,7 @@ export interface RawFormLayer2 {
     gecko: string
     twitter: string
     github: string
+    discord: string
     videos: string
     investors: string
 }
@@ -116,6 +117,7 @@ export interface APIPostLayer2 {
     gecko?: string
     twitter?: string
     github?: string
+    discord?: string
     videos: string[]
     investors: string[]
 }
@@ -138,6 +140,7 @@ export interface APIGetLayer2 {
     twitter?: string
     gecko?: string
     github?: string
+    discord?: string
     videos: string[]
     investors: string[]
     price?: number
@@ -162,6 +165,7 @@ export interface InternalLayer2 {
     twitter?: string
     gecko?: string
     github?: string
+    discord?: string
     videos: string[]
     investors: string[]
     price?: number
@@ -187,6 +191,7 @@ export interface APIGetRawLayer2 {
     twitter?: string
     github?: string
     gecko?: string
+    discord?: string
     videos: string[]
     investors: string[]
     bridges: {
@@ -210,6 +215,7 @@ export interface InternalRawLayer2 {
     twitter?: string
     gecko?: string
     github?: string
+    discord?: string
     videos: string[]
     investors: string[]
     bridges: {
