@@ -1,7 +1,9 @@
+import { useMemo } from 'react'
 import { wrapn } from 'wrapn'
 import { InternalChain, InternalLayer2, InternalProject } from '../types/Api'
 import { StatusProps } from '../types/globals'
 import { AProjects } from './A'
+import { Block } from './Editor/types'
 import { IconCoinGecko, IconGithub, IconTwitter, IconWebsite } from './icons/IconBrands'
 import { Img } from './Image'
 import { Link } from './Link'
@@ -389,3 +391,55 @@ export const CardOldData = (props: {
         <NameLayer2>{props.name}</NameLayer2>
     </Link>
 )
+
+export const CardNewsletter = ({ newsletter, id }: { newsletter: string; id: number }) => {
+    const title = useMemo(() => {
+        return (JSON.parse(newsletter) as Block[])[0].content
+    }, [newsletter])
+    return (
+        <Link a={ANewsletters} href={`/newsletters?id=${id}`}>
+            <NameNewsletter>{title}</NameNewsletter>
+        </Link>
+    )
+}
+
+const NameNewsletter = wrapn('h2')`
+    font-semibold
+    sm:text-xl
+    md:text-2xl
+    lg:text-lg
+    xl:text-xl
+`
+
+const ANewsletters = wrapn('a')`
+    relative
+    flex
+    items-center
+
+    space-x-2.5
+    
+
+    h-14
+    sm:h-16
+    md:h-20
+
+    p-3
+    sm:p-4
+
+    rounded-xl
+
+    border
+    border-pri-3
+    dark:border-pri-7
+
+    bg-pri-3/50
+    dark:bg-pri-7/50
+
+    hover:bg-pri-4/50
+    hover:dark:bg-pri-6/50
+
+    hover:scale-95
+    active:scale-105
+
+    duration-200
+`

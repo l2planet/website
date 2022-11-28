@@ -24,6 +24,12 @@ export interface RawEndpointData {
     layer2s: {
         [layer2Id in string]?: APIGetRawLayer2
     }
+    newsletters: [
+        {
+            ID: number
+            newsletter: string
+        }
+    ]
 }
 
 export interface RawFormAuth {

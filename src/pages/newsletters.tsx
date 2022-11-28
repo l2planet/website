@@ -5,9 +5,11 @@ import { Blocker } from '../components/Blocker'
 import { Link } from '../components/Link'
 import { SEO } from '../components/SEO'
 import { useLatestNewsletter } from '../hooks/useLatestNewsletter'
+import { useRawNewsletterOfPage } from '../hooks/useRawNewsletterOfPage'
+import { useRawNewsletters } from '../hooks/useRawNewsletters'
 
 const Newsletter: NextPage = () => {
-    const { latestNewsletter: newsletter } = useLatestNewsletter()
+    const newsletter = useRawNewsletterOfPage()
 
     return (
         <>
@@ -17,7 +19,7 @@ const Newsletter: NextPage = () => {
                     All Newsletters
                 </Link>
             </Div>
-            {newsletter && <Blocker blocks={newsletter.blocks} author={newsletter.author} />}
+            {newsletter && <Blocker blocks={newsletter} author={''} />}
         </>
     )
 }

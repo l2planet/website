@@ -85,3 +85,14 @@ export const Grid4OldDatas = wrapn('div')`
 
     gap-5
 `
+
+export const Grid4Newsletters = wrapn('div')`
+    grid
+    grid-cols-1
+    lg:grid-cols-2
+
+    w-full
+
+    gap-y-5
+    gap-x-6
+`
