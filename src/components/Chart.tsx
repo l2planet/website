@@ -45,9 +45,6 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
             leftPriceScale: {
                 visible: false,
             },
-            rightPriceScale: {
-                visible: false,
-            },
             crosshair: {
                 horzLine: {
                     color: isDark ? 'rgb(96 165 250)' : 'rgb(99 102 241)',
