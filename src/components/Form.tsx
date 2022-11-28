@@ -388,7 +388,7 @@ export const ProjectForm = ({
                     name='l2_ids'
                     label='Layer 2 IDs'
                     tip={`The IDs of the layer 2s this project is on. (COMMA SEPERATED)`}
-                    placeHolder='starket, arbitrum_one'
+                    placeHolder='starknet, arbitrum_one'
                     default={project?.layer2_ids.join(', ')}
                 />
                 <LabeledInput
