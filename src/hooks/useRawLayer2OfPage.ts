@@ -47,7 +47,6 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
                 })
             )
         } catch (error) {
-            console.error(error)
             alert('An error occured!')
             navigateToNotFound()
         }
