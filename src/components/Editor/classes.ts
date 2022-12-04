@@ -24,7 +24,6 @@ export class BlockClass {
     linkWordInvalid(start: number, end: number): boolean {
         const previousChar = this.content.at(start - 1)
         const subsequentChar = this.content.at(end)
-        console.log(previousChar, '--', subsequentChar)
 
         if (
             start != 0 &&

@@ -67,7 +67,6 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         } as any
                 }
             })
-        console.log(json)
 
         return json
     }, [blocks])
@@ -186,7 +185,6 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                 onKeyDown={(e) =>
                                     onKeyDownHandler(e, {
                                         onAll() {
-                                            console.log(e.key)
                                             if (e.key == '/') {
                                                 if (!isDivisionKey.current && i > 1) {
                                                     tool.setPos(i)

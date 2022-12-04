@@ -23,7 +23,6 @@ export const getCaretPos = (e: HTMLTextAreaElement) => {
         if (str.startsWith(e.value.slice(0, e.selectionStart))) {
         }
     }
-    console.log(msr)
 }
 
 export const tool = {

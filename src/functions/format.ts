@@ -61,7 +61,6 @@ export const formatChain = (
         description,
     }
 
-    console.log(data)
 
     return data
 }
