@@ -27,7 +27,7 @@ const Panel: NextPage = () => {
                 <Link a={APanel} href='/members/old/projects'>
                     Projects
                 </Link>
-                <Link a={APanel} href='/members/old/newsletters'>
+                <Link disabled a={APanel} href='/members/old/newsletters'>
                     Newsletters
                 </Link>
             </SectionPanel>

@@ -6,7 +6,8 @@ interface LinkProps {
     href: string
     a: Wrapn<'a'>
     newTab?: boolean | undefined
-    children: ReactNode
+    children: ReactNode,
+    disabled?: boolean | undefined
 }
 
 /**
@@ -25,9 +26,9 @@ interface LinkProps {
  * `
  * ```
  */
-export const Link = ({ a: A, children, href, newTab }: LinkProps) => {
+export const Link = ({ a: A, children, href, disabled, newTab }: LinkProps) => {
     return (
-        <NextLink href={href} passHref>
+        <NextLink href={disabled ? '#' : href} passHref>
             <A target={newTab ? '_blank' : '_self'}>{children}</A>
         </NextLink>
     )
