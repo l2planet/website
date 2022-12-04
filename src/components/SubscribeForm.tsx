@@ -1,15 +1,39 @@
 import { wrapn } from 'wrapn'
 import { IconSubscribe } from './icons/IconSubscribe'
+import { getFormData } from '../functions/getFormData'
+import { sendEmailToSubscribe } from '../functions/api'
+import { useRef } from 'react'
 
 export const SubscribeForm = () => {
+    const inputRef = useRef<HTMLInputElement>(null)
     return (
         <Form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
                 e.preventDefault()
-                alert('Logic will be added soon.')
+                const { email } = getFormData<{ email: string }>(e)
+                const isEmailOk = email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+                const input = inputRef.current
+                if (!isEmailOk) {
+                    alert('Your email address is invalid.')
+                    if (input) (
+                        input.value = ''
+                    )
+                    return
+                }
+
+                try {
+                    await sendEmailToSubscribe(email)
+                    alert(`You've subscribed to our biweekly newsletter.`)
+
+                    if (input) (
+                        input.value = ''
+                    )
+                } catch {
+                    alert('Subscription is not currently working.')
+                }
             }}
         >
-            <Input name='email' placeholder='elon@musk.com' />
+            <Input name='email' placeholder='elon@musk.com' ref={inputRef} />
             <Button type='submit'>
                 <IconSubscribe />
             </Button>
