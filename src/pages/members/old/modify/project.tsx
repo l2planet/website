@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { ProjectForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
-import { SEO } from '../../../../components/SEO'
 import { sendProject } from '../../../../functions/api'
 import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
 import { useAllProjects } from '../../../../hooks/useAllProjects'
@@ -14,11 +14,11 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-            <SEO
+            <NextSeo
                 title={`L2 Planet | Modify ${rawProject?.name ?? 'Project'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
             />
+
+
 
             {rawProject && (
                 <>

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { useMemo, useState } from 'react'
 import { wrapn } from 'wrapn'
 import { CardProject } from '../components/Card'
@@ -8,7 +9,6 @@ import { HProjects, HProjectsL2, HSelect } from '../components/H'
 import { Img } from '../components/Image'
 import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section'
 import { Select } from '../components/Select'
-import { SEO } from '../components/SEO'
 import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage'
 
 const Layer2: NextPage = () => {
@@ -26,11 +26,11 @@ const Layer2: NextPage = () => {
 
     return (
         <>
-            <SEO
+
+            <NextSeo
                 title={`L2 Planet | Projects on ${layer2?.name || 'Layer 2'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
             />
+
 
             {layer2 && (
                 <>

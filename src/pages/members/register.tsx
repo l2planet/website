@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import { wrapn } from 'wrapn'
 import { RegisterForm } from '../../components/Form'
 import { H1 } from '../../components/H'
 import { Link } from '../../components/Link'
-import { SEO } from '../../components/SEO'
 import { authRegister } from '../../functions/api'
 
 const Members: NextPage = () => {
@@ -13,7 +13,9 @@ const Members: NextPage = () => {
 
     return (
         <>
-            <SEO title='L2 Planet | Members' description='L2 Planet' favicon='/favicon.ico' />
+            <NextSeo
+                title='L2 Planet | Register'
+            />
 
             <H1>Register</H1>
 

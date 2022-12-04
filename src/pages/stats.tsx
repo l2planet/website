@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { Flex4StatsTables } from '../components/Div'
 import { HStats } from '../components/H'
-import { SEO } from '../components/SEO'
 import { TableTPS, TableFees } from '../components/Table'
 import { useStats } from '../hooks/useStats'
 
@@ -11,7 +11,11 @@ const Stats: NextPage = () => {
 
     return (
         <>
-            <SEO title='L2 Planet | Stats' description='L2 Planet' favicon='/favicon.ico' />
+
+            <NextSeo
+                title='L2 Planet | Stats'
+            />
+
 
             <HStats>Stats</HStats>
 

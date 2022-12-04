@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { CardOldData } from '../../../../components/Card'
 import { Grid4OldDatas } from '../../../../components/Div'
 import { ChainForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
-import { SEO } from '../../../../components/SEO'
 import { sendChain } from '../../../../functions/api'
 import { useAllChains } from '../../../../hooks/useAllChains'
 import { useChainOfPage } from '../../../../hooks/useChainOfPage'
@@ -14,10 +14,9 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-            <SEO
+
+            <NextSeo
                 title={`L2 Planet | Modify ${chain?.name ?? 'Chain'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
             />
 
             {chain && (

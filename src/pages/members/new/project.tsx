@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { ProjectForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
-import { SEO } from '../../../components/SEO'
 import { sendProject } from '../../../functions/api'
 import { useAllLayer2s } from '../../../hooks/useAllLayer2s'
 import { useAllProjects } from '../../../hooks/useAllProjects'
@@ -12,7 +12,12 @@ const NewProject: NextPage = () => {
 
     return (
         <>
-            <SEO title='L2 Planet | New Projext' description='L2 Planet' favicon='/favicon.ico' />
+
+
+            <NextSeo
+                title='L2 Planet | New Project'
+            />
+
             <H1>New Project</H1>
             <ProjectForm
                 onSubmit={async (projectFormData) => {

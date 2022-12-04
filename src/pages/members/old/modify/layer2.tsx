@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { useEffect } from 'react'
 import { CardOldData } from '../../../../components/Card'
 import { Grid4OldDatas } from '../../../../components/Div'
 import { ChainForm, Layer2Form } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
-import { SEO } from '../../../../components/SEO'
 import { sendLayer2 } from '../../../../functions/api'
 import { useAllChains } from '../../../../hooks/useAllChains'
 import { useAllLayer2s } from '../../../../hooks/useAllLayer2s'
@@ -18,11 +18,11 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-            <SEO
+
+            <NextSeo
                 title={`L2 Planet | Modify ${rawLayer2?.name ?? 'Layer 2'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
             />
+
 
             {rawLayer2 && (
                 <>

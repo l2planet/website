@@ -10,17 +10,19 @@ import {
     SectionIndexSubscribe,
     SectionPartners,
 } from '../components/Section'
-import { SEO } from '../components/SEO'
 import { useAllChains } from '../hooks/useAllChains'
 import { wrapn } from 'wrapn'
 import { Partners } from '../components/Partners'
+import { NextSeo } from 'next-seo'
 
 const Home: NextPage = () => {
     const { chains } = useAllChains()
 
     return (
         <>
-            <SEO title='L2 Planet | Home' description='L2 Planet' favicon='/favicon.ico' />
+            <NextSeo
+                title='L2 Planet | Home'
+            />
 
             <SectionIndexIntro>
                 <H1>Welcome to Layer-2 Planet</H1>

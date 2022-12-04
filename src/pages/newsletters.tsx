@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { wrapn } from 'wrapn'
 import { Blocker } from '../components/Blocker'
 import { Link } from '../components/Link'
-import { SEO } from '../components/SEO'
 import { useLatestNewsletter } from '../hooks/useLatestNewsletter'
 import { useRawNewsletterOfPage } from '../hooks/useRawNewsletterOfPage'
 import { useRawNewsletters } from '../hooks/useRawNewsletters'
@@ -13,7 +13,11 @@ const Newsletter: NextPage = () => {
 
     return (
         <>
-            <SEO title='L2 Planet | Newsletter' description='L2 Planet' favicon='/favicon.ico' />
+
+            <NextSeo
+                title='L2 Planet | Newsletter'
+            />
+
             <Div>
                 <Link a={A} href='/all_newsletters'>
                     All Newsletters

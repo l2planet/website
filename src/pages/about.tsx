@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { CardAbout } from '../components/Card'
 import { H1 } from '../components/H'
 import { IconCommunity } from '../components/icons/IconCommunity'
@@ -8,12 +9,13 @@ import { IconHub } from '../components/icons/IconHub'
 import { IconNewsletter } from '../components/icons/IconNewsletter'
 import { P1 } from '../components/P'
 import { SectionAboutCards, SectionAboutIntro } from '../components/Section'
-import { SEO } from '../components/SEO'
 
 const About: NextPage = () => {
     return (
         <>
-            <SEO title='L2 Planet | About' description='L2 Planet' favicon='/favicon.ico' />
+            <NextSeo
+                title='L2 Planet | About'
+            />
 
             <SectionAboutIntro>
                 <H1>About</H1>

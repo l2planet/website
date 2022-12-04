@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import dynamic from 'next/dynamic'
 import { wrapn } from 'wrapn'
 import { ALayer2, AL2Projects } from '../components/A'
@@ -22,7 +23,6 @@ import {
     SectionLayer2Investors,
     SectionLayer2Social,
 } from '../components/Section'
-import { SEO } from '../components/SEO'
 import { Timeline } from '../components/Timeline'
 import { Videos } from '../components/Videos'
 import { useLayer2OfPage } from '../hooks/useLayer2OfPage'
@@ -32,10 +32,9 @@ const Layer2: NextPage = () => {
 
     return (
         <>
-            <SEO
+
+            <NextSeo
                 title={`L2 Planet | ${layer2?.name || 'Layer 2'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
             />
 
             {layer2 && (

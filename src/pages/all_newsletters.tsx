@@ -10,19 +10,21 @@ import {
     SectionIndexSubscribe,
     SectionPartners,
 } from '../components/Section'
-import { SEO } from '../components/SEO'
 import { useAllChains } from '../hooks/useAllChains'
 import { wrapn } from 'wrapn'
 import { Partners } from '../components/Partners'
 import { useRawNewsletters } from '../hooks/useRawNewsletters'
 import { Grid4Newsletters } from '../components/Div'
+import { NextSeo } from 'next-seo'
 
 const Home: NextPage = () => {
     const newsletters = useRawNewsletters()
 
     return (
         <>
-            <SEO title='L2 Planet | Old Newsletters' description='L2 Planet' favicon='/favicon.ico' />
+            <NextSeo
+                title='L2 Planet | Newsletters'
+            />
 
             <SectionIndexSubscribe>
                 <H1>All Newsletters</H1>

@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import { wrapn } from 'wrapn'
 import { H1 } from '../components/H'
 import { Link } from '../components/Link'
@@ -5,6 +6,9 @@ import { Link } from '../components/Link'
 function Page404() {
     return (
         <>
+            <NextSeo
+                title='L2 Planet | 404 Not Found'
+            />
             <H1>404 Not Found</H1>
             <Link a={A} href='/'>
                 Go back home

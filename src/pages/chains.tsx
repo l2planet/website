@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import { useState } from 'react'
 import { wrapn } from 'wrapn'
 import { CardLayer2 } from '../components/Card'
@@ -9,7 +10,6 @@ import { Img } from '../components/Image'
 import { PChainDescription } from '../components/P'
 import { SectionChainIntro, SectionChainL2s } from '../components/Section'
 import { Select } from '../components/Select'
-import { SEO } from '../components/SEO'
 import { useChainOfPage } from '../hooks/useChainOfPage'
 
 const Chain: NextPage = () => {
@@ -18,10 +18,10 @@ const Chain: NextPage = () => {
 
     return (
         <>
-            <SEO
+
+
+            <NextSeo
                 title={`L2 Planet | ${chain?.name || 'Chain'}`}
-                description='L2 Planet'
-                favicon='/favicon.ico'
             />
             {chain && (
                 <>
@@ -45,8 +45,8 @@ const Chain: NextPage = () => {
                                 <>
                                     {category
                                         ? chain.layer2s
-                                              .filter((l2) => l2.categories.includes(category))
-                                              .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
+                                            .filter((l2) => l2.categories.includes(category))
+                                            .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
                                         : chain.layer2s.map((l2) => <CardLayer2 key={l2.id} {...l2} />)}
                                 </>
                             ) : (
