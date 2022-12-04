@@ -30,7 +30,6 @@ export function useLatestNewsletter(): ChainOfPage {
                 blocks: (JSON.parse(_latest_newsletter.newsletter) as Block[]) ?? [],
             }
         } catch (error) {
-            console.error(error)
             return
         }
     }, [endpointInfo])
