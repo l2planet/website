@@ -14,14 +14,18 @@ export const Footer = () => {
                         <SecondaryTitle>Social Media</SecondaryTitle>
                         <SecondarySubBox>
                             <Link a={A} href='https://twitter.com/layer2planet' newTab>
-                                Twitter
+                                Twitter EN
                             </Link>
-                            <Link a={A} href='https://www.youtube.com/c/L2Planet' newTab>
-                                YouTube
+                            <Link a={A} href='https://twitter.com/layer2planettr' newTab>
+                                Twitter TR
                             </Link>
                             <Link a={A} href='https://discord.com/invite/trSb3WqzFJ' newTab>
                                 Discord
                             </Link>
+                            <Link a={A} href='https://www.youtube.com/c/L2Planet' newTab>
+                                YouTube
+                            </Link>
+                            
                         </SecondarySubBox>
                     </QuarterBox>
                     <QuarterBox>
@@ -32,9 +36,6 @@ export const Footer = () => {
                             </Link>
                             <Link a={A} newTab href='https://gitcoin.co/grants/4450/layer2-planet'>
                                 Donate
-                            </Link>
-                            <Link a={A} href='/members/login'>
-                                Members
                             </Link>
                         </SecondarySubBox>
                     </QuarterBox>
