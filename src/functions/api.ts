@@ -79,7 +79,6 @@ export async function sendChain(
             },
         })
 
-        console.log(res)
 
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
@@ -115,7 +114,6 @@ export async function sendLayer2(
             },
         })
 
-        console.log(res)
 
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
@@ -151,8 +149,6 @@ export async function sendProject(
             },
         })
 
-        console.log(res)
-
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
         }
@@ -179,9 +175,29 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
                 Authorization: `Bearer ${jwt}`,
             },
         })
-        console.log(data)
 
-        console.log(res)
+        if (!res.ok) {
+            throw new Error(`Server didn't accept your request.`)
+        }
+    } catch (e: any) {
+        if (e?.message) throw e
+        throw new Error('An unknown error is occured.')
+    }
+}
+
+
+/** Makes a post request to the backend to send a new Newsletter. */
+export async function sendEmailToSubscribe(email: string): Promise<void> {
+    try {
+        const data = `{ "email": "${email}" }`
+
+        const res = await fetch('https://api.l2planet.xyz/subscribe', {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
 
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
