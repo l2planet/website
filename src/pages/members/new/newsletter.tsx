@@ -2,12 +2,13 @@ import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import { Editor } from '../../../components/Editor'
 import { H1 } from '../../../components/H'
+import { Seo } from '../../../components/Seo'
 import { sendNewsletter } from '../../../functions/api'
 
 const NewNewsletter: NextPage = () => {
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | New Newsletter'
             />
 

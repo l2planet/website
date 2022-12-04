@@ -14,13 +14,14 @@ import { useAllChains } from '../hooks/useAllChains'
 import { wrapn } from 'wrapn'
 import { Partners } from '../components/Partners'
 import { NextSeo } from 'next-seo'
+import { Seo } from '../components/Seo'
 
 const Home: NextPage = () => {
     const { chains } = useAllChains()
 
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | Home'
             />
 

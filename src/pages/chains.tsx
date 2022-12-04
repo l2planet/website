@@ -10,6 +10,7 @@ import { Img } from '../components/Image'
 import { PChainDescription } from '../components/P'
 import { SectionChainIntro, SectionChainL2s } from '../components/Section'
 import { Select } from '../components/Select'
+import { Seo } from '../components/Seo'
 import { useChainOfPage } from '../hooks/useChainOfPage'
 
 const Chain: NextPage = () => {
@@ -20,7 +21,7 @@ const Chain: NextPage = () => {
         <>
 
 
-            <NextSeo
+            <Seo
                 title={`L2 Planet | ${chain?.name || 'Chain'}`}
             />
             {chain && (

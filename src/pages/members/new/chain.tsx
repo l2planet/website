@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import { ChainForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
+import { Seo } from '../../../components/Seo'
 import { sendChain } from '../../../functions/api'
 import { useAllChains } from '../../../hooks/useAllChains'
 
@@ -10,7 +11,7 @@ const NewChain: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title='L2 Planet | New Chain'
             />
 

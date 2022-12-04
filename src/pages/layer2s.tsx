@@ -23,6 +23,7 @@ import {
     SectionLayer2Investors,
     SectionLayer2Social,
 } from '../components/Section'
+import { Seo } from '../components/Seo'
 import { Timeline } from '../components/Timeline'
 import { Videos } from '../components/Videos'
 import { useLayer2OfPage } from '../hooks/useLayer2OfPage'
@@ -33,7 +34,7 @@ const Layer2: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title={`L2 Planet | ${layer2?.name || 'Layer 2'}`}
             />
 

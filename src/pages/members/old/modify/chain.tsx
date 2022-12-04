@@ -4,6 +4,7 @@ import { CardOldData } from '../../../../components/Card'
 import { Grid4OldDatas } from '../../../../components/Div'
 import { ChainForm } from '../../../../components/Form'
 import { H1 } from '../../../../components/H'
+import { Seo } from '../../../../components/Seo'
 import { sendChain } from '../../../../functions/api'
 import { useAllChains } from '../../../../hooks/useAllChains'
 import { useChainOfPage } from '../../../../hooks/useChainOfPage'
@@ -15,7 +16,7 @@ const OldChains: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title={`L2 Planet | Modify ${chain?.name ?? 'Chain'}`}
             />
 

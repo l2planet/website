@@ -9,11 +9,12 @@ import { IconHub } from '../components/icons/IconHub'
 import { IconNewsletter } from '../components/icons/IconNewsletter'
 import { P1 } from '../components/P'
 import { SectionAboutCards, SectionAboutIntro } from '../components/Section'
+import { Seo } from '../components/Seo'
 
 const About: NextPage = () => {
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | About'
             />
 

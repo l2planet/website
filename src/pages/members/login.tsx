@@ -6,6 +6,7 @@ import { wrapn } from 'wrapn'
 import { LoginForm } from '../../components/Form'
 import { H1 } from '../../components/H'
 import { Link } from '../../components/Link'
+import { Seo } from '../../components/Seo'
 import { authLogin } from '../../functions/api'
 
 const Members: NextPage = () => {
@@ -13,7 +14,7 @@ const Members: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title='L2 Planet | Login'
             />
 

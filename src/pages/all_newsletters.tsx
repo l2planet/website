@@ -16,13 +16,14 @@ import { Partners } from '../components/Partners'
 import { useRawNewsletters } from '../hooks/useRawNewsletters'
 import { Grid4Newsletters } from '../components/Div'
 import { NextSeo } from 'next-seo'
+import { Seo } from '../components/Seo'
 
 const Home: NextPage = () => {
     const newsletters = useRawNewsletters()
 
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | Newsletters'
             />
 

@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo'
 import { CardOldData } from '../../../components/Card'
 import { Grid4OldDatas } from '../../../components/Div'
 import { H1 } from '../../../components/H'
+import { Seo } from '../../../components/Seo'
 import { useAllChains } from '../../../hooks/useAllChains'
 
 const OldChains: NextPage = () => {
@@ -10,7 +11,7 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | Modify Chains'
             />
 

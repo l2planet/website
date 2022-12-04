@@ -7,11 +7,12 @@ import { AModifyOld, APanel } from '../../../components/A'
 import { H1 } from '../../../components/H'
 import { Link } from '../../../components/Link'
 import { SectionPanel } from '../../../components/Section'
+import { Seo } from '../../../components/Seo'
 
 const Panel: NextPage = () => {
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | Modify Olds'
             />
 

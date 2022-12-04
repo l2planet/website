@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import { Layer2Form } from '../../../components/Form'
 import { H1 } from '../../../components/H'
+import { Seo } from '../../../components/Seo'
 import { sendLayer2 } from '../../../functions/api'
 import { useAllChains } from '../../../hooks/useAllChains'
 import { useAllLayer2s } from '../../../hooks/useAllLayer2s'
@@ -13,7 +14,7 @@ const NewLayer2: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title='L2 Planet | New Layer 2'
             />
             <H1>New Layer 2</H1>

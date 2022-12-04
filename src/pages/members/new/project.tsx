@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import { ProjectForm } from '../../../components/Form'
 import { H1 } from '../../../components/H'
+import { Seo } from '../../../components/Seo'
 import { sendProject } from '../../../functions/api'
 import { useAllLayer2s } from '../../../hooks/useAllLayer2s'
 import { useAllProjects } from '../../../hooks/useAllProjects'
@@ -14,7 +15,7 @@ const NewProject: NextPage = () => {
         <>
 
 
-            <NextSeo
+            <Seo
                 title='L2 Planet | New Project'
             />
 

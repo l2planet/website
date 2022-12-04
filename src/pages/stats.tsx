@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import { Flex4StatsTables } from '../components/Div'
 import { HStats } from '../components/H'
+import { Seo } from '../components/Seo'
 import { TableTPS, TableFees } from '../components/Table'
 import { useStats } from '../hooks/useStats'
 
@@ -12,7 +13,7 @@ const Stats: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title='L2 Planet | Stats'
             />
 

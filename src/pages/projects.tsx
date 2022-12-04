@@ -9,6 +9,7 @@ import { HProjects, HProjectsL2, HSelect } from '../components/H'
 import { Img } from '../components/Image'
 import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section'
 import { Select } from '../components/Select'
+import { Seo } from '../components/Seo'
 import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage'
 
 const Layer2: NextPage = () => {
@@ -27,7 +28,7 @@ const Layer2: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title={`L2 Planet | Projects on ${layer2?.name || 'Layer 2'}`}
             />
 

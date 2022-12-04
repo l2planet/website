@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo'
 import { CardOldData } from '../../../components/Card'
 import { Grid4OldDatas } from '../../../components/Div'
 import { H1 } from '../../../components/H'
+import { Seo } from '../../../components/Seo'
 import { useAllLayer2s } from '../../../hooks/useAllLayer2s'
 
 const NewChain: NextPage = () => {
@@ -10,7 +11,7 @@ const NewChain: NextPage = () => {
 
     return (
         <>
-            <NextSeo
+            <Seo
                 title='L2 Planet | Modify Layer 2s'
             />
 

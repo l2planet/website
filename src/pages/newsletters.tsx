@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo'
 import { wrapn } from 'wrapn'
 import { Blocker } from '../components/Blocker'
 import { Link } from '../components/Link'
+import { Seo } from '../components/Seo'
 import { useLatestNewsletter } from '../hooks/useLatestNewsletter'
 import { useRawNewsletterOfPage } from '../hooks/useRawNewsletterOfPage'
 import { useRawNewsletters } from '../hooks/useRawNewsletters'
@@ -14,7 +15,7 @@ const Newsletter: NextPage = () => {
     return (
         <>
 
-            <NextSeo
+            <Seo
                 title='L2 Planet | Newsletter'
             />
 
