@@ -1,5 +1,7 @@
 import { NextSeo } from "next-seo";
 
+
+/** The component that manages SEO. */
 export const Seo = ({ title }: { title: string }) => (
     <NextSeo
         title={title}

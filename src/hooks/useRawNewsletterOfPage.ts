@@ -3,13 +3,24 @@ import { Block } from '../components/Editor/types'
 import { RawEndpointData } from '../types/Api'
 import { useRoute } from './useRoute'
 
+/**
+ * The hook that enables getting the raw newsletter with the ID of `id` URL parameter.
+ *
+ * # Usage
+ * ```tsx
+ * export const Comp = () => {
+ *     const newsletter = useRawNewsletterOfPage()
+ *     return </>
+ * }
+ * ```
+ */
 export function useRawNewsletterOfPage() {
     const [newsletter, setNewsletter] = useState<Block[] | undefined>()
     const { id, navigateToNotFound } = useRoute()
 
     // Make a get request to the API, once the website gets loaded.
     useEffect(() => {
-        if(newsletter) return
+        if (newsletter) return
         try {
             fetch('https://api.l2planet.xyz/raw').then((res) =>
                 res.json().then((data: RawEndpointData) => {
