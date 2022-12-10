@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             <SectionIndexSubscribe>
                 <H1>All Newsletters</H1>
                 <P1>
-                    We have been running the first and the best Layer-2 Newsletter in the world for over 1
+                    We have been running the first and the best Layer-2 newsletter in the world for over 1
                     year. Join +1000 people and get biweekly Layer-2 news by subscribing.
                 </P1>
                 <SubscribeForm />
