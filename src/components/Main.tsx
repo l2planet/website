@@ -10,6 +10,7 @@ export const Main = wrapn('main')`
     min-h-screen
     w-full
     max-w-6xl
+    3xl:max-w-[1350px]
     
     px-4
     sm:px-6

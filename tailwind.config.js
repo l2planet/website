@@ -4,6 +4,9 @@ module.exports = {
     darkMode: 'class',
     theme: {
         extend: {
+            screens: {
+                '3xl': '2000px'
+            },
             colors: {
                 gris: {
                     0: 'rgb(248 250 252)',
