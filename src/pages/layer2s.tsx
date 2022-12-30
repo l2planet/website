@@ -6,6 +6,7 @@ import { wrapn } from 'wrapn'
 import { ALayer2, AL2Projects } from '../components/A'
 const Chart = dynamic(() => import('../components/Chart'), { ssr: false })
 import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
+import { GoBackButton } from '../components/GoBackButton'
 import { HLayer2, HLayer2Common } from '../components/H'
 import {
     IconCoinGecko,
@@ -41,7 +42,10 @@ const Layer2: NextPage = () => {
             {layer2 && (
                 <>
                     <SectionLayer2Intro>
-                        <DivMeta>
+                        <FlexCol>
+                            <GoBackButton/>
+                            <DivGoBackButton>
+                            <DivMeta>
                             <DivName>
                                 <Img alt={`${layer2.name} Logo`} img={ImgLayer2} src={layer2.icon} />
                                 <HLayer2>{layer2.name}</HLayer2>
@@ -87,7 +91,6 @@ const Layer2: NextPage = () => {
                                 </Link>
                             </DivLinks>
                         </DivMeta>
-
                         <DivDescription>
                             <DivCategory>
                                 {layer2.categories.map((category) => (
@@ -96,6 +99,8 @@ const Layer2: NextPage = () => {
                             </DivCategory>
                             <PLayer2Description>{layer2.description}</PLayer2Description>
                         </DivDescription>
+                            </DivGoBackButton>
+                        </FlexCol>
                     </SectionLayer2Intro>
 
                     <SectionLayer2Charts>
@@ -128,6 +133,25 @@ const Layer2: NextPage = () => {
 }
 
 export default Layer2
+
+const DivGoBackButton = wrapn('div')`
+    flex
+    flex-col
+    lg:flex-row
+    lg:items-top
+
+    space-y-4
+    sm:space-y-14
+    md:space-y-20
+    lg:space-y-6
+    lg:space-x-10
+    xl:space-x-14
+`
+
+const FlexCol = wrapn('div')`
+    flex flex-col
+    gap-y-3
+`
 
 const DivMeta = wrapn('div')`
     space-y-5

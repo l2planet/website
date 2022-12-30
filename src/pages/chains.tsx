@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { wrapn } from 'wrapn'
 import { CardLayer2 } from '../components/Card'
 import { Col4Select, Grid4ChainPage } from '../components/Div'
+import { GoBackButton } from '../components/GoBackButton'
 import { HChain, HSelect } from '../components/H'
 import { Img } from '../components/Image'
 import { PChainDescription } from '../components/P'
@@ -27,11 +28,16 @@ const Chain: NextPage = () => {
             {chain && (
                 <>
                     <SectionChainIntro>
-                        <Img src={chain.icon} img={ImgChain} alt={`${chain.name} Logo`} />
-                        <DivMeta>
-                            <HChain>{chain.name}</HChain>
-                            <PChainDescription>{chain.description}</PChainDescription>
-                        </DivMeta>
+                        <FlexCol>
+                            <GoBackButton/>
+                            <DivGoBackButton>
+                                <Img src={chain.icon} img={ImgChain} alt={`${chain.name} Logo`} />
+                                <DivMeta>
+                                    <HChain>{chain.name}</HChain>
+                                    <PChainDescription>{chain.description}</PChainDescription>
+                                </DivMeta>
+                            </DivGoBackButton>
+                        </FlexCol>
                     </SectionChainIntro>
                     <SectionChainL2s>
                         <Col4Select>
@@ -62,6 +68,18 @@ const Chain: NextPage = () => {
 }
 
 export default Chain
+
+const DivGoBackButton = wrapn('div')`
+    flex flex-col
+    md:flex-row-reverse
+    items-center
+    justify-center
+`
+
+const FlexCol = wrapn('div')`
+    flex flex-col
+    gap-y-2
+`
 
 const DivMeta = wrapn('div')`
     flex
