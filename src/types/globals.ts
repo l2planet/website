@@ -26,7 +26,7 @@ export interface ChartDataItem {
 }
 
 export interface StatusProps {
-    status: 'live' | 'testnet' | 'close'
+    status: 'live' | 'testnet' | 'close' | 'closed'
 }
 
 export type FeesTableData = {

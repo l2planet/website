@@ -175,10 +175,10 @@ const Liveness = ({ status }: StatusProps) => {
                     <DotGreen />
                     <TextGreen>live</TextGreen>
                 </>
-            ) : status == 'close' ? (
+            ) : status === 'close' || status === 'closed' ? (
                 <>
                     <DotRed />
-                    <TextRed>close</TextRed>
+                    <TextRed>closed</TextRed>
                 </>
             ) : (
                 <>
