@@ -1,39 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# L2 Planet Website
 
-## Getting Started
+This repo is for the website of [Layer 2 Planet](https://l2planet.xyz/about).
 
-First, clone the repo:
+- We used
+[TypeScript](https://www.typescriptlang.org/)
+instead of 
+[JavaScript](https://tr.wikipedia.org/wiki/JavaScript)
+to eliminate
+[type errors](https://en.wikipedia.org/wiki/Type_system#Type_errors).
 
-```bash
-git clone https://github.com/l2planet/website
-```
+- We used [React.js](https://reactjs.org/) as it's easy and very popular.
 
-Second, install the dependencies
+- We used [Next.js](https://nextjs.org/) as it has a good performance and provides great tools.
 
-```bash
-yarn install
-```
+- The website is fully rendered on the clients, so no [SSR](https://en.wikipedia.org/wiki/Server-side_scripting).
 
-Thirs, run the development server:
 
-```bash
-yarn dev
-```
+# Project Layout
+- `public/` folder is for the assets (images, fonts, etc.) that are used on the website.
+- `src/` folder contains the source code of the website.
+- Files in the root folder are for configuration related stuff.
+- `src/components` folder contains files and folders that have the definition of the components used on the website.
+- `src/contexts` folder contains files that have the definition of context (theming & cached data) providers.
+- `src/functions` folder contains files that have the definition of various functions.
+- `src/hooks` folder contains files that have the definition of React Hooks.
+- `src/styles` folder contains [CSS](https://en.wikipedia.org/wiki/CSS) files that define styling of the website.
+- `src/types` folder contains files that have the definition of TypeScript types.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# To-Do (for v1)
+- Add local communities support for L2s.
 
-## Authentication Parts
+# To-Do (for v2)
+- Implement SSR.
+- Use a CDN for all the assets on the website. 
+- Use a framework other than [Next.js](https://nextjs.org/) that supports [Island-Architecture](https://jasonformat.com/islands-architecture/), if possible.
+- Make the source code as simple and clean as possible, so even community members can contribute the project and improve their experience.
 
-Go to `src/pages/members/index.tsx` file.
-
-Modify onSubmit event handler, to make it work.
-
-```jsx
-<LoginForm
-    onSubmit={(e) => {
-        // Authentication comes here!!!!
-        e.password
-        e.username
-    }}
-/>
-```
+**Made with ❤ by L2 Planet DAO**
