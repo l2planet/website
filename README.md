@@ -1,6 +1,12 @@
-# L2 Planet Website
+# Layer 2 Planet Website
 
 This repo is for the website of [Layer 2 Planet](https://l2planet.xyz/about).
+
+<p align="center">
+  <a href="https://l2planet.xyz"><img src="https://raw.githubusercontent.com/l2planet/website/main/public/l2planet.webp?token=GHSAT0AAAAAAB4THULQ4QXXH7RG45FZJZROY6ENTXA" alt="Logo" height=128></a>
+</p>
+
+
 
 - We used
 [TypeScript](https://www.typescriptlang.org/)
