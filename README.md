@@ -13,6 +13,8 @@ to eliminate
 
 - We used [Next.js](https://nextjs.org/) as it has a good performance and provides great tools.
 
+- We used [Wrapn](https://github.com/wrapn/wrapn) as it provides a simple interface to style HTML elements with [TailwindCSS](https://tailwindcss.com/).
+
 - The website is fully rendered on the clients, so no [SSR](https://en.wikipedia.org/wiki/Server-side_scripting).
 
 
@@ -36,4 +38,4 @@ to eliminate
 - Use a framework other than [Next.js](https://nextjs.org/) that supports [Island-Architecture](https://jasonformat.com/islands-architecture/), if possible.
 - Make the source code as simple and clean as possible, so even community members can contribute the project and improve their experience.
 
-**Made with ❤ by L2 Planet DAO**
+**Made with ❤ by Layer 2 Planet**
