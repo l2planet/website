@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { useApi } from '../contexts/ApiContext'
 import { APIGetChain, APIGetProject, InternalChain, InternalProject } from '../types/Api'
 
 /**
@@ -15,7 +15,7 @@ import { APIGetChain, APIGetProject, InternalChain, InternalProject } from '../t
  */
 export function useAllProjects(): AllProjects {
     // Extract `apiManager`.
-    const { endpointInfo } = useInfoEndpoint()
+    const { infoEndpointData: endpointInfo } = useApi()
 
     // Declare `chains` memoized value.
     const projects: InternalProject[] | undefined = useMemo(() => {

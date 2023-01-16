@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { useApi } from '../contexts/ApiContext'
 import { APIGetLayer2, InternalRawLayer2, RawEndpointData } from '../types/Api'
 import { useRoute } from './useRoute'
 
@@ -18,39 +18,38 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
     // Extract `id`, and `navigateToNotFound`.
     const { id, navigateToNotFound } = useRoute()
     const [rawLayer2, setRawLayer2] = useState<undefined | InternalRawLayer2>()
+    const { fetchRawEndpoint, rawEndpointData } = useApi()
+
+    // Make a get request to the API, once the website gets loaded.
+    useEffect(() => {
+        try {
+            fetchRawEndpoint()
+        } catch {
+            alert('An error occured!')
+        }
+    }, [])
 
     useEffect(() => {
-        if (rawLayer2) return
-        try {
-            fetch('https://api.l2planet.xyz/raw').then((res) =>
-                res.json().then((rawEndpointData: RawEndpointData) => {
-                    if (!id) {
-                        return
-                        navigateToNotFound()
-                    }
-
-                    const _rawLayer2 = rawEndpointData.layer2s[id]
-
-                    if (!_rawLayer2) {
-                        return
-                        navigateToNotFound()
-                    }
-
-                    setRawLayer2({
-                        ..._rawLayer2,
-                        projects: _rawLayer2.projects ?? [],
-                        categories: _rawLayer2.categories ?? [],
-                        videos: _rawLayer2.videos ?? [],
-                        investors: _rawLayer2.investors ?? [],
-                        id,
-                    })
-                })
-            )
-        } catch (error) {
-            alert('An error occured!')
-            navigateToNotFound()
+        if (rawLayer2 || !rawEndpointData) return 
+        if (!id) {
+            return navigateToNotFound() as any
         }
-    }, [id, navigateToNotFound, rawLayer2])
+
+        const _rawLayer2 = rawEndpointData.layer2s[id]
+
+        if (!_rawLayer2) {
+            return navigateToNotFound() as any
+        }
+
+        setRawLayer2({
+            ..._rawLayer2,
+            projects: _rawLayer2.projects ?? [],
+            categories: _rawLayer2.categories ?? [],
+            videos: _rawLayer2.videos ?? [],
+            investors: _rawLayer2.investors ?? [],
+            id,
+        })
+    }, [id, navigateToNotFound, rawLayer2, rawEndpointData])
 
     // Return `layer2` inside a readonly object.
     return { rawLayer2 } as const

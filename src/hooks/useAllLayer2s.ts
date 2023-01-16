@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { useApi } from '../contexts/ApiContext'
 import { APIGetLayer2, InternalLayer2 } from '../types/Api'
 
 /**
@@ -15,7 +15,7 @@ import { APIGetLayer2, InternalLayer2 } from '../types/Api'
  */
 export function useAllLayer2s(): AllLayer2s {
     // Extract `apiManager`.
-    const { endpointInfo } = useInfoEndpoint()
+    const { infoEndpointData: endpointInfo } = useApi()
 
     // Declare `layer2s` memoized value.
     const layer2s: InternalLayer2[] | undefined = useMemo(() => {

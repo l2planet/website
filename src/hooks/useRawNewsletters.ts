@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react'
+import { useApi } from '../contexts/ApiContext'
 import { RawEndpointData } from '../types/Api'
 
 export function useRawNewsletters() {
-    const [endpointRaw, setEndpointRaw] = useState<RawEndpointData | undefined>()
+    const { fetchRawEndpoint, rawEndpointData } = useApi()
 
     // Make a get request to the API, once the website gets loaded.
     useEffect(() => {
         try {
-            fetch('https://api.l2planet.xyz/raw').then((res) =>
-                res.json().then((data) => setEndpointRaw(data))
-            )
+            fetchRawEndpoint()
         } catch {
             alert('An error occured!')
         }
     }, [])
 
-    return endpointRaw?.newsletters
+    return rawEndpointData?.newsletters
 }

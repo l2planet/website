@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Block } from '../components/Editor/types'
-import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { useApi } from '../contexts/ApiContext'
 import { InternalNewsletter } from '../types/Api'
 
 /**
@@ -16,7 +16,7 @@ import { InternalNewsletter } from '../types/Api'
  */
 export function useLatestNewsletter(): ChainOfPage {
     // Extract `endpointInfo` and `navigateToNotFound`.
-    const { endpointInfo } = useInfoEndpoint()
+    const { infoEndpointData: endpointInfo } = useApi()
 
     // Declare `latestNewsletter` memoized value.
     const latestNewsletter: InternalNewsletter | undefined = useMemo(() => {

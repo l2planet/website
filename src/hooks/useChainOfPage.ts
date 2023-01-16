@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { useApi } from '../contexts/ApiContext'
 import { InternalChain, InternalLayer2 } from '../types/Api'
 import { useRoute } from './useRoute'
 
@@ -16,7 +16,7 @@ import { useRoute } from './useRoute'
  */
 export function useChainOfPage(): ChainOfPage {
     // Extract `endpointInfo`, `id`, and `navigateToNotFound`.
-    const { endpointInfo } = useInfoEndpoint()
+    const { infoEndpointData: endpointInfo } = useApi()
     const { id, navigateToNotFound } = useRoute()
 
     // Declare `chain` memoized value.

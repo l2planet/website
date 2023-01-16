@@ -5,7 +5,7 @@ import { ThemeProvider } from '../contexts/ThemeContext'
 import { TopBar } from '../components/TopBar'
 import { Main } from '../components/Main'
 import { Footer } from '../components/Footer'
-import { InfoEndpointProvider } from '../contexts/InfoEndpointContext'
+import { ApiProvider } from '../contexts/ApiContext'
 import { DefaultSeo, NextSeo } from 'next-seo'
 
 // This component is shared by every page.
@@ -27,13 +27,13 @@ function MyApp({ Component, pageProps }: AppProps) {
                     siteName: 'Layer 2 Planet'
                 }} />
             <ThemeProvider>
-                <InfoEndpointProvider>
+                <ApiProvider>
                     <TopBar />
                     <Main>
                         <Component {...pageProps} />
                     </Main>
                     <Footer />
-                </InfoEndpointProvider>
+                </ApiProvider>
             </ThemeProvider>
         </>
     )

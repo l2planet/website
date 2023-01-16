@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useInfoEndpoint } from '../contexts/InfoEndpointContext'
+import { useApi } from '../contexts/ApiContext'
 import { APIGetLayer2 } from '../types/Api'
 import { FeesTableData, TPSTableData } from '../types/globals'
 
@@ -16,7 +16,7 @@ import { FeesTableData, TPSTableData } from '../types/globals'
  */
 export function useStats(): Stats {
     // Extract `endpointInfo` and `navigateToNotFound`.
-    const { endpointInfo } = useInfoEndpoint()
+    const { infoEndpointData: endpointInfo } = useApi()
 
     // Declare `latestNewsletter` memoized value.
     const stats: Stats = useMemo(() => {
