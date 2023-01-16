@@ -1,6 +1,6 @@
-# Layer 2 Planet Website
+# L2 Planet Website
 
-This repo is for the website of [Layer 2 Planet](https://l2planet.xyz/about).
+This repo is for the website of [L2 Planet](https://l2planet.xyz/about).
 
 <p align="center">
   <a href="https://l2planet.xyz"><img src="https://l2planet.xyz/l2planet.webp" alt="Logo" height=128></a>
@@ -44,4 +44,4 @@ to eliminate
 - Use a framework other than [Next.js](https://nextjs.org/) that supports [Island-Architecture](https://jasonformat.com/islands-architecture/), if possible.
 - Make the source code as simple and clean as possible, so even community members can contribute the project and improve their experience.
 
-**Made with ❤ by Layer 2 Planet**
+**Made with ❤ by L2 Planet**
