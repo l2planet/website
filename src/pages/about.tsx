@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { CardAbout } from '../components/Card'
-import { H1 } from '../components/H'
-import { IconCommunity } from '../components/icons/IconCommunity'
-import { IconEvent } from '../components/icons/IconEvent'
-import { IconHub } from '../components/icons/IconHub'
-import { IconNewsletter } from '../components/icons/IconNewsletter'
-import { P1 } from '../components/P'
-import { SectionAboutCards, SectionAboutIntro } from '../components/Section'
-import { Seo } from '../components/Seo'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { CardAbout } from '../components/Card';
+import { H1 } from '../components/H';
+import { IconCommunity } from '../components/icons/IconCommunity';
+import { IconEvent } from '../components/icons/IconEvent';
+import { IconHub } from '../components/icons/IconHub';
+import { IconNewsletter } from '../components/icons/IconNewsletter';
+import { P1 } from '../components/P';
+import { SectionAboutCards, SectionAboutIntro } from '../components/Section';
+import { Seo } from '../components/Seo';
 
 const About: NextPage = () => {
     return (
@@ -48,7 +48,7 @@ const About: NextPage = () => {
                 />
             </SectionAboutCards>
         </>
-    )
-}
+    );
+};
 
-export default About
+export default About;

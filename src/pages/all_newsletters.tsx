@@ -1,25 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { CardIndex, CardNewsletter } from '../components/Card'
-import { H1, H2 } from '../components/H'
-import { SubscribeForm } from '../components/SubscribeForm'
-import { P1 } from '../components/P'
+import type { NextPage } from 'next';
+import { CardIndex, CardNewsletter } from '../components/Card';
+import { H1, H2 } from '../components/H';
+import { SubscribeForm } from '../components/SubscribeForm';
+import { P1 } from '../components/P';
 import {
     SectionIndexCards,
     SectionIndexIntro,
     SectionIndexSubscribe,
     SectionPartners,
-} from '../components/Section'
-import { useAllChains } from '../hooks/useAllChains'
-import { wrapn } from 'wrapn'
-import { Partners } from '../components/Partners'
-import { useRawNewsletters } from '../hooks/useRawNewsletters'
-import { Grid4Newsletters } from '../components/Div'
-import { NextSeo } from 'next-seo'
-import { Seo } from '../components/Seo'
+} from '../components/Section';
+import { useAllChains } from '../hooks/useAllChains';
+import { wrapn } from 'wrapn';
+import { Partners } from '../components/Partners';
+import { useRawNewsletters } from '../hooks/useRawNewsletters';
+import { Grid4Newsletters } from '../components/Div';
+import { NextSeo } from 'next-seo';
+import { Seo } from '../components/Seo';
 
 const Home: NextPage = () => {
-    const newsletters = useRawNewsletters()
+    const newsletters = useRawNewsletters();
 
     return (
         <>
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
                     ))}
             </Grid4Newsletters>
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

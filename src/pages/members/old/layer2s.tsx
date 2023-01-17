@@ -1,13 +1,13 @@
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { CardOldData } from '../../../components/Card'
-import { Grid4OldDatas } from '../../../components/Div'
-import { H1 } from '../../../components/H'
-import { Seo } from '../../../components/Seo'
-import { useAllLayer2s } from '../../../hooks/useAllLayer2s'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { CardOldData } from '../../../components/Card';
+import { Grid4OldDatas } from '../../../components/Div';
+import { H1 } from '../../../components/H';
+import { Seo } from '../../../components/Seo';
+import { useAllLayer2s } from '../../../hooks/useAllLayer2s';
 
 const NewChain: NextPage = () => {
-    const { layer2s } = useAllLayer2s()
+    const { layer2s } = useAllLayer2s();
 
     return (
         <>
@@ -21,7 +21,7 @@ const NewChain: NextPage = () => {
                 ))}
             </Grid4OldDatas>
         </>
-    )
-}
+    );
+};
 
-export default NewChain
+export default NewChain;

@@ -1,4 +1,4 @@
-import { NextSeo } from 'next-seo'
+import { NextSeo } from 'next-seo';
 
 /** The component that manages SEO. */
 export const Seo = ({ title }: { title: string }) => (
@@ -16,4 +16,4 @@ export const Seo = ({ title }: { title: string }) => (
             siteName: 'Layer 2 Planet',
         }}
     />
-)
+);

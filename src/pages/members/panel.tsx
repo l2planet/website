@@ -1,13 +1,13 @@
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import Head from 'next/head'
-import Image from 'next/image'
-import { wrapn } from 'wrapn'
-import { AModifyOld, APanel } from '../../components/A'
-import { H1 } from '../../components/H'
-import { Link } from '../../components/Link'
-import { SectionPanel } from '../../components/Section'
-import { Seo } from '../../components/Seo'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import Head from 'next/head';
+import Image from 'next/image';
+import { wrapn } from 'wrapn';
+import { AModifyOld, APanel } from '../../components/A';
+import { H1 } from '../../components/H';
+import { Link } from '../../components/Link';
+import { SectionPanel } from '../../components/Section';
+import { Seo } from '../../components/Seo';
 
 const Panel: NextPage = () => {
     return (
@@ -35,7 +35,7 @@ const Panel: NextPage = () => {
                 Modify Olds
             </Link>
         </>
-    )
-}
+    );
+};
 
-export default Panel
+export default Panel;

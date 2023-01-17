@@ -1,14 +1,14 @@
-import { MouseEventHandler, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
-import { wrapn } from 'wrapn'
-import { getImageUrl } from '../../functions/getImageUrl'
-import { getTweetId } from '../../functions/getTwitterId'
-import { getYoutubeId } from '../../functions/getYoutubeId'
-import { Blocker } from '../Blocker'
-import { ButtonForm } from '../Button'
-import { BlockClass } from './classes'
-import { EditableBlock } from './components'
-import { onKeyDownHandler, tool, directions, resizeTextareaHeight } from './functions'
-import { EditorBlockType, Block } from './types'
+import { MouseEventHandler, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { wrapn } from 'wrapn';
+import { getImageUrl } from '../../functions/getImageUrl';
+import { getTweetId } from '../../functions/getTwitterId';
+import { getYoutubeId } from '../../functions/getYoutubeId';
+import { Blocker } from '../Blocker';
+import { ButtonForm } from '../Button';
+import { BlockClass } from './classes';
+import { EditableBlock } from './components';
+import { onKeyDownHandler, tool, directions, resizeTextareaHeight } from './functions';
+import { EditorBlockType, Block } from './types';
 
 export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) => {
     const [blocks, setBlocks] = useState<BlockClass[]>([
@@ -16,22 +16,22 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
         new BlockClass('S'),
         new BlockClass('BR'),
         new BlockClass('P'),
-    ])
+    ]);
 
-    const [isPreview, setPreview] = useState<boolean>(false)
-    const [previewBlocks, setPreviewBlocks] = useState<Block[]>([])
+    const [isPreview, setPreview] = useState<boolean>(false);
+    const [previewBlocks, setPreviewBlocks] = useState<Block[]>([]);
 
-    const [focusedBlock, setFocusedBlock] = useState<number>(0)
-    const isDivisionKey = useRef<boolean>(false)
+    const [focusedBlock, setFocusedBlock] = useState<number>(0);
+    const isDivisionKey = useRef<boolean>(false);
 
     useEffect(() => {
-        const el = document.getElementById(`block_${focusedBlock}`) as HTMLTextAreaElement
-        el?.focus()
-    }, [blocks, focusedBlock])
+        const el = document.getElementById(`block_${focusedBlock}`) as HTMLTextAreaElement;
+        el?.focus();
+    }, [blocks, focusedBlock]);
 
     const renderBlocks = useCallback(() => {
-        setBlocks((blocks) => blocks.slice())
-    }, [])
+        setBlocks((blocks) => blocks.slice());
+    }, []);
 
     const filterBlocks = useCallback(() => {
         const json: Block[] = blocks
@@ -42,17 +42,17 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         return {
                             type: 'W',
                             content: getTweetId(block.content) || '',
-                        }
+                        };
                     case 'V':
                         return {
                             type: 'V',
                             content: getYoutubeId(block.content) || '',
-                        }
+                        };
                     case 'BR':
                         return {
                             type: 'BR',
                             content: '',
-                        }
+                        };
                     default:
                         return {
                             type: block.type,
@@ -64,44 +64,44 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                 : block.bolds.length
                                 ? block.bolds.sort((a, b) => a.start - b.start)
                                 : undefined,
-                        } as any
+                        } as any;
                 }
-            })
+            });
 
-        return json
-    }, [blocks])
+        return json;
+    }, [blocks]);
 
     const removeAt = useCallback((i: number) => {
-        setBlocks((blocks) => [...blocks.slice(0, i), ...blocks.slice(i + 1)])
-    }, [])
+        setBlocks((blocks) => [...blocks.slice(0, i), ...blocks.slice(i + 1)]);
+    }, []);
 
     const addAfter = useCallback((i: number) => {
-        setBlocks((blocks) => [...blocks.slice(0, i), blocks[i], new BlockClass(), ...blocks.slice(i + 1)])
-    }, [])
+        setBlocks((blocks) => [...blocks.slice(0, i), blocks[i], new BlockClass(), ...blocks.slice(i + 1)]);
+    }, []);
 
     const moveUp = useCallback((i: number) => {
-        if (i < 4) return
-        setBlocks((blocks) => [...blocks.slice(0, i - 1), blocks[i], blocks[i - 1], ...blocks.slice(i + 1)])
-        setFocusedBlock((focusedBlock) => focusedBlock - 1)
-    }, [])
+        if (i < 4) return;
+        setBlocks((blocks) => [...blocks.slice(0, i - 1), blocks[i], blocks[i - 1], ...blocks.slice(i + 1)]);
+        setFocusedBlock((focusedBlock) => focusedBlock - 1);
+    }, []);
 
     const moveDown = useCallback(
         (i: number) => {
-            if (i < 3 || i == blocks.length - 1) return
-            setBlocks((blocks) => [...blocks.slice(0, i), blocks[i + 1], blocks[i], ...blocks.slice(i + 2)])
-            setFocusedBlock((focusedBlock) => focusedBlock + 1)
+            if (i < 3 || i == blocks.length - 1) return;
+            setBlocks((blocks) => [...blocks.slice(0, i), blocks[i + 1], blocks[i], ...blocks.slice(i + 2)]);
+            setFocusedBlock((focusedBlock) => focusedBlock + 1);
         },
         [blocks.length]
-    )
+    );
 
     const changeType = useCallback(
         (newType: EditorBlockType) => {
-            blocks[focusedBlock] = blocks[focusedBlock].as(newType)
-            if (newType == 'BR') blocks[focusedBlock].content = ''
-            renderBlocks()
+            blocks[focusedBlock] = blocks[focusedBlock].as(newType);
+            if (newType == 'BR') blocks[focusedBlock].content = '';
+            renderBlocks();
         },
         [blocks, focusedBlock, renderBlocks]
-    )
+    );
 
     return (
         <>
@@ -109,7 +109,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                 <>
                     <PreviewButton
                         onClick={() => {
-                            setPreview(false)
+                            setPreview(false);
                         }}
                     >
                         Show Editor
@@ -122,8 +122,8 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                 <>
                     <PreviewButton
                         onClick={() => {
-                            setPreviewBlocks(filterBlocks())
-                            setPreview(true)
+                            setPreviewBlocks(filterBlocks());
+                            setPreview(true);
                         }}
                     >
                         Show Preview
@@ -143,43 +143,43 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                 rows={1}
                                 value={block.content}
                                 onPlus={(e) => {
-                                    tool.setPos(i)
-                                    setFocusedBlock(i)
+                                    tool.setPos(i);
+                                    setFocusedBlock(i);
                                 }}
                                 onUpDown={(e) => {
-                                    directions.setPos(i)
-                                    setFocusedBlock(i)
+                                    directions.setPos(i);
+                                    setFocusedBlock(i);
                                 }}
                                 onPlaceClick={() => {
-                                    document.getElementById(`block_${i}`)?.focus()
-                                    setFocusedBlock(i)
+                                    document.getElementById(`block_${i}`)?.focus();
+                                    setFocusedBlock(i);
                                 }}
                                 onFocus={(e) => {
-                                    resizeTextareaHeight(e.currentTarget)
-                                    setFocusedBlock(i)
+                                    resizeTextareaHeight(e.currentTarget);
+                                    setFocusedBlock(i);
                                 }}
                                 onChange={(e) => {
                                     // Replace all new lines with space character
-                                    blocks[i].content = e.target.value.replace(/\n/g, ' ')
-                                    renderBlocks()
+                                    blocks[i].content = e.target.value.replace(/\n/g, ' ');
+                                    renderBlocks();
 
-                                    resizeTextareaHeight(e.currentTarget)
+                                    resizeTextareaHeight(e.currentTarget);
 
                                     if (block.is('P') || block.is('I') || block.is('W') || block.is('V')) {
                                         switch (true) {
                                             case getTweetId(e.target.value) !== null:
-                                                blocks[i] = block.as('W')
-                                                break
+                                                blocks[i] = block.as('W');
+                                                break;
                                             case getYoutubeId(e.target.value) !== null:
-                                                blocks[i] = block.as('V')
-                                                break
+                                                blocks[i] = block.as('V');
+                                                break;
                                             case getImageUrl(e.target.value) !== null:
-                                                blocks[i] = block.as('I')
-                                                break
+                                                blocks[i] = block.as('I');
+                                                break;
                                             default:
-                                                blocks[i] = block.as('P')
+                                                blocks[i] = block.as('P');
                                         }
-                                        renderBlocks()
+                                        renderBlocks();
                                     }
                                 }}
                                 onKeyDown={(e) =>
@@ -187,33 +187,33 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                         onAll() {
                                             if (e.key == '/') {
                                                 if (!isDivisionKey.current && i > 1) {
-                                                    tool.setPos(i)
-                                                    isDivisionKey.current = true
-                                                    e.preventDefault()
+                                                    tool.setPos(i);
+                                                    isDivisionKey.current = true;
+                                                    e.preventDefault();
                                                 } else {
-                                                    tool.hide()
-                                                    isDivisionKey.current = false
+                                                    tool.hide();
+                                                    isDivisionKey.current = false;
                                                 }
                                             } else {
-                                                tool.hide()
-                                                isDivisionKey.current = false
+                                                tool.hide();
+                                                isDivisionKey.current = false;
                                             }
                                             if (block.is('BR')) {
-                                                e.preventDefault()
-                                                return
+                                                e.preventDefault();
+                                                return;
                                             }
                                         },
 
                                         onBackspace() {
                                             if (e.currentTarget.value.length == 0) {
                                                 if (i > 2) {
-                                                    removeAt(i)
-                                                    setFocusedBlock(i - 1)
+                                                    removeAt(i);
+                                                    setFocusedBlock(i - 1);
                                                 } else if (i > 0) {
-                                                    setFocusedBlock(i - 1)
-                                                    setBlocks(blocks.slice(0))
+                                                    setFocusedBlock(i - 1);
+                                                    setBlocks(blocks.slice(0));
                                                 }
-                                                e.preventDefault()
+                                                e.preventDefault();
                                             }
                                         },
 
@@ -221,36 +221,36 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
 
                                         onEnter() {
                                             if (i > 1) {
-                                                addAfter(i)
-                                                setFocusedBlock(i + 1)
+                                                addAfter(i);
+                                                setFocusedBlock(i + 1);
                                             } else {
-                                                setFocusedBlock(i + 1)
-                                                setBlocks(blocks.slice(0))
+                                                setFocusedBlock(i + 1);
+                                                setBlocks(blocks.slice(0));
                                             }
-                                            e.preventDefault()
+                                            e.preventDefault();
                                         },
 
                                         onArrowUp() {
                                             if (i > 0) {
-                                                setFocusedBlock(i - 1)
-                                                setBlocks(blocks.slice(0))
+                                                setFocusedBlock(i - 1);
+                                                setBlocks(blocks.slice(0));
                                             }
-                                            e.preventDefault()
+                                            e.preventDefault();
                                         },
 
                                         onArrowDown() {
                                             if (i < blocks.length - 1) {
-                                                setFocusedBlock(i + 1)
-                                                setBlocks(blocks.slice(0))
-                                                e.preventDefault()
+                                                setFocusedBlock(i + 1);
+                                                setBlocks(blocks.slice(0));
+                                                e.preventDefault();
                                             }
                                         },
 
                                         onArrowLeft() {
                                             if (i > 0 && e.currentTarget.selectionStart == 0) {
-                                                setFocusedBlock(i - 1)
-                                                setBlocks(blocks.slice(0))
-                                                e.preventDefault()
+                                                setFocusedBlock(i - 1);
+                                                setBlocks(blocks.slice(0));
+                                                e.preventDefault();
                                             }
                                         },
 
@@ -259,32 +259,32 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                 i < blocks.length - 1 &&
                                                 e.currentTarget.selectionStart == e.currentTarget.value.length
                                             ) {
-                                                setFocusedBlock(i + 1)
-                                                setBlocks(blocks.slice(0))
-                                                e.preventDefault()
+                                                setFocusedBlock(i + 1);
+                                                setBlocks(blocks.slice(0));
+                                                e.preventDefault();
                                             }
                                         },
 
                                         onShift() {
-                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return
-                                            const start = e.currentTarget.selectionStart
-                                            const end = e.currentTarget.selectionEnd
-                                            if (start == end) return
+                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return;
+                                            const start = e.currentTarget.selectionStart;
+                                            const end = e.currentTarget.selectionEnd;
+                                            if (start == end) return;
                                             if (block.linkPlaceInvalid(start, end)) {
-                                                alert('There is already a URL between the range!')
-                                                return
+                                                alert('There is already a URL between the range!');
+                                                return;
                                             }
                                             if (block.linkWordInvalid(start, end)) {
-                                                alert('You have to select a full word!')
-                                                return
+                                                alert('You have to select a full word!');
+                                                return;
                                             }
                                             e.currentTarget.setSelectionRange(
                                                 e.currentTarget.value.length,
                                                 e.currentTarget.value.length
-                                            )
+                                            );
                                             const url = prompt(
                                                 `Embed a URL to: ${block.content.slice(start, end)}`
-                                            )
+                                            );
 
                                             if (url) {
                                                 const ok = confirm(
@@ -292,55 +292,55 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                         start,
                                                         end
                                                     )}\nURL: ${url.slice(0, 40)}...`
-                                                )
+                                                );
                                                 if (ok) {
                                                     block.links.push({
                                                         start,
                                                         end,
                                                         url,
-                                                    })
-                                                    alert('Succefully embedded!')
-                                                } else alert('Cancelled: URL embedding!')
+                                                    });
+                                                    alert('Succefully embedded!');
+                                                } else alert('Cancelled: URL embedding!');
                                             } else {
-                                                alert('Cancelled: URL embedding!')
+                                                alert('Cancelled: URL embedding!');
                                             }
                                         },
 
                                         onCtrl() {
-                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return
-                                            const start = e.currentTarget.selectionStart
-                                            const end = e.currentTarget.selectionEnd
-                                            if (start == end) return
+                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return;
+                                            const start = e.currentTarget.selectionStart;
+                                            const end = e.currentTarget.selectionEnd;
+                                            if (start == end) return;
                                             if (block.linkPlaceInvalid(start, end)) {
                                                 alert(
                                                     'Cannot make this range bold. Please remove and recreate this block.'
-                                                )
-                                                return
+                                                );
+                                                return;
                                             }
                                             if (block.linkWordInvalid(start, end)) {
-                                                alert('You have to select a full word!')
-                                                return
+                                                alert('You have to select a full word!');
+                                                return;
                                             }
                                             e.currentTarget.setSelectionRange(
                                                 e.currentTarget.value.length,
                                                 e.currentTarget.value.length
-                                            )
+                                            );
 
                                             if (confirm('Wanna make the selection BOLD?')) {
                                                 block.bolds.push({
                                                     start,
                                                     end,
-                                                })
-                                                alert('Successfully made bold.')
+                                                });
+                                                alert('Successfully made bold.');
                                             } else {
-                                                alert('Cancelled.')
+                                                alert('Cancelled.');
                                             }
                                         },
 
                                         onMeta() {
-                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return
+                                            if (!(block.is('P') || block.is('Q') || block.is('L'))) return;
                                             if (block.links.length == 0) {
-                                                alert('There is no URL embedded!')
+                                                alert('There is no URL embedded!');
                                             } else {
                                                 alert(
                                                     `Words and URLs\n${block.links
@@ -352,7 +352,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                                                                 )}": ${link.url.slice(0, 40)}...`
                                                         )
                                                         .join('\n')}`
-                                                )
+                                                );
                                             }
                                         },
                                     })
@@ -361,7 +361,7 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                         ))}
                         <ButtonSend
                             onClick={() => {
-                                onSubmit(filterBlocks())
+                                onSubmit(filterBlocks());
                             }}
                         >
                             Send
@@ -370,8 +370,8 @@ export const Editor = ({ onSubmit }: { onSubmit: (blocks: Block[]) => void }) =>
                 </>
             )}
         </>
-    )
-}
+    );
+};
 
 const BlockHolder = wrapn('div')`
     flex flex-col
@@ -381,21 +381,21 @@ const BlockHolder = wrapn('div')`
     border border-gris-3
     dark:border-gris-7
     bg-white dark:bg-gris-9
-`
+`;
 
 const Tool = ({
     isDivision,
     changeType,
 }: {
-    isDivision: MutableRefObject<boolean>
-    changeType(newType: EditorBlockType): void
+    isDivision: MutableRefObject<boolean>;
+    changeType(newType: EditorBlockType): void;
 }) => (
     <>
         <WTool
             id='tool'
             onClick={() => {
-                tool.hide()
-                isDivision.current = false
+                tool.hide();
+                isDivision.current = false;
             }}
         >
             <Button onClick={() => changeType('H1')} className='rounded-t-xl'>
@@ -413,19 +413,19 @@ const Tool = ({
         <OutsideCover
             id='toolcover'
             onClick={() => {
-                tool.hide()
-                isDivision.current = false
+                tool.hide();
+                isDivision.current = false;
             }}
         />
     </>
-)
+);
 
 const Directions = ({
     onUp,
     onDown,
 }: {
-    onUp: MouseEventHandler<HTMLButtonElement>
-    onDown: MouseEventHandler<HTMLButtonElement>
+    onUp: MouseEventHandler<HTMLButtonElement>;
+    onDown: MouseEventHandler<HTMLButtonElement>;
 }) => (
     <>
         <WTool id='directions' onClick={directions.hide}>
@@ -438,7 +438,7 @@ const Directions = ({
         </WTool>
         <OutsideCover id='directionscover' onClick={directions.hide} />
     </>
-)
+);
 
 const Button = wrapn('button')`
     h-11 px-6
@@ -446,7 +446,7 @@ const Button = wrapn('button')`
     dark:hover:bg-gris-7
     duration-200
     font-medium
-`
+`;
 
 const WTool = wrapn('div')`
     hidden
@@ -457,13 +457,13 @@ const WTool = wrapn('div')`
     border
     border-gris-3
     dark:border-gris-6
-`
+`;
 
 const OutsideCover = wrapn('div')`
     hidden
     fixed top-0 left-0 z-40
     w-full h-screen
-`
+`;
 
 const PreviewButton = wrapn('button')`
     fixed z-50 top-28 md:bottom-12 lg:bottom-14 right-8 md:right-14 lg:right-20 
@@ -478,8 +478,8 @@ const PreviewButton = wrapn('button')`
     duration-200
     backdrop-blur-xl
     text-lg font-semibold
-`
+`;
 
 const ButtonSend = wrapn(ButtonForm)`
     mx-10 mt-6
-`
+`;

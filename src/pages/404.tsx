@@ -1,8 +1,8 @@
-import { NextSeo } from 'next-seo'
-import { wrapn } from 'wrapn'
-import { H1 } from '../components/H'
-import { Link } from '../components/Link'
-import { Seo } from '../components/Seo'
+import { NextSeo } from 'next-seo';
+import { wrapn } from 'wrapn';
+import { H1 } from '../components/H';
+import { Link } from '../components/Link';
+import { Seo } from '../components/Seo';
 
 function Page404() {
     return (
@@ -13,10 +13,10 @@ function Page404() {
                 Go back home
             </Link>
         </>
-    )
+    );
 }
 
-export default Page404
+export default Page404;
 
 const A = wrapn('a')`
     text-center
@@ -26,4 +26,4 @@ const A = wrapn('a')`
 
     text-gris-8
     dark:text-gris-2
-`
+`;

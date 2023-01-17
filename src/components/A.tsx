@@ -1,4 +1,4 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 const APrimary = wrapn('a')`
     border
@@ -19,7 +19,7 @@ const APrimary = wrapn('a')`
     active:scale-95
 
     duration-200
-`
+`;
 
 export const ANav = wrapn(APrimary)`
     text-none
@@ -31,7 +31,7 @@ export const ANav = wrapn(APrimary)`
     px-4
 
     rounded-lg2
-`
+`;
 
 export const AMenu = wrapn(APrimary)`
     flex
@@ -49,7 +49,7 @@ export const AMenu = wrapn(APrimary)`
     space-x-4
 
     rounded-lg2
-`
+`;
 
 export const ALogo = wrapn('a')`
     flex
@@ -60,7 +60,7 @@ export const ALogo = wrapn('a')`
 
     font-extrabold
     text-2xl
-`
+`;
 
 export const ALayer2 = wrapn('a')`
     flex
@@ -91,7 +91,7 @@ export const ALayer2 = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;
 
 export const AL2Projects = wrapn('a')`
     flex
@@ -126,7 +126,7 @@ export const AL2Projects = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;
 
 export const AProjects = wrapn('a')`
     flex
@@ -156,7 +156,7 @@ export const AProjects = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;
 
 export const APanel = wrapn('a')`
     flex
@@ -190,7 +190,7 @@ export const APanel = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;
 
 export const AModifyOld = wrapn('a')`
     flex
@@ -224,4 +224,4 @@ export const AModifyOld = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;

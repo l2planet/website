@@ -1,4 +1,4 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 /** Wrapped `<body/>` component. */
 export const Body = wrapn('body')`
@@ -10,4 +10,4 @@ export const Body = wrapn('body')`
     
     bg-gris-0
     dark:bg-gris-9
-`
+`;

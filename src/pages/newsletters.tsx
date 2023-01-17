@@ -1,16 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { wrapn } from 'wrapn'
-import { Blocker } from '../components/Blocker'
-import { Link } from '../components/Link'
-import { Seo } from '../components/Seo'
-import { useLatestNewsletter } from '../hooks/useLatestNewsletter'
-import { useRawNewsletterOfPage } from '../hooks/useRawNewsletterOfPage'
-import { useRawNewsletters } from '../hooks/useRawNewsletters'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { wrapn } from 'wrapn';
+import { Blocker } from '../components/Blocker';
+import { Link } from '../components/Link';
+import { Seo } from '../components/Seo';
+import { useLatestNewsletter } from '../hooks/useLatestNewsletter';
+import { useRawNewsletterOfPage } from '../hooks/useRawNewsletterOfPage';
+import { useRawNewsletters } from '../hooks/useRawNewsletters';
 
 const Newsletter: NextPage = () => {
-    const newsletter = useRawNewsletterOfPage()
+    const newsletter = useRawNewsletterOfPage();
 
     return (
         <>
@@ -23,10 +23,10 @@ const Newsletter: NextPage = () => {
             </Div>
             {newsletter && <Blocker blocks={newsletter} author={''} />}
         </>
-    )
-}
+    );
+};
 
-export default Newsletter
+export default Newsletter;
 
 const Div = wrapn('div')`
     flex
@@ -36,7 +36,7 @@ const Div = wrapn('div')`
     max-w-3xl
     -mb-4
     sm:-mb-7
-`
+`;
 
 const A = wrapn('a')`
     flex
@@ -68,4 +68,4 @@ const A = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;

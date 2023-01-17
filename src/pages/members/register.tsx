@@ -1,16 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
-import { wrapn } from 'wrapn'
-import { RegisterForm } from '../../components/Form'
-import { H1 } from '../../components/H'
-import { Link } from '../../components/Link'
-import { Seo } from '../../components/Seo'
-import { authRegister } from '../../functions/api'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
+import { wrapn } from 'wrapn';
+import { RegisterForm } from '../../components/Form';
+import { H1 } from '../../components/H';
+import { Link } from '../../components/Link';
+import { Seo } from '../../components/Seo';
+import { authRegister } from '../../functions/api';
 
 const Members: NextPage = () => {
-    const router = useRouter()
+    const router = useRouter();
 
     return (
         <>
@@ -22,12 +22,12 @@ const Members: NextPage = () => {
                 <RegisterForm
                     onSubmit={async (formData) => {
                         try {
-                            await authRegister(formData)
-                            alert('Succesfully registered!')
-                            alert(`Let's log in!`)
-                            router.push('/members/login')
+                            await authRegister(formData);
+                            alert('Succesfully registered!');
+                            alert(`Let's log in!`);
+                            router.push('/members/login');
                         } catch (e: any) {
-                            alert(e.message)
+                            alert(e.message);
                         }
                     }}
                 />
@@ -37,17 +37,17 @@ const Members: NextPage = () => {
                 </Link>
             </Div>
         </>
-    )
-}
+    );
+};
 
-export default Members
+export default Members;
 
 const Div = wrapn('div')`
     flex
     flex-col
     
     space-y-6
-`
+`;
 
 const A = wrapn('a')`
     text-center
@@ -57,4 +57,4 @@ const A = wrapn('a')`
     active:text-slate-500
 
     duration-200
-`
+`;

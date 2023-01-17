@@ -1,4 +1,4 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 // Divs for [chain] pages
 export const Col4Select = wrapn('div')`
@@ -7,7 +7,7 @@ export const Col4Select = wrapn('div')`
     items-start
 
     space-y-2
-`
+`;
 
 export const Grid4ChainPage = wrapn('div')`
     grid
@@ -17,7 +17,7 @@ export const Grid4ChainPage = wrapn('div')`
 
     gap-3
     sm:gap-3.5
-`
+`;
 
 // Divs for [layer2] pages
 export const Row4Layer2Links = wrapn('div')`
@@ -32,7 +32,7 @@ export const Row4Layer2Links = wrapn('div')`
     sm:gap-x-4
     gap-y-3
     sm:gap-y-4
-`
+`;
 
 export const Grid4Layer2Investors = wrapn('div')`
     grid
@@ -42,7 +42,7 @@ export const Grid4Layer2Investors = wrapn('div')`
 
     gap-6
     md:gap-8
-`
+`;
 
 // Divs for projects
 export const Flex4ProjectsGrid4Projects = wrapn('div')`
@@ -54,7 +54,7 @@ export const Flex4ProjectsGrid4Projects = wrapn('div')`
     space-y-5
     lg:space-y-0
     lg:space-x-5
-`
+`;
 
 export const Grid4ProjectsProjects = wrapn('div')`
     grid
@@ -63,7 +63,7 @@ export const Grid4ProjectsProjects = wrapn('div')`
     w-full
 
     gap-y-5
-`
+`;
 
 // Divs for `stats` page
 export const Flex4StatsTables = wrapn('div')`
@@ -75,7 +75,7 @@ export const Flex4StatsTables = wrapn('div')`
     lg:space-y-0
     lg:space-x-8
 
-`
+`;
 
 // Divs for `members/old/...` pages
 export const Grid4OldDatas = wrapn('div')`
@@ -85,7 +85,7 @@ export const Grid4OldDatas = wrapn('div')`
     lg:grid-cols-3
 
     gap-5
-`
+`;
 
 export const Grid4Newsletters = wrapn('div')`
     grid
@@ -96,4 +96,4 @@ export const Grid4Newsletters = wrapn('div')`
 
     gap-y-5
     gap-x-6
-`
+`;

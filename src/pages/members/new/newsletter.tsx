@@ -1,9 +1,9 @@
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { Editor } from '../../../components/Editor'
-import { H1 } from '../../../components/H'
-import { Seo } from '../../../components/Seo'
-import { sendNewsletter } from '../../../functions/api'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { Editor } from '../../../components/Editor';
+import { H1 } from '../../../components/H';
+import { Seo } from '../../../components/Seo';
+import { sendNewsletter } from '../../../functions/api';
 
 const NewNewsletter: NextPage = () => {
     return (
@@ -15,15 +15,15 @@ const NewNewsletter: NextPage = () => {
             <Editor
                 onSubmit={async (newsletterBlocks) => {
                     try {
-                        await sendNewsletter(newsletterBlocks)
-                        alert('Succesfully added!')
+                        await sendNewsletter(newsletterBlocks);
+                        alert('Succesfully added!');
                     } catch (err: any) {
-                        alert(err.message)
+                        alert(err.message);
                     }
                 }}
             />
         </>
-    )
-}
+    );
+};
 
-export default NewNewsletter
+export default NewNewsletter;

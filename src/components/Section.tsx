@@ -1,9 +1,9 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 export const Section = wrapn('section')`
     flex
     flex-col
-`
+`;
 
 // Index Page
 
@@ -12,7 +12,7 @@ export const SectionIndexIntro = wrapn(Section)`
     sm:space-y-4
     md:space-y-5
     lg:space-y-6
-`
+`;
 
 export const SectionIndexCards = wrapn(Section)`
     grid
@@ -22,7 +22,7 @@ export const SectionIndexCards = wrapn(Section)`
     
     gap-4
     sm:gap-5
-`
+`;
 export const SectionIndexSubscribe = wrapn(Section)`
     pt-6
     sm:pt-10
@@ -32,7 +32,7 @@ export const SectionIndexSubscribe = wrapn(Section)`
     sm:space-y-4
     md:space-y-5
     lg:space-y-6
-`
+`;
 export const SectionPartners = wrapn(Section)`
     pt-6
     sm:pt-10
@@ -40,7 +40,7 @@ export const SectionPartners = wrapn(Section)`
     sm:space-y-4
     md:space-y-5
     lg:space-y-6
-`
+`;
 
 // About page
 
@@ -49,7 +49,7 @@ export const SectionAboutIntro = wrapn(Section)`
     sm:space-y-4
     md:space-y-5
     lg:space-y-6
-`
+`;
 
 export const SectionAboutCards = wrapn('section')`
     grid
@@ -57,7 +57,7 @@ export const SectionAboutCards = wrapn('section')`
     lg:grid-cols-2
     
     gap-5
-`
+`;
 
 // [chains] pages
 
@@ -65,14 +65,14 @@ export const SectionChainIntro = wrapn(Section)`
     md:flex-row-reverse
     items-center
     justify-center
-`
+`;
 
 export const SectionChainL2s = wrapn('section')`
     flex
     flex-col
 
     space-y-5
-`
+`;
 
 // [layer2] pages
 
@@ -88,21 +88,21 @@ export const SectionLayer2Intro = wrapn(Section)`
     lg:space-y-6
     lg:space-x-10
     xl:space-x-14
-`
+`;
 
 export const SectionLayer2Charts = wrapn('section')`
     flex
     flex-col
     md:flex-row
     space-y-3
-`
+`;
 
 export const SectionLayer2Social = wrapn('section')`
     flex
     flex-col
 
     space-y-3
-`
+`;
 
 export const SectionLayer2Investors = wrapn('section')`
     flex
@@ -111,7 +111,7 @@ export const SectionLayer2Investors = wrapn('section')`
     space-y-4
     sm:space-y-5
     lg:space-y-6
-`
+`;
 
 // projects pages
 export const SectionProjectsIntro = wrapn('section')`
@@ -126,14 +126,14 @@ export const SectionProjectsIntro = wrapn('section')`
     md:space-y-0
     md:space-x-3
     lg:space-x-3.5
-`
+`;
 
 export const SectionProjectsProjects = wrapn('section')`
     flex
     flex-col
 
     space-y-6
-`
+`;
 
 // Members/panel page
 
@@ -142,4 +142,4 @@ export const SectionPanel = wrapn('section')`
     grid-cols-2
 
     gap-5
-`
+`;

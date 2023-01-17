@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { Timeline as TimelineWidget } from 'react-twitter-widgets'
-import { wrapn } from 'wrapn'
-import { useTheme } from '../contexts/ThemeContext'
+import { useState } from 'react';
+import { Timeline as TimelineWidget } from 'react-twitter-widgets';
+import { wrapn } from 'wrapn';
+import { useTheme } from '../contexts/ThemeContext';
 
 export const Timeline = ({ account }: { account?: string }) => {
-    const { isDark } = useTheme()
-    const [isLoading, setLoading] = useState(true)
+    const { isDark } = useTheme();
+    const [isLoading, setLoading] = useState(true);
 
     return (
         <Div>
@@ -28,8 +28,8 @@ export const Timeline = ({ account }: { account?: string }) => {
                 <Text>No Twitter Account</Text>
             )}
         </Div>
-    )
-}
+    );
+};
 
 const Div = wrapn('div')`
     flex
@@ -43,7 +43,7 @@ const Div = wrapn('div')`
 	dark:bg-[#0b1221]
 
     rounded-xl
-`
+`;
 
 const Text = wrapn('p')`
     flex
@@ -56,4 +56,4 @@ const Text = wrapn('p')`
 
     text-gris-6
     dark:text-gris-4
-`
+`;

@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { Flex4StatsTables } from '../components/Div'
-import { HStats } from '../components/H'
-import { Seo } from '../components/Seo'
-import { TableTPS, TableFees } from '../components/Table'
-import { useStats } from '../hooks/useStats'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { Flex4StatsTables } from '../components/Div';
+import { HStats } from '../components/H';
+import { Seo } from '../components/Seo';
+import { TableTPS, TableFees } from '../components/Table';
+import { useStats } from '../hooks/useStats';
 
 const Stats: NextPage = () => {
-    const { feeStats, tpsStats } = useStats()
+    const { feeStats, tpsStats } = useStats();
 
     return (
         <>
@@ -23,7 +23,7 @@ const Stats: NextPage = () => {
                 </Flex4StatsTables>
             )}
         </>
-    )
-}
+    );
+};
 
-export default Stats
+export default Stats;

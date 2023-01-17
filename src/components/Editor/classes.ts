@@ -1,29 +1,29 @@
-import { EditorBlockBolds, EditorBlockLinks, EditorBlockType } from './types'
+import { EditorBlockBolds, EditorBlockLinks, EditorBlockType } from './types';
 
 export class BlockClass {
     constructor(type?: EditorBlockType) {
-        this.content = ''
-        this.type = type || 'P'
-        this.links = []
-        this.bolds = []
+        this.content = '';
+        this.type = type || 'P';
+        this.links = [];
+        this.bolds = [];
     }
 
-    content: string
-    type: EditorBlockType
-    links: EditorBlockLinks[]
-    bolds: EditorBlockBolds[]
+    content: string;
+    type: EditorBlockType;
+    links: EditorBlockLinks[];
+    bolds: EditorBlockBolds[];
 
     linkPlaceInvalid(start: number, end: number): boolean {
         for (const link of this.links) {
             if ((start >= link.start && start <= link.end) || (end >= link.start && end <= link.end))
-                return true
+                return true;
         }
-        return false
+        return false;
     }
 
     linkWordInvalid(start: number, end: number): boolean {
-        const previousChar = this.content.at(start - 1)
-        const subsequentChar = this.content.at(end)
+        const previousChar = this.content.at(start - 1);
+        const subsequentChar = this.content.at(end);
 
         if (
             start != 0 &&
@@ -36,7 +36,7 @@ export class BlockClass {
             previousChar != '?' &&
             previousChar
         )
-            return true
+            return true;
 
         if (
             subsequentChar != ' ' &&
@@ -48,23 +48,23 @@ export class BlockClass {
             subsequentChar != '?' &&
             subsequentChar
         )
-            return true
+            return true;
 
-        return false
+        return false;
     }
 
     is(aType: EditorBlockType): boolean {
-        return this.type == aType
+        return this.type == aType;
     }
 
     as(newType: EditorBlockType): BlockClass {
-        this.type = newType
-        return this
+        this.type = newType;
+        return this;
     }
 
     with(newText: string): BlockClass {
-        this.content = newText
-        return this
+        this.content = newText;
+        return this;
     }
 
     className(): string {
@@ -77,32 +77,32 @@ export class BlockClass {
                 leading-normal
                 text-slate-600
                 dark:text-slate-300
-            `
+            `;
             case 'H1':
                 return `
                 font-extrabold
                 text-[2.5rem]
                 leading-tight
-            `
+            `;
             case 'H2':
                 return `
                 font-extrabold
                 text-[1.75rem]
                 leading-tight
-            `
+            `;
             case 'L':
                 return `
                 font-[550]
                 text-[1.25rem]
                 leading-normal
                 pl-[52px]
-            `
+            `;
             case 'P':
                 return `
                 font-[550]
                 text-[1.25rem]
                 leading-normal
-            `
+            `;
             case 'Q':
                 return `
                 font-[550]
@@ -111,11 +111,11 @@ export class BlockClass {
                 leading-normal
                 text-slate-700
                 dark:text-slate-200
-            `
+            `;
             case 'BR':
                 return `
                 caret-transparent
-            `
+            `;
             case 'S':
                 return `
                 font-extrabold
@@ -123,42 +123,42 @@ export class BlockClass {
                 leading-tight
                 text-slate-800
                 dark:text-slate-100
-            `
+            `;
             case 'T':
                 return `
                 font-extrabold
                 text-[3rem]
                 leading-tight
-            `
+            `;
             default:
                 return `
                 text-sky-300 hover:text-sky-600  group-focus-within:text-sky-600
-            `
+            `;
         }
     }
 
     placeholder(): string {
         switch (this.type) {
             case 'H1':
-                return 'heading 1...'
+                return 'heading 1...';
             case 'H2':
-                return 'heading 2...'
+                return 'heading 2...';
             case 'BR':
-                return ''
+                return '';
             case 'C':
-                return 'code...'
+                return 'code...';
             case 'L':
-                return 'list...'
+                return 'list...';
             case 'P':
-                return 'paragraph...'
+                return 'paragraph...';
             case 'Q':
-                return 'quote'
+                return 'quote';
             case 'S':
-                return 'subtitle...'
+                return 'subtitle...';
             case 'T':
-                return 'title...'
+                return 'title...';
             default:
-                return ''
+                return '';
         }
     }
 }

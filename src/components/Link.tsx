@@ -1,13 +1,13 @@
-import NextLink from 'next/link'
-import { ReactNode } from 'react'
-import { Wrapn } from 'wrapn'
+import NextLink from 'next/link';
+import { ReactNode } from 'react';
+import { Wrapn } from 'wrapn';
 
 interface LinkProps {
-    href: string
-    a: Wrapn<'a'>
-    newTab?: boolean | undefined
-    children: ReactNode
-    disabled?: boolean | undefined
+    href: string;
+    a: Wrapn<'a'>;
+    newTab?: boolean | undefined;
+    children: ReactNode;
+    disabled?: boolean | undefined;
 }
 
 /**
@@ -31,5 +31,5 @@ export const Link = ({ a: A, children, href, disabled, newTab }: LinkProps) => {
         <NextLink href={disabled ? '#' : href} passHref>
             <A target={newTab ? '_blank' : '_self'}>{children}</A>
         </NextLink>
-    )
-}
+    );
+};

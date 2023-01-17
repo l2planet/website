@@ -1,22 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { useMemo, useState } from 'react'
-import { wrapn } from 'wrapn'
-import { CardProject } from '../components/Card'
-import { Col4Select, Flex4ProjectsGrid4Projects, Grid4ProjectsProjects } from '../components/Div'
-import { GoBackButton } from '../components/GoBackButton'
-import { HProjects, HProjectsL2, HSelect } from '../components/H'
-import { Img } from '../components/Image'
-import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section'
-import { Select } from '../components/Select'
-import { Seo } from '../components/Seo'
-import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { useMemo, useState } from 'react';
+import { wrapn } from 'wrapn';
+import { CardProject } from '../components/Card';
+import { Col4Select, Flex4ProjectsGrid4Projects, Grid4ProjectsProjects } from '../components/Div';
+import { GoBackButton } from '../components/GoBackButton';
+import { HProjects, HProjectsL2, HSelect } from '../components/H';
+import { Img } from '../components/Image';
+import { SectionProjectsIntro, SectionProjectsProjects } from '../components/Section';
+import { Select } from '../components/Select';
+import { Seo } from '../components/Seo';
+import { useLayer2AndProjectsOfPage } from '../hooks/useLayer2AndProjectOfPage';
 
 const Layer2: NextPage = () => {
-    const [filter, setFilter] = useState('')
+    const [filter, setFilter] = useState('');
 
-    const { layer2 } = useLayer2AndProjectsOfPage()
+    const { layer2 } = useLayer2AndProjectsOfPage();
 
     const projects = useMemo(
         () =>
@@ -24,7 +24,7 @@ const Layer2: NextPage = () => {
                 ? layer2?.projects.filter((project) => project.categories.includes(filter))
                 : layer2?.projects,
         [layer2, filter]
-    )
+    );
 
     return (
         <>
@@ -75,10 +75,10 @@ const Layer2: NextPage = () => {
                 </>
             )}
         </>
-    )
-}
+    );
+};
 
-export default Layer2
+export default Layer2;
 
 const DivGoBackButton = wrapn('div')`
     flex
@@ -92,18 +92,18 @@ const DivGoBackButton = wrapn('div')`
     md:space-y-0
     md:space-x-3
     lg:space-x-3.5
-`
+`;
 
 const FlexCol = wrapn('div')`
     w-full
     flex flex-col
     gap-y-2
-`
+`;
 
 const DivMeta = wrapn('div')`
     flex
     items-center
-`
+`;
 
 const ImgL2 = wrapn('img')`
     h-9
@@ -114,7 +114,7 @@ const ImgL2 = wrapn('img')`
     ml-4
     md:ml-6
     lg:ml-8
-`
+`;
 
 const Text = wrapn('p')`
     font-semibold
@@ -125,4 +125,4 @@ const Text = wrapn('p')`
 
     text-gris-8
     dark:text-gris-2
-`
+`;

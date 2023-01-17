@@ -1,6 +1,6 @@
-import { wrapn } from 'wrapn'
-import { Block } from '../Editor/types'
-import { Tweet as T } from 'react-twitter-widgets'
+import { wrapn } from 'wrapn';
+import { Block } from '../Editor/types';
+import { Tweet as T } from 'react-twitter-widgets';
 
 export const Youtube = ({ block }: { block: Block }) => (
     <I
@@ -10,9 +10,9 @@ export const Youtube = ({ block }: { block: Block }) => (
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
         allowFullScreen
     />
-)
+);
 
 const I = wrapn('iframe')`
     aspect-video
     rounded-xl
-`
+`;

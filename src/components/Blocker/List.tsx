@@ -1,12 +1,12 @@
-import { wrapn } from 'wrapn'
-import { Block } from '../Editor/types'
-import { Links } from './Links'
+import { wrapn } from 'wrapn';
+import { Block } from '../Editor/types';
+import { Links } from './Links';
 
 export const List = ({ block }: { block: Block }) => (
     <L>
         <Bullet /> {block.links ? <Links block={block} /> : block.content}
     </L>
-)
+);
 
 const L = wrapn('p')`
     pl-10 relative
@@ -15,7 +15,7 @@ const L = wrapn('p')`
     leading-normal sm:leading-normal md:leading-normal
     text-slate-800
     dark:text-slate-100
-`
+`;
 
 const Bullet = () => (
     <svg
@@ -27,4 +27,4 @@ const Bullet = () => (
     >
         <circle cx='50' cy='50' r='50' />
     </svg>
-)
+);

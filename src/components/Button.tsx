@@ -1,4 +1,4 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 const ButtonPrimary = wrapn('button')`
     border
@@ -19,7 +19,7 @@ const ButtonPrimary = wrapn('button')`
     active:scale-95
 
     duration-200
-`
+`;
 
 const ButtonSecondary = wrapn('button')`
     bg-pri-3
@@ -35,24 +35,24 @@ const ButtonSecondary = wrapn('button')`
     active:scale-[1.025]
 
     duration-200
-`
+`;
 
 const ButtonIcon = wrapn(ButtonPrimary)`
     h-12
     p-1.5
 
     rounded-full
-`
+`;
 
 export const ButtonTheme = wrapn(ButtonIcon)`
     hidden lg:block
     w-12
-`
+`;
 
 export const ButtonMenu = wrapn(ButtonIcon)`
     lg:hidden
     w-12
-`
+`;
 
 export const ButtonMenuTheme = wrapn(ButtonPrimary)`
     flex
@@ -70,7 +70,7 @@ export const ButtonMenuTheme = wrapn(ButtonPrimary)`
     space-x-4
 
     rounded-lg2
-`
+`;
 
 export const ButtonForm = wrapn(ButtonSecondary)`
     flex
@@ -86,7 +86,7 @@ export const ButtonForm = wrapn(ButtonSecondary)`
 
 
     rounded-xl
-`
+`;
 
 export const ButtonBridge = wrapn(ButtonSecondary)`
     flex
@@ -103,7 +103,7 @@ export const ButtonBridge = wrapn(ButtonSecondary)`
     gap-x-1.5
 
     rounded-xl
-`
+`;
 
 export const ButtonPanel = wrapn(ButtonSecondary)`
     flex
@@ -119,7 +119,7 @@ export const ButtonPanel = wrapn(ButtonSecondary)`
 
 
     rounded-xl
-`
+`;
 
 export const ButtonLayer2 = wrapn('button')`
     flex
@@ -150,7 +150,7 @@ export const ButtonLayer2 = wrapn('button')`
     active:scale-105
 
     duration-200
-`
+`;
 
 export const ButtonLocale = wrapn(ButtonSecondary)`
     flex
@@ -167,4 +167,4 @@ export const ButtonLocale = wrapn(ButtonSecondary)`
     gap-x-1.5
 
     rounded-xl
-`
+`;

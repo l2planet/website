@@ -1,5 +1,5 @@
-import { wrapn, Wrapn } from 'wrapn'
-import NextImage, { StaticImageData } from 'next/image'
+import { wrapn, Wrapn } from 'wrapn';
+import NextImage, { StaticImageData } from 'next/image';
 
 /**
  * ## Image
@@ -20,13 +20,13 @@ export const Image = ({ size, src, alt }: ImageProps) => {
         <div className={size}>
             <NextImage alt={alt} src={src} layout='responsive' className='select-none' draggable='false' />
         </div>
-    )
-}
+    );
+};
 
 interface ImageProps {
-    alt: string
-    src: StaticImageData
-    size: string
+    alt: string;
+    src: StaticImageData;
+    size: string;
 }
 
 /**
@@ -41,11 +41,11 @@ interface ImageProps {
  *
  */
 export const Img = ({ img: Img, src, alt }: ImgProps) => {
-    return <Img alt={alt} src={src} className={'select-none'} draggable='false' />
-}
+    return <Img alt={alt} src={src} className={'select-none'} draggable='false' />;
+};
 
 interface ImgProps {
-    alt: string
-    src: string
-    img: Wrapn<'img'>
+    alt: string;
+    src: string;
+    img: Wrapn<'img'>;
 }

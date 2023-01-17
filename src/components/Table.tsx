@@ -1,6 +1,6 @@
-import { wrapn } from 'wrapn'
-import { TPSTableData, FeesTableData } from '../types/globals'
-import { Img } from './Image'
+import { wrapn } from 'wrapn';
+import { TPSTableData, FeesTableData } from '../types/globals';
+import { Img } from './Image';
 
 // Fees table
 export const TableFees = ({ data }: { data: FeesTableData }) => {
@@ -47,16 +47,16 @@ export const TableFees = ({ data }: { data: FeesTableData }) => {
                 </Tbody>
             </Table>
         </Div>
-    )
-}
+    );
+};
 
 const Div = wrapn('div')`
     w-full
-`
+`;
 
 const H = wrapn('h1')`
     TODO
-`
+`;
 const DivRow = wrapn('div')`
     flex
 
@@ -66,7 +66,7 @@ const DivRow = wrapn('div')`
     gap-x-1.5
 
     
-`
+`;
 
 const Table = wrapn('table')`
     flex
@@ -78,24 +78,24 @@ const Table = wrapn('table')`
 
     bg-gris-2/50
 	dark:bg-[#0b1221]
-`
+`;
 
 const Tbody = wrapn('tbody')`
     flex
     flex-col
     space-y-2
-`
+`;
 
 const TrFees = wrapn('tr')`
     h-full    
     grid
     grid-cols-4
     items-center
-`
+`;
 
 const TrFeesMain = wrapn(TrFees)`
     
-`
+`;
 
 const TrFeesCommon = wrapn(TrFees)`
     h-9
@@ -119,21 +119,21 @@ const TrFeesCommon = wrapn(TrFees)`
 
     duration-200
     cursor-pointer
-`
+`;
 
 const Th = wrapn('th')`
     text-lg
     font-bold
-`
+`;
 
 const Td = wrapn('td')`
     text-right
-`
+`;
 
 const ImgIcon = wrapn('img')`
     aspect-square
     h-5
-`
+`;
 
 // TPS table
 export const TableTPS = ({ data }: { data: TPSTableData }) => {
@@ -168,18 +168,18 @@ export const TableTPS = ({ data }: { data: TPSTableData }) => {
                 </Tbody>
             </Table>
         </Div>
-    )
-}
+    );
+};
 
 const Tr = wrapn('tr')`
     flex
     justify-between
     items-center
-`
+`;
 
 const TrMain = wrapn(Tr)`
     
-`
+`;
 
 const TrCommon = wrapn(Tr)`
     h-9
@@ -203,4 +203,4 @@ const TrCommon = wrapn(Tr)`
 
     duration-200
     cursor-pointer
-`
+`;

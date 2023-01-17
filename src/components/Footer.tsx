@@ -1,5 +1,5 @@
-import { wrapn } from 'wrapn'
-import { Link } from './Link'
+import { wrapn } from 'wrapn';
+import { Link } from './Link';
 /** The component on the bottom of every page. */
 export const Footer = () => {
     return (
@@ -41,8 +41,8 @@ export const Footer = () => {
                 </SecondaryBox>
             </Box>
         </WFooter>
-    )
-}
+    );
+};
 
 const WFooter = wrapn('footer')`
     flex
@@ -59,7 +59,7 @@ const WFooter = wrapn('footer')`
 
     bg-gris-0
     dark:bg-gris-9
-`
+`;
 
 const Box = wrapn('div')`
     flex
@@ -72,7 +72,7 @@ const Box = wrapn('div')`
 
     space-y-16
     md:space-y-0
-`
+`;
 
 const PrimaryBox = wrapn('div')`
     flex
@@ -81,7 +81,7 @@ const PrimaryBox = wrapn('div')`
     w-full
 
     space-y-4
-`
+`;
 
 const SecondaryBox = wrapn('div')`
     flex
@@ -93,38 +93,38 @@ const SecondaryBox = wrapn('div')`
 
     space-y-16
     md:space-y-0
-`
+`;
 
 const QuarterBox = wrapn('div')`
     flex
     flex-col
 
     space-y-4
-`
+`;
 
 const PrimaryTitle = wrapn('h3')`
     font-bold
     text-2xl
     xl:text-3xl
-`
+`;
 
 const PrimarySubtitle = wrapn('p')`
     font-semibold
     xl:text-lg
-`
+`;
 
 const SecondaryTitle = wrapn('h3')`
     font-bold
     text-xl
     xl:text-2xl
-`
+`;
 
 const SecondarySubBox = wrapn('p')`
     flex
     flex-col
 
     space-y-2
-`
+`;
 
 const A = wrapn('a')`
     font-semibold
@@ -134,4 +134,4 @@ const A = wrapn('a')`
 
     hover:text-pri-5
     hover:dark:text-pri-4
-`
+`;

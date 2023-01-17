@@ -8,18 +8,18 @@
  * ```
  */
 export function cleanWords(word?: string) {
-    const cleanedWords: string[] = []
+    const cleanedWords: string[] = [];
 
-    if (word === undefined) return ''
+    if (word === undefined) return '';
 
-    const words = word.trim().split(' ')
+    const words = word.trim().split(' ');
 
     for (let word of words) {
-        word = word.trim()
+        word = word.trim();
         if (word.length > 0) {
-            cleanedWords.push(word)
+            cleanedWords.push(word);
         }
     }
 
-    return cleanedWords.join(' ')
+    return cleanedWords.join(' ');
 }

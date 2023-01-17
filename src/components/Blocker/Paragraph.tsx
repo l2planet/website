@@ -1,10 +1,10 @@
-import { wrapn } from 'wrapn'
-import { Block } from '../Editor/types'
-import { Links } from './Links'
+import { wrapn } from 'wrapn';
+import { Block } from '../Editor/types';
+import { Links } from './Links';
 
 export const Paragraph = ({ block }: { block: Block }) => (
     <P>{block.links ? <Links block={block} /> : block.content}</P>
-)
+);
 
 const P = wrapn('p')`
     font-[550]
@@ -12,4 +12,4 @@ const P = wrapn('p')`
     leading-normal sm:leading-normal md:leading-normal
     text-slate-800
     dark:text-slate-100
-`
+`;

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { wrapn } from 'wrapn'
+import { useState } from 'react';
+import { wrapn } from 'wrapn';
 
 export const Videos = ({ videoIds }: { videoIds: string[] }) => {
     return (
@@ -21,8 +21,8 @@ export const Videos = ({ videoIds }: { videoIds: string[] }) => {
                 <Text>No video</Text>
             )}
         </Div>
-    )
-}
+    );
+};
 
 const Div = wrapn('div')`
     flex
@@ -44,7 +44,7 @@ const Div = wrapn('div')`
     overflow-y-auto
     
     videos-container
-`
+`;
 
 const Text = wrapn('p')`
     flex
@@ -60,9 +60,9 @@ const Text = wrapn('p')`
 
     text-gris-6
     dark:text-gris-4
-`
+`;
 
 const IFrame = wrapn('iframe')`
     aspect-video
     rounded-xl
-`
+`;

@@ -1,4 +1,4 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 export const Main = wrapn('main')`
     flex
@@ -25,4 +25,4 @@ export const Main = wrapn('main')`
     space-y-8
     sm:space-y-10
     lg:space-y-12
-`
+`;

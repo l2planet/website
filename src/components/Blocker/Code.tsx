@@ -1,7 +1,7 @@
-import { wrapn } from 'wrapn'
-import { Block } from '../Editor/types'
+import { wrapn } from 'wrapn';
+import { Block } from '../Editor/types';
 
-export const Code = ({ block }: { block: Block }) => <C>{block.content}</C>
+export const Code = ({ block }: { block: Block }) => <C>{block.content}</C>;
 
 const C = wrapn('code')`
     p-4 rounded-xl
@@ -15,4 +15,4 @@ const C = wrapn('code')`
     dark:bg-slate-800
     text-slate-600 
     dark:text-slate-300
-`
+`;

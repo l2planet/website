@@ -1,4 +1,4 @@
-import { wrapn } from 'wrapn'
+import { wrapn } from 'wrapn';
 
 export const P1 = wrapn('p')`
     text-center
@@ -14,7 +14,7 @@ export const P1 = wrapn('p')`
 
     text-gris-7
     dark:text-gris-2
-`
+`;
 
 export const PChainDescription = wrapn('p')`
     font-semibold
@@ -28,7 +28,7 @@ export const PChainDescription = wrapn('p')`
 
     text-gris-7
     dark:text-gris-2
-`
+`;
 
 export const PLayer2Description = wrapn('p')`
     break-words
@@ -43,4 +43,4 @@ export const PLayer2Description = wrapn('p')`
 
     text-gris-7
     dark:text-gris-2
-`
+`;

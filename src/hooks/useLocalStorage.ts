@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * ## useLocalStorage
@@ -19,28 +19,28 @@ import { useEffect, useRef, useState } from 'react'
 export function useLocalStorage<T>(key: string, defaultValue: T) {
     const [value, setValue] = useState<T>(() => {
         try {
-            const item = localStorage.getItem(key)
+            const item = localStorage.getItem(key);
             if (item !== null) {
-                return JSON.parse(item) as T
+                return JSON.parse(item) as T;
             } else {
-                return defaultValue
+                return defaultValue;
             }
         } catch (e) {
-            return defaultValue
+            return defaultValue;
         }
-    })
+    });
 
-    const isFirstRender = useRef(true)
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
         if (isFirstRender.current) {
-            isFirstRender.current = false
-            return
+            isFirstRender.current = false;
+            return;
         }
         try {
-            localStorage.setItem(key, JSON.stringify(value))
+            localStorage.setItem(key, JSON.stringify(value));
         } catch (e) {}
-    }, [value, key])
+    }, [value, key]);
 
-    return [value, setValue] as const
+    return [value, setValue] as const;
 }

@@ -1,6 +1,6 @@
-import { wrapn } from 'wrapn'
-import { L2Locale } from '../types/Api'
-import { Link } from './Link'
+import { wrapn } from 'wrapn';
+import { L2Locale } from '../types/Api';
+import { Link } from './Link';
 
 export const LocalCommunitiesMenu = ({ locales }: { locales: Array<L2Locale> }) => {
     return (
@@ -11,8 +11,8 @@ export const LocalCommunitiesMenu = ({ locales }: { locales: Array<L2Locale> }) 
                 </Link>
             ))}
         </LocalCommunitiesMenuDiv>
-    )
-}
+    );
+};
 
 const LocalCommunitiesMenuDiv = wrapn('div')`
     hidden
@@ -37,7 +37,7 @@ const LocalCommunitiesMenuDiv = wrapn('div')`
     dark:border-gris-5
     dark:shadow-none
     shadow-sm
-`
+`;
 
 const LocalCommunityLink = wrapn('a')`
     hover:bg-gris-2
@@ -51,4 +51,4 @@ const LocalCommunityLink = wrapn('a')`
     rounded-full
     duration-100
     box-border
-`
+`;

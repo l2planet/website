@@ -1,22 +1,22 @@
-import { useMemo } from 'react'
-import { wrapn } from 'wrapn'
-import { InternalChain, InternalLayer2, InternalProject } from '../types/Api'
-import { StatusProps } from '../types/globals'
-import { AProjects } from './A'
-import { Block } from './Editor/types'
-import { IconCoinGecko, IconGithub, IconTwitter, IconWebsite } from './icons/IconBrands'
-import { Img } from './Image'
-import { Link } from './Link'
+import { useMemo } from 'react';
+import { wrapn } from 'wrapn';
+import { InternalChain, InternalLayer2, InternalProject } from '../types/Api';
+import { StatusProps } from '../types/globals';
+import { AProjects } from './A';
+import { Block } from './Editor/types';
+import { IconCoinGecko, IconGithub, IconTwitter, IconWebsite } from './icons/IconBrands';
+import { Img } from './Image';
+import { Link } from './Link';
 
 const Card = wrapn('div')`
 
-`
+`;
 
 // Card for `about` page
 interface CardAboutProps {
-    icon: () => JSX.Element
-    title: string
-    text: string
+    icon: () => JSX.Element;
+    title: string;
+    text: string;
 }
 
 export const CardAbout = (props: CardAboutProps) => (
@@ -27,7 +27,7 @@ export const CardAbout = (props: CardAboutProps) => (
         <AboutTitle>{props.title}</AboutTitle>
         <AboutText>{props.text}</AboutText>
     </WCardAbout>
-)
+);
 
 const WCardAbout = wrapn('div')`
     flex
@@ -49,7 +49,7 @@ const WCardAbout = wrapn('div')`
 
     bg-gris-2
     dark:bg-gris-8
-`
+`;
 
 const AboutIcon = wrapn('div')`
     w-14
@@ -62,13 +62,13 @@ const AboutIcon = wrapn('div')`
 
     bg-gris-3
     dark:bg-gris-7
-`
+`;
 
 const AboutTitle = wrapn('h2')`
     font-bold
     text-2xl
     sm:text-3xl
-`
+`;
 
 const AboutText = wrapn('p')`
     font-semibold
@@ -76,7 +76,7 @@ const AboutText = wrapn('p')`
 
     text-gris-7
     dark:text-gris-3
-`
+`;
 
 // Card for `index` page
 export const CardIndex = (props: InternalChain) => (
@@ -84,7 +84,7 @@ export const CardIndex = (props: InternalChain) => (
         <Img img={ImgIndex} alt={`${props.name} logo`} src={props.icon} />
         <IndexName>{props.name}</IndexName>
     </Link>
-)
+);
 
 const AIndex = wrapn('a')`
     aspect-square
@@ -112,18 +112,18 @@ const AIndex = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;
 
 const ImgIndex = wrapn('img')`
     h-[50%] w-[50%]
-`
+`;
 
 const IndexName = wrapn('h2')`
     font-semibold
     text-[4vw]
     sm:text-[3vw]
     lg:text-[min(2vw,1.38rem)]
-`
+`;
 
 // Card for [chain] pages
 export const CardLayer2 = (props: InternalLayer2) => (
@@ -132,7 +132,7 @@ export const CardLayer2 = (props: InternalLayer2) => (
         <NameLayer2>{props.name}</NameLayer2>
         <Liveness status={props.status} />
     </Link>
-)
+);
 
 const ALayer2 = wrapn('a')`
     relative
@@ -165,7 +165,7 @@ const ALayer2 = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;
 
 const Liveness = ({ status }: StatusProps) => {
     return (
@@ -187,8 +187,8 @@ const Liveness = ({ status }: StatusProps) => {
                 </>
             )}
         </DivLiveness>
-    )
-}
+    );
+};
 
 const DivLiveness = wrapn('div')`
     flex
@@ -196,40 +196,40 @@ const DivLiveness = wrapn('div')`
     space-x-1.5
     absolute
     top-2.5 right-2.5
-`
+`;
 
 const Dot = wrapn('div')`
     h-2
     w-2
     rounded-full
-`
+`;
 
 const Text = wrapn('span')`
     font-semibold
     text-xs
-`
+`;
 
 const TextGreen = wrapn(Text)`
     text-green-500
-`
+`;
 const TextYellow = wrapn(Text)`
     text-amber-500
-`
+`;
 const TextRed = wrapn(Text)`
     text-red-500
-`
+`;
 
 const DotGreen = wrapn(Dot)`
     bg-green-500
-`
+`;
 
 const DotYellow = wrapn(Dot)`
     bg-amber-500
-`
+`;
 
 const DotRed = wrapn(Dot)`
     bg-red-500
-`
+`;
 
 const NameLayer2 = wrapn('h2')`
     font-semibold
@@ -237,12 +237,12 @@ const NameLayer2 = wrapn('h2')`
     md:text-xl
     lg:text-lg
     xl:text-xl
-`
+`;
 
 const ImgLayer2 = wrapn('img')`
     h-full
     aspect-square
-`
+`;
 
 // Card for projects pages
 export const CardProject = (props: InternalProject) => (
@@ -277,7 +277,7 @@ export const CardProject = (props: InternalProject) => (
             <DescriptionProject>{props.description}</DescriptionProject>
         </DivProjectsFocusable>
     </WCardProject>
-)
+);
 
 const WCardProject = wrapn('div')`
     flex
@@ -306,7 +306,7 @@ const WCardProject = wrapn('div')`
     outline-none
 
     group
-`
+`;
 
 const DivProjectMeta = wrapn('div')`
     flex
@@ -318,12 +318,12 @@ const DivProjectMeta = wrapn('div')`
     lg:h-10
     
     space-x-4
-`
+`;
 
 const ImgProject = wrapn('img')`
     h-full
     aspect-square
-`
+`;
 
 const NameProject = wrapn('h2')`
     font-bold
@@ -331,7 +331,7 @@ const NameProject = wrapn('h2')`
     sm:text-xl2
     md:text-2xl
     lg:text-xl2
-`
+`;
 
 const DivProjectsFocusable = wrapn('div')`
     hidden
@@ -340,7 +340,7 @@ const DivProjectsFocusable = wrapn('div')`
 
     space-y-4
     sm:space-y-5
-`
+`;
 
 const DescriptionProject = wrapn('p')`
     font-semibold
@@ -348,18 +348,18 @@ const DescriptionProject = wrapn('p')`
 
     text-gris-7
     dark:text-gris-3
-`
+`;
 
 const Flex4ProjectLinks = wrapn('div')`
     flex
     space-x-3
-`
+`;
 
 const Flex4ProjectCategories = wrapn('div')`
     flex
     space-x-3
     sm:space-x-4
-`
+`;
 const CategoryProject = wrapn('p')`
     font-semibold
     text-sm
@@ -377,31 +377,31 @@ const CategoryProject = wrapn('p')`
 
     bg-gris-3
     dark:bg-gris-6
-`
+`;
 
 // Card for `members/old/..` pages
 export const CardOldData = (props: {
-    id: string
-    icon: string
-    name: string
-    type: 'chain' | 'layer2' | 'project'
+    id: string;
+    icon: string;
+    name: string;
+    type: 'chain' | 'layer2' | 'project';
 }) => (
     <Link a={ALayer2} href={`/members/old/modify/${props.type}?id=${props.id}`}>
         <Img img={ImgLayer2} src={props.icon} alt={`${props.name} logo`} />
         <NameLayer2>{props.name}</NameLayer2>
     </Link>
-)
+);
 
 export const CardNewsletter = ({ newsletter, id }: { newsletter: string; id: number }) => {
     const title = useMemo(() => {
-        return (JSON.parse(newsletter) as Block[])[0].content
-    }, [newsletter])
+        return (JSON.parse(newsletter) as Block[])[0].content;
+    }, [newsletter]);
     return (
         <Link a={ANewsletters} href={`/newsletters?id=${id}`}>
             <NameNewsletter>{title}</NameNewsletter>
         </Link>
-    )
-}
+    );
+};
 
 const NameNewsletter = wrapn('h2')`
     font-semibold
@@ -409,7 +409,7 @@ const NameNewsletter = wrapn('h2')`
     md:text-2xl
     lg:text-lg
     xl:text-xl
-`
+`;
 
 const ANewsletters = wrapn('a')`
     relative
@@ -442,4 +442,4 @@ const ANewsletters = wrapn('a')`
     active:scale-105
 
     duration-200
-`
+`;

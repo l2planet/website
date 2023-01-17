@@ -1,16 +1,16 @@
-import { wrapn } from 'wrapn'
-import { ChartDataItem } from '../types/globals'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { BarPrice, BusinessDay, createChart } from 'lightweight-charts'
-import { useTheme } from '../contexts/ThemeContext'
+import { wrapn } from 'wrapn';
+import { ChartDataItem } from '../types/globals';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { BarPrice, BusinessDay, createChart } from 'lightweight-charts';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Chart = ({ data }: { data: ChartDataItem[] }) => {
-    const { isDark } = useTheme()
+    const { isDark } = useTheme();
 
     const updateChart = useCallback(() => {
-        const htmlChart = document.getElementById('chart') as HTMLElement
-        const htmlTooltip = document.createElement('div')
-        htmlChart.innerHTML = ''
+        const htmlChart = document.getElementById('chart') as HTMLElement;
+        const htmlTooltip = document.createElement('div');
+        htmlChart.innerHTML = '';
         htmlTooltip.className = `
 			absolute
 			hidden
@@ -37,7 +37,7 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
 
 			rounded-lg2
             sm:rounded-xl
-		`
+		`;
 
         const chart = createChart(htmlChart, {
             width: 0,
@@ -71,7 +71,7 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
                     visible: false,
                 },
             },
-        })
+        });
 
         const areaSeries = chart.addAreaSeries({
             topColor: isDark ? 'rgba(29,78,216,0.7)' : 'rgba(165,180,252,0.7)',
@@ -80,14 +80,14 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
             priceLineVisible: false,
             crosshairMarkerBackgroundColor: isDark ? 'rgb(147 197 253)' : 'rgb(99 102 241)',
             lineWidth: 2,
-        })
+        });
 
-        areaSeries.setData(data.map((d) => ({ time: parseInt(d.t) as any, value: d.v })))
+        areaSeries.setData(data.map((d) => ({ time: parseInt(d.t) as any, value: d.v })));
 
         // update tooltip
         chart.subscribeCrosshairMove((param) => {
-            const width = htmlChart.clientWidth
-            const height = htmlChart.clientHeight
+            const width = htmlChart.clientWidth;
+            const height = htmlChart.clientHeight;
             if (
                 !param.time ||
                 !param.point ||
@@ -96,49 +96,49 @@ const Chart = ({ data }: { data: ChartDataItem[] }) => {
                 param.point?.y < 0 ||
                 param.point?.y > height
             ) {
-                htmlTooltip.style.display = 'none'
-                return
+                htmlTooltip.style.display = 'none';
+                return;
             }
 
-            var dateStr = businessDayToString(param.time as BusinessDay)
+            var dateStr = businessDayToString(param.time as BusinessDay);
 
-            htmlTooltip.style.display = 'block'
-            const price = param.seriesPrices.get(areaSeries) as BarPrice
+            htmlTooltip.style.display = 'block';
+            const price = param.seriesPrices.get(areaSeries) as BarPrice;
             htmlTooltip.innerHTML = `${Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 notation: 'compact',
                 minimumFractionDigits: 2,
-            }).format(price)}`
+            }).format(price)}`;
 
-            var y = param.point.y
+            var y = param.point.y;
 
-            var left = param.point.x + toolTipMarginX
+            var left = param.point.x + toolTipMarginX;
             if (left > width - htmlTooltip.clientWidth) {
-                left = param.point.x - toolTipMarginX - htmlTooltip.clientWidth
+                left = param.point.x - toolTipMarginX - htmlTooltip.clientWidth;
             }
 
-            var top = y + toolTipMarginY
+            var top = y + toolTipMarginY;
             if (top > height - htmlTooltip.clientHeight) {
-                top = y - htmlTooltip.clientHeight - toolTipMarginY
+                top = y - htmlTooltip.clientHeight - toolTipMarginY;
             }
 
-            htmlTooltip.style.left = left + 'px'
-            htmlTooltip.style.top = top + 'px'
-        })
+            htmlTooltip.style.left = left + 'px';
+            htmlTooltip.style.top = top + 'px';
+        });
 
-        htmlChart.appendChild(htmlTooltip)
-    }, [isDark, data])
+        htmlChart.appendChild(htmlTooltip);
+    }, [isDark, data]);
 
     useEffect(() => {
-        updateChart()
+        updateChart();
 
-        addEventListener('resize', updateChart)
-        return () => removeEventListener('resize', updateChart)
-    }, [isDark, updateChart])
+        addEventListener('resize', updateChart);
+        return () => removeEventListener('resize', updateChart);
+    }, [isDark, updateChart]);
 
-    return <Div id='chart' />
-}
+    return <Div id='chart' />;
+};
 
 const Div = wrapn('div')`
 	relative
@@ -159,14 +159,14 @@ const Div = wrapn('div')`
 	bg-gris-1
 	dark:bg-[#0b1221]
 
-`
+`;
 
-export default Chart
+export default Chart;
 
 function businessDayToString(businessDay: BusinessDay) {
-    return businessDay.year + '-' + businessDay.month + '-' + businessDay.day
+    return businessDay.year + '-' + businessDay.month + '-' + businessDay.day;
 }
 
-const toolTipMarginX = 25
+const toolTipMarginX = 25;
 
-const toolTipMarginY = -50
+const toolTipMarginY = -50;

@@ -1,6 +1,6 @@
-import { NextSeo } from 'next-seo'
-import { Head, Html, Main, NextScript } from 'next/document'
-import { Body } from '../components/Body'
+import { NextSeo } from 'next-seo';
+import { Head, Html, Main, NextScript } from 'next/document';
+import { Body } from '../components/Body';
 
 export default function Document() {
     return (
@@ -11,5 +11,5 @@ export default function Document() {
                 <NextScript />
             </Body>
         </Html>
-    )
+    );
 }

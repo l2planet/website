@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { wrapn } from 'wrapn'
-import { Block } from '../Editor/types'
+import Link from 'next/link';
+import { wrapn } from 'wrapn';
+import { Block } from '../Editor/types';
 
 export const Links = ({ block }: { block: Block }) => (
     <>
@@ -26,21 +26,21 @@ export const Links = ({ block }: { block: Block }) => (
             </>
         )}
     </>
-)
+);
 
 const Href = ({ children, href }: { children: string; href: string }) => (
     <Link href={href} passHref>
         <A target='_blank'>{children}</A>
     </Link>
-)
+);
 
 const A = wrapn('a')`
     underline
     text-sky-600
     dark:text-sky-300
-`
+`;
 const Bold = wrapn('span')`
     font-extrabold
     text-gris-9
     dark:text-white
-`
+`;

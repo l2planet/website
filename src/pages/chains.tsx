@@ -1,22 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { useState } from 'react'
-import { wrapn } from 'wrapn'
-import { CardLayer2 } from '../components/Card'
-import { Col4Select, Grid4ChainPage } from '../components/Div'
-import { GoBackButton } from '../components/GoBackButton'
-import { HChain, HSelect } from '../components/H'
-import { Img } from '../components/Image'
-import { PChainDescription } from '../components/P'
-import { SectionChainIntro, SectionChainL2s } from '../components/Section'
-import { Select } from '../components/Select'
-import { Seo } from '../components/Seo'
-import { useChainOfPage } from '../hooks/useChainOfPage'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { useState } from 'react';
+import { wrapn } from 'wrapn';
+import { CardLayer2 } from '../components/Card';
+import { Col4Select, Grid4ChainPage } from '../components/Div';
+import { GoBackButton } from '../components/GoBackButton';
+import { HChain, HSelect } from '../components/H';
+import { Img } from '../components/Image';
+import { PChainDescription } from '../components/P';
+import { SectionChainIntro, SectionChainL2s } from '../components/Section';
+import { Select } from '../components/Select';
+import { Seo } from '../components/Seo';
+import { useChainOfPage } from '../hooks/useChainOfPage';
 
 const Chain: NextPage = () => {
-    const { chain } = useChainOfPage()
-    const [category, setCategory] = useState('')
+    const { chain } = useChainOfPage();
+    const [category, setCategory] = useState('');
 
     return (
         <>
@@ -60,22 +60,22 @@ const Chain: NextPage = () => {
                 </>
             )}
         </>
-    )
-}
+    );
+};
 
-export default Chain
+export default Chain;
 
 const DivGoBackButton = wrapn('div')`
     flex flex-col
     md:flex-row-reverse
     items-center
     justify-center
-`
+`;
 
 const FlexCol = wrapn('div')`
     flex flex-col
     gap-y-2
-`
+`;
 
 const DivMeta = wrapn('div')`
     flex
@@ -85,7 +85,7 @@ const DivMeta = wrapn('div')`
 
     space-y-4
     lg:space-y-6
-`
+`;
 
 const ImgChain = wrapn('img')`
     w-16
@@ -94,7 +94,7 @@ const ImgChain = wrapn('img')`
     lg:w-34
     md:ml-12
     lg:ml-20
-`
+`;
 
 const Text = wrapn('p')`
     font-semibold
@@ -105,4 +105,4 @@ const Text = wrapn('p')`
 
     text-gris-8
     dark:text-gris-2
-`
+`;

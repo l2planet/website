@@ -1,15 +1,15 @@
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { Layer2Form } from '../../../components/Form'
-import { H1 } from '../../../components/H'
-import { Seo } from '../../../components/Seo'
-import { sendLayer2 } from '../../../functions/api'
-import { useAllChains } from '../../../hooks/useAllChains'
-import { useAllLayer2s } from '../../../hooks/useAllLayer2s'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { Layer2Form } from '../../../components/Form';
+import { H1 } from '../../../components/H';
+import { Seo } from '../../../components/Seo';
+import { sendLayer2 } from '../../../functions/api';
+import { useAllChains } from '../../../hooks/useAllChains';
+import { useAllLayer2s } from '../../../hooks/useAllLayer2s';
 
 const NewLayer2: NextPage = () => {
-    const { chains } = useAllChains()
-    const { layer2s } = useAllLayer2s()
+    const { chains } = useAllChains();
+    const { layer2s } = useAllLayer2s();
 
     return (
         <>
@@ -19,16 +19,16 @@ const NewLayer2: NextPage = () => {
             <Layer2Form
                 onSubmit={async (l2FormData) => {
                     try {
-                        if (!layer2s || !chains) throw new Error(`Try again!`)
-                        await sendLayer2(l2FormData, 'POST', chains, layer2s)
-                        alert('Succesfully added!')
+                        if (!layer2s || !chains) throw new Error(`Try again!`);
+                        await sendLayer2(l2FormData, 'POST', chains, layer2s);
+                        alert('Succesfully added!');
                     } catch (err: any) {
-                        alert(err.message)
+                        alert(err.message);
                     }
                 }}
             />
         </>
-    )
-}
+    );
+};
 
-export default NewLayer2
+export default NewLayer2;

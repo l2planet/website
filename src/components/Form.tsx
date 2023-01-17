@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { wrapn } from 'wrapn'
-import { getFormData } from '../functions/getFormData'
+import { useState } from 'react';
+import { wrapn } from 'wrapn';
+import { getFormData } from '../functions/getFormData';
 import {
     InternalChain,
     InternalRawLayer2,
@@ -11,11 +11,11 @@ import {
     RawFormChain,
     RawFormLayer2,
     RawFormProject,
-} from '../types/Api'
-import { FormProps, LabeledInputProps } from '../types/globals'
-import { Bridger } from './Bridger'
-import { ButtonForm } from './Button'
-import { LocalCommunitiesInput } from './LocalCommunitiesInput'
+} from '../types/Api';
+import { FormProps, LabeledInputProps } from '../types/globals';
+import { Bridger } from './Bridger';
+import { ButtonForm } from './Button';
+import { LocalCommunitiesInput } from './LocalCommunitiesInput';
 
 const Form = wrapn('form')`
     flex
@@ -33,26 +33,26 @@ const Form = wrapn('form')`
 
     bg-gris-2
     dark:bg-gris-8
-`
+`;
 
 const DivForm = wrapn('div')`
     flex
     flex-col
 
     space-y-6
-`
+`;
 
 const Label = wrapn('label')`
     font-bold
     text-lg
-`
+`;
 
 const ToolTipText = wrapn('p')`
     font-normal
 
     text-gris-6
     dark:text-gris-3
-`
+`;
 
 const Input = wrapn('input')`
     outline-none
@@ -75,7 +75,7 @@ const Input = wrapn('input')`
 
     focus:bg-gris-0
     focus:dark:bg-gris-6
-`
+`;
 
 const TextArea = wrapn('textarea')`
     outline-none
@@ -101,14 +101,14 @@ const TextArea = wrapn('textarea')`
 
     focus:bg-gris-0
     focus:dark:bg-gris-6
-`
+`;
 
 const DivLabeledInput = wrapn('div')`
     flex
     flex-col
 
     space-y-2
-`
+`;
 
 const LabeledInput = (props: LabeledInputProps) => {
     return (
@@ -122,11 +122,11 @@ const LabeledInput = (props: LabeledInputProps) => {
                 type={props.isPassword ? 'password' : 'text'}
             />
         </DivLabeledInput>
-    )
-}
+    );
+};
 
 const LabeledTextArea = (props: LabeledInputProps) => {
-    const [val, setVal] = useState(props.default ?? '')
+    const [val, setVal] = useState(props.default ?? '');
     return (
         <DivLabeledInput>
             <Label>{props.label}</Label>
@@ -145,16 +145,16 @@ const LabeledTextArea = (props: LabeledInputProps) => {
                 onChange={(e) => setVal(e.target.value)}
             />
         </DivLabeledInput>
-    )
-}
+    );
+};
 
 /** Login Form */
 export const LoginForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
     return (
         <Form
             onSubmit={(e) => {
-                e.preventDefault()
-                onSubmit(getFormData(e))
+                e.preventDefault();
+                onSubmit(getFormData(e));
             }}
             className='self-center w-full max-w-2xl'
         >
@@ -170,16 +170,16 @@ export const LoginForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
             </DivForm>
             <ButtonForm type='submit'>Login</ButtonForm>
         </Form>
-    )
-}
+    );
+};
 
 /** Register Form */
 export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
     return (
         <Form
             onSubmit={(e) => {
-                e.preventDefault()
-                onSubmit(getFormData(e))
+                e.preventDefault();
+                onSubmit(getFormData(e));
             }}
             className='self-center w-full max-w-2xl'
         >
@@ -195,16 +195,16 @@ export const RegisterForm = ({ onSubmit }: FormProps<RawFormAuth>) => {
             </DivForm>
             <ButtonForm type='submit'>Register</ButtonForm>
         </Form>
-    )
-}
+    );
+};
 
 /** Chain Form */
 export const ChainForm = ({ onSubmit, chain }: FormProps<RawFormChain> & { chain?: InternalChain }) => {
     return (
         <Form
             onSubmit={(e) => {
-                e.preventDefault()
-                onSubmit(getFormData(e))
+                e.preventDefault();
+                onSubmit(getFormData(e));
             }}
             className='self-center w-full max-w-3xl'
         >
@@ -233,8 +233,8 @@ export const ChainForm = ({ onSubmit, chain }: FormProps<RawFormChain> & { chain
             </DivForm>
             <ButtonForm type='submit'>{chain ? 'Modify Old Chain' : 'Add a New Chain'}</ButtonForm>
         </Form>
-    )
-}
+    );
+};
 
 /** Layer2 Form */
 export const Layer2Form = ({
@@ -251,15 +251,15 @@ export const Layer2Form = ({
                 tokens: '',
             },
         ]
-    )
+    );
 
-    const [locales, setLocales] = useState<L2Locale[]>(layer2?.locales ?? [{ href: '', title: '' }])
+    const [locales, setLocales] = useState<L2Locale[]>(layer2?.locales ?? [{ href: '', title: '' }]);
 
     return (
         <Form
             onSubmit={(e) => {
-                e.preventDefault()
-                onSubmit({ ...getFormData(e), bridges, locales })
+                e.preventDefault();
+                onSubmit({ ...getFormData(e), bridges, locales });
             }}
         >
             <DivForm>
@@ -366,8 +366,8 @@ export const Layer2Form = ({
             </DivForm>
             <ButtonForm type='submit'>Add a New Layer 2</ButtonForm>
         </Form>
-    )
-}
+    );
+};
 
 /** Project Form */
 export const ProjectForm = ({
@@ -377,8 +377,8 @@ export const ProjectForm = ({
     return (
         <Form
             onSubmit={(e) => {
-                e.preventDefault()
-                onSubmit(getFormData(e))
+                e.preventDefault();
+                onSubmit(getFormData(e));
             }}
         >
             <DivForm>
@@ -441,5 +441,5 @@ export const ProjectForm = ({
             </DivForm>
             <ButtonForm type='submit'>{project ? 'Modify Project' : 'Add a New Project'}</ButtonForm>
         </Form>
-    )
-}
+    );
+};

@@ -1,6 +1,6 @@
-import { wrapn } from 'wrapn'
-import PARTNERS from '../../PARTNERS.json'
-import { Img } from './Image'
+import { wrapn } from 'wrapn';
+import PARTNERS from '../../PARTNERS.json';
+import { Img } from './Image';
 
 export const Partners = () => {
     return (
@@ -9,8 +9,8 @@ export const Partners = () => {
                 <PartnerLogo src={logoSrc} key={logoSrc} />
             ))}
         </DivPartners>
-    )
-}
+    );
+};
 
 const DivPartners = wrapn('div')`
     grid
@@ -20,11 +20,11 @@ const DivPartners = wrapn('div')`
 
     gap-6
     md:gap-8
-`
+`;
 
 const PartnerLogo = ({ src }: { src: string }) => {
-    return <Img alt={src} img={ImgPartner} src={src} />
-}
+    return <Img alt={src} img={ImgPartner} src={src} />;
+};
 
 const ImgPartner = wrapn('img')`
     h-full
@@ -33,4 +33,4 @@ const ImgPartner = wrapn('img')`
     rounded-xl
     bg-gris-2
     dark:bg-gris-4
-`
+`;

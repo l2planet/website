@@ -1,5 +1,5 @@
-import { wrapn } from 'wrapn'
-import { Block } from '../Editor/types'
+import { wrapn } from 'wrapn';
+import { Block } from '../Editor/types';
 
 export const Links = ({ block }: { block: Block }) => (
     <>
@@ -15,10 +15,10 @@ export const Links = ({ block }: { block: Block }) => (
             </>
         )}
     </>
-)
+);
 
 const Span = wrapn('span')`
     underline
     text-sky-600
     dark:text-sky-300
-`
+`;

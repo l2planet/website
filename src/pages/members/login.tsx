@@ -1,16 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
-import { wrapn } from 'wrapn'
-import { LoginForm } from '../../components/Form'
-import { H1 } from '../../components/H'
-import { Link } from '../../components/Link'
-import { Seo } from '../../components/Seo'
-import { authLogin } from '../../functions/api'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
+import { wrapn } from 'wrapn';
+import { LoginForm } from '../../components/Form';
+import { H1 } from '../../components/H';
+import { Link } from '../../components/Link';
+import { Seo } from '../../components/Seo';
+import { authLogin } from '../../functions/api';
 
 const Members: NextPage = () => {
-    const router = useRouter()
+    const router = useRouter();
     return (
         <>
             <Seo title='L2 Planet | Login' />
@@ -21,11 +21,11 @@ const Members: NextPage = () => {
                 <LoginForm
                     onSubmit={async (formData) => {
                         try {
-                            await authLogin(formData)
-                            alert('Succesfully logged in!')
-                            router.push('/members/panel')
+                            await authLogin(formData);
+                            alert('Succesfully logged in!');
+                            router.push('/members/panel');
                         } catch (e: any) {
-                            alert(e.message)
+                            alert(e.message);
                         }
                     }}
                 />
@@ -35,17 +35,17 @@ const Members: NextPage = () => {
                 </Link>
             </Div>
         </>
-    )
-}
+    );
+};
 
-export default Members
+export default Members;
 
 const Div = wrapn('div')`
     flex
     flex-col
     
     space-y-6
-`
+`;
 
 const A = wrapn('a')`
     text-center
@@ -55,4 +55,4 @@ const A = wrapn('a')`
     active:text-slate-500
 
     duration-200
-`
+`;

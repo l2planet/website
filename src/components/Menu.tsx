@@ -1,19 +1,19 @@
-import { useEffect } from 'react'
-import { wrapn } from 'wrapn'
-import { useTheme } from '../contexts/ThemeContext'
-import { AMenu } from './A'
-import { ButtonMenuTheme } from './Button'
-import { IconAbout } from './icons/IconAbout'
-import { IconHome } from './icons/IconHome'
-import { IconMoon } from './icons/IconMoon'
-import { IconNewsletter } from './icons/IconNewsletter'
-import { IconStats } from './icons/IconStats'
-import { IconSun } from './icons/IconSun'
-import { Link } from './Link'
+import { useEffect } from 'react';
+import { wrapn } from 'wrapn';
+import { useTheme } from '../contexts/ThemeContext';
+import { AMenu } from './A';
+import { ButtonMenuTheme } from './Button';
+import { IconAbout } from './icons/IconAbout';
+import { IconHome } from './icons/IconHome';
+import { IconMoon } from './icons/IconMoon';
+import { IconNewsletter } from './icons/IconNewsletter';
+import { IconStats } from './icons/IconStats';
+import { IconSun } from './icons/IconSun';
+import { Link } from './Link';
 
 /** Menu component which is only available on mobile devices. */
 export const Menu = (props: { onClick: () => void }) => {
-    const { toggleTheme } = useTheme()
+    const { toggleTheme } = useTheme();
 
     return (
         <WMenu onClick={props.onClick}>
@@ -47,8 +47,8 @@ export const Menu = (props: { onClick: () => void }) => {
                 Theme
             </ButtonMenuTheme>
         </WMenu>
-    )
-}
+    );
+};
 
 const WMenu = wrapn('div')`
     lg:hidden
@@ -75,7 +75,7 @@ const WMenu = wrapn('div')`
     backdrop-blur-lg
 
     overflow-y-auto
-`
+`;
 
 const Nav = wrapn('nav')`
     flex
@@ -85,12 +85,12 @@ const Nav = wrapn('nav')`
     space-y-8
     
     px-6
-`
+`;
 
 const Icon = ({ icon: I }: { icon: () => JSX.Element }) => {
     return (
         <div className='h-full aspect-square'>
             <I />
         </div>
-    )
-}
+    );
+};

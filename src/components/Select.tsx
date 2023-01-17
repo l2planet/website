@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
-import { wrapn } from 'wrapn'
-import { useBoolean } from '../hooks/useBoolean'
+import { useEffect, useState } from 'react';
+import { wrapn } from 'wrapn';
+import { useBoolean } from '../hooks/useBoolean';
 
 interface SelectProps {
-    options: string[]
-    onSelect: (selectedOption: string) => void
+    options: string[];
+    onSelect: (selectedOption: string) => void;
 }
 
 export const Select = (props: SelectProps) => (
@@ -12,7 +12,7 @@ export const Select = (props: SelectProps) => (
         <SelectionMobile {...props} />
         <SelectionDesktop {...props} />
     </>
-)
+);
 
 export const SelectionMobile = (props: SelectProps) => (
     <MobileSelection onChange={(e) => props.onSelect(e.target.value)}>
@@ -21,7 +21,7 @@ export const SelectionMobile = (props: SelectProps) => (
             <MobileOption key={option}>{option}</MobileOption>
         ))}
     </MobileSelection>
-)
+);
 
 const MobileSelection = wrapn('select')`
     lg:hidden
@@ -46,15 +46,15 @@ const MobileSelection = wrapn('select')`
 
     bg-gris-1
     dark:bg-gris-8
-`
+`;
 
 const MobileOption = wrapn('option')`
 
-`
+`;
 
 export const SelectionDesktop = (props: SelectProps) => {
-    const [isOptionsOpen, toggleOptionsOpen] = useBoolean(false)
-    const [selectedOption, setSelectedOption] = useState('')
+    const [isOptionsOpen, toggleOptionsOpen] = useBoolean(false);
+    const [selectedOption, setSelectedOption] = useState('');
 
     return (
         <DesktopSelection onClick={toggleOptionsOpen}>
@@ -63,8 +63,8 @@ export const SelectionDesktop = (props: SelectProps) => {
                 <DivDesktopOption>
                     <DesktopOption
                         onClick={() => {
-                            props.onSelect('')
-                            setSelectedOption('All')
+                            props.onSelect('');
+                            setSelectedOption('All');
                         }}
                     >
                         All
@@ -72,8 +72,8 @@ export const SelectionDesktop = (props: SelectProps) => {
                     {props.options.map((option) => (
                         <DesktopOption
                             onClick={() => {
-                                props.onSelect(option)
-                                setSelectedOption(option)
+                                props.onSelect(option);
+                                setSelectedOption(option);
                             }}
                             key={option}
                         >
@@ -83,8 +83,8 @@ export const SelectionDesktop = (props: SelectProps) => {
                 </DivDesktopOption>
             )}
         </DesktopSelection>
-    )
-}
+    );
+};
 
 const DesktopSelection = wrapn('div')`
     hidden
@@ -123,7 +123,7 @@ const DesktopSelection = wrapn('div')`
     select-none
 
     cursor-pointer
-`
+`;
 
 const DivDesktopOption = wrapn('div')`
     absolute
@@ -152,7 +152,7 @@ const DivDesktopOption = wrapn('div')`
 
     text-gris-6
     dark:text-gris-3
-`
+`;
 
 const DesktopOption = wrapn('div')`
     flex
@@ -174,4 +174,4 @@ const DesktopOption = wrapn('div')`
 
     duration-200
     cursor-pointer
-`
+`;

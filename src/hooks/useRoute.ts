@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 /**
  * The hook that enables getting `id` url parameter, and a method that navigates to `404` page.
@@ -13,16 +13,16 @@ import { useRouter } from 'next/router'
  */
 export function useRoute(): IdParam {
     // Extract `query`.
-    const { query, push } = useRouter()
+    const { query, push } = useRouter();
 
     return {
         id: query.id?.toString(),
         navigateToNotFound: () => push('/404'),
-    } as const
+    } as const;
 }
 
 /** The interface for the return value of `useIdParam`. */
 interface IdParam {
-    id?: string
-    navigateToNotFound(): Promise<boolean>
+    id?: string;
+    navigateToNotFound(): Promise<boolean>;
 }

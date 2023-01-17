@@ -1,39 +1,39 @@
 /* eslint-disable react/no-unescaped-entities */
-import type { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import dynamic from 'next/dynamic'
-import { wrapn } from 'wrapn'
-import { ALayer2, AL2Projects } from '../components/A'
-import { ButtonLayer2 } from '../components/Button'
-const Chart = dynamic(() => import('../components/Chart'), { ssr: false })
-import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
-import { GoBackButton } from '../components/GoBackButton'
-import { HLayer2, HLayer2Common } from '../components/H'
+import type { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import dynamic from 'next/dynamic';
+import { wrapn } from 'wrapn';
+import { ALayer2, AL2Projects } from '../components/A';
+import { ButtonLayer2 } from '../components/Button';
+const Chart = dynamic(() => import('../components/Chart'), { ssr: false });
+import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div';
+import { GoBackButton } from '../components/GoBackButton';
+import { HLayer2, HLayer2Common } from '../components/H';
 import {
     IconCoinGecko,
     IconDiscord,
     IconGithub,
     IconTwitter,
     IconWebsite,
-} from '../components/icons/IconBrands'
-import { IconLocal } from '../components/icons/IconLocal'
-import { Img } from '../components/Image'
-import { Link } from '../components/Link'
-import { LocalCommunitiesMenu } from '../components/LocalCommunitiesMenu'
-import { PLayer2Description } from '../components/P'
+} from '../components/icons/IconBrands';
+import { IconLocal } from '../components/icons/IconLocal';
+import { Img } from '../components/Image';
+import { Link } from '../components/Link';
+import { LocalCommunitiesMenu } from '../components/LocalCommunitiesMenu';
+import { PLayer2Description } from '../components/P';
 import {
     SectionLayer2Charts,
     SectionLayer2Intro,
     SectionLayer2Investors,
     SectionLayer2Social,
-} from '../components/Section'
-import { Seo } from '../components/Seo'
-import { Timeline } from '../components/Timeline'
-import { Videos } from '../components/Videos'
-import { useLayer2OfPage } from '../hooks/useLayer2OfPage'
+} from '../components/Section';
+import { Seo } from '../components/Seo';
+import { Timeline } from '../components/Timeline';
+import { Videos } from '../components/Videos';
+import { useLayer2OfPage } from '../hooks/useLayer2OfPage';
 
 const Layer2: NextPage = () => {
-    const { layer2 } = useLayer2OfPage()
+    const { layer2 } = useLayer2OfPage();
 
     return (
         <>
@@ -95,7 +95,7 @@ const Layer2: NextPage = () => {
                                                         onClick={() => {
                                                             document
                                                                 .getElementById('local-communities-menu')
-                                                                ?.classList.toggle('hidden')
+                                                                ?.classList.toggle('hidden');
                                                         }}
                                                     >
                                                         <IconLocal />
@@ -147,10 +147,10 @@ const Layer2: NextPage = () => {
                 </>
             )}
         </>
-    )
-}
+    );
+};
 
-export default Layer2
+export default Layer2;
 
 const DivGoBackButton = wrapn('div')`
     flex
@@ -164,17 +164,17 @@ const DivGoBackButton = wrapn('div')`
     lg:space-y-6
     lg:space-x-10
     xl:space-x-14
-`
+`;
 
 const FlexCol = wrapn('div')`
     flex flex-col
     gap-y-3
-`
+`;
 
 const DivMeta = wrapn('div')`
     space-y-5
     min-w-fit
-`
+`;
 
 const DivName = wrapn('div')`
     flex
@@ -185,7 +185,7 @@ const DivName = wrapn('div')`
     sm:space-x-6
     md:space-x-8
     lg:space-x-10
-`
+`;
 
 const ImgLayer2 = wrapn('img')`
     aspect-square
@@ -193,7 +193,7 @@ const ImgLayer2 = wrapn('img')`
     sm:h-22
     md:h-28
     lg:h-24
-`
+`;
 
 const DivLinks = wrapn('div')`
     flex
@@ -201,7 +201,7 @@ const DivLinks = wrapn('div')`
     w-full
     
     space-y-4
-`
+`;
 
 const DivDescription = wrapn('div')`
     flex flex-col
@@ -209,12 +209,12 @@ const DivDescription = wrapn('div')`
     w-full
 
     space-y-2
-`
+`;
 
 const DivCategory = wrapn('p')`
     flex
     space-x-4
-`
+`;
 
 const Category = wrapn('p')`
     font-semibold
@@ -229,7 +229,7 @@ const Category = wrapn('p')`
 
     bg-gris-2
     dark:bg-gris-8
-`
+`;
 
 const ImgInvestor = wrapn('img')`
     h-full
@@ -238,7 +238,7 @@ const ImgInvestor = wrapn('img')`
     rounded-xl
     bg-gris-2
     dark:bg-gris-4
-`
+`;
 
 const DivTVL = wrapn('div')`
     flex
@@ -247,7 +247,7 @@ const DivTVL = wrapn('div')`
     w-full
 
     space-y-3
-`
+`;
 
 const DivSocial = wrapn('div')`
     flex
@@ -258,4 +258,4 @@ const DivSocial = wrapn('div')`
     sm:space-y-10
     md:space-y-0
     md:space-x-8
-`
+`;

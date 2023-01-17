@@ -1,14 +1,14 @@
-import Head from 'next/head'
-import { Tweet } from 'react-twitter-widgets'
-import { ComponentProps, MouseEventHandler, Ref, useEffect, useMemo, useRef } from 'react'
-import { wrapn } from 'wrapn'
-import { BlockClass } from './classes'
-import { resizeTextareaHeight } from './functions'
-import { IconDirection } from '../icons/IconDirection'
-import { IconPlus } from '../icons/IconPlus'
-import { getYoutubeId } from '../../functions/getYoutubeId'
-import { getTweetId } from '../../functions/getTwitterId'
-import { getImageUrl } from '../../functions/getImageUrl'
+import Head from 'next/head';
+import { Tweet } from 'react-twitter-widgets';
+import { ComponentProps, MouseEventHandler, Ref, useEffect, useMemo, useRef } from 'react';
+import { wrapn } from 'wrapn';
+import { BlockClass } from './classes';
+import { resizeTextareaHeight } from './functions';
+import { IconDirection } from '../icons/IconDirection';
+import { IconPlus } from '../icons/IconPlus';
+import { getYoutubeId } from '../../functions/getYoutubeId';
+import { getTweetId } from '../../functions/getTwitterId';
+import { getImageUrl } from '../../functions/getImageUrl';
 
 export const EditableBlock = ({
     block,
@@ -19,28 +19,28 @@ export const EditableBlock = ({
     onPlaceClick,
     ...p
 }: ComponentProps<typeof TextArea> & {
-    block: BlockClass
-    onPlus: MouseEventHandler<HTMLButtonElement>
-    onUpDown: MouseEventHandler<HTMLButtonElement>
-    onPlaceClick: MouseEventHandler<HTMLDivElement>
-    plusId: string
-    directionsId: string
+    block: BlockClass;
+    onPlus: MouseEventHandler<HTMLButtonElement>;
+    onUpDown: MouseEventHandler<HTMLButtonElement>;
+    onPlaceClick: MouseEventHandler<HTMLDivElement>;
+    plusId: string;
+    directionsId: string;
 }) => {
-    const img = useMemo(() => (block.is('I') ? getImageUrl(p.value as string) : ''), [block, p.value])
-    const tw = useMemo(() => (block.is('W') ? getTweetId(p.value as string) : ''), [block, p.value])
+    const img = useMemo(() => (block.is('I') ? getImageUrl(p.value as string) : ''), [block, p.value]);
+    const tw = useMemo(() => (block.is('W') ? getTweetId(p.value as string) : ''), [block, p.value]);
     const yt = useMemo(
         () =>
             block.is('V')
                 ? `https://www.youtube-nocookie.com/embed/${getYoutubeId(p.value as string) || ''}`
                 : '',
         [block, p.value]
-    )
+    );
 
     useEffect(() => {
-        if (!p.id) return
-        const el = document.getElementById(p.id) as HTMLTextAreaElement
-        resizeTextareaHeight(el)
-    }, [block, p.id])
+        if (!p.id) return;
+        const el = document.getElementById(p.id) as HTMLTextAreaElement;
+        resizeTextareaHeight(el);
+    }, [block, p.id]);
 
     return (
         <>
@@ -74,13 +74,13 @@ export const EditableBlock = ({
                 <ButtonDirections id={directionsId} onClick={onUpDown} />
             </Div>
         </>
-    )
-}
+    );
+};
 
 const Div = wrapn('div')`
     flex items-start
     group gap-x-2
-`
+`;
 
 const MediaDiv = wrapn('div')`
     flex flex-col w-full relative
@@ -88,7 +88,7 @@ const MediaDiv = wrapn('div')`
     hover:bg-gris-1/70 group-focus-within:bg-gris-2/70
     dark:hover:bg-gris-8/70 dark:group-focus-within:bg-gris-7/70
     cursor-text
-`
+`;
 
 const TextArea = wrapn('textarea')`
     px-3 py-2.5 w-full
@@ -96,7 +96,7 @@ const TextArea = wrapn('textarea')`
     bg-transparent
     duration-200
     transition-colors
-`
+`;
 
 const WButton = wrapn('button')`
     flex items-center justify-center
@@ -106,25 +106,25 @@ const WButton = wrapn('button')`
     group-hover:fill-gris-9 group-hover:bg-gris-2
     dark:group-hover:fill-white dark:group-hover:bg-gris-7
     duration-200
-`
+`;
 const ButtonPlus = ({ onClick, id }: { onClick: MouseEventHandler<HTMLButtonElement>; id: string }) => (
     <WButton id={id} onClick={onClick}>
         <IconPlus />
     </WButton>
-)
+);
 const ButtonDirections = ({ onClick, id }: { onClick: MouseEventHandler<HTMLButtonElement>; id: string }) => (
     <WButton id={id} onClick={onClick}>
         <IconDirection />
     </WButton>
-)
+);
 
 const ImgDiv = wrapn('div')`
     flex px-3 pb-3
-`
+`;
 const Img = wrapn('img')`
     rounded-2xl
     w-full
-`
+`;
 
 const ListBullet = () => (
     <svg
@@ -136,8 +136,8 @@ const ListBullet = () => (
     >
         <circle cx='50' cy='50' r='50' />
     </svg>
-)
+);
 
 const SeperatorLine = () => (
     <span className='absolute h-[1px] w-[calc(100%-24px)] top-[21px] self-center select-none bg-gris-3 dark:bg-gris-6'></span>
-)
+);
