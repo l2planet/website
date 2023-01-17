@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useApi } from '../contexts/ApiContext';
-import { APIGetLayer2, InternalRawLayer2, RawEndpointData } from '../types/Api';
+import { InternalRawLayer2, L2Locale } from '../types/Api';
 import { useRoute } from './useRoute';
 
 /**
@@ -27,7 +27,7 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
         } catch {
             alert('An error occured!');
         }
-    }, []);
+    }, [fetchRawEndpoint]);
 
     useEffect(() => {
         if (rawLayer2 || !rawEndpointData) return;
@@ -41,6 +41,16 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
             return navigateToNotFound() as any;
         }
 
+        let locales: L2Locale[];
+
+        try {
+            const parsedLocales = JSON.parse(_rawLayer2.locales);
+            locales = parsedLocales;
+        } catch (error) {
+            locales = [];
+        }
+
+
         setRawLayer2({
             ..._rawLayer2,
             projects: _rawLayer2.projects ?? [],
@@ -48,6 +58,7 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
             videos: _rawLayer2.videos ?? [],
             investors: _rawLayer2.investors ?? [],
             id,
+            locales,
         });
     }, [id, navigateToNotFound, rawLayer2, rawEndpointData]);
 

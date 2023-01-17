@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Block } from '../components/Editor/types';
-import { RawEndpointData } from '../types/Api';
 import { useRawNewsletters } from './useRawNewsletters';
 import { useRoute } from './useRoute';
 
@@ -33,7 +32,7 @@ export function useRawNewsletterOfPage() {
         } else {
             setNewsletter(JSON.parse(ns.newsletter));
         }
-    }, [id, navigateToNotFound, newsletter]);
+    }, [id, navigateToNotFound, newsletter, rawNewsletters]);
 
     return newsletter;
 }

@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useApi } from '../contexts/ApiContext';
-import { RawEndpointData } from '../types/Api';
 
 export function useRawNewsletters() {
     const { fetchRawEndpoint, rawEndpointData } = useApi();
@@ -12,7 +11,7 @@ export function useRawNewsletters() {
         } catch {
             alert('An error occured!');
         }
-    }, []);
+    }, [fetchRawEndpoint]);
 
     return rawEndpointData?.newsletters;
 }
