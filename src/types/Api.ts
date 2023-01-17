@@ -102,6 +102,7 @@ export interface RawFormLayer2 {
     discord: string
     videos: string
     investors: string
+    locales: L2Locale[]
 }
 
 // Gets calculated by parsing `raw data` from the form
@@ -126,6 +127,7 @@ export interface APIPostLayer2 {
     discord?: string
     videos: string[]
     investors: string[]
+    locales: string
 }
 
 export interface RawBridge {

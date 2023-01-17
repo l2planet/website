@@ -151,3 +151,20 @@ export const ButtonLayer2 = wrapn('button')`
 
     duration-200
 `
+
+export const ButtonLocale = wrapn(ButtonSecondary)`
+    flex
+    items-center
+    justify-center
+
+    font-semibold
+    text-lg
+
+    h-12
+
+    px-7
+
+    gap-x-1.5
+
+    rounded-xl
+`

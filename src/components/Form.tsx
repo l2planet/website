@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { wrapn } from 'wrapn'
 import { getFormData } from '../functions/getFormData'
 import {
-    RawFormChain,
-    RawFormLayer2,
-    RawFormAuth,
-    RawFormProject,
-    RawBridge,
     InternalChain,
     InternalRawLayer2,
     InternalRawProject,
+    L2Locale,
+    RawBridge,
+    RawFormAuth,
+    RawFormChain,
+    RawFormLayer2,
+    RawFormProject,
 } from '../types/Api'
 import { FormProps, LabeledInputProps } from '../types/globals'
 import { Bridger } from './Bridger'
 import { ButtonForm } from './Button'
+import { LocalCommunitiesInput } from './LocalCommunitiesInput'
 
 const Form = wrapn('form')`
     flex
@@ -251,11 +253,13 @@ export const Layer2Form = ({
         ]
     )
 
+    const [locales, setLocales] = useState<L2Locale[]>(layer2?.locales ?? [{ href: '', title: '' }])
+
     return (
         <Form
             onSubmit={(e) => {
                 e.preventDefault()
-                onSubmit({ ...getFormData(e), bridges })
+                onSubmit({ ...getFormData(e), bridges, locales })
             }}
         >
             <DivForm>
@@ -344,6 +348,7 @@ export const Layer2Form = ({
                     placeHolder='https://discord.gg/l2planet'
                     default={layer2?.discord ? layer2.discord : undefined}
                 />
+                <LocalCommunitiesInput locales={locales} setLocales={setLocales} />
                 <LabeledTextArea
                     name='videos'
                     label='Video URLs'

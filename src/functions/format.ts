@@ -1,22 +1,21 @@
-import { cleanWords } from './cleanWords'
-import { getCoinGeckoId } from './getCoinGeckoId'
-import { getTwitterAccountId } from './getTwitterId'
-import { getYoutubeId } from './getYoutubeId'
 import {
-    RawFormChain,
-    RawFormLayer2,
-    RawFormProject,
-    RawFormAuth,
     APIPostChain,
     APIPostLayer2,
     APIPostProject,
-    APIGetChain,
     InternalChain,
     InternalLayer2,
     InternalProject,
+    L2Locale,
+    RawFormChain,
+    RawFormLayer2,
+    RawFormProject,
 } from '../types/Api'
-import { getImageUrl } from './getImageUrl'
+import { cleanWords } from './cleanWords'
+import { getCoinGeckoId } from './getCoinGeckoId'
 import { getGitHubName } from './getGithubName'
+import { getImageUrl } from './getImageUrl'
+import { getTwitterAccountId } from './getTwitterId'
+import { getYoutubeId } from './getYoutubeId'
 
 /**
  Converts `RawFormChain` data into `ApiPostChain`.
@@ -94,6 +93,16 @@ export const formatLayer2 = (
     const discord = cleanWords(formData.discord)
     const videos: string[] = []
     const investors: string[] = []
+    const locales: L2Locale[] = []
+
+    formData.locales.forEach(({ href, title }) => {
+        const _href = title.trim()
+        const _title = title.trim()
+
+        if (!_href || !_title) return
+
+        locales.push({ href: _href, title: _title })
+    })
 
     formData.bridges.forEach((bridge) => {
         const contract_address = cleanWords(bridge.contract_address)
@@ -161,6 +170,7 @@ export const formatLayer2 = (
         twitter,
         github,
         discord,
+        locales: JSON.stringify(locales),
     }
 
     return data
