@@ -120,3 +120,34 @@ export const ButtonPanel = wrapn(ButtonSecondary)`
 
     rounded-xl
 `
+
+export const ButtonLayer2 = wrapn('button')`
+    flex
+    items-center
+
+    h-11
+    sm:h-12
+    p-1
+    sm:p-2
+
+    rounded-lg2
+
+    font-bold
+
+    sm:text-lg
+
+    border
+    border-sec-3
+    dark:border-sec-7
+
+    bg-sec-3/50
+    dark:bg-sec-7/50
+
+    hover:bg-sec-4/50
+    hover:dark:bg-sec-6/50
+
+    hover:scale-95
+    active:scale-105
+
+    duration-200
+`

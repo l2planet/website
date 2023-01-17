@@ -13,10 +13,7 @@ const NewLayer2: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title='L2 Planet | New Layer 2'
-            />
+            <Seo title='L2 Planet | New Layer 2' />
             <H1>New Layer 2</H1>
 
             <Layer2Form

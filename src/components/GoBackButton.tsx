@@ -1,18 +1,17 @@
-import { useRouter } from "next/router"
-import { wrapn } from "wrapn"
-import { IconArrowBack } from "./icons/IconArrowBack"
+import { useRouter } from 'next/router'
+import { wrapn } from 'wrapn'
+import { IconArrowBack } from './icons/IconArrowBack'
 
 /** Returns the user to the previous page once the component is clicked. */
 export const GoBackButton = () => {
-    const { back } = useRouter();
+    const { back } = useRouter()
 
     return (
         <Button onClick={back}>
-            <IconArrowBack/>
+            <IconArrowBack />
         </Button>
     )
 }
-
 
 const Button = wrapn('button')`
     flex items-center justify-center

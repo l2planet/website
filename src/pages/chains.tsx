@@ -20,16 +20,12 @@ const Chain: NextPage = () => {
 
     return (
         <>
-
-
-            <Seo
-                title={`L2 Planet | ${chain?.name || 'Chain'}`}
-            />
+            <Seo title={`L2 Planet | ${chain?.name || 'Chain'}`} />
             {chain && (
                 <>
                     <SectionChainIntro>
                         <FlexCol>
-                            <GoBackButton/>
+                            <GoBackButton />
                             <DivGoBackButton>
                                 <Img src={chain.icon} img={ImgChain} alt={`${chain.name} Logo`} />
                                 <DivMeta>
@@ -52,8 +48,8 @@ const Chain: NextPage = () => {
                                 <>
                                     {category
                                         ? chain.layer2s
-                                            .filter((l2) => l2.categories.includes(category))
-                                            .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
+                                              .filter((l2) => l2.categories.includes(category))
+                                              .map((l2) => <CardLayer2 key={l2.id} {...l2} />)
                                         : chain.layer2s.map((l2) => <CardLayer2 key={l2.id} {...l2} />)}
                                 </>
                             ) : (

@@ -14,9 +14,7 @@ const Members: NextPage = () => {
 
     return (
         <>
-            <Seo
-                title='L2 Planet | Register'
-            />
+            <Seo title='L2 Planet | Register' />
 
             <H1>Register</H1>
 

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useApi } from '../contexts/ApiContext'
-import { InternalLayer2 } from '../types/Api'
+import { InternalLayer2, L2Locale } from '../types/Api'
 import { useRoute } from './useRoute'
 
 /**
@@ -34,10 +34,20 @@ export function useLayer2OfPage(): Layer2OfPage {
             return
         }
 
+        let locales: L2Locale[]
+
+        try {
+            const parsedLocales = JSON.parse(_layer2.locales)
+            locales = parsedLocales
+        } catch (error) {
+            locales = []
+        }
+
         return {
             ..._layer2,
             projects: _layer2.projects ?? [],
             id,
+            locales,
         } as unknown as InternalLayer2
     }, [endpointInfo, id, navigateToNotFound])
 

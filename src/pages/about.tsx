@@ -14,9 +14,7 @@ import { Seo } from '../components/Seo'
 const About: NextPage = () => {
     return (
         <>
-            <Seo
-                title='L2 Planet | About'
-            />
+            <Seo title='L2 Planet | About' />
 
             <SectionAboutIntro>
                 <H1>About</H1>

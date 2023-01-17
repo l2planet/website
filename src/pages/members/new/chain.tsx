@@ -10,10 +10,7 @@ const NewChain: NextPage = () => {
     const { chains } = useAllChains()
     return (
         <>
-
-            <Seo
-                title='L2 Planet | New Chain'
-            />
+            <Seo title='L2 Planet | New Chain' />
 
             <H1>New Chain</H1>
 

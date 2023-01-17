@@ -13,11 +13,7 @@ const NewProject: NextPage = () => {
 
     return (
         <>
-
-
-            <Seo
-                title='L2 Planet | New Project'
-            />
+            <Seo title='L2 Planet | New Project' />
 
             <H1>New Project</H1>
             <ProjectForm

@@ -8,9 +8,7 @@ import { sendNewsletter } from '../../../functions/api'
 const NewNewsletter: NextPage = () => {
     return (
         <>
-            <Seo
-                title='L2 Planet | New Newsletter'
-            />
+            <Seo title='L2 Planet | New Newsletter' />
 
             <H1>New Newletter</H1>
 

@@ -12,11 +12,7 @@ const Stats: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title='L2 Planet | Stats'
-            />
-
+            <Seo title='L2 Planet | Stats' />
 
             <HStats>Stats</HStats>
 

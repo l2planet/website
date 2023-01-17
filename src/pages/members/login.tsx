@@ -13,10 +13,7 @@ const Members: NextPage = () => {
     const router = useRouter()
     return (
         <>
-
-            <Seo
-                title='L2 Planet | Login'
-            />
+            <Seo title='L2 Planet | Login' />
 
             <H1>Login</H1>
 

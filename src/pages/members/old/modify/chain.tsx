@@ -15,10 +15,7 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title={`L2 Planet | Modify ${chain?.name ?? 'Chain'}`}
-            />
+            <Seo title={`L2 Planet | Modify ${chain?.name ?? 'Chain'}`} />
 
             {chain && (
                 <>

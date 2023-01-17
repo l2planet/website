@@ -23,9 +23,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <Seo
-                title='L2 Planet | Newsletters'
-            />
+            <Seo title='L2 Planet | Newsletters' />
 
             <SectionIndexSubscribe>
                 <H1>All Newsletters</H1>

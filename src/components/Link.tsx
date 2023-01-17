@@ -6,7 +6,7 @@ interface LinkProps {
     href: string
     a: Wrapn<'a'>
     newTab?: boolean | undefined
-    children: ReactNode,
+    children: ReactNode
     disabled?: boolean | undefined
 }
 

@@ -7,9 +7,7 @@ import { Seo } from '../components/Seo'
 function Page404() {
     return (
         <>
-            <Seo
-                title='L2 Planet | 404 Not Found'
-            />
+            <Seo title='L2 Planet | 404 Not Found' />
             <H1>404 Not Found</H1>
             <Link a={A} href='/'>
                 Go back home

@@ -19,11 +19,7 @@ const OldChains: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title={`L2 Planet | Modify ${rawLayer2?.name ?? 'Layer 2'}`}
-            />
-
+            <Seo title={`L2 Planet | Modify ${rawLayer2?.name ?? 'Layer 2'}`} />
 
             {rawLayer2 && (
                 <>

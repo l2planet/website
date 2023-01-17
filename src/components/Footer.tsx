@@ -25,7 +25,6 @@ export const Footer = () => {
                             <Link a={A} href='https://www.youtube.com/c/L2Planet' newTab>
                                 YouTube
                             </Link>
-                            
                         </SecondarySubBox>
                     </QuarterBox>
                     <QuarterBox>

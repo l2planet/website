@@ -11,10 +11,7 @@ const NewChain: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title='L2 Planet | Modify Projects'
-            />
+            <Seo title='L2 Planet | Modify Projects' />
 
             <H1>Modify Projects</H1>
 

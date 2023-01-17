@@ -30,7 +30,7 @@ export function useRawLayer2OfPage(): RawLayer2OfPage {
     }, [])
 
     useEffect(() => {
-        if (rawLayer2 || !rawEndpointData) return 
+        if (rawLayer2 || !rawEndpointData) return
         if (!id) {
             return navigateToNotFound() as any
         }

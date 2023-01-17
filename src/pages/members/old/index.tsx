@@ -12,9 +12,7 @@ import { Seo } from '../../../components/Seo'
 const Panel: NextPage = () => {
     return (
         <>
-            <Seo
-                title='L2 Planet | Modify Olds'
-            />
+            <Seo title='L2 Planet | Modify Olds' />
 
             <H1>Modify Olds</H1>
 

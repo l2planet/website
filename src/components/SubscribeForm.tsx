@@ -11,13 +11,13 @@ export const SubscribeForm = () => {
             onSubmit={async (e) => {
                 e.preventDefault()
                 const { email } = getFormData<{ email: string }>(e)
-                const isEmailOk = email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+                const isEmailOk = email.match(
+                    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                )
                 const input = inputRef.current
                 if (!isEmailOk) {
                     alert('Your email address is invalid.')
-                    if (input) (
-                        input.value = ''
-                    )
+                    if (input) input.value = ''
                     return
                 }
 
@@ -25,9 +25,7 @@ export const SubscribeForm = () => {
                     await sendEmailToSubscribe(email)
                     alert(`You've subscribed to our biweekly newsletter.`)
 
-                    if (input) (
-                        input.value = ''
-                    )
+                    if (input) input.value = ''
                 } catch {
                     alert('Subscription is not currently working.')
                 }

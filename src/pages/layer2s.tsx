@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo'
 import dynamic from 'next/dynamic'
 import { wrapn } from 'wrapn'
 import { ALayer2, AL2Projects } from '../components/A'
+import { ButtonLayer2 } from '../components/Button'
 const Chart = dynamic(() => import('../components/Chart'), { ssr: false })
 import { Grid4Layer2Investors, Row4Layer2Links } from '../components/Div'
 import { GoBackButton } from '../components/GoBackButton'
@@ -15,8 +16,10 @@ import {
     IconTwitter,
     IconWebsite,
 } from '../components/icons/IconBrands'
+import { IconLocal } from '../components/icons/IconLocal'
 import { Img } from '../components/Image'
 import { Link } from '../components/Link'
+import { LocalCommunitiesMenu } from '../components/LocalCommunitiesMenu'
 import { PLayer2Description } from '../components/P'
 import {
     SectionLayer2Charts,
@@ -34,71 +37,86 @@ const Layer2: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title={`L2 Planet | ${layer2?.name || 'Layer 2'}`}
-            />
+            <Seo title={`L2 Planet | ${layer2?.name || 'Layer 2'}`} />
 
             {layer2 && (
                 <>
                     <SectionLayer2Intro>
                         <FlexCol>
-                            <GoBackButton/>
+                            <GoBackButton />
                             <DivGoBackButton>
-                            <DivMeta>
-                            <DivName>
-                                <Img alt={`${layer2.name} Logo`} img={ImgLayer2} src={layer2.icon} />
-                                <HLayer2>{layer2.name}</HLayer2>
-                            </DivName>
-                            <DivLinks>
-                                <Row4Layer2Links>
-                                    {layer2.website && (
-                                        <Link a={ALayer2} href={layer2.website} newTab>
-                                            <IconWebsite />
+                                <DivMeta>
+                                    <DivName>
+                                        <Img alt={`${layer2.name} Logo`} img={ImgLayer2} src={layer2.icon} />
+                                        <HLayer2>{layer2.name}</HLayer2>
+                                    </DivName>
+                                    <DivLinks>
+                                        <Row4Layer2Links>
+                                            {layer2.website && (
+                                                <Link a={ALayer2} href={layer2.website} newTab>
+                                                    <IconWebsite />
+                                                </Link>
+                                            )}
+                                            {layer2.twitter && (
+                                                <Link
+                                                    a={ALayer2}
+                                                    href={`https://twitter.com/${layer2.twitter}`}
+                                                    newTab
+                                                >
+                                                    <IconTwitter />
+                                                </Link>
+                                            )}
+                                            {layer2.gecko && (
+                                                <Link
+                                                    a={ALayer2}
+                                                    href={`https://www.coingecko.com/coins/${layer2.gecko}`}
+                                                    newTab
+                                                >
+                                                    <IconCoinGecko />
+                                                </Link>
+                                            )}
+                                            {layer2.discord && (
+                                                <Link a={ALayer2} href={layer2.discord} newTab>
+                                                    <IconDiscord />
+                                                </Link>
+                                            )}
+                                            {layer2.github && (
+                                                <Link
+                                                    a={ALayer2}
+                                                    href={`https://github.com/${layer2.github}`}
+                                                    newTab
+                                                >
+                                                    <IconGithub />
+                                                </Link>
+                                            )}
+                                            {layer2.locales[0] && (
+                                                <>
+                                                    <ButtonLayer2
+                                                        onClick={() => {
+                                                            document
+                                                                .getElementById('local-communities-menu')
+                                                                ?.classList.toggle('hidden')
+                                                        }}
+                                                    >
+                                                        <IconLocal />
+                                                    </ButtonLayer2>
+                                                    <LocalCommunitiesMenu locales={layer2.locales} />
+                                                </>
+                                            )}
+                                        </Row4Layer2Links>
+                                        <Link a={AL2Projects} href={`/projects?id=${layer2?.id}`}>
+                                            Projects on {layer2?.name || 'Layer 2'}
                                         </Link>
-                                    )}
-                                    {layer2.twitter && (
-                                        <Link
-                                            a={ALayer2}
-                                            href={`https://twitter.com/${layer2.twitter}`}
-                                            newTab
-                                        >
-                                            <IconTwitter />
-                                        </Link>
-                                    )}
-                                    {layer2.gecko && (
-                                        <Link
-                                            a={ALayer2}
-                                            href={`https://www.coingecko.com/coins/${layer2.gecko}`}
-                                            newTab
-                                        >
-                                            <IconCoinGecko />
-                                        </Link>
-                                    )}
-                                    {layer2.discord && (
-                                        <Link a={ALayer2} href={layer2.discord} newTab>
-                                            <IconDiscord />
-                                        </Link>
-                                    )}
-                                    {layer2.github && (
-                                        <Link a={ALayer2} href={`https://github.com/${layer2.github}`} newTab>
-                                            <IconGithub />
-                                        </Link>
-                                    )}
-                                </Row4Layer2Links>
-                                <Link a={AL2Projects} href={`/projects?id=${layer2?.id}`}>
-                                    Projects on {layer2?.name || 'Layer 2'}
-                                </Link>
-                            </DivLinks>
-                        </DivMeta>
-                        <DivDescription>
-                            <DivCategory>
-                                {layer2.categories.map((category) => (
-                                    <Category key={category}>{category}</Category>
-                                ))}
-                            </DivCategory>
-                            <PLayer2Description>{layer2.description}</PLayer2Description>
-                        </DivDescription>
+                                    </DivLinks>
+                                </DivMeta>
+                                <DivDescription>
+                                    <DivCategory>
+                                        {layer2.categories.map((category) => (
+                                            <Category key={category}>{category}</Category>
+                                        ))}
+                                    </DivCategory>
+                                    <PLayer2Description>{layer2.description}</PLayer2Description>
+                                </DivDescription>
                             </DivGoBackButton>
                         </FlexCol>
                     </SectionLayer2Intro>

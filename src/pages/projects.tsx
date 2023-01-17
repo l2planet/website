@@ -28,17 +28,13 @@ const Layer2: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title={`L2 Planet | Projects on ${layer2?.name || 'Layer 2'}`}
-            />
-
+            <Seo title={`L2 Planet | Projects on ${layer2?.name || 'Layer 2'}`} />
 
             {layer2 && (
                 <>
                     <SectionProjectsIntro>
                         <FlexCol>
-                            <GoBackButton/>
+                            <GoBackButton />
                             <DivGoBackButton>
                                 <HProjects>Projects on</HProjects>
                                 <DivMeta>
@@ -47,7 +43,6 @@ const Layer2: NextPage = () => {
                                 </DivMeta>
                             </DivGoBackButton>
                         </FlexCol>
-
                     </SectionProjectsIntro>
 
                     <SectionProjectsProjects>

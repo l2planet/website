@@ -4,10 +4,10 @@ import { InfoEndpointData, RawEndpointData } from '../types/Api'
 /** The Interface for `ApiContext`. */
 interface ApiContextState {
     /** Represents data on https://api.l2planet.xyz/info. */
-    infoEndpointData?: InfoEndpointData,
+    infoEndpointData?: InfoEndpointData
     /** Represents data on https://api.l2planet.xyz/raw. */
-    
-    rawEndpointData?: RawEndpointData,
+
+    rawEndpointData?: RawEndpointData
     /** Function that fetches the data at https://api.l2planet.xyz/raw. */
     fetchRawEndpoint: () => Promise<void>
 }
@@ -23,21 +23,19 @@ export const ApiProvider = ({ children }: { children: ReactNode }) => {
     const [infoEndpointData, setInfoEndpointData] = useState<InfoEndpointData | undefined>()
     const [rawEndpointData, setRawEndpointData] = useState<RawEndpointData | undefined>()
 
-    async function fetchInfoEndpoint () {
+    async function fetchInfoEndpoint() {
         const res = await fetch('https://api.l2planet.xyz/info')
         const jsonResBody = await res.json()
-        setInfoEndpointData(jsonResBody)   
+        setInfoEndpointData(jsonResBody)
     }
 
     const fetchRawEndpoint = useCallback(async () => {
-        if(rawEndpointData) return
+        if (rawEndpointData) return
 
         const res = await fetch('https://api.l2planet.xyz/raw')
         const jsonResBody = await res.json()
-        setRawEndpointData(jsonResBody)   
+        setRawEndpointData(jsonResBody)
     }, [rawEndpointData])
-
-    
 
     // Make a get request to info endpoint, once the website is loaded.
     useEffect(() => {

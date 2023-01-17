@@ -133,6 +133,11 @@ export interface RawBridge {
     tokens: string
 }
 
+export interface L2Locale {
+    href: string
+    title: string
+}
+
 // Backend calculates this value
 // Server will add new projects' IDs to "projects" prop
 export interface APIGetLayer2 {
@@ -155,6 +160,7 @@ export interface APIGetLayer2 {
     send: string
     swap: string
     tvls: ChartDataItem[]
+    locales: string
 }
 
 // Gets calculated client side
@@ -180,6 +186,7 @@ export interface InternalLayer2 {
     send: string
     swap: string
     tvls: ChartDataItem[]
+    locales: L2Locale[]
 }
 
 // Backend calculates this value
@@ -204,6 +211,7 @@ export interface APIGetRawLayer2 {
         contract_address: string
         tokens: string[]
     }[]
+    locales: string
 }
 
 // Gets calculated client side
@@ -228,6 +236,7 @@ export interface InternalRawLayer2 {
         contract_address: string
         tokens: string[]
     }[]
+    locales: L2Locale[]
 }
 
 export interface RawFormProject {

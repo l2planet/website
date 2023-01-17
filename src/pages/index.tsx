@@ -21,9 +21,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <Seo
-                title='L2 Planet | Home'
-            />
+            <Seo title='L2 Planet | Home' />
 
             <SectionIndexIntro>
                 <H1>Welcome to Layer-2 Planet</H1>

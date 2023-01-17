@@ -79,7 +79,6 @@ export async function sendChain(
             },
         })
 
-
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
         }
@@ -113,7 +112,6 @@ export async function sendLayer2(
                 Authorization: `Bearer ${jwt}`,
             },
         })
-
 
         if (!res.ok) {
             throw new Error(`Server didn't accept your request.`)
@@ -184,7 +182,6 @@ export async function sendNewsletter(newsletterBlocks: Block[]): Promise<void> {
         throw new Error('An unknown error is occured.')
     }
 }
-
 
 /** Makes a post request to the backend to send a new Newsletter. */
 export async function sendEmailToSubscribe(email: string): Promise<void> {

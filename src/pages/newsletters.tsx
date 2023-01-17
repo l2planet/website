@@ -14,10 +14,7 @@ const Newsletter: NextPage = () => {
 
     return (
         <>
-
-            <Seo
-                title='L2 Planet | Newsletter'
-            />
+            <Seo title='L2 Planet | Newsletter' />
 
             <Div>
                 <Link a={A} href='/all_newsletters'>

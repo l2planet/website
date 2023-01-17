@@ -21,6 +21,7 @@ export const Grid4ChainPage = wrapn('div')`
 
 // Divs for [layer2] pages
 export const Row4Layer2Links = wrapn('div')`
+    relative
     flex
     flex-wrap
     lg:flex-nowrap
