@@ -19,6 +19,7 @@ const LocalCommunitiesMenuDiv = wrapn('div')`
     absolute z-20
     left-8
     md:left-12
+    lg:left-3
     top-14
     md:top-[3.75rem]
     flex
@@ -27,6 +28,7 @@ const LocalCommunitiesMenuDiv = wrapn('div')`
     max-w-[20rem]
     w-[calc(100%-4rem)]
     md:w-[calc(100%-6rem)]
+    lg:w-[calc(100%-1.5rem)]
     rounded-xl
     py-4
     px-3
