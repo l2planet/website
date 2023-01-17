@@ -19,18 +19,25 @@ export const LocalCommunitiesInput = ({
                 {locales.map(({ href, title }, index) => (
                     <Input
                         key={`${index}_locale`}
-                        placeholder='Turkish Twitter Account  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; https://twitter.com/'
+                        placeholder='Turkish Twitter Account, https://twitter.com'
                         onChange={(e) => {
-                            const parts = cleanWords(e.target.value).split('https://');
+                            const parts = cleanWords(e.target.value).split(',');
 
                             if (parts.length === 2) {
-                                console.log(locales);
                                 setLocales((locales) => [
                                     ...locales.slice(0, index),
-                                    { href: 'https://' + parts[1], title: parts[0] },
+                                    { href: parts[1], title: parts[0] },
+                                    ...locales.slice(index + 1),
+                                ]);
+                            } else {
+                                setLocales((locales) => [
+                                    ...locales.slice(0, index),
+                                    { href: '', title: '' },
+                                    ...locales.slice(index + 1),
                                 ]);
                             }
                         }}
+                        defaultValue={title ? `${title}, ${href}` : ''}
                     />
                 ))}
                 <ButtonLocale

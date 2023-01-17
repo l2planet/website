@@ -8,7 +8,7 @@ import {
     L2Locale,
     RawFormChain,
     RawFormLayer2,
-    RawFormProject,
+    RawFormProject
 } from '../types/Api';
 import { cleanWords } from './cleanWords';
 import { getCoinGeckoId } from './getCoinGeckoId';
@@ -96,7 +96,7 @@ export const formatLayer2 = (
     const locales: L2Locale[] = [];
 
     formData.locales.forEach(({ href, title }) => {
-        const _href = title.trim();
+        const _href = href.trim();
         const _title = title.trim();
 
         if (!_href || !_title) return;
